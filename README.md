@@ -1,5 +1,8 @@
 <p align="center">
-  <img src="web/public/brand/keywitness-logo.svg" alt="KeyWitness" width="360">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="web/public/brand/keywitness-logo-reverse.svg">
+    <img src="web/public/brand/keywitness-logo.svg" alt="KeyWitness" width="360">
+  </picture>
 </p>
 
 <p align="center"><strong>Every property claim deserves evidence.</strong></p>
