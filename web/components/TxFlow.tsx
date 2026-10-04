@@ -16,7 +16,7 @@ import { useCallback, useEffect, useState } from "react";
 
 import { Fold } from "./bits";
 import { ProtocolTracker, type FinalOutcome } from "./ProtocolTracker";
-import { plural, sentence } from "@/lib/present";
+import { plural } from "@/lib/present";
 import { rememberSent } from "@/lib/sent";
 import { returnedJson } from "@/lib/txresult";
 import { flowError } from "@/lib/txstatus";
@@ -51,7 +51,6 @@ export function TxFlow({ kit, tx: txProp, value: valueProp, confirmText, working
   const [value] = useState(valueProp);
   const flow = useTransactionFlow({ kit, tx, userValue: value, trackUntil: "decided" });
   const { state } = flow;
-  const [returned, setReturned] = useState<Record<string, unknown> | null>(null);
   const [outcome, setOutcome] = useState<FinalOutcome | null>(null);
 
   const status = state.step === "tracking" || state.step === "done" ? state.status : null;
@@ -67,9 +66,11 @@ export function TxFlow({ kit, tx: txProp, value: valueProp, confirmText, working
     if (!hash) return;
     if (o === "recorded") {
       void returnedJson<Record<string, unknown>>(hash).then((r) => {
-        setReturned(r);
         onDone?.({ outcome: o, hash, returned: r });
-      }).catch(() => onDone?.({ outcome: o, hash, returned: null }));
+      }).catch(() => returnedJson<Record<string, unknown>>(hash).then((r) => {
+        // One more read: what the write returned (a case id, an exhibit id) is how the page finds what it made.
+        onDone?.({ outcome: o, hash, returned: r });
+      }).catch(() => onDone?.({ outcome: o, hash, returned: null })));
     } else onDone?.({ outcome: o, hash, returned: null });
   }, [hash, onDone]);
 
@@ -154,15 +155,9 @@ export function TxFlow({ kit, tx: txProp, value: valueProp, confirmText, working
           );
         })}
       </ol>
-      {decided && hash ? <ProtocolTracker hash={hash} offerAppeal={offerAppeal} onFinal={onFinal} /> : null}
+      {decided && hash ? <ProtocolTracker hash={hash} offerAppeal={offerAppeal} announce onFinal={onFinal} /> : null}
       {!decided && flow.canCancel ? (
         <button type="button" className="btn self-start" onClick={() => void flow.cancel()}>Cancel while still queued</button>
-      ) : null}
-      {outcome === "recorded" && returned?.refused ? (
-        <p className="t-small" role="alert">
-          <span className="font-semibold">The contract refused it:</span> {sentence(String(returned.reason ?? ""))} The value
-          you sent is credited to your wallet; withdraw it from the credit banner.
-        </p>
       ) : null}
       {outcome && onClose ? <button type="button" className="btn self-start" onClick={onClose}>Close</button> : null}
     </div>

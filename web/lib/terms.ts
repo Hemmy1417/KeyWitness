@@ -129,7 +129,7 @@ export function check(step: number, d: Draft, me = ""): string[] {
     if (len(d.title) > LIMITS.title) out.push(`Keep the title under ${LIMITS.title} characters.`);
     if (len(d.propertyRef) < 2) out.push("Give the property a short reference, such as a nickname.");
     if (len(d.propertyRef) > LIMITS.property) out.push(`Keep the property reference under ${LIMITS.property} characters.`);
-    if (/@|https?:|www\./i.test(d.propertyRef)) out.push("Use a nickname for the property, not contact details or a link.");
+    if (/@|http|www\./i.test(d.propertyRef)) out.push("Use a nickname for the property, not contact details or a link.");
     if (d.followsCase.trim() && !caseIdFrom(d.followsCase)) out.push("A follow-up names the earlier case by its number, such as 1.");
   }
   if (step === 1) {

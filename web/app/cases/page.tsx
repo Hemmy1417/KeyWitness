@@ -11,7 +11,7 @@ import { useState } from "react";
 import { FindingChip, Loading, Note, ReadFailure, StateStamp } from "@/components/bits";
 import { same } from "@/lib/acts";
 import { CONTRACT_CONFIGURED } from "@/lib/config";
-import { caseName, day, EVENT_LABEL, gen, plural, ROLE_LABEL } from "@/lib/present";
+import { caseName, day, EVENT_LABEL, gen, ROLE_LABEL } from "@/lib/present";
 import { casesOf, listCases } from "@/lib/read";
 import type { CaseState, CaseSummary, EventKind, Role } from "@/lib/types";
 import { useChain } from "@/lib/useChain";
@@ -172,7 +172,7 @@ function AllPage({ skip, f, addr, last, onMore }: { skip: number; f: Filters; ad
       {rows.map((c) => <Row key={c.case_id} c={c} addr={addr} />)}
       {last && read.data.total > skip + PAGE ? (
         <li className="list-none"><button type="button" className="btn" onClick={onMore}>
-          Show older cases ({plural(read.data.total - skip - PAGE, "more")})
+          Show older cases ({read.data.total - skip - PAGE} more)
         </button></li>
       ) : null}
     </>

@@ -37,7 +37,9 @@ export function useChain<T>(key: string | null, fetcher: (fresh: boolean) => Pro
     fresh.current = false;
     run(f).then(
       (data) => { if (alive) setState({ key, tick, data }); },
-      (error: unknown) => { if (alive) setState({ key, tick, error }); },
+      // A read that fails after one has answered keeps the answer: the page stays, with its drafts and any open
+      // write, and the failure is reported beside it.
+      (error: unknown) => { if (alive) setState((was) => ({ key, tick, error, data: was.key === key ? was.data : undefined })); },
     );
     return () => { alive = false; };
   }, [key, tick]);

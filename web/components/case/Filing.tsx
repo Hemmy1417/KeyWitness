@@ -51,6 +51,8 @@ interface Draft {
   criteria: string[];
   docType: string;
   redactionNote: string;
+  /** The name published with the exhibit: the file's own name until the filer changes it. */
+  fileName: string;
   filed: string;
 }
 
@@ -98,7 +100,7 @@ function Warnings({ texts }: { texts: string[] }) {
 }
 
 /** Drag across the image to cover an area; the boxes are painted into the pixels before filing. */
-function Redactor({ draft, onBoxes }: { draft: Draft; onBoxes: (boxes: Box[]) => void }) {
+function Redactor({ draft, locked, onBoxes }: { draft: Draft; locked: boolean; onBoxes: (boxes: Box[]) => void }) {
   const area = useRef<HTMLDivElement>(null);
   const [start, setStart] = useState<{ x: number; y: number } | null>(null);
   const [live, setLive] = useState<Box | null>(null);
@@ -110,11 +112,11 @@ function Redactor({ draft, onBoxes }: { draft: Draft; onBoxes: (boxes: Box[]) =>
   if (!draft.prepared) return null;
   return (
     <div className="flex flex-col gap-2">
-      <div ref={area} className="relative self-start touch-none select-none cursor-crosshair border border-[var(--color-rule)] bg-white"
-        onPointerDown={(e) => { (e.target as Element).setPointerCapture?.(e.pointerId); setStart(at(e)); setLive(null); }}
+      <div ref={area} className={`relative self-start touch-none select-none border border-[var(--color-rule)] bg-white ${locked ? "" : "cursor-crosshair"}`}
+        onPointerDown={(e) => { if (locked) return; (e.target as Element).setPointerCapture?.(e.pointerId); setStart(at(e)); setLive(null); }}
         onPointerMove={(e) => { if (start) { const p = at(e); setLive(clampBox({ x: start.x, y: start.y, w: p.x - start.x, h: p.y - start.y })); } }}
         onPointerUp={() => {
-          if (live && live.w > 0.01 && live.h > 0.01) onBoxes([...draft.boxes, live]);
+          if (!locked && live && live.w > 0.01 && live.h > 0.01) onBoxes([...draft.boxes, live]);
           setStart(null);
           setLive(null);
         }}>
@@ -145,12 +147,14 @@ function ImageDraftCard({ draft, ack, update, remove }: {
   draft: Draft; ack: boolean; update: (patch: Partial<Draft>) => void; remove: () => void;
 }) {
   const { cid, a, evidence } = useCase();
+  // While the write flow is open the card is locked: the bytes and words under review are the ones signed.
+  const [signing, setSigning] = useState(false);
   // The contract refuses the same bytes twice from the same role only: another role may file its own copy.
   const same = draft.digest ? evidence.filter((e) => e.sha256 === draft.digest) : [];
   const dup = same.find((e) => e.role === a.role);
   const twin = dup ? undefined : same[0];
   const meta = {
-    kind: draft.kind, file_name: draft.src.name.slice(0, 120), description: draft.description.trim(),
+    kind: draft.kind, file_name: draft.fileName.trim().slice(0, 120), description: draft.description.trim(),
     declared_capture: draft.declared.trim(), criteria: draft.criteria, redacted: draft.boxes.length > 0,
     redaction_note: draft.boxes.length ? draft.redactionNote.trim() : "",
     ...(draft.kind === "DOCUMENT_PAGE" ? { doc_type: draft.docType } : {}),
@@ -162,6 +166,7 @@ function ImageDraftCard({ draft, ack, update, remove }: {
       : dup ? { ok: false, why: `These exact bytes are already ${exhibitName(dup.evidence_id)} on this case.` }
         : draft.kind === "DOCUMENT_PAGE" && !draft.docType ? { ok: false, why: "Say what kind of document the page is." }
           : !ack ? { ok: false, why: "Confirm the notice above first." } : base;
+  if (!can.ok && signing) setSigning(false);
 
   if (draft.filed) {
     return (
@@ -174,12 +179,13 @@ function ImageDraftCard({ draft, ack, update, remove }: {
   }
   return (
     <div className="folio flex flex-col gap-4 p-5">
+      <fieldset disabled={signing} className="flex min-w-0 flex-col gap-4">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <p className="t-small font-semibold">{EVIDENCE_LABEL[draft.kind]}: {draft.src.name}</p>
         <button type="button" className="btn btn-quiet" onClick={remove}>Remove</button>
       </div>
       {draft.error ? <p className="t-small text-[var(--color-adverse)]" role="alert">{draft.error}</p> : null}
-      <Redactor draft={draft} onBoxes={(boxes) => update({ boxes })} />
+      <Redactor draft={draft} locked={signing} onBoxes={(boxes) => update({ boxes })} />
       {draft.prepared ? (
         <p className="t-micro text-[var(--color-ink-3)] break-all">
           Redrawn without camera metadata, {draft.prepared.width} by {draft.prepared.height} pixels,{" "}
@@ -200,6 +206,9 @@ function ImageDraftCard({ draft, ack, update, remove }: {
           <textarea className="field" maxLength={300} value={draft.description} onChange={(e) => update({ description: e.target.value })} />
         </Field>
         <div className="flex flex-col gap-4">
+          <Field label="Name shown with the exhibit (public)" hint="It starts as your file's name. Change it if the name says anything private.">
+            <input className="field" maxLength={120} value={draft.fileName} onChange={(e) => update({ fileName: e.target.value })} />
+          </Field>
           <Field label="When it was taken, if you know (optional)" hint="Your claim, never treated as proof. Image metadata is removed and never read.">
             <input className="field" maxLength={40} value={draft.declared} placeholder="2 October 2026, 14:10"
               onChange={(e) => update({ declared: e.target.value })} />
@@ -220,8 +229,10 @@ function ImageDraftCard({ draft, ack, update, remove }: {
         </div>
       </div>
       <Criteria value={draft.criteria} onChange={(criteria) => update({ criteria })} />
-      <Warnings texts={[draft.description, draft.declared, draft.redactionNote]} />
-      <Act label="File this as evidence" method="submit_image" can={can} caseId={cid}
+      <Warnings texts={[draft.fileName, draft.description, draft.declared, draft.redactionNote]} />
+      </fieldset>
+      {signing ? <p className="t-micro text-[var(--color-ink-3)]">Locked while you review and sign. Cancel to change anything.</p> : null}
+      <Act label="File this as evidence" method="submit_image" can={can} caseId={cid} onOpenChange={setSigning}
         prepare={() => (draft.prepared ? [cid, JSON.stringify(meta), draft.prepared.bytes] : "The image is not ready.")}
         working="The contract checks the image, stores the bytes and computes their digest."
         onResult={(r: FlowResult) => {
@@ -273,11 +284,13 @@ function TextFiling({ ack }: { ack: boolean }) {
   const [declared, setDeclared] = useState("");
   const [criteria, setCriteria] = useState<string[]>([]);
   const [filed, setFiled] = useState("");
+  const [signing, setSigning] = useState(false);
   const base = a.file("TEXT_DOCUMENT");
   const can: Can = !base.ok ? base
     : text.trim().length < 10 ? { ok: false, why: "A document needs at least 10 characters of text." }
       : !docType ? { ok: false, why: "Say what kind of document this is." }
         : !ack ? { ok: false, why: "Confirm the notice above first." } : base;
+  if (!can.ok && signing) setSigning(false);
   const meta = { doc_type: docType, title: title.trim(), description: description.trim(), declared_capture: declared.trim(), criteria };
   return (
     <div className="folio flex flex-col gap-4 p-5">
@@ -285,6 +298,7 @@ function TextFiling({ ack }: { ack: boolean }) {
         <p className="t-small flex items-center gap-2"><span className="text-[var(--color-supported)]" aria-hidden="true"><Icon name="check" /></span>
           Filed as {exhibitName(filed)}. You can file another below.</p>
       ) : null}
+      <fieldset disabled={signing} className="flex min-w-0 flex-col gap-4">
       <div className="grid gap-4 md:grid-cols-2">
         <Field label="Title (public)">
           <input className="field" maxLength={120} value={title} onChange={(e) => setTitle(e.target.value)}
@@ -310,7 +324,9 @@ function TextFiling({ ack }: { ack: boolean }) {
       </div>
       <Criteria value={criteria} onChange={setCriteria} />
       <Warnings texts={[title, text, description]} />
-      <Act label="File this document" method="submit_text" can={can} caseId={cid}
+      </fieldset>
+      {signing ? <p className="t-micro text-[var(--color-ink-3)]">Locked while you review and sign. Cancel to change anything.</p> : null}
+      <Act label="File this document" method="submit_text" can={can} caseId={cid} onOpenChange={setSigning}
         prepare={() => [cid, JSON.stringify(meta), text]}
         working="The contract stores the text and computes its digest."
         onResult={(r) => {
@@ -375,7 +391,7 @@ export function FilingPanel() {
     const key = nextKey();
     sources.current.set(key, src);
     setDrafts((list) => [...list, { key, kind: k, src, boxes: [], prepared: null, digest: "", busy: true, error: "",
-      description: "", declared: "", criteria: [], docType: "", redactionNote: "", filed: "" }]);
+      description: "", declared: "", criteria: [], docType: "", redactionNote: "", fileName: src.name.slice(0, 120), filed: "" }]);
     void encode(key, []);
   };
 

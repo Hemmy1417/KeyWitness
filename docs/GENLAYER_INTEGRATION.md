@@ -165,7 +165,7 @@ this can change.
 
 | Observation | Consequence in KeyWitness |
 |---|---|
-| Several validator model routes receive no image at all, and at least one describes an image it was never given | The calibration image: six digits the contract draws from the case and the request. A node that cannot read them does not look at evidence images, cannot lead, and as a validator reads the leader's notes. The record marks which nodes saw |
+| Several validator model routes receive no image at all, and at least one describes an image it was never given | The calibration image: six digits the contract draws from the case and the request. A node that cannot read them does not look at evidence images, cannot lead, and as a validator reads the leader's notes. The decision records that the leading validator read it and which images it saw; the live record lists, node by node, which validators could see |
 | A prompt accepts two images at most | Images are examined two at a time |
 | A JPEG with a sound structure and a destroyed scan reaches a model that receives images as a grey or noisy picture, which it reports as corrupted | Such a file is seen and supports nothing. The contract does not decode pixels and does not claim to |
 | Models sometimes return no usable JSON | A node asks once more, then fails. A non-answer is never read as a finding |

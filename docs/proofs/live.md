@@ -13,7 +13,7 @@ judged or executed by Studio Next's validators, and every check reads the contra
 | Run | started 4 October 2026, 08:22 UTC, finished 4 October 2026, 09:55 UTC |
 | Result | **78 of 78 checks passed** |
 
-To run it again against a fresh deployment (about 75 minutes, mostly waiting out real windows):
+To run it again against a fresh deployment (about 75 to 90 minutes, mostly waiting out real windows):
 
 ```bash
 node scripts/deploy.mjs --label again
@@ -22,7 +22,7 @@ cd scripts && node --experimental-strip-types --import ./ts-loader.mjs proofs.mj
 
 ## The wallets
 
-Test wallets generated for this run. Each role signs its own transactions; no key is shared.
+Test wallets made by `scripts/keys.mjs`. Each role signs its own transactions; no key is shared.
 
 | Role in the run | Address |
 |---|---|

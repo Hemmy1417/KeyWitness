@@ -18,8 +18,7 @@ guarantee of legal admissibility, and a finding never establishes legal liabilit
 GenLayer Studio Next, chain 61997, RPC `https://studio-dev.genlayer.com/api`, explorer
 `https://explorer-studio-dev.genlayer.com`. GenLayer's documentation calls this environment the Studio development
 preview and its SDK calls it `studioDevnet`; `studio-next.genlayer.com` is an alias of the same environment, and the
-documentation asks integrations to use the canonical `studio-dev` RPC. The brief names StudioNet; the project owner
-chose Studio Next at kickoff (2 October 2026), which is also the network the hackathon requires. Nothing silently falls
+documentation asks integrations to use the canonical `studio-dev` RPC. Nothing silently falls
 back to another network: the app refuses to sign on any other chain id.
 
 ## 3. Could an oracle or plain code do this?

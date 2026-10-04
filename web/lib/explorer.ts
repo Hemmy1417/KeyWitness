@@ -137,8 +137,10 @@ export async function collectCaseTransactions(fetchPage: (page: number) => Promi
       }
       const call = decodeCall(tx.data?.calldata);
       if (!call) continue;
-      // open_case carries no case id (the contract assigns it); every later act names the case.
-      if (call.args.some((a) => typeof a === "string" && a.toUpperCase() === caseId.toUpperCase())) {
+      // open_case carries no case id (the contract assigns it); every later act names the case first. A case id
+      // written somewhere else, in a reason for example, does not make a transaction part of that case.
+      const first = call.args[0];
+      if (typeof first === "string" && first.toUpperCase() === caseId.toUpperCase()) {
         found.push({ hash: tx.hash, method: call.method, status: String(tx.status ?? ""), from: String(tx.from_address ?? ""),
           createdAt: String(tx.created_at ?? ""), ...outcomeOf(tx) });
       }

@@ -50,7 +50,7 @@ python tests/mutation/mutate.py
 ```
 
 The direct suite needs no network: `tests/direct/conftest.py` runs the contract under a stub runtime. The mutation
-sweep takes about an hour on one core. `docs/TESTING.md` says what each layer covers.
+sweep takes about ten minutes with its default three workers (about half an hour of machine time). `docs/TESTING.md` says what each layer covers.
 
 ## Deploy your own copy
 
@@ -81,7 +81,7 @@ sweep takes about an hour on one core. `docs/TESTING.md` says what each layer co
 
    `/status` will say the app is reading a deployment other than the one of record.
 
-4. **Prove it, live.** About 75 minutes, most of it waiting out real evidence and challenge windows. The run is
+4. **Prove it, live.** About 75 to 90 minutes, most of it waiting out real evidence and challenge windows. The run is
    resumable: every finished step is kept in `.data/proofs-mine.json` and skipped on a rerun.
 
    ```bash

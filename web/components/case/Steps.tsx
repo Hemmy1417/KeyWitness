@@ -180,7 +180,9 @@ export function NextSteps() {
           {decisionName(d.decision_id)} stands: <FindingChip value={d.overall} size="sm" />
         </p>
         <p className="t-small">
-          {c.challenge ? "It was reached on a challenge, which is the last word. Anyone can finalize the case."
+          {c.challenge ? (d.kind === "READJUDICATION"
+            ? "It was reached on a challenge, which is the last word. Anyone can finalize the case."
+            : "It was challenged, the challenge was closed without replacing it, and it stands. Anyone can finalize the case.")
             : open ? `The ${side} can challenge it until ${local(d.challenge_window_ends, zone)}, ${until(d.challenge_window_ends, now)}.`
               : "The challenge window has closed. Anyone can finalize the case."}
         </p>
@@ -224,7 +226,7 @@ export function NextSteps() {
     status = (
       <div className="flex flex-col gap-2">
         <p className="t-small">
-          The {ch.by.toLowerCase()} challenged {decisionName(ch.decision_challenged)} {local(ch.opened_at, zone)} and posted
+          The {ch.by.toLowerCase()} challenged {decisionName(ch.decision_challenged)} on {local(ch.opened_at, zone)} and posted
           a bond of {gen(ch.bond_wei)}.
         </p>
         <blockquote className="t-small border-l-2 border-[var(--color-rule)] pl-3 text-[var(--color-ink-2)]">{ch.reason}</blockquote>
@@ -235,8 +237,9 @@ export function NextSteps() {
         </p>
         <p className="t-micro text-[var(--color-ink-3)]">
           The case is judged again only if the challenger filed something new, and anyone, either side included, can
-          run the readjudication. The bond comes back only if it reverses the decision; if no readjudication is ever
-          recorded, the decision stands and the bond is returned.
+          run the readjudication. The bond comes back if the readjudication reverses the decision, or if new evidence
+          was filed and no readjudication is ever recorded. If the challenger files nothing new, the decision stands
+          and the bond goes to the other side.
         </p>
       </div>
     );

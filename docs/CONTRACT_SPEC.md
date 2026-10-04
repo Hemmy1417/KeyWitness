@@ -56,7 +56,7 @@ One record per item (`get_evidence`), and the list for a case (`get_case_evidenc
 | `media_type` | `image/jpeg`, `image/png` or `text/plain` |
 | `during_challenge` | Filed while the case was under challenge |
 | `first_filed_in`, `reuse` | Where these exact bytes were first filed, and by whom: `SELF`, `RELATED`, `OTHER` or empty |
-| `file_name`, `description`, `declared_capture`, `criteria`, `title`, `frame_time`, `redacted`, `redaction_note` | **The filer's claims.** Labels, a description, a date the filer declares, the criteria the item is offered for. Nothing verifies them and the validators are told so |
+| `file_name`, `description`, `declared_capture`, `criteria`, `title`, `frame_time`, `redacted`, `redaction_note` | **The filer's claims.** Labels, a description, a date the filer declares, the criteria the item is offered for. Nothing verifies them. The description, the declared date, the offered criteria, the title and the frame time are shown to the validators as the filer's claims; the file name, the redaction mark and its note are on the record only |
 
 `get_evidence_image` returns an image's bytes; `get_evidence_text` a document's text. A decision stores its own
 snapshot of the manifest and `manifest_digest`, the sha256 of that snapshot, so each decision records exactly the
@@ -171,7 +171,8 @@ lists counts on neither.
 ## 5. Case
 
 `get_case(id)`: `state`, the parties, `version`, `accepted_version`, `accepted_digest`, `funded_wei`,
-`funder_address`, the times (`created_at`, `draft_expires_at`, `opened_at`, `evidence_deadline`, `updated_at`),
+`funder_address`, `inspector_accepted`, the times (`created_at`, `draft_expires_at`, `accepted_at`, `opened_at`,
+`evidence_deadline`, `updated_at`),
 `ready` per role, `decisions`, `standing`, `retries_used`, `retried_by`, `challenge`, `settlement`, `closed_reason`,
 `follows_case`, `thread`, per-role filing `counts`, and `evidence_ids`.
 
@@ -243,7 +244,7 @@ Every amount is a credit in the contract's ledger (`get_credit`) until its owner
 | Situation | What happens | What is recorded |
 |---|---|---|
 | A write the contract refuses | The transaction's execution ends in an error whose text starts `[EXPECTED]` and gives the reason | Nothing |
-| A payable write the contract refuses | It returns `{"refused": true, "reason": ..., "credited_wei": ...}` and credits the value back | The credit |
+| A payable write the contract refuses with value attached (with none, it raises like any other write) | It returns `{"refused": true, "reason": ..., "credited_wei": ...}` and credits the value back | The credit |
 | The leading validator's model cannot read images, gives no usable answer, or fails | The leader raises `[LLM_ERROR]`; validators refuse it; the network rotates the leader | Nothing, unless a later leader succeeds |
 | Validators do not agree on what the record binds | No majority: the transaction is undetermined | Nothing. A party asks again |
 | Required evidence, or any evidence, is missing | Decided in code | A `CODE` decision, every criterion `INSUFFICIENT`, with what is missing |

@@ -161,11 +161,14 @@ function Form({ initial, revise, revising, restoredAt = 0 }: {
   const can = allProblems.length ? { ok: false, why: "Fix the steps marked above first." }
     : reviseCan && !reviseCan.ok ? reviseCan : { ok: true, why: "" };
 
+  const [unnamed, setUnnamed] = useState(false);
   const onDone = (r: FlowResult) => {
-    const cid = r.returned?.case_id;
-    if (r.outcome !== "recorded" || typeof cid !== "string") return;
+    if (r.outcome !== "recorded") return;
+    const cid = revise || r.returned?.case_id;
     if (!revise) clearDraft();
-    setOpened({ cid, waiting: true });
+    // The write is recorded even when the network would not say what it returned: the case is then in the list.
+    if (typeof cid !== "string") setUnnamed(true);
+    else setOpened({ cid, waiting: true });
   };
 
   const changeKind = (kind: EventKind) => {
@@ -455,11 +458,19 @@ function Form({ initial, revise, revising, restoredAt = 0 }: {
                 )}
               </div>
             ) : (
+              <>
               <Act label={revise ? `Publish terms version ${(revising?.t.version ?? 0) + 1}` : "Open the case"}
                 method={revise ? "revise_terms" : "open_case"} can={can} caseId={revise || undefined} primary
                 prepare={() => (revise ? [revise, JSON.stringify(terms)] : [JSON.stringify(terms)])}
                 working="The contract checks every field and records the terms with their digest."
                 onResult={onDone} />
+              {unnamed ? (
+                <Note title="Your case is open">
+                  <p>The contract recorded it, but the network did not return its number. It is the newest case
+                    under <Link className="link" href="/cases">Cases</Link>.</p>
+                </Note>
+              ) : null}
+              </>
             )}
           </section>
         ) : null}
@@ -482,6 +493,7 @@ function Revise({ cid }: { cid: string }) {
   if (caseRead.error && !c) return <div className="shell py-12"><ReadFailure what="the case" error={caseRead.error} retrying={caseRead.retrying} /></div>;
   if (!c) return <div className="shell py-12">{caseRead.loading ? <Loading what="the case" /> : <Note title="There is no such case.">{null}</Note>}</div>;
   const t = termsRead.data;
+  if (termsRead.error && !t) return <div className="shell py-12"><ReadFailure what="the terms" error={termsRead.error} retrying={termsRead.retrying} /></div>;
   if (!t) return <div className="shell py-12"><Loading what="the terms" /></div>;
   return <Form initial={draftFromTerms(t)} revise={cid} revising={{ c, t }} />;
 }

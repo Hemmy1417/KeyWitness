@@ -20,7 +20,7 @@ function Version({ cid, v, label }: { cid: string; v: number; label: string }) {
     <details className="hair" onToggle={(e) => setOpen((e.currentTarget as HTMLDetailsElement).open)}>
       <summary className="cursor-pointer px-4 py-3 t-small font-semibold">{label}</summary>
       <div className="flex flex-col gap-3 px-4 pb-4">
-        {read.error ? <ReadFailure what={`terms version ${v}`} error={read.error} retrying={read.retrying} />
+        {read.error && !read.data ? <ReadFailure what={`terms version ${v}`} error={read.error} retrying={read.retrying} />
           : !read.data ? <Loading what={`terms version ${v}`} /> : (
             <>
               <p className="t-micro text-[var(--color-ink-3)]">Published {utc(read.data.published_at)}</p>

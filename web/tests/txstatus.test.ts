@@ -2,7 +2,7 @@
 import { describe, expect, it } from "vitest";
 
 import {
-  agreed, appealable, appealWindowEnds, executionOk, finalizedAndRecorded, flowError, normalizeStatus, outcomeOfStatus,
+  agreed, appealable, appealWindowEnds, executionOk, finalizedAndRecorded, finalOutcome, flowError, normalizeStatus, outcomeOfStatus,
   protocolStatus, STATUS_TEXT,
   type Lifecycle,
 } from "@/lib/txstatus";
@@ -123,6 +123,26 @@ describe("what the network says a transaction did", () => {
   it("reads a payable write's returned refusal", () => {
     const t = tx({ status: "FINALIZED", ...returned('{"refused": true, "reason": "only the claimant challenges it"}') });
     expect(outcomeOfStatus(protocolStatus("0x1", t, null, null), t)).toBe("refused");
+  });
+
+  it("never calls a write that refused by returning finalized and recorded", () => {
+    const t = tx({ status: "FINALIZED", ...returned('{"refused": true, "reason": "only the claimant challenges it"}') });
+    const s = protocolStatus("0x1", t, null, null);
+    expect(executionOk(s)).toBe(true);
+    expect(s.returnedRefusal).toBe("only the claimant challenges it");
+    expect(finalizedAndRecorded(s)).toBe(false);
+    expect(finalOutcome(s)).toBe("refused");
+    const ok = protocolStatus("0x1", tx({ status: "FINALIZED", ...returned('{"case_id": "KW-0003"}') }), null, null);
+    expect(ok.returnedRefusal).toBeNull();
+    expect(finalizedAndRecorded(ok)).toBe(true);
+    expect(finalOutcome(ok)).toBe("recorded");
+  });
+
+  it("calls a finalized round without a majority no majority, whatever the leader's execution did", () => {
+    const failed = { consensus_data: { leader_receipt: [{ mode: "leader", execution_result: "ERROR" }] } };
+    expect(finalOutcome(protocolStatus("0x1", tx({ status: "FINALIZED", result_name: "NO_MAJORITY", ...failed }), null, null))).toBe("no-majority");
+    expect(finalOutcome(protocolStatus("0x1", tx({ status: "FINALIZED", result_name: "MAJORITY_DISAGREE" }), null, null))).toBe("no-majority");
+    expect(finalOutcome(protocolStatus("0x1", tx({ status: "FINALIZED", ...failed }), null, null))).toBe("refused");
   });
 
   it("reads a raised refusal", () => {

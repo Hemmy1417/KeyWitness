@@ -19,9 +19,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { Icon } from "./bits";
 import { STUDIO_NEXT, txUrl } from "@/lib/chain";
 import { gen, sentence } from "@/lib/present";
-import { refusalOf, fetchTx, consensusAgreed } from "@/lib/txresult";
+import { refusalOf, fetchTx } from "@/lib/txresult";
 import {
-  actionText, agreed, appealable, appealWindowEnds, consensusText, executionOk, finalizedAndRecorded, readProtocolStatus,
+  actionText, appealable, appealWindowEnds, consensusText, executionOk, finalOutcome, flowError, readProtocolStatus,
   STATUS_TEXT,
   type ProtocolStatus,
 } from "@/lib/txstatus";
@@ -35,8 +35,10 @@ type AppealClient = {
   appealTransaction(args: { txId: `0x${string}`; value?: bigint }): Promise<unknown>;
 };
 
-export function ProtocolTracker({ hash, offerAppeal, onFinal }: {
+export function ProtocolTracker({ hash, offerAppeal, announce, onFinal }: {
   hash: string;
+  /** This transaction was sent in this session: tell every open sheet to read the chain again once it is final. */
+  announce?: boolean;
   /** Offer a protocol appeal for this transaction (assessments and readjudications). */
   offerAppeal?: boolean;
   onFinal?: (outcome: FinalOutcome, status: ProtocolStatus, refusal: string) => void;
@@ -44,8 +46,8 @@ export function ProtocolTracker({ hash, offerAppeal, onFinal }: {
   const w = useWallet();
   const now = useNow();
   const [status, setStatus] = useState<ProtocolStatus | null>(null);
-  const [error, setError] = useState("");
-  const [refusal, setRefusal] = useState("");
+  const [error, setError] = useState(false);
+  const [refusal, setRefusal] = useState<string | null>(null);
   const [charge, setCharge] = useState<bigint | null>(null);
   const [appeal, setAppeal] = useState<"" | "pricing" | "review" | "signing" | "sent" | "failed">("");
   const [appealError, setAppealError] = useState("");
@@ -57,10 +59,10 @@ export function ProtocolTracker({ hash, offerAppeal, onFinal }: {
     try {
       const s = await readProtocolStatus(hash);
       setStatus(s);
-      setError("");
+      setError(false);
       return s;
-    } catch (e) {
-      setError(String((e as Error)?.message ?? e));
+    } catch {
+      setError(true);
       return null;
     }
   }, [hash]);
@@ -86,19 +88,26 @@ export function ProtocolTracker({ hash, offerAppeal, onFinal }: {
       onFinal?.("canceled", status, "");
       return;
     }
-    if (finalizedAndRecorded(status)) {
+    const outcome = finalOutcome(status);
+    // A refused payable write still credits what was sent, so the sheets read again for it too.
+    if (announce && (outcome === "recorded" || status.returnedRefusal !== null)) {
       window.dispatchEvent(new Event("keywitness:changed"));
-      onFinal?.("recorded", status, "");
-    } else if (executionOk(status) && !agreed(status)) {
-      onFinal?.("no-majority", status, "");
+    }
+    if (outcome !== "refused") {
+      onFinal?.(outcome, status, "");
+    } else if (status.returnedRefusal !== null) {
+      onFinal?.("refused", status, status.returnedRefusal);
     } else {
       void fetchTx(hash).then((tx) => {
         const text = refusalOf(tx);
         setRefusal(text);
-        onFinal?.(consensusAgreed(tx.result_name) ? "refused" : "no-majority", status, text);
-      }).catch(() => onFinal?.("refused", status, ""));
+        onFinal?.("refused", status, text);
+      }).catch(() => {
+        setRefusal("");
+        onFinal?.("refused", status, "");
+      });
     }
-  }, [status, hash, onFinal]);
+  }, [status, hash, onFinal, announce]);
 
   const client = (): AppealClient | null => {
     if (!w.provider || !w.address) return null;
@@ -116,7 +125,7 @@ export function ProtocolTracker({ hash, offerAppeal, onFinal }: {
       setAppeal("review");
     } catch (e) {
       setAppeal("failed");
-      setAppealError(String((e as Error)?.message ?? e).slice(0, 200));
+      setAppealError(flowError((e as Error)?.message ?? e).detail);
     }
   };
 
@@ -130,18 +139,24 @@ export function ProtocolTracker({ hash, offerAppeal, onFinal }: {
       void poll();
     } catch (e) {
       setAppeal("failed");
-      setAppealError(String((e as Error)?.message ?? e).slice(0, 200));
+      const err = flowError((e as Error)?.message ?? e);
+      setAppealError(`${err.title}. ${err.detail}`);
     }
   };
 
   if (!status) {
-    return <p className="t-small text-[var(--color-ink-3)]" role="status">{error ? `Reading the network: ${error}` : "Reading the network..."}</p>;
+    return (
+      <p className="t-small text-[var(--color-ink-3)]" role="status">
+        {error ? "Studio Next did not answer. Trying again every few seconds..." : "Reading the network..."}
+      </p>
+    );
   }
 
   const ends = appealWindowEnds(status);
   const can = appealable(status, now);
   const left = ends && now ? Math.max(0, Math.round((ends - now) / 1000)) : null;
   const final = status.stored === "FINALIZED";
+  const outcome = final ? finalOutcome(status) : null;
 
   return (
     <div className="flex flex-col gap-4" aria-live="polite">
@@ -213,18 +228,26 @@ export function ProtocolTracker({ hash, offerAppeal, onFinal }: {
         </div>
       ) : null}
 
-      {final ? (
-        finalizedAndRecorded(status) ? (
-          <p className="t-body font-semibold flex items-center gap-2"><Icon name="check" /> Finalized and recorded.</p>
-        ) : executionOk(status) && !agreed(status) ? (
-          <p className="t-small">
-            <span className="font-semibold">Finalized, but the validators reached no majority.</span> Nothing it asked for
-            was recorded and the case is unchanged. It can be sent again.
-          </p>
-        ) : (
-          <p className="t-small"><span className="font-semibold">The contract refused it.</span>{" "}
-            {refusal ? sentence(refusal) : "Reading the contract's reason..."}</p>
-        )
+      {error && !final ? (
+        <p className="t-micro text-[var(--color-ink-3)]" role="status">Studio Next did not answer the last check. What is shown may be a few seconds old; trying again.</p>
+      ) : null}
+      {outcome === "recorded" ? (
+        <p className="t-body font-semibold flex items-center gap-2"><Icon name="check" /> Finalized and recorded.</p>
+      ) : outcome === "no-majority" ? (
+        <p className="t-small">
+          <span className="font-semibold">Finalized, but the validators reached no majority.</span> Nothing it asked for
+          was recorded and the case is unchanged. It can be sent again.
+        </p>
+      ) : outcome === "refused" && status.returnedRefusal !== null ? (
+        <p className="t-small" role="alert">
+          <span className="font-semibold">Finalized, and the contract refused it.</span>{" "}
+          {status.returnedRefusal ? `${sentence(status.returnedRefusal)} ` : ""}Nothing it asked for was recorded. The value
+          sent with it is credited to the sender, who can withdraw it from the credit banner.
+        </p>
+      ) : outcome === "refused" ? (
+        <p className="t-small"><span className="font-semibold">The contract refused it.</span>{" "}
+          {refusal === null ? "Reading the contract's reason..." : refusal ? sentence(refusal)
+            : executionOk(status) ? "" : "Its reason could not be read from the network; the explorer shows it."}</p>
       ) : null}
       <a className="link t-small inline-flex items-center gap-1 self-start" href={txUrl(hash)} target="_blank" rel="noreferrer">
         See this transaction on the explorer <Icon name="external" size={13} />

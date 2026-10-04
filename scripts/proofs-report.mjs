@@ -55,7 +55,7 @@ out(`| Deployed | ${when(record.deployed_at)}, transaction ${tx(record.deploy_tx
 out(`| Run | started ${when(live.started)}, finished ${when(live.finished)} |`);
 out(`| Result | **${live.summary.passed} of ${live.summary.checks} checks passed**${live.summary.failed.length ? `; failed: ${live.summary.failed.map(cell).join("; ")}` : ""} |`);
 out();
-out("To run it again against a fresh deployment (about 75 minutes, mostly waiting out real windows):");
+out("To run it again against a fresh deployment (about 75 to 90 minutes, mostly waiting out real windows):");
 out();
 out("```bash");
 out("node scripts/deploy.mjs --label again");
@@ -65,7 +65,7 @@ out();
 
 out("## The wallets");
 out();
-out("Test wallets generated for this run. Each role signs its own transactions; no key is shared.");
+out("Test wallets made by `scripts/keys.mjs`. Each role signs its own transactions; no key is shared.");
 out();
 out("| Role in the run | Address |");
 out("|---|---|");

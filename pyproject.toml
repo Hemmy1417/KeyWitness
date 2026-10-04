@@ -6,8 +6,7 @@ requires-python = ">=3.12"
 
 [tool.pytest.ini_options]
 testpaths = ["tests/direct"]
-# The direct suite stubs genlayer itself; the gltest plugins are for the
-# separate live suite and only add noise here.
+# The direct suite stubs genlayer itself; the gltest plugins only add noise here.
 addopts = "-p no:gltest -p no:gltest_direct"
 
 [tool.ruff]

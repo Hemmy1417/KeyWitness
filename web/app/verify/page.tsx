@@ -10,10 +10,12 @@ import Link from "next/link";
 import { useState, type ReactNode } from "react";
 
 import { FindingChip, Icon, Note } from "@/components/bits";
-import { STUDIO_NEXT, txUrl } from "@/lib/chain";
+import { addressUrl, STUDIO_NEXT, txUrl } from "@/lib/chain";
+import { CONTRACT_ADDRESS } from "@/lib/config";
+import { decodeCall } from "@/lib/explorer";
 import { caseName, decisionName, txLabel, utc } from "@/lib/present";
 import { getDecisionFrom, getReceiptFrom, ReadError } from "@/lib/read";
-import { parseReceiptFile, verifyReceipt, type CheckResult, type ReceiptFile, type Verification } from "@/lib/receipt";
+import { namesContract, parseReceiptFile, verifyReceipt, type CheckResult, type ReceiptFile, type Verification } from "@/lib/receipt";
 import { fetchTx } from "@/lib/txresult";
 import { outcomeOfStatus, protocolStatus, STATUS_TEXT } from "@/lib/txstatus";
 import type { Decision, Finding } from "@/lib/types";
@@ -21,6 +23,8 @@ import type { Decision, Finding } from "@/lib/types";
 interface TxCheck {
   hash: string;
   method: string;
+  /** The method was read from the transaction itself; otherwise it is only what the file calls it. */
+  decoded: boolean;
   found: boolean;
   status: string;
   /** What the network's own record says the transaction did; never taken from the file. */
@@ -72,14 +76,17 @@ export default function VerifyPage() {
         setChainNote(`The receipt names chain ${parsed.network.chain_id}; this page reads Studio Next (${STUDIO_NEXT.id}) only.`);
       } else if (!/^0x[0-9a-fA-F]{40}$/.test(parsed.network.contract)) {
         setChainNote("The receipt names no valid contract address.");
+      } else if (!namesContract(parsed, CONTRACT_ADDRESS)) {
+        // A file may name any contract, including one written to agree with it. Only this app's contract is read.
+        setChainNote("The receipt names a contract that is not the KeyWitness contract this page reads, so it was not compared with the chain.");
       } else {
         try {
-          chain = await getReceiptFrom(parsed.network.contract as `0x${string}`, parsed.case_id);
+          chain = await getReceiptFrom(CONTRACT_ADDRESS, parsed.case_id);
           if (!chain) setChainNote("The contract the receipt names holds no such case.");
           // The decision the file names is read on its own: it never changes, whatever the case did afterwards.
           const did = String((parsed.core as { decision?: { decision_id?: string } }).decision?.decision_id ?? "");
           if (chain && /^D-[0-9]{4,12}$/.test(did)) {
-            chainDecision = await getDecisionFrom(parsed.network.contract as `0x${string}`, did);
+            chainDecision = await getDecisionFrom(CONTRACT_ADDRESS, did);
           }
         } catch (e) {
           setChainNote(e instanceof ReadError ? e.message : "Studio Next did not answer; only the file was checked.");
@@ -87,15 +94,21 @@ export default function VerifyPage() {
       }
       setResult(await verifyReceipt(parsed, chain, chainDecision));
       const checks: TxCheck[] = [];
-      for (const x of parsed.transactions.slice(0, 40)) {
+      // The list is the file's own claim and may be anything: only well-formed hashes are looked up.
+      const listed = (Array.isArray(parsed.transactions) ? parsed.transactions : [])
+        .filter((x) => x && typeof x.hash === "string" && /^0x[0-9a-fA-F]{64}$/.test(x.hash)).slice(0, 40);
+      for (const x of listed) {
+        const named = typeof x.method === "string" ? x.method.slice(0, 40) : "";
         try {
           const tx = await fetchTx(x.hash);
           const to = String(tx.to_address ?? tx.recipient ?? tx.to ?? "").toLowerCase();
           const s = protocolStatus(x.hash, tx, null, null);
-          checks.push({ hash: x.hash, method: x.method, found: true, status: s.stored, outcome: outcomeOfStatus(s, tx),
-            toContract: !!to && to === parsed.network.contract.toLowerCase() });
+          const call = decodeCall((tx.data as { calldata?: unknown } | undefined)?.calldata);
+          checks.push({ hash: x.hash, method: call?.method ?? named, decoded: !!call, found: true, status: s.stored,
+            outcome: outcomeOfStatus(s, tx), toContract: !!to && to === CONTRACT_ADDRESS.toLowerCase() });
         } catch {
-          checks.push({ hash: x.hash, method: x.method, found: false, status: "UNKNOWN", outcome: "unknown", toContract: false });
+          checks.push({ hash: x.hash, method: named, decoded: false, found: false, status: "UNKNOWN", outcome: "unknown",
+            toContract: false });
         }
       }
       setTxs(checks);
@@ -148,8 +161,10 @@ export default function VerifyPage() {
                 <p className="t-label text-[var(--color-ink-3)]">{file.mode === "public" ? "Public receipt" : "Private receipt"}</p>
                 <p className="t-h3">{caseName(file.case_id)}{core?.decision?.decision_id ? `, ${decisionName(core.decision.decision_id)}` : ""}</p>
                 {/* The finding is shown only once the chain confirms it: a file is a claim until then. */}
-                {core?.decision?.overall && (result.chain === "pass" || result.decision === "pass")
+                {core?.decision?.overall && (result.chain === "pass" || (result.movedOn && result.decisionStatus !== "SUPERSEDED"))
                   ? <span><FindingChip value={core.decision.overall} /></span> : null}
+                {result.movedOn && result.decisionStatus === "SUPERSEDED"
+                  ? <p className="t-small">A later decision has replaced the one in this receipt.</p> : null}
                 <p className="t-micro text-[var(--color-ink-3)]">File made {utc(file.generated_at)}; that is when it was generated, not when anything happened.</p>
               </div>
               {result.integrity === "fail" ? (
@@ -158,8 +173,9 @@ export default function VerifyPage() {
                 </Note>
               ) : null}
               <ul className="flex flex-col gap-4">
-                <Line result={result.integrity} title="The file was not edited">
-                  {result.integrity === "pass" ? "The record inside matches the digest the file carries." : "The record inside does not match its own digest."}
+                <Line result={result.integrity} title="The record in the file was not edited">
+                  {result.integrity === "pass" ? "The record inside matches the digest the file carries. The list of transactions is outside that digest and is checked on its own below."
+                    : "The record inside does not match its own digest."}
                 </Line>
                 <Line result={result.reproduced} title="The contract's digest is reproducible here">
                   {result.reproduced === "skipped" ? "The chain was not read." : result.reproduced === "pass"
@@ -182,6 +198,12 @@ export default function VerifyPage() {
               {result.notes.length ? (
                 <ul className="t-small flex flex-col gap-1 list-disc pl-5">{result.notes.map((n) => <li key={n}>{n}</li>)}</ul>
               ) : null}
+              <dl className="flex flex-col gap-0.5">
+                <dt className="t-micro text-[var(--color-ink-3)]">Contract the receipt names</dt>
+                <dd className="t-mono break-all">{file.network.contract}</dd>
+                <dt className="t-micro text-[var(--color-ink-3)] mt-1">Contract this page reads</dt>
+                <dd><a className="link t-mono break-all" href={addressUrl(CONTRACT_ADDRESS)} target="_blank" rel="noreferrer">{CONTRACT_ADDRESS}</a></dd>
+              </dl>
               {result.chain === "skipped" ? (
                 <Note tone="warn" title="Locally checked only">
                   <p>This file was checked against itself, not against the chain. Treat it as unverified until the chain check passes.</p>
@@ -203,8 +225,8 @@ export default function VerifyPage() {
                 <ul className="flex flex-col gap-2">
                   {txs.map((x) => (
                     <li key={x.hash} className="t-small flex flex-col">
-                      <span className="font-semibold">{txLabel(x.method, x.outcome)}</span>
-                      <span className="text-[var(--color-ink-2)]">{x.found ? `${STATUS_TEXT[x.status as keyof typeof STATUS_TEXT] ?? "Found"}${x.toContract ? "; sent to the contract the receipt names" : "; not sent to the contract the receipt names"}` : "Not found on Studio Next"}</span>
+                      <span className="font-semibold">{x.decoded ? txLabel(x.method, x.outcome) : x.method ? `${txLabel(x.method, x.outcome)} (as the file names it)` : "A transaction the file does not name"}</span>
+                      <span className="text-[var(--color-ink-2)]">{x.found ? `${STATUS_TEXT[x.status as keyof typeof STATUS_TEXT] ?? "Found"}${x.toContract ? "; sent to the KeyWitness contract" : "; not sent to the KeyWitness contract"}` : "Not found on Studio Next"}</span>
                       <a className="link t-mono break-all" href={txUrl(x.hash)} target="_blank" rel="noreferrer">{x.hash}</a>
                     </li>
                   ))}

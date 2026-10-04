@@ -195,14 +195,24 @@ export interface Verification {
   decision: CheckResult;
   /** The record changed on chain since the file was made (for example the case settled). */
   changedSince: boolean;
-  /** The decision is on chain unchanged and the case around it has moved on: a true receipt, out of date. */
+  /**
+   * The decision is this case's, on chain unchanged, with the terms and parties the contract holds, and the case
+   * around it has moved on: a true receipt, out of date. Only the decision, terms and parties are confirmed.
+   */
   movedOn: boolean;
+  /** The decision's status on chain now, when it was read: a file's own word for it is never used. */
+  decisionStatus: string;
   notes: string[];
 }
 
 const MOVED: Record<string, string> = {
   DETERMINED: "decided and open to challenge", UNDER_CHALLENGE: "under challenge", FINAL: "final",
 };
+
+/** Whether a receipt names the contract this app reads. A file naming another contract is checked against nothing. */
+export function namesContract(file: ReceiptFile, address: string): boolean {
+  return /^0x[0-9a-fA-F]{40}$/.test(address) && file.network.contract.toLowerCase() === address.toLowerCase();
+}
 
 export function parseReceiptFile(text: string): ReceiptFile | string {
   let raw: unknown;
@@ -256,42 +266,64 @@ export async function verifyReceipt(file: ReceiptFile, chain: { core: ReceiptCor
   if (!chain) {
     notes.push("Not checked against the chain: this is only an integrity check of the file itself.");
     return { shape: "pass", integrity, reproduced: "skipped", chain: "skipped", decision: "skipped", changedSince: false,
-      movedOn: false, notes };
+      movedOn: false, decisionStatus: "", notes };
   }
   // The contract's digest must be reproducible here, or nothing below compares like with like.
   const reproduced: CheckResult = (await digestOf(chain.core)) === chain.digest ? "pass" : "fail";
   if (reproduced === "fail") {
     notes.push("This browser could not reproduce the digest the contract reports for its own record, so the chain comparison cannot be trusted.");
-    return { shape: "pass", integrity, reproduced, chain: "fail", decision: "skipped", changedSince: false, movedOn: false,
+    return { shape: "pass", integrity, reproduced, chain: "fail", decision: "skipped", changedSince: false, movedOn: false, decisionStatus: "",
       notes };
   }
   if (integrity === "fail") {
     // The digest a file carries says nothing once its content has been changed: an edited file is a copy of no
     // record, so nothing about it is compared with the chain and no check may pass for it.
     notes.push("Nothing an edited file says can be relied on. Ask for the receipt again, or make one from the case's receipt page.");
-    return { shape: "pass", integrity, reproduced, chain: "fail", decision: "skipped", changedSince: false, movedOn: false,
+    return { shape: "pass", integrity, reproduced, chain: "fail", decision: "skipped", changedSince: false, movedOn: false, decisionStatus: "",
       notes };
   }
-  const decision = await verifyDecision(file, chainDecision);
+  let decision = await verifyDecision(file, chainDecision);
+  const mine = file.core as { case_id?: unknown; terms?: unknown; parties?: unknown };
+  // A decision the contract holds says nothing about this file unless it is a decision of the case the file
+  // names: any public decision could otherwise be wrapped in a made-up record.
+  let foreign = false;
+  if (decision === "pass" && chainDecision) {
+    const listed = chain.core.history.some((h) => h.decision_id === chainDecision.decision_id
+      && h.decision_digest === chainDecision.decision_digest);
+    if (mine.case_id !== file.case_id || chain.core.case_id !== file.case_id || chainDecision.case_id !== file.case_id || !listed) {
+      decision = "fail";
+      foreign = true;
+    }
+  }
   const onChain = file.mode === "private" ? (chain.core as unknown as Record<string, unknown>) : publicCore(chain.core);
   const chainDigestNow = await digestOf(onChain);
   const changedSince = chain.digest !== file.chain_digest;
+  // Terms and parties are fixed before any decision exists, so an honest receipt's never differ from the chain's.
+  const same = (a: unknown, b: unknown) => a !== undefined && b !== undefined && canonical(a) === canonical(b);
+  const framed = same(mine.terms, onChain.terms) && same(mine.parties, onChain.parties);
   let result: CheckResult;
   let movedOn = false;
   if (chainDigestNow === file.core_digest) {
     result = "pass";
+  } else if (decision === "pass" && !framed) {
+    result = "fail";
+    notes.push("The decision in this file is on the chain, but the terms or the parties around it are not the ones the "
+      + "contract holds. The file does not come from this contract's record.");
   } else if (decision === "pass") {
-    // The decision in the file is on chain, byte for byte. What differs is the case around it: a challenge, a
-    // later decision, the settlement. A true receipt that is out of date, which a made-up file can never be.
+    // The decision in the file is on chain, byte for byte, in this case, under these terms. What differs is what
+    // changes as a case goes on: its state, a challenge, later decisions, the settlement. None of that is taken
+    // from the file.
     result = "fail";
     movedOn = true;
-    const was = String((file.core as { case_state?: string }).case_state ?? "");
-    const mineId = String((file.core as { decision?: { decision_id?: string } }).decision?.decision_id ?? "");
     const standing = chain.core.decision.decision_id;
     notes.push("The decision in this receipt is on the chain, unchanged. The case has moved on since the receipt was made"
-      + (was && was !== chain.core.case_state ? `: it was ${MOVED[was] ?? was.toLowerCase()} then and is ${MOVED[chain.core.case_state] ?? chain.core.case_state.toLowerCase()} now` : "")
-      + (mineId && mineId !== standing ? "; a later decision now stands" : "")
-      + ". Make a new receipt to see the current record.");
+      + `: it is ${MOVED[chain.core.case_state] ?? chain.core.case_state.toLowerCase()} now`
+      + (chainDecision && chainDecision.decision_id !== standing ? "; a later decision now stands" : "")
+      + ". Only the decision, the terms and the parties in this file are confirmed; what it says about the state of "
+      + "the case, a challenge or the settlement is not. Make a new receipt to see the current record.");
+  } else if (foreign) {
+    result = "fail";
+    notes.push("The decision in this file is on the chain, but it is not a decision of the case the file names.");
   } else if (decision === "fail") {
     result = "fail";
     notes.push("The decision in this file is not a decision the contract holds. The file does not come from this contract's record.");
@@ -306,5 +338,6 @@ export async function verifyReceipt(file: ReceiptFile, chain: { core: ReceiptCor
   if (result === "pass") notes.push(file.mode === "public"
     ? "The public record is a faithful redaction of what the contract holds now."
     : "The record is exactly what the contract holds now.");
-  return { shape: "pass", integrity, reproduced, chain: result, decision, changedSince, movedOn, notes };
+  return { shape: "pass", integrity, reproduced, chain: result, decision, changedSince, movedOn,
+    decisionStatus: chainDecision && decision === "pass" ? chainDecision.status : "", notes };
 }

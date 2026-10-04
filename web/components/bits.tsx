@@ -99,7 +99,8 @@ export function Loading({ what }: { what: string }) {
 }
 
 export function ReadFailure({ what, error, retrying }: { what: string; error?: unknown; retrying?: boolean }) {
-  const text = error instanceof Error ? error.message : "";
+  // Only the app's own sentences are shown; what a library raised is not wording for a person.
+  const text = error instanceof Error && error.name === "ReadError" ? error.message : "";
   return (
     <Note tone="warn" title={`Could not read ${what}.`}>
       <p>{text || "Studio Next did not answer this read."} {retrying ? "Trying again shortly." : "Reload the page to try again."}</p>

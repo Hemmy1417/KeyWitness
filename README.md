@@ -144,7 +144,7 @@ boundaries, and the reason there is no backend.
 |---|---|
 | A document or a photograph carries instructions for the model | Party text reaches a model only inside fences it cannot close. The examiner that looks at images is given no party text. Instructions found are flagged, and a flagged item cannot support its filer's side |
 | A model answers with nothing usable | The node fails. A non-answer is never read as a finding |
-| A validator's model cannot receive images | It must read a calibration image first. If it cannot, it may not lead, and the record marks which nodes saw |
+| A validator's model cannot receive images | It must read a calibration image first. If it cannot, it may not lead, and the decision records which images the leading validator saw |
 | A finding rests on nothing | Every supported finding must cite evidence that exists, was seen and is adequate, or code weakens it |
 | The terms change after evidence is in | Acceptance binds a digest. A change is a new version that must be accepted again |
 | The same file is used twice | Bytes are fingerprinted across cases. Reuse is recorded on the item and told to the validators, and a claimant's own reuse from another dispute cannot support the claim |
@@ -193,7 +193,7 @@ the scripts generate their own test wallets into `.data/`, which git ignores.
 | `python -m pytest tests/direct -q` | The contract's tests, no network |
 | `python tests/mutation/mutate.py` | The mutation sweep |
 | `python scripts/web_fixtures.py` | Regenerate the fixtures the app is tested against, from the contract |
-| `node scripts/keys.mjs` | Make and fund test wallets for the scripts |
+| `node scripts/keys.mjs` | Make and fund test wallets for the scripts (the `.mjs` scripts need `cd scripts && npm ci` once) |
 | `node scripts/deploy.mjs` | Deploy the contract and prove the stored code matches the source |
 | `scripts/proofs.mjs` | The live proofs (see [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) for the full command) |
 | `node scripts/proofs-report.mjs` | Write `docs/proofs/live.md` from the live record |
@@ -223,8 +223,8 @@ pnpm lint && pnpm typecheck && pnpm test && pnpm build
 |---|---|
 | Direct contract tests | 395 |
 | Mutants, all killed | 286 |
-| App and contract parity | 96 situations, 23 image files |
-| Web unit tests | 208 |
+| App and contract parity | 96 situations, 23 test images |
+| Web unit tests | 215 |
 | Live checks on the deployed contract | 78 |
 
 [`docs/TESTING.md`](docs/TESTING.md) says what each layer proves and what is not tested.

@@ -7,7 +7,7 @@
 #   one-address  the app, the proofs and the documents name one deployment
 #
 # The live proofs are not here. They sign real transactions on Studio Next and
-# wait out real windows (about an hour), so they are run by hand and their
+# wait out real windows (about 75 to 90 minutes), so they are run by hand and their
 # record is committed in docs/proofs/:
 #
 #   cd scripts && node --experimental-strip-types --import ./ts-loader.mjs proofs.mjs --record
@@ -47,7 +47,7 @@ jobs:
   sweep:
     name: contract - mutation sweep
     runs-on: ubuntu-latest
-    # Every mutant runs the direct suite until a test fails: about two hours of machine time.
+    # Every mutant runs the direct suite until a test fails: about half an hour of machine time.
     timeout-minutes: 300
     env:
       KW_SWEEP_WORKERS: "4"

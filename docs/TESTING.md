@@ -7,8 +7,8 @@ first four on every push.
 |---|---|---|---|
 | Direct contract tests | Does each rule of the contract hold? | 395 tests | No |
 | Mutation sweep | Would the tests notice if a rule were removed? | 286 mutants, all killed | No |
-| App and contract parity | Does the app offer exactly what the contract accepts? | 96 situations, 23 image files | No |
-| Web unit tests | Do the app's own rules, wording and verification hold? | 208 tests | No |
+| App and contract parity | Does the app offer exactly what the contract accepts? | 96 situations, 23 test images | No |
+| Web unit tests | Do the app's own rules, wording and verification hold? | 215 tests | No |
 | Live proofs | Does all of it happen on Studio Next, with real wallets and real validators? | 78 checks | Yes |
 
 ## Run everything
@@ -75,7 +75,7 @@ the contract enforces, and a mirror can drift. So the contract generates the exp
 
 - `scripts/web_fixtures.py` drives the contract through 96 situations and records, for every role and every act,
   whether the contract accepts it and why not. `web/tests/acts.test.ts` requires the app to agree on every row.
-- The same script writes 23 image files (valid, truncated, with camera data, with stray chunks, too small, too large,
+- The same script writes 23 test images into one fixture file (valid, truncated, with camera data, with stray chunks, too small, too large,
   another format) with the contract's verdict on each. `web/tests/forms.test.ts` requires the browser's check to give
   the same verdict.
 - It also writes canonical JSON and a receipt, so the browser's digest code is checked against the contract's.
@@ -145,7 +145,7 @@ and, where a guard was added, a mutant. What changed as a result:
 ## The interface
 
 - **Call shapes are pinned.** `web/tests/calls.test.ts` reads every write the app composes out of its source and holds
-  it to the contract's own signatures (`fixtures/schema.json`, generated from the contract): every one of the 18
+  it to the contract's own signatures (`web/tests/fixtures/schema.json`, generated from the contract): every one of the 18
   writes is offered somewhere, each with exactly the arguments the contract takes, and value goes to the two payable
   methods and to nothing else. Every view is read with the arguments it takes.
 - **The write path was signed in a browser.** On a rehearsal deployment of the same source, a case was taken through

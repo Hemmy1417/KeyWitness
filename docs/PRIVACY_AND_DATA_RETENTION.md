@@ -17,6 +17,7 @@ the app does to limit it, and what nobody can do afterwards.
 | Every transaction, with its input, including refused ones | Studio Next and its explorer | Anyone | As long as the network keeps them |
 | A draft of terms being written, before it is signed | This browser's local storage | Whoever uses this browser | Until the case is opened, the draft is cleared, or site data is cleared |
 | Hashes of transactions this browser sent, per case | This browser's local storage | Whoever uses this browser | Until site data is cleared |
+| A short cache of public chain reads, and the times of recent reads (to stay inside the network's rate limit) | This browser's session and local storage | Whoever uses this browser | The cache until the tab closes; the times until site data is cleared |
 | A receipt file | Wherever the person who downloaded it puts it | Whoever they give it to | Their choice |
 
 There is no "private evidence". The brief this build follows describes private evidence storage with access control;
@@ -44,7 +45,8 @@ above means "for the life of the network and of every copy anyone made".
   against a caller who goes around the app.
 - **Redaction.** Before filing, a person can draw rectangles over parts of an image. They are painted into the pixels
   before encoding, so the covered area never reaches the chain. The item is marked as redacted, with the filer's note.
-  A redaction is the filer's act; the validators are told an item was redacted and judge what is left.
+  A redaction is the filer's act. The mark and the note are on the public record; the validators are not told of them
+  and judge the pixels that were filed.
 - **Video is never stored.** A person picks one still from a video in the browser; only that still is filed, as "a
   still from a video" with its time in the clip.
 - **Warnings.** Text being filed is scanned in the browser for what looks like an email address, a phone number or an

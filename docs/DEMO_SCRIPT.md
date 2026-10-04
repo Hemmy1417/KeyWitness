@@ -30,7 +30,7 @@ who is liable, and it never gives a confidence percentage."
 
 ### 2. The sample case and its terms (0:30 to 1:10)
 
-**Show:** `/sample`, then "See the sample case" to open the live case.
+**Show:** `/sample`, then the button at the foot of the page that opens the live case on Studio Next.
 
 **Say:** "This is a synthetic case. A roofing contractor claims the repairs in a work order were completed before
 the deadline, and the property manager disputes it. Here is the claim, in one sentence, and five criteria that keep
@@ -39,7 +39,7 @@ unfinished, that the leak stopped, and that it was done in time. The property ma
 its digest, so the terms cannot move once evidence is in. A sum is held by the contract, and both sides agreed in
 advance which finding moves it where."
 
-**Point at:** the claim, the criteria list, the held sum and where it goes, the terms history.
+**Point at:** the claim, the criteria list, the held sum and where it goes, the terms version.
 
 ### 3. The evidence (1:10 to 1:45)
 
@@ -72,7 +72,7 @@ answer. A second panel judged the whole file again, and that decision replaced t
 
 ### 5. The protocol record (2:45 to 3:10)
 
-**Show:** the case page, protocol record section. Open one assessment transaction on the explorer.
+**Show:** the decision page, "Protocol record" section. Open one assessment transaction on the explorer.
 
 **Say:** "Every step is a transaction on Studio Next. This list is found on the explorer, and each row says what the
 transaction did: recorded, refused, or undecided. This is separate from GenLayer's own appeal, which rechecks a
@@ -80,7 +80,7 @@ single transaction during its finality window. KeyWitness shows the two as diffe
 
 ### 6. The receipt (3:10 to 3:40)
 
-**Show:** the receipt page. Download the public receipt. Go to `/verify` and load the file.
+**Show:** the receipt page. Press "Public receipt (JSON)". Go to `/verify` and load the file.
 
 **Say:** "The receipt is a file built from the contract's record. The public version leaves out the parties and the
 prose. Verification recomputes the digest, reads the contract's own record and compares. If someone edits the file,
@@ -100,14 +100,14 @@ it cannot do."
 
 Use two wallet accounts.
 
-1. **Claimant:** "Create a case". Pick a starter, set the respondent to the second account, a short evidence period,
+1. **Claimant:** "Create a case". Pick the kind of case (its suggested criteria are filled in), set the respondent to the second account, a short evidence period,
    no held sum. Review, then sign. Show the write flow: the price, the signature, the validators, the finality
    window.
-2. **Respondent:** switch accounts, open the case from "See every case", read the terms, "Accept terms version 1".
+2. **Respondent:** switch accounts, open the case from "Cases", read the terms, "Accept terms version 1".
 3. **Either side:** "File evidence", add a short text document, tick the acknowledgement, sign.
 4. **Both:** "Mark my evidence complete".
-5. **Either side:** request the assessment. The contract decides in code when nothing that a criterion needs was
-   filed, and asks the validators otherwise. An assessment by validators takes a minute or more; narrate the rounds
+5. **Either side:** request the assessment. The contract decides in code when evidence the terms require is missing or
+   nothing was filed, and asks the validators otherwise. An assessment by validators takes a minute or more; narrate the rounds
    as they appear.
 
 Show one refusal on purpose: with the wrong account connected, the act is not a button. The page gives the

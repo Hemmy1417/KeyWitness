@@ -147,7 +147,7 @@ export default function DecisionPage() {
       ) : null}
 
       {c.state === "DETERMINED" && d && !ch && (d.overall === "NOT_ASSESSED" || d.unseen_ids.length) ? (
-        <Section title="Ask for the assessment again" aside={`${plural(Math.max(0, 2 - c.retries_used), "attempt")} left`}>
+        <Section title="Ask for the assessment again" aside={c.retried_by.includes(d.overall === "SUPPORTED" ? "RESPONDENT" : "CLAIMANT") ? "Already used" : "Once, without a bond"}>
           <p className="t-small text-[var(--color-ink-2)] measure">
             {d.overall === "NOT_ASSESSED" ? "The validators could not examine any of the evidence."
               : `The validators could not see ${d.unseen_ids.map(exhibitName).join(", ")}, so ${d.unseen_ids.length === 1 ? "it" : "they"} counted for nothing.`}{" "}

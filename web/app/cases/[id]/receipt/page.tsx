@@ -200,8 +200,9 @@ export default function ReceiptPage() {
               {busy === "public" ? "Building..." : "Public receipt (JSON)"}
             </button>
             <p className="t-micro text-[var(--color-ink-3)]">
-              Leaves out the parties&apos; addresses, the property reference, the validators&apos; prose, the challenge reason and
-              who was paid. Digests and findings stay, so it still verifies against the chain.
+              Leaves out the parties&apos; addresses, the property reference, the validators&apos; prose and the challenge
+              reason. It still says which role a held sum or a bond went to, and it lists the case&apos;s transactions,
+              which name the wallets that sent them. Digests and findings stay, so it still verifies against the chain.
             </p>
           </div>
           {error ? <p className="t-small text-[var(--color-adverse)]" role="alert">{error}</p> : null}

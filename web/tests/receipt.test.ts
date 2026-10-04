@@ -8,14 +8,15 @@ import { describe, expect, it } from "vitest";
 import { sha256Hex } from "@/lib/hash";
 import {
   buildReceiptFile, canonical, decisionDigestOf, digestOf, parseReceiptFile, publicCore, publicDecision,
-  RECEIPT_FILE_SCHEMA, verifyDecision, verifyReceipt,
+  namesContract, RECEIPT_FILE_SCHEMA, verifyDecision, verifyReceipt,
 } from "@/lib/receipt";
+import { RECORD_ADDRESS } from "@/lib/config";
 import type { ReceiptCore } from "@/lib/types";
 
 import canon from "./fixtures/canon.json";
 import chain from "./fixtures/receipt.json";
 
-const network = { name: "Studio Next", chain_id: 61997, contract: "0x1DC296a6cC819c5d899031Ea6e5791942851518D", explorer: "x" };
+const network = { name: "Studio Next", chain_id: 61997, contract: RECORD_ADDRESS, explorer: "x" };
 const now = new Date("2026-10-03T00:00:00Z");
 const core = (chain as unknown as { core: ReceiptCore; digest: string }).core;
 const digest = (chain as unknown as { core: ReceiptCore; digest: string }).digest;
@@ -158,7 +159,9 @@ describe("a receipt whose case has moved on, against one that was made up", () =
       expect(v).toMatchObject({ integrity: "pass", reproduced: "pass", chain: "fail", decision: "pass", movedOn: true,
         changedSince: true });
       expect(v.notes.join(" ")).toMatch(/on the chain, unchanged\. The case has moved on/);
-      expect(v.notes.join(" ")).toMatch(/decided and open to challenge then and is final now/);
+      expect(v.notes.join(" ")).toMatch(/it is final now/);
+      expect(v.notes.join(" ")).toMatch(/Only the decision, the terms and the parties/);
+      expect(v.decisionStatus).toBe(decision.status);
     });
 
     it(`refuses a ${mode} file whose decision is not the chain's, however its digests were rewritten`, async () => {
@@ -184,6 +187,38 @@ describe("a receipt whose case has moved on, against one that was made up", () =
     const v = await verifyReceipt(file, { core: now2, digest: await digestOf(now2) }, superseded);
     expect(v).toMatchObject({ decision: "pass", movedOn: true });
     expect(v.notes.join(" ")).toMatch(/a later decision now stands/);
+  });
+
+  for (const mode of ["private", "public"] as const) {
+    it(`refuses a made-up ${mode} record wrapped around a real decision of the case`, async () => {
+      const forged = earlier();
+      forged.terms.claim = "The claimant was paid in full and owes nothing.";
+      const file = await buildReceiptFile({ core: forged, chainDigest: await digestOf(forged), mode, network,
+        transactions: [], now });
+      const v = await verifyReceipt(file, { core, digest }, decision);
+      expect(v).toMatchObject({ integrity: "pass", chain: "fail", decision: "pass", movedOn: false });
+      expect(v.notes.join(" ")).toMatch(/terms or the parties around it are not the ones the contract holds/);
+    });
+
+    it(`refuses a ${mode} file that carries another case's decision`, async () => {
+      const file = await receiptThen(mode);
+      // The chain's record for the case the file names does not list this decision.
+      const other = JSON.parse(JSON.stringify(core)) as ReceiptCore;
+      other.history = other.history.map((h) => ({ ...h, decision_id: "D-0999" }));
+      const v = await verifyReceipt(file, { core: other, digest: await digestOf(other) }, decision);
+      expect(v).toMatchObject({ chain: "fail", decision: "fail", movedOn: false, decisionStatus: "" });
+      expect(v.notes.join(" ")).toMatch(/not a decision of the case the file names/);
+      // And a decision that says it belongs to another case is refused whatever the history lists.
+      const v2 = await verifyReceipt(file, { core, digest }, { ...decision, case_id: "KW-9999" });
+      expect(v2.movedOn).toBe(false);
+    });
+  }
+
+  it("checks a file only against the contract this app reads", async () => {
+    const file = await buildReceiptFile({ core, chainDigest: digest, mode: "private", network, transactions: [], now });
+    expect(namesContract(file, RECORD_ADDRESS)).toBe(true);
+    expect(namesContract(file, RECORD_ADDRESS.toLowerCase())).toBe(true);
+    expect(namesContract({ ...file, network: { ...file.network, contract: "0x" + "ab".repeat(20) } }, RECORD_ADDRESS)).toBe(false);
   });
 
   it("does not trust a chain decision whose digest it cannot reproduce", async () => {

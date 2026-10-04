@@ -9,6 +9,7 @@
  */
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 import { Note, Section } from "@/components/bits";
 import { SAMPLE_CASE } from "@/lib/config";
@@ -16,7 +17,7 @@ import {
   caseName, criterionName, DOC_LABEL, EVIDENCE_LABEL, gen, requirementLabel, ROLE_LABEL, seconds, termsTime,
 } from "@/lib/present";
 import data from "@/lib/sample-data.json";
-import { emptyDraft, saveDraft } from "@/lib/terms";
+import { emptyDraft, loadDraft, saveDraft } from "@/lib/terms";
 import type { EventKind, EvidenceKind, Role } from "@/lib/types";
 
 const ISOLATES = [
@@ -34,15 +35,21 @@ const PARTY: Record<Role, string> = {
 export default function SamplePage() {
   const router = useRouter();
   const t = data.terms;
+  const [replacing, setReplacing] = useState(false);
 
   const startFromSample = () => {
+    // A draft the person was writing is theirs: it is replaced only when they say so.
+    if (!replacing && loadDraft()) {
+      setReplacing(true);
+      return;
+    }
     const d = emptyDraft();
     saveDraft({
       ...d, title: "My copy of the roof leak sample", eventKind: t.event_kind as EventKind, propertyRef: t.property_ref,
       timeZone: t.time_zone, windowStart: t.window_start, deadline: t.deadline, claim: t.claim,
       criteria: t.criteria.map((c) => ({ text: c.text, needsIndependent: c.needs_independent })),
       allowed: t.allowed as EvidenceKind[], required: t.required, limitations: t.limitations,
-      heldSum: "0", challengeBond: "0.05", evidenceSeconds: 600, challengeSeconds: 600, challengeEvidenceSeconds: 600,
+      heldSum: "0", challengeBond: "0.05", evidenceSeconds: 600, challengeSeconds: 3600, challengeEvidenceSeconds: 600,
     });
     router.push("/cases/new");
   };
@@ -154,7 +161,15 @@ export default function SamplePage() {
             </Note>
           )}
           <div className="flex flex-col gap-2">
-            <button type="button" className="btn self-start" onClick={startFromSample}>Start a case from these terms</button>
+            <button type="button" className="btn self-start" onClick={startFromSample}>
+              {replacing ? "Replace my saved draft with these terms" : "Start a case from these terms"}
+            </button>
+            {replacing ? (
+              <p className="t-small" role="alert">
+                You have a case draft saved in this browser. Starting from the sample replaces it.{" "}
+                <button type="button" className="link" onClick={() => setReplacing(false)}>Keep my draft</button>
+              </p>
+            ) : null}
             <p className="t-micro text-[var(--color-ink-3)]">Fills the new-case form with these criteria. You name the respondent and file your own evidence.</p>
           </div>
         </Section>

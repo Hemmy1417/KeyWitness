@@ -46,12 +46,13 @@ describe("the transactions behind a case", () => {
       tx("request_assessment", ["KW-0004"], "2026-10-03T05:04:00Z"),
       tx("submit_text", ["KW-0003", "{}", "a document that mentions KW-0004"], "2026-10-03T05:02:00Z"),
       tx("open_case", ["{\"title\":\"about KW-0003\"}"], "2026-10-03T05:00:00Z"),
+      tx("decline_case", ["KW-0004", "KW-0003"], "2026-10-03T05:01:00Z"),
       { hash: "0xdeploy", created_at: "2026-10-03T04:00:00Z", data: {} },
     ]]);
     const r = await collectCaseTransactions(fetchPage, "KW-0003");
     expect(r.found.map((x) => x.method)).toEqual(["readjudicate", "request_assessment", "submit_text"]);
     expect(r.complete).toBe(true);
-    expect(r.scanned).toBe(6);
+    expect(r.scanned).toBe(7);
   });
 
   it("lists each transaction once even when the explorer serves it again", async () => {

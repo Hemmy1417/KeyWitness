@@ -146,6 +146,8 @@ export interface ProtocolStatus {
   validators: number | null;
   /** True only when the lifecycle read was available; otherwise the stored status stands alone. */
   lifecycleRead: boolean;
+  /** A payable write refuses by returning, so its execution succeeds: the contract's reason, or "" when it did not refuse. */
+  returnedRefusal: string | null;
 }
 
 const num = (v: unknown): number | null => {
@@ -158,6 +160,7 @@ export function protocolStatus(hash: string, tx: Record<string, unknown>, lc: Li
   windowSeconds: number | null): ProtocolStatus {
   const stored = normalizeStatus(lc?.storedStatus ?? tx.status ?? tx.statusName);
   const leader = leaderRow(tx);
+  const returned = returnedJsonOf<{ refused?: boolean; reason?: unknown }>(tx);
   const history = (tx.consensus_history as { consensus_results?: { consensus_round?: string }[] } | undefined)
     ?.consensus_results ?? [];
   return {
@@ -176,6 +179,7 @@ export function protocolStatus(hash: string, tx: Record<string, unknown>, lc: Li
     rounds: history.map((r) => String(r.consensus_round ?? "")).filter(Boolean),
     validators: num(tx.num_of_initial_validators),
     lifecycleRead: !!lc,
+    returnedRefusal: returned?.refused === true ? String(returned.reason ?? "") : null,
   };
 }
 
@@ -196,11 +200,18 @@ export function outcomeOfStatus(s: ProtocolStatus, tx: Record<string, unknown>):
   if (!s.consensus) return "unknown";
   if (!agreed(s)) return "undecided";
   if (!executionOk(s)) return "refused";
-  return returnedJsonOf<{ refused?: boolean }>(tx)?.refused === true ? "refused" : "recorded";
+  return s.returnedRefusal !== null || returnedJsonOf<{ refused?: boolean }>(tx)?.refused === true ? "refused" : "recorded";
 }
 
 /** Final AND the write happened: the only state the app calls finalized and recorded. */
-export const finalizedAndRecorded = (s: ProtocolStatus) => s.stored === "FINALIZED" && executionOk(s) && agreed(s);
+export const finalizedAndRecorded = (s: ProtocolStatus) => s.stored === "FINALIZED" && executionOk(s) && agreed(s)
+  && s.returnedRefusal === null;
+
+/** What a FINALIZED transaction did, from the network's record alone. */
+export function finalOutcome(s: ProtocolStatus): "recorded" | "no-majority" | "refused" {
+  if (!agreed(s)) return "no-majority";
+  return executionOk(s) && s.returnedRefusal === null ? "recorded" : "refused";
+}
 export const inFlight = (s: ProtocolStatus) => IN_FLIGHT.includes(s.stored);
 export const decided = (s: ProtocolStatus) => DECIDED.includes(s.stored);
 
