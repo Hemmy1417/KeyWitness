@@ -2,13 +2,13 @@
   "label": "record",
   "network": "GenLayer Studio Next",
   "chain_id": 61997,
-  "contract": "0xB903Dcfd1730818260CFFa05d12497E73CB124Ff",
-  "deploy_tx": "0xcfafd6249f914aebd8db3a0511524a113831c6c2e3d5d18c9e6768e58b86d969",
+  "contract": "0x5dF552006b48Bef80e60dCc65572f3e917dFC12a",
+  "deploy_tx": "0x193722833849da2f2e216492e54b3a6f3740aa2d43740321f6ff1fd157f121c9",
   "deploy_status": "FINALIZED",
   "deployer": "0x74328D4024Fe926EE79a8B86311F986843777ACe",
   "source": "contracts/keywitness.py",
-  "source_sha256": "494f2100c47426baf923576167d8df85c5193a1566505d05f9bf63d27ffb1d49",
-  "stored_code_sha256": "494f2100c47426baf923576167d8df85c5193a1566505d05f9bf63d27ffb1d49",
-  "explorer": "https://explorer-studio-dev.genlayer.com/address/0xB903Dcfd1730818260CFFa05d12497E73CB124Ff",
-  "deployed_at": "2026-10-04T08:22:02.866Z"
+  "source_sha256": "ee6809842a4d9152ff04a7fa2e5e3a25c5054bf0dcfcb066e5c0078a0c40cec7",
+  "stored_code_sha256": "ee6809842a4d9152ff04a7fa2e5e3a25c5054bf0dcfcb066e5c0078a0c40cec7",
+  "explorer": "https://explorer-studio-dev.genlayer.com/address/0x5dF552006b48Bef80e60dCc65572f3e917dFC12a",
+  "deployed_at": "2026-10-04T16:02:23.708Z"
 }

@@ -6,11 +6,11 @@ judged or executed by Studio Next's validators, and every check reads the contra
 
 | | |
 |---|---|
-| Contract | [`0xB903Dcfd1730818260CFFa05d12497E73CB124Ff`](https://explorer-studio-dev.genlayer.com/address/0xB903Dcfd1730818260CFFa05d12497E73CB124Ff) |
+| Contract | [`0x5dF552006b48Bef80e60dCc65572f3e917dFC12a`](https://explorer-studio-dev.genlayer.com/address/0x5dF552006b48Bef80e60dCc65572f3e917dFC12a) |
 | Network | GenLayer Studio Next, chain 61997 |
-| Source | `contracts/keywitness.py`, sha256 `494f2100c47426baf923576167d8df85c5193a1566505d05f9bf63d27ffb1d49` (the code the network stores hashes to the same value) |
-| Deployed | 4 October 2026, 08:22 UTC, transaction [`0xcfafd624...86d969`](https://explorer-studio-dev.genlayer.com/tx/0xcfafd6249f914aebd8db3a0511524a113831c6c2e3d5d18c9e6768e58b86d969) |
-| Run | started 4 October 2026, 08:22 UTC, finished 4 October 2026, 09:55 UTC |
+| Source | `contracts/keywitness.py`, sha256 `ee6809842a4d9152ff04a7fa2e5e3a25c5054bf0dcfcb066e5c0078a0c40cec7` (the code the network stores hashes to the same value) |
+| Deployed | 4 October 2026, 16:02 UTC, transaction [`0x19372283...f121c9`](https://explorer-studio-dev.genlayer.com/tx/0x193722833849da2f2e216492e54b3a6f3740aa2d43740321f6ff1fd157f121c9) |
+| Run | started 4 October 2026, 16:04 UTC, finished 4 October 2026, 17:24 UTC |
 | Result | **78 of 78 checks passed** |
 
 To run it again against a fresh deployment (about 75 to 90 minutes, mostly waiting out real windows):
@@ -54,7 +54,7 @@ Test wallets made by `scripts/keys.mjs`. Each role signs its own transactions; n
 | pass | A: the case opens for evidence once accepted and funded |  |
 | pass | A.photo-with-camera-data: the contract refuses it | this image was not accepted: it carries a metadata block (camera data, an editor record or a comment). Send a PNG or a JFIF JPEG with no metadata; the app redraws photographs into that form |
 | pass | A: before everyone is ready the app withholds the assessment, with a reason | The evidence period is still running, unless every party marks their evidence complete first. |
-| pass | A.assess-too-early: the contract refuses it | the evidence period runs until 2026-10-04T08:35:03Z, unless every party marks their evidence complete first |
+| pass | A.assess-too-early: the contract refuses it | the evidence period runs until 2026-10-04T16:16:24Z, unless every party marks their evidence complete first |
 | pass | A.stranger-files: the contract refuses it | only the claimant, the respondent or an accepted inspector files evidence |
 | pass | A: once everyone is ready the app offers the assessment |  |
 | pass | ledger after the sample is filed: balance on chain equals held plus bonds plus owed | 100000000000000000 against 100000000000000000 |
@@ -66,9 +66,9 @@ Test wallets made by `scripts/keys.mjs`. Each role signs its own transactions; n
 | pass | A: the round was led by a node whose model receives images |  |
 | pass | A: the side the decision favours cannot challenge; the bond it sent is credited back | {"refused":true,"reason":"only the claimant, whom this decision went against, challenges it","credited_wei":"50000000000000000"} |
 | pass | A: the app offers the challenge to the side the decision went against only | Only the claimant, whom this decision went against, challenges it. |
-| pass | A.finalize-too-early: the contract refuses it | the decision can still be challenged until 2026-10-04T09:27:18Z |
+| pass | A.finalize-too-early: the contract refuses it | the decision can still be challenged until 2026-10-04T17:08:27Z |
 | pass | A: the challenge opens and the bond is held |  |
-| pass | A.readjudicate-too-early: the contract refuses it | the challenger may file new evidence until 2026-10-04T08:40:22Z |
+| pass | A.readjudicate-too-early: the contract refuses it | the challenger may file new evidence until 2026-10-04T16:20:36Z |
 | pass | ledger with a challenge bond held: balance on chain equals held plus bonds plus owed | 200000000000000000 against 200000000000000000 |
 | pass | D: one side's word against the other's is not found supported | CONFLICTING |
 | pass | D: a case with no images needs no calibration |  |
@@ -89,8 +89,8 @@ Test wallets made by `scripts/keys.mjs`. Each role signs its own transactions; n
 | pass | N: with nothing filed the contract records that nothing was established, in code | any evidence at all |
 | pass | S: bytes a wallet brings from a case with a different other party are recorded as its own reuse | SELF KW-0003 |
 | pass | ledger with six cases decided or under challenge: balance on chain equals held plus bonds plus owed | 310000000000000000 against 310000000000000000 |
-| pass | A.challenger-files-late: the contract refuses it | the challenger's time to file new evidence has ended; the other side may answer until 2026-10-04T08:50:22Z |
-| pass | A.readjudicate-before-the-reply: the contract refuses it | the other side may answer the new evidence until 2026-10-04T08:50:22Z |
+| pass | A.challenger-files-late: the contract refuses it | the challenger's time to file new evidence has ended; the other side may answer until 2026-10-04T16:30:36Z |
+| pass | A.readjudicate-before-the-reply: the contract refuses it | the other side may answer the new evidence until 2026-10-04T16:30:36Z |
 | pass | A: the readjudication is a second decision and the first is kept, marked superseded |  |
 | pass | A: the readjudication judged the challenge evidence and the answer to it |  |
 | pass | A: the bond follows whether the challenge reversed the decision | NOT_ESTABLISHED then NOT_ESTABLISHED; bond to RESPONDENT |
@@ -98,7 +98,7 @@ Test wallets made by `scripts/keys.mjs`. Each role signs its own transactions; n
 | pass | D.readjudicate-nothing-new: the contract refuses it | the challenger filed no new evidence, so there is nothing to judge again; the challenge can be closed and the decision stands |
 | pass | D: a challenge with nothing new is closed and the bond goes to the other side |  |
 | pass | B: the held sum goes to the claimant on a supported final finding |  |
-| pass | B: the claimant's wallet balance rises by what was withdrawn, less fees | 99873694249999177 of 100000000000000000 |
+| pass | B: the claimant's wallet balance rises by what was withdrawn, less fees | 99637238499996708 of 100000000000000000 |
 | pass | the respondent withdraws the sample's held sum, both bonds and its refused bond | 210000000000000000 |
 | pass | withdraw.twice: the contract refuses it | nothing is owed to this address |
 | pass | ledger at the end: balance on chain equals held plus bonds plus owed | 0 against 0 |
@@ -109,7 +109,7 @@ Test wallets made by `scripts/keys.mjs`. Each role signs its own transactions; n
 | pass | receipt: a public receipt verifies against the chain, and its decision against the chain's copy |  |
 | pass | receipt: the public receipt carries no party address |  |
 | pass | receipt: an edited public receipt fails, and no chain check passes for it |  |
-| pass | receipt: one made before its case settled is found true and out of date afterwards | The decision in this receipt is on the chain, unchanged. The case has moved on since the receipt was made: it was decided and open to challenge then and is final now. Make a new receipt to see the current record. |
+| pass | receipt: one made before its case settled is found true and out of date afterwards | The decision in this receipt is on the chain, unchanged. The case has moved on since the receipt was made: it is final now. Only the decision, the terms and the parties in this file are confirmed; what it says about the  ... |
 | pass | receipt: a file with every digest rewritten around a changed decision is refused, not called out of date | The decision in this file is not a decision the contract holds. The file does not come from this contract's record. |
 | pass | receipt: the history keeps both decisions |  |
 | pass | I: a follow-up of a final case between the same parties joins its dispute thread |  |
@@ -126,95 +126,83 @@ that could not read the calibration image fails its round, and the network rotat
 
 Recorded: {"case_id":"KW-0003","decision_id":"D-0001","overall":"NOT_ESTABLISHED","findings":{"C1":"SUPPORTED","C2":"CONFLICTING","C3":"CONFLICTING","C4":"NOT_ESTABLISHED","C5":"CONFLICTING"}}
 
-Attempt 1: [`0x4e5db70b...343f6b`](https://explorer-studio-dev.genlayer.com/tx/0x4e5db70beb309294e94c2bd670a0c7e81cc313c9606b60571539e9bd6c343f6b), ACCEPTED, MAJORITY_AGREE, then FINALIZED
+Attempt 1: [`0xe891317e...e3cd30`](https://explorer-studio-dev.genlayer.com/tx/0xe891317e8cddd47e1a2a2bf1fd36d562459cdc5527721e35d788fe5fcee3cd30), ACCEPTED, MAJORITY_AGREE, then FINALIZED
 
 | Round | Node | Model | Sees | Vote | Dissent |
 |---|---|---|---|---|---|
-| Leader Rotation | leader | llm-router/policy:dev-gpt-oss |  | led |  |
-| Leader Rotation | validator | llm-router/policy:dev-gpt-oss |  | disagree | the leader's assessment failed |
-| Leader Rotation | validator | not reported |  | idle |  |
-| Leader Rotation | validator | not reported |  | idle |  |
-| Leader Rotation | validator | openrouter/openai/gpt-5.4 |  | disagree | the leader's assessment failed |
-| Leader Rotation | validator | llm-router/policy:dev-deepseek |  | disagree | the leader's assessment failed |
-| Accepted | leader | openrouter/openai/gpt-5.4 | yes | led |  |
+| Accepted | leader | openrouter/google/gemini-3-flash-preview | yes | led |  |
+| Accepted | validator | openrouter/google/gemini-3-flash-preview | yes | agree |  |
 | Accepted | validator | openrouter/openai/gpt-5.4 | yes | agree |  |
-| Accepted | validator | llm-router/policy:dev-gpt-5-4 | no | agree |  |
-| Accepted | validator | openrouter/google/gemini-3-flash-preview | yes | disagree | C5: the leader's finding is CONFLICTING, this node's is SUPPORTED |
-| Accepted | validator | llm-router/policy:dev-gpt-5-4 | no | agree |  |
-| Accepted | validator | llm-router/policy:dev-deepseek | no | disagree | C5: the leader's finding is CONFLICTING, this node's is SUPPORTED |
+| Accepted | validator | not reported |  | idle |  |
+| Accepted | validator | not reported |  | idle |  |
+| Accepted | validator | llm-router/policy:dev-grok | yes | agree |  |
 
 ### D.assess (one word against another)
 
 Recorded: {"case_id":"KW-0004","decision_id":"D-0002","overall":"CONFLICTING","findings":{"C1":"CONFLICTING"}}
 
-Attempt 1: [`0xea09ea85...637ab7`](https://explorer-studio-dev.genlayer.com/tx/0xea09ea8556b219cbfc4de2826927d4482f764046499810bcbf3405fbe1637ab7), ACCEPTED, MAJORITY_AGREE, then FINALIZED
+Attempt 1: [`0x1ffc2381...37bf71`](https://explorer-studio-dev.genlayer.com/tx/0x1ffc2381b9c0cb687e3ccbe0a413c41d225b5e9c5ee2e354ba900c504f37bf71), ACCEPTED, MAJORITY_AGREE, then FINALIZED
 
 | Round | Node | Model | Sees | Vote | Dissent |
 |---|---|---|---|---|---|
-| Accepted | leader | llm-router/policy:dev-sonnet | yes | led |  |
+| Accepted | leader | llm-router/policy:dev-mistral | yes | led |  |
 | Accepted | validator | not reported |  | idle |  |
-| Accepted | validator | llm-router/policy:dev-gemini | yes | agree |  |
 | Accepted | validator | not reported |  | idle |  |
-| Accepted | validator | llm-router/policy:dev-gpt-oss | yes | agree |  |
-| Accepted | validator | llm-router/policy:dev-deepseek | yes | agree |  |
+| Accepted | validator | openrouter/openai/gpt-5.4 | yes | agree |  |
+| Accepted | validator | llm-router/policy:dev-sonnet | yes | agree |  |
+| Accepted | validator | llm-router/policy:dev-gpt-5-4 | yes | agree |  |
 
 ### B.assess (a claim the records bear out)
 
 Recorded: {"case_id":"KW-0005","decision_id":"D-0003","overall":"SUPPORTED","findings":{"C1":"SUPPORTED","C2":"SUPPORTED"}}
 
-Attempt 1: [`0x0903ea7a...35201f`](https://explorer-studio-dev.genlayer.com/tx/0x0903ea7a970711388ae4409a3e6491ccf5a93a123e78103f1b9c352b0a35201f), ACCEPTED, MAJORITY_AGREE, then FINALIZED; protocol appeal sent (charge 50000000000008794 atto)
+Attempt 1: [`0x386147cc...ebfd60`](https://explorer-studio-dev.genlayer.com/tx/0x386147ccdcc85b283516405a68ea110e54a1c4576adc0b514af4eaff3aebfd60), ACCEPTED, MAJORITY_AGREE, then FINALIZED; protocol appeal sent (charge 50000000000008794 atto)
 
 | Round | Node | Model | Sees | Vote | Dissent |
 |---|---|---|---|---|---|
-| Accepted | leader | llm-router/policy:dev-gpt-5-4 | yes | led |  |
+| Accepted | leader | llm-router/policy:dev-gpt-oss | yes | led |  |
+| Accepted | validator | not reported |  | idle |  |
+| Accepted | validator | openrouter/openai/gpt-5.4 | yes | agree |  |
+| Accepted | validator | openrouter/openai/gpt-5.4 | yes | agree |  |
 | Accepted | validator | llm-router/policy:dev-gpt-5-4 | yes | agree |  |
-| Accepted | validator | llm-router/policy:dev-gemini | yes | agree |  |
 | Accepted | validator | not reported |  | idle |  |
-| Accepted | validator | llm-router/policy:dev-sonnet | yes | agree |  |
-| Accepted | validator | not reported |  | idle |  |
-| Validator Appeal Failed | validator | llm-router/policy:dev-gpt-oss | yes | agree |  |
+| Validator Appeal Failed | validator | not reported |  | idle |  |
 | Validator Appeal Failed | validator | llm-router/policy:dev-deepseek | yes | agree |  |
-| Validator Appeal Failed | validator | llm-router/policy:dev-grok | yes | agree |  |
+| Validator Appeal Failed | validator | llm-router/policy:dev-mistral | yes | agree |  |
 | Validator Appeal Failed | validator | not reported |  | idle |  |
+| Validator Appeal Failed | validator | llm-router/policy:dev-gemini | yes | agree |  |
+| Validator Appeal Failed | validator | llm-router/policy:dev-sonnet | yes | agree |  |
 | Validator Appeal Failed | validator | not reported |  | idle |  |
-| Validator Appeal Failed | validator | not reported |  | idle |  |
-| Validator Appeal Failed | validator | llm-router/policy:dev-gpt-5-4 | yes | agree |  |
 
 ### C.assess (a planted instruction)
 
 Recorded: {"case_id":"KW-0006","decision_id":"D-0004","overall":"INSUFFICIENT","findings":{"C1":"INSUFFICIENT"}}
 
-Attempt 1: [`0x9ee5ee03...4cf8a6`](https://explorer-studio-dev.genlayer.com/tx/0x9ee5ee03f7cab3441560d92e9551a54421060ff04b09fbd7dce8bbd3674cf8a6), ACCEPTED, MAJORITY_AGREE, then FINALIZED
+Attempt 1: [`0x53ca3419...1a1f33`](https://explorer-studio-dev.genlayer.com/tx/0x53ca3419a0c26d979298eaffe6b9074b147569c40248ae826a8c46fb541a1f33), ACCEPTED, MAJORITY_AGREE, then FINALIZED
 
 | Round | Node | Model | Sees | Vote | Dissent |
 |---|---|---|---|---|---|
-| Accepted | leader | llm-router/policy:dev-deepseek | yes | led |  |
-| Accepted | validator | llm-router/policy:dev-deepseek | yes | agree |  |
-| Accepted | validator | not reported |  | idle |  |
-| Accepted | validator | openrouter/google/gemini-3-flash-preview | yes | agree |  |
+| Accepted | leader | llm-router/policy:dev-gpt-5-4 | yes | led |  |
 | Accepted | validator | not reported |  | idle |  |
 | Accepted | validator | llm-router/policy:dev-deepseek | yes | agree |  |
+| Accepted | validator | llm-router/policy:dev-sonnet | yes | agree |  |
+| Accepted | validator | not reported |  | idle |  |
+| Accepted | validator | openrouter/anthropic/claude-sonnet-4.6 | yes | agree |  |
 
 ### A.readjudicate (the synthetic sample)
 
 Recorded: {"case_id":"KW-0003","decision_id":"D-0007","overall":"NOT_ESTABLISHED","changed":false,"reversed":false}
 
-Attempt 1: [`0x114e7fd9...9fa7e5`](https://explorer-studio-dev.genlayer.com/tx/0x114e7fd936dabcd643176dcf0a032bc979fb7ec6e09985936ae7b2136b9fa7e5), ACCEPTED, MAJORITY_AGREE, then FINALIZED
+Attempt 1: [`0x20c81806...9db9f6`](https://explorer-studio-dev.genlayer.com/tx/0x20c81806ba7111126ff369fb7178660a4b7486cb41042308bed18b7aa19db9f6), ACCEPTED, MAJORITY_AGREE, then FINALIZED
 
 | Round | Node | Model | Sees | Vote | Dissent |
 |---|---|---|---|---|---|
-| Leader Rotation | leader | llm-router/policy:dev-deepseek |  | led |  |
-| Leader Rotation | validator | llm-router/policy:dev-deepseek |  | disagree | the leader's assessment failed |
-| Leader Rotation | validator | not reported |  | idle |  |
-| Leader Rotation | validator | llm-router/policy:dev-gemini |  | disagree | the leader's assessment failed |
-| Leader Rotation | validator | llm-router/policy:dev-mistral |  | disagree | the leader's assessment failed |
-| Leader Rotation | validator | not reported |  | idle |  |
 | Accepted | leader | llm-router/policy:dev-grok | yes | led |  |
-| Accepted | validator | not reported |  | idle |  |
-| Accepted | validator | llm-router/policy:dev-deepseek | no | agree |  |
-| Accepted | validator | llm-router/policy:dev-mistral | no | agree |  |
-| Accepted | validator | not reported |  | idle |  |
+| Accepted | validator | llm-router/policy:dev-grok | yes | agree |  |
 | Accepted | validator | llm-router/policy:dev-gemini | no | agree |  |
+| Accepted | validator | not reported |  | idle |  |
+| Accepted | validator | openrouter/google/gemini-3-flash-preview | yes | agree |  |
+| Accepted | validator | not reported |  | idle |  |
 
 ## Every transaction
 
@@ -223,97 +211,97 @@ reason it gave.
 
 | Step | Signed by | Method | Result | Transaction |
 |---|---|---|---|---|
-| F.open | second | open_case | recorded | [`0x2fabebae...b98e99`](https://explorer-studio-dev.genlayer.com/tx/0x2fabebaeae6cc60aea6e0478413a8c9a19a16100b46bb46ca155389c01b98e99) |
-| F.decline | respondent | decline_case | recorded | [`0x0d8ef219...dca075`](https://explorer-studio-dev.genlayer.com/tx/0x0d8ef21977454d64cc5862eb487f133d65b36ccb1196cc8d2a38e418d6dca075) |
-| G.open | second | open_case | recorded | [`0x928232b6...fe6f79`](https://explorer-studio-dev.genlayer.com/tx/0x928232b6cb91b75d44e37ac27a9dee047cf3d0ef48a7306964261e389afe6f79) |
-| G.withdraw | second | withdraw_case | recorded | [`0xd2baec20...5729ce`](https://explorer-studio-dev.genlayer.com/tx/0xd2baec207f3c2491ad111402c99838731ff7b65e314a7cfe82c9dafd195729ce) |
-| T.deadline-with-offset | second | open_case | refused: the deadline must look like 2026-10-01 or 2026-10-01T17:00, in the case's time zone, with no seconds and no offset | [`0x8503bea4...8ea45e`](https://explorer-studio-dev.genlayer.com/tx/0x8503bea4c1b07b874c337ff11af7bfa33be7d5cf26de469d3beacdcd948ea45e) |
-| T.zone-abbreviation | second | open_case | refused: the time zone must be UTC or an IANA name such as Europe/London | [`0xabdcb20b...daad16`](https://explorer-studio-dev.genlayer.com/tx/0xabdcb20b04555f06358c2f661a4126367d6c0c6e81b5ce2ce49fb9e1a8daad16) |
-| T.claim-too-long | second | open_case | refused: the claim may be at most 400 characters | [`0x21d17361...37ccde`](https://explorer-studio-dev.genlayer.com/tx/0x21d1736168870888330db10bee986f249f73d0ff7723d2d3fcc9ef914737ccde) |
-| T.challenge-window-too-short | second | open_case | refused: the challenge window in seconds must be between 3600 and 1209600 | [`0xe0992f0f...ade27e`](https://explorer-studio-dev.genlayer.com/tx/0xe0992f0f5507713bb0ca238df4e85cd70e79d1dc05cc9ce22f11774656ade27e) |
-| T.title-not-text | second | open_case | refused: the title must be text | [`0x1ff4846e...fe15be`](https://explorer-studio-dev.genlayer.com/tx/0x1ff4846e315851b4e853cb511ac2dedd1f75c14cd14f3100169c121ff6fe15be) |
-| A.open | claimant | open_case | recorded | [`0xedced680...15b815`](https://explorer-studio-dev.genlayer.com/tx/0xedced680f6b4958e938eb94f6f8942157000c1e96750253516495d031b15b815) |
-| A.accept-wrong-digest | respondent | accept_case | refused: the digest does not match the current terms; read them again before accepting | [`0xcd73ad60...be9262`](https://explorer-studio-dev.genlayer.com/tx/0xcd73ad600d937fc181e2d5283cb45c20ce9a5b6b1e91c435d942c15d60be9262) |
-| A.accept | respondent | accept_case | recorded | [`0xadc9da8a...82439c`](https://explorer-studio-dev.genlayer.com/tx/0xadc9da8ab5e2df8f428de88bb5d6789b3cc117b6489315c764032ba61b82439c) |
-| A.stranger-deposit |  |  | refused by returning, value credited back: the terms say the respondent deposits the held sum | [`0xe14a8b3c...54a14d`](https://explorer-studio-dev.genlayer.com/tx/0xe14a8b3cb42bfeb218fc84c8837999fd2ed07f064ce4fa5876a66a279e54a14d) |
-| A.stranger-withdraw | stranger | withdraw | recorded | [`0x2de69090...89b658`](https://explorer-studio-dev.genlayer.com/tx/0x2de69090493a55fa6188db7f683bbe1d33aa68aabd3061858f5239f76e89b658) |
-| A.fund | respondent | fund_case | recorded | [`0xad1a16bd...4010a8`](https://explorer-studio-dev.genlayer.com/tx/0xad1a16bd48cacfab56c7ff3cc7a0728afa7fa2414df4b76ec7ebd587e44010a8) |
-| A.file.1 | claimant | submit_image | recorded | [`0xf68fb326...46fbb8`](https://explorer-studio-dev.genlayer.com/tx/0xf68fb326ce78e04d9fce0b1c53c8164641dd1a849ee1e3a1d874fdfc6d46fbb8) |
-| A.file.2 | claimant | submit_image | recorded | [`0x93d77ef2...ae1cb8`](https://explorer-studio-dev.genlayer.com/tx/0x93d77ef22373b25f32069cc4dd9daf9f25925fc6fda6884503f04d65d8ae1cb8) |
-| A.file.3 | claimant | submit_image | recorded | [`0x0934c581...d1ede1`](https://explorer-studio-dev.genlayer.com/tx/0x0934c58120217f2a2ad6416b7ed660af868a3fa7e74ca6b03278b8a387d1ede1) |
-| A.file.4 | claimant | submit_text | recorded | [`0xdf60738e...52cb1d`](https://explorer-studio-dev.genlayer.com/tx/0xdf60738e091dde0bcba668e78270dfd889d4fc164e456c1687a1ed13f052cb1d) |
-| A.file.5 | respondent | submit_text | recorded | [`0x2dc5380e...7c6b6c`](https://explorer-studio-dev.genlayer.com/tx/0x2dc5380ee955fb5be9d09c23862d3e96c2051d5e57906d80a13fea1e777c6b6c) |
-| A.file.6 | respondent | submit_text | recorded | [`0xc8b0dcf8...ec1666`](https://explorer-studio-dev.genlayer.com/tx/0xc8b0dcf84fc22d229cea3afae1c57d2e051ac8b8191df200ffefd6fc18ec1666) |
-| A.file.7 | respondent | submit_image | recorded | [`0xcb1582d9...c9a613`](https://explorer-studio-dev.genlayer.com/tx/0xcb1582d98779bc55c24294382a6b1be8b678407ffbded5179ba320de6bc9a613) |
-| A.photo-with-camera-data | claimant | submit_image | refused: this image was not accepted: it carries a metadata block (camera data, an editor record or a comment). Send a PNG or a JFIF JPEG with no metadata; the ... | [`0x91f24cb2...0c49a8`](https://explorer-studio-dev.genlayer.com/tx/0x91f24cb216343f7ebc474fb0c43f6a7d31f74955d45e75249a50ddb9270c49a8) |
-| A.assess-too-early | claimant | request_assessment | refused: the evidence period runs until 2026-10-04T08:35:03Z, unless every party marks their evidence complete first | [`0xa303c645...c289da`](https://explorer-studio-dev.genlayer.com/tx/0xa303c64598722bc7d228630131adb0217728c5c9ea8c46ca612e2021b9c289da) |
-| A.stranger-files | stranger | submit_text | refused: only the claimant, the respondent or an accepted inspector files evidence | [`0x78c5ffe8...19bf8f`](https://explorer-studio-dev.genlayer.com/tx/0x78c5ffe854323287eb7de50abc3e13333782870eb1811e3ef7c9c3990419bf8f) |
-| A.ready.CLAIMANT | claimant | mark_ready | recorded | [`0x4e170302...0ba568`](https://explorer-studio-dev.genlayer.com/tx/0x4e1703023dcc8446e3967b73c2b09bd9be613a6835594962a39d6e44560ba568) |
-| A.ready.RESPONDENT | respondent | mark_ready | recorded | [`0xb6d26576...a8cbec`](https://explorer-studio-dev.genlayer.com/tx/0xb6d26576a604cd20233be3e17145a47ea67e3ec3e9d7ec5b4a94893756a8cbec) |
-| A.assess | claimant | request_assessment | decision D-0001: not established | [`0x4e5db70b...343f6b`](https://explorer-studio-dev.genlayer.com/tx/0x4e5db70beb309294e94c2bd670a0c7e81cc313c9606b60571539e9bd6c343f6b) |
-| A.challenge-wrong-side |  |  | refused by returning, value credited back: only the claimant, whom this decision went against, challenges it | [`0x1915272a...2f7738`](https://explorer-studio-dev.genlayer.com/tx/0x1915272a7667847477c0d328c37406074196d6b6f0d76bb33d31528d172f7738) |
-| A.finalize-too-early | stranger | finalize | refused: the decision can still be challenged until 2026-10-04T09:27:18Z | [`0x77115e89...b1713d`](https://explorer-studio-dev.genlayer.com/tx/0x77115e896a23f2d376f012185fe8c59356fed9ce09efaf3525b946a9d8b1713d) |
-| A.challenge | claimant | challenge | recorded | [`0x59c783ae...2137ad`](https://explorer-studio-dev.genlayer.com/tx/0x59c783ae5c5433466f88cc3e2adc07760379ba711f4bb6066d377eae532137ad) |
-| A.challenge-file.1 | claimant | submit_image | recorded | [`0x03783f7e...928a46`](https://explorer-studio-dev.genlayer.com/tx/0x03783f7e26a0b657431986c5458b4d135335a3928288f940cbd8ca9dd5928a46) |
-| A.challenge-file.2 | claimant | submit_text | recorded | [`0x9b6f8d02...dac4da`](https://explorer-studio-dev.genlayer.com/tx/0x9b6f8d02b920c258542e974c660e08f06f50977cd33417fa92592d4933dac4da) |
-| A.readjudicate-too-early | stranger | readjudicate | refused: the challenger may file new evidence until 2026-10-04T08:40:22Z | [`0x0aad8027...d8a488`](https://explorer-studio-dev.genlayer.com/tx/0x0aad8027abc8c8974b7080f972084e0cb8a09cd65cfbc4cfbdd72cfa3bd8a488) |
-| D.open | claimant | open_case | recorded | [`0x3505b8c6...eeaedb`](https://explorer-studio-dev.genlayer.com/tx/0x3505b8c6b3018447a41740e62e62bbf58446a15d485c5590c19ff095a1eeaedb) |
-| D.accept | respondent | accept_case | recorded | [`0x662710ec...00aaeb`](https://explorer-studio-dev.genlayer.com/tx/0x662710ec7529c7520ab460faf828b8168a340894638972b8316ba5519400aaeb) |
-| D.file.claimant | claimant | submit_text | recorded | [`0xc958e35a...f5ed8d`](https://explorer-studio-dev.genlayer.com/tx/0xc958e35a82a3c78ec6d19c38e80a9b8ee4395c6878b85a90134e7c82d6f5ed8d) |
-| D.file.respondent | respondent | submit_text | recorded | [`0x40a11640...f816e1`](https://explorer-studio-dev.genlayer.com/tx/0x40a11640d9e096bf794879765cd50f1ac1d4d8288cb941fce014e4a38cf816e1) |
-| D.ready.CLAIMANT | claimant | mark_ready | recorded | [`0xffc7136f...ee95d5`](https://explorer-studio-dev.genlayer.com/tx/0xffc7136fbd607ecd71ae13b7598d779ac2c9c8f8f64e96fb21054ef2a1ee95d5) |
-| D.ready.RESPONDENT | respondent | mark_ready | recorded | [`0xfa7d9f8d...2a4086`](https://explorer-studio-dev.genlayer.com/tx/0xfa7d9f8d3b1921815ae0bac566e6f057658a95f6e6f52f721c275a72422a4086) |
-| D.assess | respondent | request_assessment | decision D-0002: conflicting | [`0xea09ea85...637ab7`](https://explorer-studio-dev.genlayer.com/tx/0xea09ea8556b219cbfc4de2826927d4482f764046499810bcbf3405fbe1637ab7) |
-| D.challenge | claimant | challenge | recorded | [`0x1cbd2d3c...da0d50`](https://explorer-studio-dev.genlayer.com/tx/0x1cbd2d3cacf2979190e512d0dda6c01c96beff3d6d68a09d3f4677e9beda0d50) |
-| B.open | claimant | open_case | recorded | [`0xb8ef1425...0fc2eb`](https://explorer-studio-dev.genlayer.com/tx/0xb8ef142543ea9bb5b371ffe86c82c6bc0f809a0c89461388983f507a6c0fc2eb) |
-| B.accept | respondent | accept_case | recorded | [`0x2c23bddd...66647b`](https://explorer-studio-dev.genlayer.com/tx/0x2c23bddd5da4e4f2f4826f871ac0e4a79df9204d59ace5897398f67b1066647b) |
-| B.fund | respondent | fund_case | recorded | [`0x14cb0000...f2d25a`](https://explorer-studio-dev.genlayer.com/tx/0x14cb0000f2a72b9d9f252d31c2d53a207628561502e2622d05fcd0b744f2d25a) |
-| B.file.claimant | claimant | submit_text | recorded | [`0x2dedb53b...f841df`](https://explorer-studio-dev.genlayer.com/tx/0x2dedb53b4788deaff8d16980ac562d00533bedff152f86e001c67873faf841df) |
-| B.file.respondent | respondent | submit_text | recorded | [`0x13e5aeb8...fc01c6`](https://explorer-studio-dev.genlayer.com/tx/0x13e5aeb86f8006f16cd7e38a28aca9699c71d9dbae490006d9ed741583fc01c6) |
-| B.ready.CLAIMANT | claimant | mark_ready | recorded | [`0x26715bf6...a75aa6`](https://explorer-studio-dev.genlayer.com/tx/0x26715bf6bd360e3fd4637542f10efab2a490b5d0d169df888a0cb5f5bba75aa6) |
-| B.ready.RESPONDENT | respondent | mark_ready | recorded | [`0x9162bbf2...e30058`](https://explorer-studio-dev.genlayer.com/tx/0x9162bbf21fd8c13fc7cbd36082b73da84b543e6687b3cf35d1f8d12aa2e30058) |
-| B.assess | respondent | request_assessment | decision D-0003: supported | [`0x0903ea7a...35201f`](https://explorer-studio-dev.genlayer.com/tx/0x0903ea7a970711388ae4409a3e6491ccf5a93a123e78103f1b9c352b0a35201f) |
-| C.open | claimant | open_case | recorded | [`0x1ebade7a...6c4ff1`](https://explorer-studio-dev.genlayer.com/tx/0x1ebade7aad48366681428dd382d0ede00f828715852ca4beca1a96e1756c4ff1) |
-| C.accept | respondent | accept_case | recorded | [`0x239b17f5...b80e74`](https://explorer-studio-dev.genlayer.com/tx/0x239b17f56fad656c43ad46314611723e65cde0ef2b5381bebc67dc496eb80e74) |
-| C.file.claimant | claimant | submit_text | recorded | [`0xec1a5ddb...fbe4d2`](https://explorer-studio-dev.genlayer.com/tx/0xec1a5ddba7d7b1ecd7aeb084692c7449b571a07f5ff10b89b213686f73fbe4d2) |
-| C.file.respondent | respondent | submit_text | recorded | [`0xaae8cf65...bba697`](https://explorer-studio-dev.genlayer.com/tx/0xaae8cf657368dc76e466ff1f41a5c6ee77e4e81250bec7540f75735f6abba697) |
-| C.ready.CLAIMANT | claimant | mark_ready | recorded | [`0xaf005275...21a73c`](https://explorer-studio-dev.genlayer.com/tx/0xaf0052756963dfdf57f9e98706f2b6174e2d5507b394718e42c0449bca21a73c) |
-| C.ready.RESPONDENT | respondent | mark_ready | recorded | [`0x5efbff4c...718058`](https://explorer-studio-dev.genlayer.com/tx/0x5efbff4c367462e8dd1557c5a2bc8c082e89b1d7f09e580c8510dc7e26718058) |
-| C.assess | claimant | request_assessment | decision D-0004: insufficient | [`0x9ee5ee03...4cf8a6`](https://explorer-studio-dev.genlayer.com/tx/0x9ee5ee03f7cab3441560d92e9551a54421060ff04b09fbd7dce8bbd3674cf8a6) |
-| E.open | claimant | open_case | recorded | [`0xce153331...8787e4`](https://explorer-studio-dev.genlayer.com/tx/0xce153331aec2733ec5fb30ac0ac3422aea6cc2455aa96c590982cb3ee78787e4) |
-| E.accept | respondent | accept_case | recorded | [`0xe7083fb3...c83b89`](https://explorer-studio-dev.genlayer.com/tx/0xe7083fb363f9d9b6a6a728a39269d7a91f3b414512c124610d1047f943c83b89) |
-| E.inspector-wrong-digest | inspector | accept_inspector | refused: the digest does not match the current terms; read them again before accepting | [`0xc01484d8...a526a8`](https://explorer-studio-dev.genlayer.com/tx/0xc01484d8f7b1df9b6e13ac352f73be00fca9eefa0dba5aea2080d8b518a526a8) |
-| E.inspector | inspector | accept_inspector | recorded | [`0x5f252997...e67376`](https://explorer-studio-dev.genlayer.com/tx/0x5f252997ef542b95b91c7d473a6c70e67f4f7d1e8360ef13126edd0d1ce67376) |
-| E.file.claimant | claimant | submit_image | recorded | [`0x178a1821...6bca24`](https://explorer-studio-dev.genlayer.com/tx/0x178a182114284c98b712389f67e2c0ccd901cc929104c4fa29a96a2fe26bca24) |
-| E.file.inspector | inspector | submit_text | recorded | [`0xe190a447...8c495e`](https://explorer-studio-dev.genlayer.com/tx/0xe190a447c5efa3575f84ab8ca62d380c38a39551ea102733189a7d56c38c495e) |
-| E.ready.CLAIMANT | claimant | mark_ready | recorded | [`0xc0138f7e...30948a`](https://explorer-studio-dev.genlayer.com/tx/0xc0138f7e48dd3a558a5abdd78cd96f32d265d2562cccc0b972daf7011530948a) |
-| E.ready.RESPONDENT | respondent | mark_ready | recorded | [`0x46aa9fc7...e5c405`](https://explorer-studio-dev.genlayer.com/tx/0x46aa9fc79c23f37add197c8d1616cf14ee225c013b1ae77b5211c47aaae5c405) |
-| E.ready.INSPECTOR | inspector | mark_ready | recorded | [`0x0dcd8a86...da8474`](https://explorer-studio-dev.genlayer.com/tx/0x0dcd8a86e126b335dc93e38c0b45887c27d46e804685ff45645ab7004dda8474) |
-| E.assess | claimant | request_assessment | recorded | [`0xb7ec7d32...8f0d78`](https://explorer-studio-dev.genlayer.com/tx/0xb7ec7d328968e88c6fec49067c9ec2107a41a30ea155797c32491514308f0d78) |
-| N.open | second | open_case | recorded | [`0x4f76b731...4e0df3`](https://explorer-studio-dev.genlayer.com/tx/0x4f76b731eba2e6bc4f5c094ca030cae7b3f9ec37b6186792bc11c2f3384e0df3) |
-| N.accept | respondent | accept_case | recorded | [`0xad467c96...2f182b`](https://explorer-studio-dev.genlayer.com/tx/0xad467c96f690a79b8a2b3d54994af3db830ae2bc1e6fad3667872507e12f182b) |
-| N.ready.SECOND | second | mark_ready | recorded | [`0xfd3431e0...32036d`](https://explorer-studio-dev.genlayer.com/tx/0xfd3431e00d63e07259a72b8e648c390e3b4a642b0e2901fc956b9b226632036d) |
-| N.ready.RESPONDENT | respondent | mark_ready | recorded | [`0x325bf5e7...dbd176`](https://explorer-studio-dev.genlayer.com/tx/0x325bf5e7adf4396719a05a129ca79a43bff5d1be68e6e2f17bbf8d675adbd176) |
-| N.assess | respondent | request_assessment | recorded | [`0xfca8cf7c...4f0337`](https://explorer-studio-dev.genlayer.com/tx/0xfca8cf7c13fac477e22d3fb18e3c64b5434ac97441e8e24869ee9a978f4f0337) |
-| S.open | second | open_case | recorded | [`0x530b97e1...db4aa0`](https://explorer-studio-dev.genlayer.com/tx/0x530b97e19ad244c6360c7d864e1e5a5fcedfb4cd85317d991e18cb58c8db4aa0) |
-| S.accept | claimant | accept_case | recorded | [`0x1cc636c3...488529`](https://explorer-studio-dev.genlayer.com/tx/0x1cc636c3cdf3e22d0dab461fe9c504e61e8fed8b27959af3b898f4fae7488529) |
-| S.file.reused | claimant | submit_image | recorded | [`0x7f692c91...5c2da0`](https://explorer-studio-dev.genlayer.com/tx/0x7f692c91d848fb5f3b2a53848a80301a0352b98ebc3ebf0b519df7ac775c2da0) |
-| A.challenger-files-late | claimant | submit_text | refused: the challenger's time to file new evidence has ended; the other side may answer until 2026-10-04T08:50:22Z | [`0xf98f3cfc...194b2a`](https://explorer-studio-dev.genlayer.com/tx/0xf98f3cfc98856801f769e2ecd3a1c4367e02f0a40b1566e73264717de0194b2a) |
-| A.readjudicate-before-the-reply | stranger | readjudicate | refused: the other side may answer the new evidence until 2026-10-04T08:50:22Z | [`0x629a5da8...cb1978`](https://explorer-studio-dev.genlayer.com/tx/0x629a5da8c1cfb51b93d4c55dc0f5d7473f21b33117e429ba4f34e1f3d5cb1978) |
-| A.reply | respondent | submit_text | recorded | [`0x78b29f55...71d5d8`](https://explorer-studio-dev.genlayer.com/tx/0x78b29f55902a11aefd18ad1b8b48eb4518ff40f77fd8e8c698b5a1293471d5d8) |
-| A.readjudicate | stranger | readjudicate | decision D-0007: not established | [`0x114e7fd9...9fa7e5`](https://explorer-studio-dev.genlayer.com/tx/0x114e7fd936dabcd643176dcf0a032bc979fb7ec6e09985936ae7b2136b9fa7e5) |
-| A.finalize | stranger | finalize | recorded | [`0x58f76cf6...e7efd3`](https://explorer-studio-dev.genlayer.com/tx/0x58f76cf6c1a19e1dbc5e26b197ef67f172e05887bccaf6c3c808ea1080e7efd3) |
-| D.readjudicate-nothing-new | stranger | readjudicate | refused: the challenger filed no new evidence, so there is nothing to judge again; the challenge can be closed and the decision stands | [`0x186203ff...711a9a`](https://explorer-studio-dev.genlayer.com/tx/0x186203ffd9e225f907aa659fcbd5b835b6bdef1bac5109f57c7977288d711a9a) |
-| D.close | stranger | close_challenge | recorded | [`0x9c23da98...d124c9`](https://explorer-studio-dev.genlayer.com/tx/0x9c23da9826207958d678b12a2305ecd613a7d3bffa144c1d4e1445e6e2d124c9) |
-| D.finalize | stranger | finalize | recorded | [`0x50498d8d...a96f9f`](https://explorer-studio-dev.genlayer.com/tx/0x50498d8d2f79b742d820d2e207f3a588d21b076c7198c3145d5cb61fcaa96f9f) |
-| B.finalize | stranger | finalize | recorded | [`0x6644e022...88e1a4`](https://explorer-studio-dev.genlayer.com/tx/0x6644e022ec66688648d8942ee0b28f6174e35b8a143e6c7a6cf96f3de988e1a4) |
-| C.finalize | stranger | finalize | recorded | [`0x9210b934...1fed88`](https://explorer-studio-dev.genlayer.com/tx/0x9210b93427ccf336b0d272bc615b87c9b794cf985741dec03d1ba79b191fed88) |
-| E.finalize | stranger | finalize | recorded | [`0x2e6f0cb7...b507eb`](https://explorer-studio-dev.genlayer.com/tx/0x2e6f0cb7776b318e8b2c2155b66b9843860d71b8edd20941e553812e72b507eb) |
-| N.finalize | stranger | finalize | recorded | [`0xaf15bff2...c9ddea`](https://explorer-studio-dev.genlayer.com/tx/0xaf15bff2ed120a6e746853b3a38b7ec083fc4674176cbfb0cb1bee9f0fc9ddea) |
-| withdraw.claimant | claimant | withdraw | recorded | [`0x3a13addc...6ce0f2`](https://explorer-studio-dev.genlayer.com/tx/0x3a13addca510cd357c6534ad4781a5ab6165a9031dd18a3d3121b984856ce0f2) |
-| withdraw.respondent | respondent | withdraw | recorded | [`0x5a4a5d93...9ea249`](https://explorer-studio-dev.genlayer.com/tx/0x5a4a5d93432dc3b4abf01c956952aa451c2997dfb58c7fd5c3c0990c4a9ea249) |
-| withdraw.twice | respondent | withdraw | refused: nothing is owed to this address | [`0x36381e37...5acebb`](https://explorer-studio-dev.genlayer.com/tx/0x36381e373c26783e22ca70bc39665261ea7d69d474f2c190bc454c20ac5acebb) |
-| I.open | claimant | open_case | recorded | [`0x47aabdf1...0b6208`](https://explorer-studio-dev.genlayer.com/tx/0x47aabdf12435d96decda9764a8409351179191f09721dbf01278cf56bb0b6208) |
-| I.accept | respondent | accept_case | recorded | [`0x66d4346a...db228a`](https://explorer-studio-dev.genlayer.com/tx/0x66d4346a93aa3df1e84be38bf64b911f01d2dee3a8033795575e849763db228a) |
-| I.file.refiled | claimant | submit_image | recorded | [`0xd767918d...64c74f`](https://explorer-studio-dev.genlayer.com/tx/0xd767918ddb97d6046249a27ff9fde50509fc2f3ab3c4ba8342e291f99e64c74f) |
-| I.follow-unsettled | claimant | open_case | refused: a follow-up cites a case that is closed | [`0xdb790ed9...0849e3`](https://explorer-studio-dev.genlayer.com/tx/0xdb790ed9480ba84994505e10c137bc7c45238ffc5e9b405f2ae1f6bdd90849e3) |
+| F.open | second | open_case | recorded | [`0x1f5ce7fb...288371`](https://explorer-studio-dev.genlayer.com/tx/0x1f5ce7fb4fb52db910f514d6dd95cc8158034999254b601e6edf8040e7288371) |
+| F.decline | respondent | decline_case | recorded | [`0x5a7bd049...9ce910`](https://explorer-studio-dev.genlayer.com/tx/0x5a7bd0497e55f85cad94f9b5ea58a66b1be09dc9e9447664ba3c3437129ce910) |
+| G.open | second | open_case | recorded | [`0xbdc65fcb...cc6cb2`](https://explorer-studio-dev.genlayer.com/tx/0xbdc65fcbd7baff986f46f89ac36d49156d55a58d2a1b94da12e6e20144cc6cb2) |
+| G.withdraw | second | withdraw_case | recorded | [`0xc1d8f7ee...a1d78c`](https://explorer-studio-dev.genlayer.com/tx/0xc1d8f7eee0fdebe2fad99d6cf1706b56db2efb6b73810f6f467aaa3c05a1d78c) |
+| T.deadline-with-offset | second | open_case | refused: the deadline must look like 2026-10-01 or 2026-10-01T17:00, in the case's time zone, with no seconds and no offset | [`0x67b0d2f4...c32de6`](https://explorer-studio-dev.genlayer.com/tx/0x67b0d2f485309d8c943e2d3c39ec1cbb7b174ff4534e8349b12c3d31e5c32de6) |
+| T.zone-abbreviation | second | open_case | refused: the time zone must be UTC or an IANA name such as Europe/London | [`0x4eebc80f...a38072`](https://explorer-studio-dev.genlayer.com/tx/0x4eebc80f300775d8cb38150ba743e77b63b747111972a06064219cce30a38072) |
+| T.claim-too-long | second | open_case | refused: the claim may be at most 400 characters | [`0xa8cc54c9...389d55`](https://explorer-studio-dev.genlayer.com/tx/0xa8cc54c911ff021840847c697e2d11080d1bebd86e2c0effac720c4430389d55) |
+| T.challenge-window-too-short | second | open_case | refused: the challenge window in seconds must be between 3600 and 1209600 | [`0xabe03fd7...50bc4e`](https://explorer-studio-dev.genlayer.com/tx/0xabe03fd7114fce4942fc53e8cf13bd68d4d35be3ca68d21e3c84c4048050bc4e) |
+| T.title-not-text | second | open_case | refused: the title must be text | [`0xf00d3ea5...583205`](https://explorer-studio-dev.genlayer.com/tx/0xf00d3ea53b41aaf6b0ac65bdba6d1a94b6826ddd29d284271f55e251bf583205) |
+| A.open | claimant | open_case | recorded | [`0x6455e60d...8394c3`](https://explorer-studio-dev.genlayer.com/tx/0x6455e60d728792118c255d74e73112df1a27c8cf0a4015a0c055192be98394c3) |
+| A.accept-wrong-digest | respondent | accept_case | refused: the digest does not match the current terms; read them again before accepting | [`0xf825fb65...223e3d`](https://explorer-studio-dev.genlayer.com/tx/0xf825fb65cd2ffb375b868a0c683b98d059ff9c16ed8cde31049921a7b2223e3d) |
+| A.accept | respondent | accept_case | recorded | [`0x5b79d1f8...dae926`](https://explorer-studio-dev.genlayer.com/tx/0x5b79d1f8c71eb977bc62db2fab28e7daf8f8430e1eafeceb3ce041accbdae926) |
+| A.stranger-deposit |  |  | refused by returning, value credited back: the terms say the respondent deposits the held sum | [`0xbbf65506...e97068`](https://explorer-studio-dev.genlayer.com/tx/0xbbf65506671ec4dbfa40fb1e122ee603f3390e09fe78464d815fb586e2e97068) |
+| A.stranger-withdraw | stranger | withdraw | recorded | [`0x5af24be1...ad03f7`](https://explorer-studio-dev.genlayer.com/tx/0x5af24be17eb7406d94ea2169f43e0e1030ab23a2a93cf91cc6864c99b0ad03f7) |
+| A.fund | respondent | fund_case | recorded | [`0x6707c84e...4680fb`](https://explorer-studio-dev.genlayer.com/tx/0x6707c84e01b910ba41135003f77fbfaa7f24f5d4cb0b6d7240d99d8ae64680fb) |
+| A.file.1 | claimant | submit_image | recorded | [`0x13b4f0fd...921ec3`](https://explorer-studio-dev.genlayer.com/tx/0x13b4f0fd4558e05737148b1616a1ccebea49e6c2ebfcf3dc1636d466b6921ec3) |
+| A.file.2 | claimant | submit_image | recorded | [`0x45a603cc...76c459`](https://explorer-studio-dev.genlayer.com/tx/0x45a603cca5748335426fdcc09bce42f360c0e3c1105509f442491bb4aa76c459) |
+| A.file.3 | claimant | submit_image | recorded | [`0x5e7b107a...b09aa5`](https://explorer-studio-dev.genlayer.com/tx/0x5e7b107a24489774163559e18508cf622a2ff15608f8fae80f6a2beb8ab09aa5) |
+| A.file.4 | claimant | submit_text | recorded | [`0x2c3c72c3...3c698a`](https://explorer-studio-dev.genlayer.com/tx/0x2c3c72c30b280d55cdb19e01fdb4ee9015a38ae650fe7c2564a7c9379b3c698a) |
+| A.file.5 | respondent | submit_text | recorded | [`0x38ea81d5...c4cd77`](https://explorer-studio-dev.genlayer.com/tx/0x38ea81d51add2690120a5c5883ae01bee07180981f2dc2d4c5f371b33cc4cd77) |
+| A.file.6 | respondent | submit_text | recorded | [`0xd84aab92...e299d1`](https://explorer-studio-dev.genlayer.com/tx/0xd84aab92bb337d80cbdf44b614b25800f410f8e61ec4e532b64b0d5884e299d1) |
+| A.file.7 | respondent | submit_image | recorded | [`0x765c94ff...b1ce3c`](https://explorer-studio-dev.genlayer.com/tx/0x765c94ff45fd84ab764bc1996bb6e3500cc9dc61947d5d1d2b29539954b1ce3c) |
+| A.photo-with-camera-data | claimant | submit_image | refused: this image was not accepted: it carries a metadata block (camera data, an editor record or a comment). Send a PNG or a JFIF JPEG with no metadata; the ... | [`0x53f6227f...9dd9c2`](https://explorer-studio-dev.genlayer.com/tx/0x53f6227fe7de1af0921de9b4d74a15843ffa4ae2cc0c8f744314a576d89dd9c2) |
+| A.assess-too-early | claimant | request_assessment | refused: the evidence period runs until 2026-10-04T16:16:24Z, unless every party marks their evidence complete first | [`0xf79dd859...628216`](https://explorer-studio-dev.genlayer.com/tx/0xf79dd859005f2dd9e067e38949e10e15cf7f21f033b10403ddc4aabc73628216) |
+| A.stranger-files | stranger | submit_text | refused: only the claimant, the respondent or an accepted inspector files evidence | [`0x0c1effc2...0a84b6`](https://explorer-studio-dev.genlayer.com/tx/0x0c1effc2f3af4f3302e18c5be27e77ec03444a5c388211929c143fbabd0a84b6) |
+| A.ready.CLAIMANT | claimant | mark_ready | recorded | [`0xa99099ef...922e6f`](https://explorer-studio-dev.genlayer.com/tx/0xa99099efd7b90209b847c2805296d4263041f974e16b8d49f764d6b274922e6f) |
+| A.ready.RESPONDENT | respondent | mark_ready | recorded | [`0xd508045b...52b715`](https://explorer-studio-dev.genlayer.com/tx/0xd508045b0ce1f335ab13664b08c65ed0971b00b215420727d116a7749852b715) |
+| A.assess | claimant | request_assessment | decision D-0001: not established | [`0xe891317e...e3cd30`](https://explorer-studio-dev.genlayer.com/tx/0xe891317e8cddd47e1a2a2bf1fd36d562459cdc5527721e35d788fe5fcee3cd30) |
+| A.challenge-wrong-side |  |  | refused by returning, value credited back: only the claimant, whom this decision went against, challenges it | [`0xe924f7fe...7cc426`](https://explorer-studio-dev.genlayer.com/tx/0xe924f7fef2cc051f9f895cb04025bbf89da2d0b7851ad2b75e6a16861c7cc426) |
+| A.finalize-too-early | stranger | finalize | refused: the decision can still be challenged until 2026-10-04T17:08:27Z | [`0x71afe104...0aeaac`](https://explorer-studio-dev.genlayer.com/tx/0x71afe1044ea3a1c0c80281580ca39b337476a90fa61d7c50dc91bce0680aeaac) |
+| A.challenge | claimant | challenge | recorded | [`0x5be92af2...3e6977`](https://explorer-studio-dev.genlayer.com/tx/0x5be92af2d48e359c62673647dbe0f917b2f328078c6673a86fcf6db8693e6977) |
+| A.challenge-file.1 | claimant | submit_image | recorded | [`0xcaa9b603...0221f3`](https://explorer-studio-dev.genlayer.com/tx/0xcaa9b60374457272047eca4fe33171242bf03b3f0d0f9399f3526606a70221f3) |
+| A.challenge-file.2 | claimant | submit_text | recorded | [`0x68ef48d3...cef704`](https://explorer-studio-dev.genlayer.com/tx/0x68ef48d37354c96ddeece1f321b19e7b9f367fbaddb06e68475937e3fbcef704) |
+| A.readjudicate-too-early | stranger | readjudicate | refused: the challenger may file new evidence until 2026-10-04T16:20:36Z | [`0x283457c1...0f65fb`](https://explorer-studio-dev.genlayer.com/tx/0x283457c124e1a5fbd1e8903244b56ced6cf779918573a66a26feea66620f65fb) |
+| D.open | claimant | open_case | recorded | [`0xe1315b37...ea10af`](https://explorer-studio-dev.genlayer.com/tx/0xe1315b3753c843c10caca6de5823afc2778851829fcdfb68df40b011f6ea10af) |
+| D.accept | respondent | accept_case | recorded | [`0xb4f397ad...185006`](https://explorer-studio-dev.genlayer.com/tx/0xb4f397ad21465ed4e47995ef2dc59b6012e71cc340ecde2a454ea3610c185006) |
+| D.file.claimant | claimant | submit_text | recorded | [`0x72c288e2...55bdb5`](https://explorer-studio-dev.genlayer.com/tx/0x72c288e2b5e56d182128a93e82fe38eb82240496ae514b2cfd3991b07a55bdb5) |
+| D.file.respondent | respondent | submit_text | recorded | [`0x683c8957...91b9b9`](https://explorer-studio-dev.genlayer.com/tx/0x683c895782f2a68389b584c8451833d6a2ea405d1d8f9d8f0822b313c191b9b9) |
+| D.ready.CLAIMANT | claimant | mark_ready | recorded | [`0x6b65d3e8...ec9557`](https://explorer-studio-dev.genlayer.com/tx/0x6b65d3e87b211c05a55d32e5128c29665c0472b1192fe4837f01ef8d9bec9557) |
+| D.ready.RESPONDENT | respondent | mark_ready | recorded | [`0x62777c70...b24c2c`](https://explorer-studio-dev.genlayer.com/tx/0x62777c7009287e54999832cd39f6e88c182273b80e02fbc90909850b50b24c2c) |
+| D.assess | respondent | request_assessment | decision D-0002: conflicting | [`0x1ffc2381...37bf71`](https://explorer-studio-dev.genlayer.com/tx/0x1ffc2381b9c0cb687e3ccbe0a413c41d225b5e9c5ee2e354ba900c504f37bf71) |
+| D.challenge | claimant | challenge | recorded | [`0xeceb3bcf...8b548b`](https://explorer-studio-dev.genlayer.com/tx/0xeceb3bcf169c0feda0a3e6e7a1f8a8c7bfe5dfb36458921dc24156108b8b548b) |
+| B.open | claimant | open_case | recorded | [`0x78db0456...a9c78d`](https://explorer-studio-dev.genlayer.com/tx/0x78db0456edd14a3c21402f82d9805feceab89b780fac8ea224844734a9a9c78d) |
+| B.accept | respondent | accept_case | recorded | [`0x9cfc2a87...c541f0`](https://explorer-studio-dev.genlayer.com/tx/0x9cfc2a87fd8d4aa917d920f7b4adb50dbc1ff2c40b128076834a8f4d80c541f0) |
+| B.fund | respondent | fund_case | recorded | [`0xe52f9257...d174a9`](https://explorer-studio-dev.genlayer.com/tx/0xe52f9257a9137247c76a771af241e9be305eb2853512e1bb4e84b4c1aad174a9) |
+| B.file.claimant | claimant | submit_text | recorded | [`0xd7bcf731...4d04ff`](https://explorer-studio-dev.genlayer.com/tx/0xd7bcf731a66f8be90c916564fe52d73028f9582381d3b1db57a8883f934d04ff) |
+| B.file.respondent | respondent | submit_text | recorded | [`0x1bdeafd9...bac841`](https://explorer-studio-dev.genlayer.com/tx/0x1bdeafd9a2693b669b4f5488925478544b467c4e13461ef9d294155535bac841) |
+| B.ready.CLAIMANT | claimant | mark_ready | recorded | [`0xd34e5220...4ef5cd`](https://explorer-studio-dev.genlayer.com/tx/0xd34e5220222ed929056b3a8f22e034954a3b5126c1c142f996c756aa604ef5cd) |
+| B.ready.RESPONDENT | respondent | mark_ready | recorded | [`0x66297d77...77eb99`](https://explorer-studio-dev.genlayer.com/tx/0x66297d779b3689a594412a58ff595513379bb38d406b87609f7665af1f77eb99) |
+| B.assess | respondent | request_assessment | decision D-0003: supported | [`0x386147cc...ebfd60`](https://explorer-studio-dev.genlayer.com/tx/0x386147ccdcc85b283516405a68ea110e54a1c4576adc0b514af4eaff3aebfd60) |
+| C.open | claimant | open_case | recorded | [`0x45f6c862...782122`](https://explorer-studio-dev.genlayer.com/tx/0x45f6c8628563d054931bfde7c895e4fd298c2b7ad68c19053f4355a9b2782122) |
+| C.accept | respondent | accept_case | recorded | [`0x0df0e538...b03ef2`](https://explorer-studio-dev.genlayer.com/tx/0x0df0e53849c3fe3f77505d1d186db88989a3f72e14878414ce90de4c26b03ef2) |
+| C.file.claimant | claimant | submit_text | recorded | [`0xd8155f7e...361e92`](https://explorer-studio-dev.genlayer.com/tx/0xd8155f7ec8af4131f0d5a41703a36530341be8c9e1f303dc1b9ee41109361e92) |
+| C.file.respondent | respondent | submit_text | recorded | [`0x71c79964...cb476d`](https://explorer-studio-dev.genlayer.com/tx/0x71c799649640ac46ae27da0ca8efff2bf4a43cf2f4e92aa8f492a5deebcb476d) |
+| C.ready.CLAIMANT | claimant | mark_ready | recorded | [`0xb49944ce...325b59`](https://explorer-studio-dev.genlayer.com/tx/0xb49944ce4fae100a6b78416ff6ecf1a16ebc6a8494d2a4ea08a8682bf2325b59) |
+| C.ready.RESPONDENT | respondent | mark_ready | recorded | [`0x811d37b1...89fd24`](https://explorer-studio-dev.genlayer.com/tx/0x811d37b11842c42d92206f13734e90c85fe8c3e93023379bd70ae9bc0689fd24) |
+| C.assess | claimant | request_assessment | decision D-0004: insufficient | [`0x53ca3419...1a1f33`](https://explorer-studio-dev.genlayer.com/tx/0x53ca3419a0c26d979298eaffe6b9074b147569c40248ae826a8c46fb541a1f33) |
+| E.open | claimant | open_case | recorded | [`0xc6b77e34...e55743`](https://explorer-studio-dev.genlayer.com/tx/0xc6b77e34fe485e99a53016395db61cac5b0b90698ae96923ae98c6f8b4e55743) |
+| E.accept | respondent | accept_case | recorded | [`0xa69405df...8d2237`](https://explorer-studio-dev.genlayer.com/tx/0xa69405df7e0899b9a1fd078928c6cb6e0f3c42739d75af9339269e37318d2237) |
+| E.inspector-wrong-digest | inspector | accept_inspector | refused: the digest does not match the current terms; read them again before accepting | [`0x2d76808e...44b9f9`](https://explorer-studio-dev.genlayer.com/tx/0x2d76808e061af29bf5cbf78e52b2b07c3b572ed1d45390a62f167fca5d44b9f9) |
+| E.inspector | inspector | accept_inspector | recorded | [`0x448d972d...81d3ff`](https://explorer-studio-dev.genlayer.com/tx/0x448d972dcb38bf73f5b44482d2dae813dc48038e23d9126c139c42806681d3ff) |
+| E.file.claimant | claimant | submit_image | recorded | [`0x537e8977...395a2d`](https://explorer-studio-dev.genlayer.com/tx/0x537e8977e8a2142aba334dc6ccf1f19c9884cebe7b9fa95a5fc9bb3cd5395a2d) |
+| E.file.inspector | inspector | submit_text | recorded | [`0xaa1654f1...ef69b0`](https://explorer-studio-dev.genlayer.com/tx/0xaa1654f163acde16c4d5b30835789ac17cd7f9a594e934a01d9faafc5bef69b0) |
+| E.ready.CLAIMANT | claimant | mark_ready | recorded | [`0xa8577399...9da31d`](https://explorer-studio-dev.genlayer.com/tx/0xa8577399cc81fa39c2b6071df854dfd89e4cd7590b5c5e0b883681539a9da31d) |
+| E.ready.RESPONDENT | respondent | mark_ready | recorded | [`0xad5ff693...0299dc`](https://explorer-studio-dev.genlayer.com/tx/0xad5ff6938c51d35975ca0e7e4011b6405d0d06fbd9404396ad931979cd0299dc) |
+| E.ready.INSPECTOR | inspector | mark_ready | recorded | [`0x21324e90...6216d3`](https://explorer-studio-dev.genlayer.com/tx/0x21324e902481eccb615393ac5ccc9f1e6497e2f2a7a9d089291f3f4c186216d3) |
+| E.assess | claimant | request_assessment | recorded | [`0xb7c86d5d...1a8e6f`](https://explorer-studio-dev.genlayer.com/tx/0xb7c86d5da0deceb6ef0026da369dda2c532e58aca9e1b8e5f42787ca111a8e6f) |
+| N.open | second | open_case | recorded | [`0x089f79c0...078fb3`](https://explorer-studio-dev.genlayer.com/tx/0x089f79c09de1148ce9fd16b6c8dc8b1470296b2c328b12c2f66aba7fd3078fb3) |
+| N.accept | respondent | accept_case | recorded | [`0x5be7f6eb...e1d0b5`](https://explorer-studio-dev.genlayer.com/tx/0x5be7f6ebeefa36bcfaaa1db1b1c5a3b08179d967ac63cd82af8ee2cdb6e1d0b5) |
+| N.ready.SECOND | second | mark_ready | recorded | [`0xfadf9398...6a67b5`](https://explorer-studio-dev.genlayer.com/tx/0xfadf93982452540743a0d67c41b073705d622ff3fe351b3cfe18cb68106a67b5) |
+| N.ready.RESPONDENT | respondent | mark_ready | recorded | [`0xa0caaab2...261b48`](https://explorer-studio-dev.genlayer.com/tx/0xa0caaab2224148c7f19f46276da48cdaf4d3fb02b8695e4a897ac9e197261b48) |
+| N.assess | respondent | request_assessment | recorded | [`0xe3b76fbd...3a361f`](https://explorer-studio-dev.genlayer.com/tx/0xe3b76fbd1bab76745ea881d26541d169c6b46590d3459f7026f93ea29e3a361f) |
+| S.open | second | open_case | recorded | [`0x1d65576c...e611a3`](https://explorer-studio-dev.genlayer.com/tx/0x1d65576cfc0c045df4d0b6d4b63669c2259ea5d739cb4684033f1c30bae611a3) |
+| S.accept | claimant | accept_case | recorded | [`0x7a62790e...374e93`](https://explorer-studio-dev.genlayer.com/tx/0x7a62790ee3ead9052041e620461af9abb13a44c0296b8cbf2f8d847dbd374e93) |
+| S.file.reused | claimant | submit_image | recorded | [`0xbf569b65...df64af`](https://explorer-studio-dev.genlayer.com/tx/0xbf569b6511d44094601965265ed81669105eeb88d517f56d0191b74619df64af) |
+| A.challenger-files-late | claimant | submit_text | refused: the challenger's time to file new evidence has ended; the other side may answer until 2026-10-04T16:30:36Z | [`0x93f1d7ac...e9bcb9`](https://explorer-studio-dev.genlayer.com/tx/0x93f1d7ac5c951d0a3bdd370215d082a21faa08190f0f233fb2a1c773efe9bcb9) |
+| A.readjudicate-before-the-reply | stranger | readjudicate | refused: the other side may answer the new evidence until 2026-10-04T16:30:36Z | [`0x2e0c6368...9df0c3`](https://explorer-studio-dev.genlayer.com/tx/0x2e0c6368f4bff1d8345c5930619ede65c07d81fd675f6fdf9965a3cef09df0c3) |
+| A.reply | respondent | submit_text | recorded | [`0x4d6c0c25...688796`](https://explorer-studio-dev.genlayer.com/tx/0x4d6c0c259dc0694315d6d19b82c8b6ba873842cf7081e5c99d419ba7b9688796) |
+| A.readjudicate | stranger | readjudicate | decision D-0007: not established | [`0x20c81806...9db9f6`](https://explorer-studio-dev.genlayer.com/tx/0x20c81806ba7111126ff369fb7178660a4b7486cb41042308bed18b7aa19db9f6) |
+| A.finalize | stranger | finalize | recorded | [`0xcf776771...1adbb8`](https://explorer-studio-dev.genlayer.com/tx/0xcf77677116600e474a8066e4955e9734f11a7dd9408eb6dbd6ce9ca59d1adbb8) |
+| D.readjudicate-nothing-new | stranger | readjudicate | refused: the challenger filed no new evidence, so there is nothing to judge again; the challenge can be closed and the decision stands | [`0xc0ac9373...a5988e`](https://explorer-studio-dev.genlayer.com/tx/0xc0ac93737bff45f66ed2c30c766a20a50c391f93e941e1c88f2268c0aba5988e) |
+| D.close | stranger | close_challenge | recorded | [`0xde0d9863...536292`](https://explorer-studio-dev.genlayer.com/tx/0xde0d986326b19163fb02c215aa35de8cc3302e84856a66bdceb2503d3b536292) |
+| D.finalize | stranger | finalize | recorded | [`0x92625421...49f67c`](https://explorer-studio-dev.genlayer.com/tx/0x9262542100e9e2bf308e7ddf4f2836e06f71d2cb544c7aab70aa1c674d49f67c) |
+| B.finalize | stranger | finalize | recorded | [`0x420332c2...08e71c`](https://explorer-studio-dev.genlayer.com/tx/0x420332c290dbc989df17cf71d2fb7bd5f14e8df810d00d4017f9d2f76e08e71c) |
+| C.finalize | stranger | finalize | recorded | [`0x338c1f16...66c725`](https://explorer-studio-dev.genlayer.com/tx/0x338c1f16aaf17c6e273fc9a6aecd11d1912805eefb742780f6f5da6d8666c725) |
+| E.finalize | stranger | finalize | recorded | [`0xa2fdfb2d...5e910a`](https://explorer-studio-dev.genlayer.com/tx/0xa2fdfb2d18be3404088e0a7fd4b4eda0f0ffdf65159745a95a466c72d35e910a) |
+| N.finalize | stranger | finalize | recorded | [`0x42352b7c...57a7bd`](https://explorer-studio-dev.genlayer.com/tx/0x42352b7ceee9e56cfc0c40a967fb19a3015ccaa0837d9b1275eb2ea19757a7bd) |
+| withdraw.claimant | claimant | withdraw | recorded | [`0xea704372...b9a3e3`](https://explorer-studio-dev.genlayer.com/tx/0xea704372ad8572045f6712b2fa35c6703ec29458bedc9033fc6e50b6efb9a3e3) |
+| withdraw.respondent | respondent | withdraw | recorded | [`0xce2a964f...676871`](https://explorer-studio-dev.genlayer.com/tx/0xce2a964f3573102b3ab4e67d5eb3ce8b7ba2f0cdf3cb53a5f3978d1eeb676871) |
+| withdraw.twice | respondent | withdraw | refused: nothing is owed to this address | [`0x85aea4e8...f05b43`](https://explorer-studio-dev.genlayer.com/tx/0x85aea4e8d8a048b1370976441e572f035b6ede6861c547969672e5618df05b43) |
+| I.open | claimant | open_case | recorded | [`0x12192c01...a47771`](https://explorer-studio-dev.genlayer.com/tx/0x12192c01bb6efe7a9fd06061792da0fd3e579b46ca1c510352830696f5a47771) |
+| I.accept | respondent | accept_case | recorded | [`0x71999a1c...b5e2ce`](https://explorer-studio-dev.genlayer.com/tx/0x71999a1cf38c5f5f09e93aa0eb59ef359c9f2b63a4ebc3a815434bbea5b5e2ce) |
+| I.file.refiled | claimant | submit_image | recorded | [`0x8ff84a93...abcfc6`](https://explorer-studio-dev.genlayer.com/tx/0x8ff84a93ba66194b57fb43b4158251580c84d0280914abaa2050c928d0abcfc6) |
+| I.follow-unsettled | claimant | open_case | refused: a follow-up cites a case that is closed | [`0xee40ae80...c788b9`](https://explorer-studio-dev.genlayer.com/tx/0xee40ae80192232a5571b950e73ad89738fda18a397cd12b5a1ed2fb2bbc788b9) |

@@ -4,7 +4,7 @@
 
 KeyWitness is a contract and a web app on **GenLayer Studio Next**, a test network. Every amount is test GEN with no
 monetary value, the sample evidence is synthetic, and nothing here has been reviewed by an independent security firm.
-It has been reviewed adversarially four times during development and each review found real defects; the last pass
+It has been reviewed adversarially eight times during development; seven of the reviews found real defects and the eighth found none. The last pass
 and what remains open are in `docs/THREAT_MODEL.md` and `docs/TESTING.md`. Treat it as software that is honest about
 its limits, not as software that is finished.
 

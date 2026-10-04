@@ -148,7 +148,7 @@ otherwise any `NOT_ESTABLISHED` gives `NOT_ESTABLISHED`; otherwise any `CONFLICT
 | F0 | A label outside the vocabulary is `INSUFFICIENT` |
 | F1 | A conclusive finding (`SUPPORTED`, `NOT_ESTABLISHED`) must rest on an item on the case that the node saw |
 | F2 | A criterion that needs independent evidence is conclusive only with an inspector's item in its basis |
-| F3 | A conclusive finding resting only on the favoured party's items, against material evidence from the other party or the inspector, is `CONFLICTING` |
+| F3 | A conclusive finding resting only on the favoured party's items, while the panel names any item that weighs the other way, is `CONFLICTING`. Who filed that item is not asked: a party's own item that tells against it opposes like any other, so a finding never turns on who filed a copy of what |
 | F4 | A conclusive finding the model itself marks as resting on inadequate evidence is `INSUFFICIENT` |
 | F5 | Items the node could not see are set aside |
 | F6 | An item flagged as carrying instructions to the assessor never counts for the side that filed it |
@@ -161,7 +161,11 @@ item the model named and no copy of it.
 Copies. The same bytes filed by two roles are each filer's own item. A copy the model names brings in the other
 roles' copies, except that a copy filed by the party a list favours brings in nothing. A copy named on the other list
 stays where it was named, and one that could be brought into both counts against the finding. An item named on both
-lists counts on neither.
+lists never carries a finding: it stays only among what weighs the other way.
+
+Copies are seen together. An image is listed in `unseen_ids` only when no copy of its bytes was seen, so the
+findings, the right to ask again and the rules for a readjudication round all read the same fact. A copy that did
+not open is described to the model by the copy that did.
 
 | Code-first and blind results | |
 |---|---|
@@ -250,7 +254,7 @@ Every amount is a credit in the contract's ledger (`get_credit`) until its owner
 | Required evidence, or any evidence, is missing | Decided in code | A `CODE` decision, every criterion `INSUFFICIENT`, with what is missing |
 | Evidence is thin, indirect or unclear | The model's `INSUFFICIENT`, or floors F1, F2, F4 | `INSUFFICIENT`, with `missing` naming what would settle it |
 | Evidence points both ways | The model's `CONFLICTING`, or floor F3 | `CONFLICTING`, with an item on each side |
-| An image could not be seen | It counts for nothing (F5) and is listed in `unseen_ids` | The decision; the side it went against may ask again |
+| An image could not be seen, and no copy of its bytes was | It counts for nothing (F5) and is listed in `unseen_ids` | The decision; the side it went against may ask again |
 | Nothing at all could be examined | Every criterion `NOT_ASSESSED` | The decision; it may be asked for again or challenged |
 | A readjudication round could not examine what it had to | `NO_RESULT`: the challenged decision keeps standing | The round, marked `NO_RESULT` |
 

@@ -107,8 +107,32 @@ def test_f3_lifted_by_an_admission_or_the_inspector(h):
     i = h.view("get_case_evidence", cid)  # noqa: F841 - inventory read for clarity
     cid2 = cid
     # The respondent's own document conceding the point is an admission.
-    _assess(h, cid2, judge(crit("C1", "SUPPORTED", [p, d], [d]), crit("C2", "INSUFFICIENT", [], adequate=False)))
+    _assess(h, cid2, judge(crit("C1", "SUPPORTED", [p, d]), crit("C2", "INSUFFICIENT", [], adequate=False)))
     assert _decision(h, cid2)["criteria"][0]["finding"] == "SUPPORTED"
+
+
+def test_a_document_named_both_ways_is_no_admission(h):
+    """Named for the criterion and against it, the respondent's document corroborates nothing: it stays among what
+    weighs against, and the claimant's own photograph alone does not carry the criterion over it."""
+    cid, p, d = _two(h)
+    _assess(h, cid, judge(crit("C1", "SUPPORTED", [p, d], [d]), crit("C2", "INSUFFICIENT", [], adequate=False)))
+    c1 = _decision(h, cid)["criteria"][0]
+    assert c1["finding"] == "CONFLICTING" and c1["floors"] == ["F3"]
+    assert c1["basis"] == [p] and c1["contrary"] == [d]
+
+
+def test_a_partys_own_item_that_tells_against_it_is_opposing_evidence(h):
+    """F3 does not ask who filed what weighs against. If it did, the respondent could make a claimant's photograph
+    opposing by filing the same bytes, and the outcome would turn on who copied what."""
+    cid = h.opened()
+    p = h.photo(cid, tag="own-roof")
+    q = h.photo(cid, tag="own-ceiling-still-stained")
+    h.ready_all(cid)
+    _assess(h, cid, judge(crit("C1", "SUPPORTED", [p], [q]), crit("C2", "SUPPORTED", [p])))
+    dec = _decision(h, cid)
+    assert dec["criteria"][0]["finding"] == "CONFLICTING" and dec["criteria"][0]["floors"] == ["F3"]
+    assert dec["criteria"][1]["finding"] == "SUPPORTED"
+    assert dec["overall"] != "SUPPORTED"
 
 
 def test_f3_inspector_corroboration(h):
@@ -641,7 +665,7 @@ def test_a_flagged_item_still_counts_against_its_own_filer(h):
 
 def test_f5_only_for_items_nobody_could_see(h):
     cid, p, d = _two(h)
-    _assess(h, cid, judge(crit("C1", "SUPPORTED", [p, d], [d]), crit("C2", "SUPPORTED", [p, d])))
+    _assess(h, cid, judge(crit("C1", "SUPPORTED", [p, d]), crit("C2", "SUPPORTED", [p, d])))
     dec = _decision(h, cid)
     assert dec["unseen_ids"] == [] and dec["criteria"][0]["floors"] == [] and dec["criteria"][0]["contrary"] == []
 

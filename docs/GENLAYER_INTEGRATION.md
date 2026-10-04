@@ -11,7 +11,7 @@ and dates are at the end.
 | Network | GenLayer Studio Next, chain 61997 (the "Studio development preview" in GenLayer's documentation, `studioDevnet` in its SDK) |
 | RPC | `https://studio-dev.genlayer.com/api`. `studio-next.genlayer.com` is an alias of the same environment; the documentation asks integrations to use the canonical host |
 | Explorer | `https://explorer-studio-dev.genlayer.com` |
-| Contract | `0xB903Dcfd1730818260CFFa05d12497E73CB124Ff` |
+| Contract | `0x5dF552006b48Bef80e60dCc65572f3e917dFC12a` |
 | Contract runtime | GenVM, runner `py-genlayer:5jycge4q8k23462jtb0b9fyey1s9qz928sz2nbrd9mg4sxqg2qng`, pinned in the first line of the source |
 | SDK | `genlayer-js` 2.0.0-rc.1 |
 | Wallet writes | `@genlayer/transaction-kit` and `@genlayer/transaction-kit-react` 0.1.0-rc.2 |

@@ -1,6 +1,6 @@
 # KeyWitness specification
 
-Status: design of record, written before the contract (2 October 2026) and revised after four adversarial reviews of
+Status: design of record, written before the contract (2 October 2026) and revised after eight adversarial reviews of
 it (the last on 4 October 2026). Where the project brief and this file differ, this file records the decision and the
 reason.
 
@@ -195,7 +195,7 @@ answers with a predictable row of digits, which was not observed; it is listed a
    evidence-to-criterion mapping are presented as the filer's claims, never as facts. For every criterion the model
    names the items that support it and the items against it, the same way whatever it finds; code works out which list
    a finding rests on (the items against the criterion for NOT_ESTABLISHED, the items that support it otherwise). An
-   item named on both sides counts on neither. Copies of the same bytes filed by different roles are handled as
+   item named on both sides never carries a finding and stays only among what weighs the other way. Copies of the same bytes filed by different roles are handled as
    section 7 says.
 
 **An answer that judges nothing is not a finding.** A node's answer must give every criterion a finding from the
@@ -226,7 +226,7 @@ its form and not its substance, so it is checked as the model gave it, before an
 - F2: a criterion marked as needing independent evidence can be conclusive only with an item filed by the inspector in
   its basis; otherwise INSUFFICIENT.
 - F3 (both directions): a conclusive finding whose basis comes only from the party it favours, while the panel
-  names material evidence the other way filed by the other party or the inspector, becomes CONFLICTING. An admission
+  names material evidence the other way, whoever filed it, becomes CONFLICTING. An admission
   (the disfavoured party's own item in the basis) or an inspector item lifts the floor.
 - F4: a conclusive finding the panel itself marks as resting on inadequate evidence becomes INSUFFICIENT.
 - F5: items a node could not see are removed from both lists (recorded only when an item was actually unseen).

@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 
 import {
   caseIdFrom, caseName, cutShort, day, eventText, exhibitName, floorText, gen, local, prose, requirementLabel, seconds, sentence,
-  settleText,
+  seenThrough, settleText,
   termsTime, txLabel, utc,
 } from "@/lib/present";
 
@@ -127,5 +127,18 @@ describe("a transaction on a case", () => {
   it("never claims an outcome for a method it does not know", () => {
     expect(txLabel("some_new_method", "recorded")).toBe("Request to call some new method, recorded");
     expect(txLabel("some_new_method", "refused")).toBe("Request to call some new method: refused by the contract");
+  });
+});
+
+describe("an image examined through its copy", () => {
+  const d = {
+    seen_ids: ["E-0001"],
+    evidence: [{ evidence_id: "E-0001", sha256: "aa" }, { evidence_id: "E-0002", sha256: "aa" }, { evidence_id: "E-0003", sha256: "bb" }],
+  };
+  it("names the copy that was seen, and nothing for an image seen itself or not at all", () => {
+    expect(seenThrough(d, "E-0002")).toBe("E-0001");
+    expect(seenThrough(d, "E-0001")).toBe("");
+    expect(seenThrough(d, "E-0003")).toBe("");
+    expect(seenThrough(d, "E-0009")).toBe("");
   });
 });

@@ -177,9 +177,10 @@ def test_a_party_filing_the_inspectors_report_first_does_not_stop_the_inspector_
     assert out["overall"] == "SUPPORTED" and c2["floors"] == [] and own in c2["basis"]
 
 
-def test_an_item_named_on_both_sides_of_a_criterion_counts_for_neither(h):
+def test_an_item_named_on_both_sides_of_a_criterion_never_carries_it(h):
     """A respondent's denial listed both for and against a criterion used to stay in the supporting list, where
-    it read as the respondent's own admission and lifted the floor against one-sided evidence."""
+    it read as the respondent's own admission and lifted the floor against one-sided evidence. It counts only
+    among what weighs against."""
     cid = h.opened()
     p = h.photo(cid, tag="both-roof")
     denial = h.doc(cid, by=RESPONDENT, text="The respondent denies that the listed slates were replaced.")
@@ -192,7 +193,7 @@ def test_an_item_named_on_both_sides_of_a_criterion_counts_for_neither(h):
         crit("C2", "SUPPORTED", [p])))
     out = h.call("request_assessment", cid)
     c1 = h.view("get_decision", out["decision_id"])["criteria"][0]
-    assert c1["finding"] == "CONFLICTING" and c1["basis"] == [p] and c1["contrary"] == [report]
+    assert c1["finding"] == "CONFLICTING" and c1["basis"] == [p] and c1["contrary"] == [denial, report]
 
 
 def test_bytes_first_filed_elsewhere_are_accepted_and_flagged(h):
@@ -499,7 +500,7 @@ def test_identical_images_are_seen_together(h):
               judge_ans=judge(crit("C1", "INSUFFICIENT", [], adequate=False), crit("C2", "SUPPORTED", [doc], [mine])))
     out = h.call("request_assessment", cid)
     dec = h.view("get_decision", out["decision_id"])
-    assert dec["seen_ids"] == [mine] and dec["unseen_ids"] == [theirs]
+    assert dec["seen_ids"] == [mine] and dec["unseen_ids"] == [], "no copy of those bytes went unexamined"
     c2 = dec["criteria"][1]
     assert c2["finding"] == "CONFLICTING" and c2["contrary"] == [mine, theirs] and c2["floors"] == ["F3"]
 
@@ -635,7 +636,7 @@ def test_a_validator_that_saw_the_copy_the_leader_missed_does_not_dissent_over_i
     one: the record treats the other as seen through it."""
     cid = h.opened()
     mine = h.photo(cid, tag="both-seen-ceiling", criteria=["C2"])
-    theirs = h.photo(cid, by=RESPONDENT, tag="both-seen-ceiling", criteria=["C2"])
+    h.photo(cid, by=RESPONDENT, tag="both-seen-ceiling", criteria=["C2"])
     doc = h.doc(cid, by=CLAIMANT, doc_type="CONTRACTOR_STATEMENT", text="Statement: all listed tasks were done.")
     h.ready_all(cid)
     calls = {"n": 0}
@@ -651,7 +652,7 @@ def test_a_validator_that_saw_the_copy_the_leader_missed_does_not_dissent_over_i
     h.answers(look_ans=first_prompt_only, judge_ans=answer, validator_look=look(), validator_judge=answer)
     out = h.call("request_assessment", cid)
     dec = h.view("get_decision", out["decision_id"])
-    assert dec["seen_ids"] == [mine] and dec["unseen_ids"] == [theirs]
+    assert dec["seen_ids"] == [mine] and dec["unseen_ids"] == [], "no copy of those bytes went unexamined"
     assert not any("did not count images this node saw" in x for x in h.prints)
 
 

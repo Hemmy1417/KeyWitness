@@ -105,7 +105,7 @@ export const FLOOR_TEXT: Record<string, string> = {
   F0: "The answer was not one of the five findings, so it counts as insufficient.",
   F1: "A conclusive finding must rest on at least one item the validators saw; none was cited.",
   F2: "The parties agreed this criterion needs the inspector's evidence; none was in the basis.",
-  F3: "Only the favoured side's own evidence supported it, against material evidence from the other side or the inspector.",
+  F3: "Only the favoured side's own evidence supported it, while other evidence on the case weighed the other way.",
   F4: "The panel itself judged the evidence inadequate to conclude.",
   F5: "Items no validator could see were set aside.",
   "F6/F7": "An item that tried to instruct the assessor cannot count for the side that filed it, as support or as opposition. The same goes for a file the claimant brought from a case with a different other party.",
@@ -394,4 +394,15 @@ export function eventText(e: CaseEvent, zone: string): { text: string; finding?:
     case "FINALIZED": return { text: "The case was finalized.", finding };
     default: return { text: humanize(e.kind) + "." };
   }
+}
+
+/**
+ * The copy through which an image was examined, when the image itself did not open: identical bytes are seen
+ * together, so the contract counts a copy whose twin was seen. "" when the image was seen itself or not at all.
+ */
+export function seenThrough(d: { seen_ids: string[]; evidence: { evidence_id: string; sha256: string }[] }, id: string): string {
+  if (d.seen_ids.includes(id)) return "";
+  const mine = d.evidence.find((e) => e.evidence_id === id)?.sha256;
+  if (!mine) return "";
+  return d.evidence.find((e) => e.sha256 === mine && e.evidence_id !== id && d.seen_ids.includes(e.evidence_id))?.evidence_id ?? "";
 }

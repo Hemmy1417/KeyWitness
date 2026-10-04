@@ -493,7 +493,11 @@ await waitUntil(state.steps["D.evidence_ends"], "D's challenge evidence period")
   const owedClaimant = BigInt(await step("withdraw.claimant-owed", async () => (await view(reader, address, "get_credit", [w.CLAIMANT.addr])).owed));
   const paid = await must("withdraw.claimant", w.CLAIMANT, "withdraw", []);
   await waitFor(paid.hash, { until: ["FINALIZED"], label: "claimant withdraw to finality" });
-  const after = BigInt(await step("B.claimant-balance-after", async () => String(await balanceOf(w.CLAIMANT.addr))));
+  // The transfer lands a little after the withdrawal is final: wait for the balance to move before reading it.
+  const after = BigInt(await step("B.claimant-balance-after", async () => {
+    for (let i = 0; i < 30 && (await balanceOf(w.CLAIMANT.addr)) <= before; i++) await sleep(4000);
+    return String(await balanceOf(w.CLAIMANT.addr));
+  }));
   check("B: the claimant's wallet balance rises by what was withdrawn, less fees", paid.returned.wei === String(owedClaimant)
     && after > before && after - before <= owedClaimant, `${after - before} of ${owedClaimant}`);
   const owedRespondent = BigInt(await step("withdraw.respondent-owed", async () => (await view(reader, address, "get_credit", [w.RESPONDENT.addr])).owed));

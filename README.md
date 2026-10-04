@@ -18,7 +18,7 @@ never a legal determination, never assigns liability, and never proves that an e
 | | |
 |---|---|
 | Network | GenLayer Studio Next, chain 61997 (a test network; every amount is test GEN) |
-| Contract | `0xB903Dcfd1730818260CFFa05d12497E73CB124Ff` |
+| Contract | `0x5dF552006b48Bef80e60dCc65572f3e917dFC12a` |
 | Source | [`contracts/keywitness.py`](contracts/keywitness.py), one file, deployed as is |
 | Live record | [`docs/proofs/live.md`](docs/proofs/live.md): 78 checks on the deployed contract, every transaction linked |
 | Sample case | Synthetic, labelled `SYNTHETIC DEMO DATA`, run live on the contract above |
@@ -221,10 +221,10 @@ pnpm lint && pnpm typecheck && pnpm test && pnpm build
 
 | Layer | Count |
 |---|---|
-| Direct contract tests | 395 |
-| Mutants, all killed | 286 |
+| Direct contract tests | 420 |
+| Mutants, all killed | 297 |
 | App and contract parity | 96 situations, 23 test images |
-| Web unit tests | 215 |
+| Web unit tests | 216 |
 | Live checks on the deployed contract | 78 |
 
 [`docs/TESTING.md`](docs/TESTING.md) says what each layer proves and what is not tested.

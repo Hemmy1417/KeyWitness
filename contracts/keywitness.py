@@ -773,16 +773,17 @@ def _settle_criterion(row: dict, crit: dict, ctx: dict, visible: set) -> dict:
     twins = ctx.get("twins", {})
     supports = [x for x in row.get("supports", []) if x in visible]
     against = [x for x in row.get("against", []) if x in visible]
-    # An item named on both sides of a criterion says nothing either way.
     both = set(supports) & set(against)
-    supports = [x for x in supports if x not in both]
-    against = [x for x in against if x not in both]
     if any(x not in visible for x in cited):
         floors.append("F5")
     # A finding rests on one list (its basis) and is opposed by the other:
     # NOT_ESTABLISHED rests on what is against the criterion, every other
     # finding on what supports it.
     basis, contrary = (against, supports) if finding == "NOT_ESTABLISHED" else (supports, against)
+    # An item the model named on both lists cannot carry the finding. It stays
+    # among what weighs the other way, whoever filed it and whatever copies of
+    # it exist: what a finding rests on must point one way.
+    basis = [x for x in basis if x not in both]
     sides = _LIST_SIDES.get(finding)
     if sides:
         # Copies. The same bytes filed by two roles are each filer's own item,
@@ -805,8 +806,8 @@ def _settle_criterion(row: dict, crit: dict, ctx: dict, visible: set) -> dict:
             return out
 
         named_basis, named_contrary = list(basis), list(contrary)
-        contrary = grown(named_contrary, sides[1], set(named_basis) | both)
-        basis = grown(named_basis, sides[0], set(contrary) | both)
+        contrary = grown(named_contrary, sides[1], set(named_basis))
+        basis = grown(named_basis, sides[0], set(contrary))
         # F6 and F7: an item that tried to instruct the assessor never counts
         # for the side that filed it: not in a basis that favours that side,
         # not among the contrary items that weigh against the other side. The
@@ -834,10 +835,16 @@ def _settle_criterion(row: dict, crit: dict, ctx: dict, visible: set) -> dict:
         floors.append("F2")
     if finding in CONCLUSIVE:
         # F3, both directions: the favoured side's own evidence alone does not
-        # outweigh material evidence from the other side or the inspector.
+        # outweigh evidence the model weighed the other way. Who filed that
+        # evidence is not asked. A party's own item that tells against it is
+        # the plainest opposing evidence there is, and a rule that counted
+        # only the other side's items would turn on who filed a copy of what:
+        # a respondent could make a claimant's photograph "opposing" by
+        # filing the same bytes, and a claimant could keep a respondent's
+        # report from being "opposing" by filing it first.
         other = _LIST_SIDES[finding][1]
         corroborated = any(roles[x] in ("INSPECTOR", other) for x in basis)
-        opposing = [x for x in contrary if roles[x] in ("INSPECTOR", other)]
+        opposing = list(contrary)
         if not corroborated and opposing:
             if finding == "NOT_ESTABLISHED":
                 # A CONFLICTING basis holds the items that support the criterion.
@@ -948,19 +955,39 @@ def _judged(raw, criterion_ids: list) -> bool:
 def _trim(out: dict, seen_ids: list) -> dict:
     """A node's raw answer cut to the fields and sizes the record can hold,
     before it travels as the leader's result. Ids are not filtered here: the
-    shape step does that identically on every node."""
+    shape step does that identically on every node. An id and a finding are
+    stripped before they are cut, so padding never cuts the word itself."""
+    def word(v, limit: int) -> str:
+        # Never cut and never repaired: a value that is too long, or that
+        # carries what UTF-8 cannot, is no word at all, so a row can never
+        # become another criterion's row on its way to the validators.
+        if not isinstance(v, str):
+            return ""
+        w = v.strip()
+        return w if len(w) <= limit and _text(w, limit) == w else ""
+
     def items(v, limit: int, cap: int) -> list:
         return [_text(x, limit) for x in (v if isinstance(v, list) else [])[:cap]]
+
+    def ids(v, cap: int) -> list:
+        # Evidence ids: stripped, each once, and only then capped, so padding
+        # or repetition never pushes a named item out of what travels.
+        out = []
+        for x in (v if isinstance(v, list) else [])[:4096]:
+            w = word(x, 16)
+            if w and w not in out:
+                out.append(w)
+        return out[:cap]
 
     crits = []
     for r in (out.get("criteria") if isinstance(out.get("criteria"), list) else [])[:12]:
         if isinstance(r, dict):
-            crits.append({"id": _text(r.get("id"), 8), "finding": _text(r.get("finding"), 20),
-                          "supports": items(r.get("supports"), 16, 40), "against": items(r.get("against"), 16, 40),
+            crits.append({"id": word(r.get("id"), 8), "finding": word(r.get("finding"), 20),
+                          "supports": ids(r.get("supports"), 40), "against": ids(r.get("against"), 40),
                           "evidence_adequate": r.get("evidence_adequate") is True,
                           "missing": items(r.get("missing"), 160, 3),
                           "rationale": _text(r.get("rationale"), RATIONALE_MAX)})
-    return {"criteria": crits, "instructions_found": items(out.get("instructions_found"), 16, 40),
+    return {"criteria": crits, "instructions_found": ids(out.get("instructions_found"), 40),
             "limitations": items(out.get("limitations"), 200, 4), "seen_ids": list(seen_ids)}
 
 
@@ -1628,7 +1655,7 @@ class KeyWitness(gl.contract.Contract):
         for x in raw:
             s = x.strip().upper()
             if s not in ids:
-                _refuse(f"{s or 'an empty value'} is not a criterion of this case")
+                _refuse(f"{_clean(x, 20) or 'an empty value'} is not a criterion of this case")
             if s not in out:
                 out.append(s)
         return out
@@ -2000,11 +2027,24 @@ class KeyWitness(gl.contract.Contract):
             body = ""
             if it["kind"] in IMAGE_KINDS:
                 o = obs.get(eid)
+                via = ""
+                if not o or not o["seen"]:
+                    # Identical bytes are seen together: a copy that did not
+                    # open is described by the copy that did, since the code
+                    # counts it as seen and the model must be free to cite it.
+                    for twin in ctx["twins"].get(eid, []):
+                        other = obs.get(twin)
+                        if other and other["seen"]:
+                            o, via = other, twin
+                            break
                 if not o or not o["seen"]:
                     body = "could not be examined, so it counts for nothing; do not cite it"
                 else:
                     lead_in = ("this validator's model could not receive images; the leading validator "
                                "describes it as: " if o.get("borrowed") else "what your examination saw: ")
+                    if via:
+                        lead_in = (f"this copy did not open; it is the same bytes as {via}, so it shows the same. "
+                                   + lead_in)
                     body = lead_in + _quoted("SEEN", o["shows"])
                     if o["text"]:
                         body += "; legible text: " + " ".join(_quoted("READ", x) for x in o["text"])
@@ -2108,12 +2148,18 @@ class KeyWitness(gl.contract.Contract):
         prompt = self._judge_prompt(ctx, observations)
         # Judged as the model gave it, before anything is cut to shape: the
         # trim below would turn a slip of form into a tidy, wrong answer.
+        # And judged again as it will travel: the cut keeps a bounded number of
+        # rows, so an answer whose judgments sit past the cut is not one the
+        # validators would receive.
+        def judged(a) -> bool:
+            return _judged(a, ctx["criterion_ids"]) and _judged(_trim(a, seen_ids), ctx["criterion_ids"])
+
         answer = self._ask(prompt)
-        if not _judged(answer, ctx["criterion_ids"]):
+        if not judged(answer):
             # Asked once more; an answer that still judges nothing is a
             # failure of this node, never a finding.
             answer = self._ask(prompt)
-        if not _judged(answer, ctx["criterion_ids"]):
+        if not judged(answer):
             raise gl.vm.UserError(f"{ERROR_LLM} this validator's model did not judge every criterion")
         raw = _trim(answer, seen_ids)
         return {"raw": raw, "settled": _settle(raw, ctx), "sighted": sighted,
@@ -2180,6 +2226,13 @@ class KeyWitness(gl.contract.Contract):
                               + ", so no criterion can be established."),
             })
         seen = raw_shaped["seen_ids"] if raw_shaped else []
+        # Identical bytes are seen together. An image is unexamined only when
+        # no copy of it was seen: the retry right and the rules for a
+        # readjudication round read this list, and they must agree with the
+        # findings, which counted a copy whose twin was seen.
+        twins = ctx.get("twins", {})
+        unseen = [x for x in ctx["image_ids"]
+                  if x not in seen and not any(y in seen for y in twins.get(x, []))]
         d = {
             "decision_id": did, "case_id": c["case_id"], "round": rnd, "kind": kind, "scope": SCOPE,
             "terms_version": c["accepted_version"], "terms_digest": c["accepted_digest"],
@@ -2188,7 +2241,7 @@ class KeyWitness(gl.contract.Contract):
             "limitations": raw_shaped["limitations"] if raw_shaped else [],
             "instructions_found": raw_shaped["instructions_found"] if raw_shaped else [],
             "seen_ids": seen,
-            "unseen_ids": [x for x in ctx["image_ids"] if x not in seen] if raw_shaped else [],
+            "unseen_ids": unseen if raw_shaped else [],
             "observations": _notes(observations, ctx["image_kinds"], seen) if raw_shaped else [],
             "calibrated": bool(raw_shaped and ctx["images"]),
             "bound": {"findings": "a majority of validators, each running the assessment itself, reproduced for "

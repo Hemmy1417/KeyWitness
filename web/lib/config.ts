@@ -4,7 +4,7 @@
  * environment override points a checkout at another deployment, and the
  * status page says which one is in use.
  */
-export const RECORD_ADDRESS: string = "0xB903Dcfd1730818260CFFa05d12497E73CB124Ff";
+export const RECORD_ADDRESS: string = "0x5dF552006b48Bef80e60dCc65572f3e917dFC12a";
 
 const override = process.env.NEXT_PUBLIC_KEYWITNESS_CONTRACT?.trim() ?? "";
 
@@ -13,7 +13,7 @@ export const CONTRACT_CONFIGURED = /^0x[0-9a-fA-F]{40}$/.test(CONTRACT_ADDRESS) 
 export const IS_RECORD = !!RECORD_ADDRESS && CONTRACT_ADDRESS.toLowerCase() === RECORD_ADDRESS.toLowerCase();
 
 /** The sha256 of the contract source the deployment of record runs. */
-export const SOURCE_SHA256: string = "494f2100c47426baf923576167d8df85c5193a1566505d05f9bf63d27ffb1d49";
+export const SOURCE_SHA256: string = "ee6809842a4d9152ff04a7fa2e5e3a25c5054bf0dcfcb066e5c0078a0c40cec7";
 
 export const REPO_URL = "https://github.com/Hemmy1417/KeyWitness";
 

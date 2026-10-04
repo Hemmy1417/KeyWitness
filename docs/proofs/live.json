@@ -1,8 +1,8 @@
 {
   "label": "record",
-  "contract": "0xB903Dcfd1730818260CFFa05d12497E73CB124Ff",
+  "contract": "0x5dF552006b48Bef80e60dCc65572f3e917dFC12a",
   "chain_id": 61997,
-  "started": "2026-10-04T08:22:48.204Z",
+  "started": "2026-10-04T16:04:04.342Z",
   "steps": {
     "ledger.at the start": {
       "balance": "0",
@@ -19,7 +19,7 @@
       }
     },
     "F.open": {
-      "hash": "0x2fabebaeae6cc60aea6e0478413a8c9a19a16100b46bb46ca155389c01b98e99",
+      "hash": "0x1f5ce7fb4fb52db910f514d6dd95cc8158034999254b601e6edf8040e7288371",
       "by": "SECOND",
       "method": "open_case",
       "status": "ACCEPTED",
@@ -27,11 +27,11 @@
       "returned": {
         "case_id": "KW-0001",
         "version": 1,
-        "digest": "e1cc7d74286ac466ca0889813b186393528c570f84ea03f3274848c543b56147"
+        "digest": "ea0f9853968e44ffa98239a9c078a0eea13280cf521447ece09bbb09f51764db"
       }
     },
     "F.decline": {
-      "hash": "0x0d8ef21977454d64cc5862eb487f133d65b36ccb1196cc8d2a38e418d6dca075",
+      "hash": "0x5a7bd0497e55f85cad94f9b5ea58a66b1be09dc9e9447664ba3c3437129ce910",
       "by": "RESPONDENT",
       "method": "decline_case",
       "status": "ACCEPTED",
@@ -42,7 +42,7 @@
       }
     },
     "G.open": {
-      "hash": "0x928232b6cb91b75d44e37ac27a9dee047cf3d0ef48a7306964261e389afe6f79",
+      "hash": "0xbdc65fcbd7baff986f46f89ac36d49156d55a58d2a1b94da12e6e20144cc6cb2",
       "by": "SECOND",
       "method": "open_case",
       "status": "ACCEPTED",
@@ -50,11 +50,11 @@
       "returned": {
         "case_id": "KW-0002",
         "version": 1,
-        "digest": "89b9d64beaf764e513b3f16e8fd636eb8edb4e10cbb4e5375e35f63cb059999a"
+        "digest": "9f522b87174ec7971d547f2a35c31c2d5f484a4eb20df903accceccb49ae58f7"
       }
     },
     "G.withdraw": {
-      "hash": "0xd2baec207f3c2491ad111402c99838731ff7b65e314a7cfe82c9dafd195729ce",
+      "hash": "0xc1d8f7eee0fdebe2fad99d6cf1706b56db2efb6b73810f6f467aaa3c05a1d78c",
       "by": "SECOND",
       "method": "withdraw_case",
       "status": "ACCEPTED",
@@ -65,7 +65,7 @@
       }
     },
     "T.deadline-with-offset": {
-      "hash": "0x8503bea4c1b07b874c337ff11af7bfa33be7d5cf26de469d3beacdcd948ea45e",
+      "hash": "0x67b0d2f485309d8c943e2d3c39ec1cbb7b174ff4534e8349b12c3d31e5c32de6",
       "by": "SECOND",
       "method": "open_case",
       "status": "ACCEPTED",
@@ -73,7 +73,7 @@
       "refusal": "the deadline must look like 2026-10-01 or 2026-10-01T17:00, in the case's time zone, with no seconds and no offset"
     },
     "T.zone-abbreviation": {
-      "hash": "0xabdcb20b04555f06358c2f661a4126367d6c0c6e81b5ce2ce49fb9e1a8daad16",
+      "hash": "0x4eebc80f300775d8cb38150ba743e77b63b747111972a06064219cce30a38072",
       "by": "SECOND",
       "method": "open_case",
       "status": "ACCEPTED",
@@ -81,7 +81,7 @@
       "refusal": "the time zone must be UTC or an IANA name such as Europe/London"
     },
     "T.claim-too-long": {
-      "hash": "0x21d1736168870888330db10bee986f249f73d0ff7723d2d3fcc9ef914737ccde",
+      "hash": "0xa8cc54c911ff021840847c697e2d11080d1bebd86e2c0effac720c4430389d55",
       "by": "SECOND",
       "method": "open_case",
       "status": "ACCEPTED",
@@ -89,7 +89,7 @@
       "refusal": "the claim may be at most 400 characters"
     },
     "T.challenge-window-too-short": {
-      "hash": "0xe0992f0f5507713bb0ca238df4e85cd70e79d1dc05cc9ce22f11774656ade27e",
+      "hash": "0xabe03fd7114fce4942fc53e8cf13bd68d4d35be3ca68d21e3c84c4048050bc4e",
       "by": "SECOND",
       "method": "open_case",
       "status": "ACCEPTED",
@@ -97,7 +97,7 @@
       "refusal": "the challenge window in seconds must be between 3600 and 1209600"
     },
     "T.title-not-text": {
-      "hash": "0x1ff4846e315851b4e853cb511ac2dedd1f75c14cd14f3100169c121ff6fe15be",
+      "hash": "0xf00d3ea53b41aaf6b0ac65bdba6d1a94b6826ddd29d284271f55e251bf583205",
       "by": "SECOND",
       "method": "open_case",
       "status": "ACCEPTED",
@@ -105,7 +105,7 @@
       "refusal": "the title must be text"
     },
     "A.open": {
-      "hash": "0xedced680f6b4958e938eb94f6f8942157000c1e96750253516495d031b15b815",
+      "hash": "0x6455e60d728792118c255d74e73112df1a27c8cf0a4015a0c055192be98394c3",
       "by": "CLAIMANT",
       "method": "open_case",
       "status": "ACCEPTED",
@@ -113,7 +113,7 @@
       "returned": {
         "case_id": "KW-0003",
         "version": 1,
-        "digest": "f254840c6ceb312a876bf0c0f2dac93698f6ef47d7560486b268aeda828f5eda"
+        "digest": "b55e55fb8232a1aff37ac48fa708749ea2dbf55804a37f785eb909f951a54158"
       }
     },
     "A.acts.draft": {
@@ -259,7 +259,7 @@
       }
     },
     "A.accept-wrong-digest": {
-      "hash": "0xcd73ad600d937fc181e2d5283cb45c20ce9a5b6b1e91c435d942c15d60be9262",
+      "hash": "0xf825fb65cd2ffb375b868a0c683b98d059ff9c16ed8cde31049921a7b2223e3d",
       "by": "RESPONDENT",
       "method": "accept_case",
       "status": "ACCEPTED",
@@ -267,7 +267,7 @@
       "refusal": "the digest does not match the current terms; read them again before accepting"
     },
     "A.accept": {
-      "hash": "0xadc9da8ab5e2df8f428de88bb5d6789b3cc117b6489315c764032ba61b82439c",
+      "hash": "0x5b79d1f8c71eb977bc62db2fab28e7daf8f8430e1eafeceb3ce041accbdae926",
       "by": "RESPONDENT",
       "method": "accept_case",
       "status": "ACCEPTED",
@@ -279,7 +279,7 @@
       }
     },
     "A.stranger-deposit": {
-      "hash": "0xe14a8b3cb42bfeb218fc84c8837999fd2ed07f064ce4fa5876a66a279e54a14d",
+      "hash": "0xbbf65506671ec4dbfa40fb1e122ee603f3390e09fe78464d815fb586e2e97068",
       "executed": true,
       "returned": {
         "refused": true,
@@ -288,7 +288,7 @@
       }
     },
     "A.stranger-withdraw": {
-      "hash": "0x2de69090493a55fa6188db7f683bbe1d33aa68aabd3061858f5239f76e89b658",
+      "hash": "0x5af24be17eb7406d94ea2169f43e0e1030ab23a2a93cf91cc6864c99b0ad03f7",
       "by": "STRANGER",
       "method": "withdraw",
       "status": "ACCEPTED",
@@ -369,7 +369,7 @@
       }
     },
     "A.fund": {
-      "hash": "0xad1a16bd48cacfab56c7ff3cc7a0728afa7fa2414df4b76ec7ebd587e44010a8",
+      "hash": "0x6707c84e01b910ba41135003f77fbfaa7f24f5d4cb0b6d7240d99d8ae64680fb",
       "by": "RESPONDENT",
       "method": "fund_case",
       "status": "ACCEPTED",
@@ -381,7 +381,7 @@
       }
     },
     "A.file.1": {
-      "hash": "0xf68fb326ce78e04d9fce0b1c53c8164641dd1a849ee1e3a1d874fdfc6d46fbb8",
+      "hash": "0x13b4f0fd4558e05737148b1616a1ccebea49e6c2ebfcf3dc1636d466b6921ec3",
       "by": "CLAIMANT",
       "method": "submit_image",
       "returned": {
@@ -390,7 +390,7 @@
       }
     },
     "A.file.2": {
-      "hash": "0x93d77ef22373b25f32069cc4dd9daf9f25925fc6fda6884503f04d65d8ae1cb8",
+      "hash": "0x45a603cca5748335426fdcc09bce42f360c0e3c1105509f442491bb4aa76c459",
       "by": "CLAIMANT",
       "method": "submit_image",
       "returned": {
@@ -399,7 +399,7 @@
       }
     },
     "A.file.3": {
-      "hash": "0x0934c58120217f2a2ad6416b7ed660af868a3fa7e74ca6b03278b8a387d1ede1",
+      "hash": "0x5e7b107a24489774163559e18508cf622a2ff15608f8fae80f6a2beb8ab09aa5",
       "by": "CLAIMANT",
       "method": "submit_image",
       "returned": {
@@ -408,7 +408,7 @@
       }
     },
     "A.file.4": {
-      "hash": "0xdf60738e091dde0bcba668e78270dfd889d4fc164e456c1687a1ed13f052cb1d",
+      "hash": "0x2c3c72c30b280d55cdb19e01fdb4ee9015a38ae650fe7c2564a7c9379b3c698a",
       "by": "CLAIMANT",
       "method": "submit_text",
       "returned": {
@@ -417,7 +417,7 @@
       }
     },
     "A.file.5": {
-      "hash": "0x2dc5380ee955fb5be9d09c23862d3e96c2051d5e57906d80a13fea1e777c6b6c",
+      "hash": "0x38ea81d51add2690120a5c5883ae01bee07180981f2dc2d4c5f371b33cc4cd77",
       "by": "RESPONDENT",
       "method": "submit_text",
       "returned": {
@@ -426,7 +426,7 @@
       }
     },
     "A.file.6": {
-      "hash": "0xc8b0dcf84fc22d229cea3afae1c57d2e051ac8b8191df200ffefd6fc18ec1666",
+      "hash": "0xd84aab92bb337d80cbdf44b614b25800f410f8e61ec4e532b64b0d5884e299d1",
       "by": "RESPONDENT",
       "method": "submit_text",
       "returned": {
@@ -435,7 +435,7 @@
       }
     },
     "A.file.7": {
-      "hash": "0xcb1582d98779bc55c24294382a6b1be8b678407ffbded5179ba320de6bc9a613",
+      "hash": "0x765c94ff45fd84ab764bc1996bb6e3500cc9dc61947d5d1d2b29539954b1ce3c",
       "by": "RESPONDENT",
       "method": "submit_image",
       "returned": {
@@ -444,7 +444,7 @@
       }
     },
     "A.photo-with-camera-data": {
-      "hash": "0x91f24cb216343f7ebc474fb0c43f6a7d31f74955d45e75249a50ddb9270c49a8",
+      "hash": "0x53f6227fe7de1af0921de9b4d74a15843ffa4ae2cc0c8f744314a576d89dd9c2",
       "by": "CLAIMANT",
       "method": "submit_image",
       "status": "ACCEPTED",
@@ -522,15 +522,15 @@
       }
     },
     "A.assess-too-early": {
-      "hash": "0xa303c64598722bc7d228630131adb0217728c5c9ea8c46ca612e2021b9c289da",
+      "hash": "0xf79dd859005f2dd9e067e38949e10e15cf7f21f033b10403ddc4aabc73628216",
       "by": "CLAIMANT",
       "method": "request_assessment",
       "status": "ACCEPTED",
       "executed": false,
-      "refusal": "the evidence period runs until 2026-10-04T08:35:03Z, unless every party marks their evidence complete first"
+      "refusal": "the evidence period runs until 2026-10-04T16:16:24Z, unless every party marks their evidence complete first"
     },
     "A.stranger-files": {
-      "hash": "0x78c5ffe854323287eb7de50abc3e13333782870eb1811e3ef7c9c3990419bf8f",
+      "hash": "0x0c1effc2f3af4f3302e18c5be27e77ec03444a5c388211929c143fbabd0a84b6",
       "by": "STRANGER",
       "method": "submit_text",
       "status": "ACCEPTED",
@@ -538,7 +538,7 @@
       "refusal": "only the claimant, the respondent or an accepted inspector files evidence"
     },
     "A.ready.CLAIMANT": {
-      "hash": "0x4e1703023dcc8446e3967b73c2b09bd9be613a6835594962a39d6e44560ba568",
+      "hash": "0xa99099efd7b90209b847c2805296d4263041f974e16b8d49f764d6b274922e6f",
       "by": "CLAIMANT",
       "method": "mark_ready",
       "status": "ACCEPTED",
@@ -553,7 +553,7 @@
       }
     },
     "A.ready.RESPONDENT": {
-      "hash": "0xb6d26576a604cd20233be3e17145a47ea67e3ec3e9d7ec5b4a94893756a8cbec",
+      "hash": "0xd508045b0ce1f335ab13664b08c65ed0971b00b215420727d116a7749852b715",
       "by": "RESPONDENT",
       "method": "mark_ready",
       "status": "ACCEPTED",
@@ -666,10 +666,10 @@
           "C5": "CONFLICTING"
         }
       },
-      "hash": "0x4e5db70beb309294e94c2bd670a0c7e81cc313c9606b60571539e9bd6c343f6b",
+      "hash": "0xe891317e8cddd47e1a2a2bf1fd36d562459cdc5527721e35d788fe5fcee3cd30",
       "attempts": [
         {
-          "hash": "0x4e5db70beb309294e94c2bd670a0c7e81cc313c9606b60571539e9bd6c343f6b",
+          "hash": "0xe891317e8cddd47e1a2a2bf1fd36d562459cdc5527721e35d788fe5fcee3cd30",
           "status": "ACCEPTED",
           "consensus": "MAJORITY_AGREE",
           "executed": true,
@@ -681,108 +681,55 @@
             "appealed": false,
             "rounds": [
               {
-                "round": "Leader Rotation",
-                "nodes": [
-                  {
-                    "mode": "leader",
-                    "vote": "",
-                    "execution": "ERROR",
-                    "model": "llm-router/policy:dev-gpt-oss",
-                    "sighted": null,
-                    "dissent": ""
-                  },
-                  {
-                    "mode": "validator",
-                    "vote": "disagree",
-                    "execution": "ERROR",
-                    "model": "llm-router/policy:dev-gpt-oss",
-                    "sighted": null,
-                    "dissent": "the leader's assessment failed"
-                  },
-                  {
-                    "mode": "validator",
-                    "vote": "idle",
-                    "execution": "ERROR",
-                    "model": "/?",
-                    "sighted": null,
-                    "dissent": ""
-                  },
-                  {
-                    "mode": "validator",
-                    "vote": "idle",
-                    "execution": "ERROR",
-                    "model": "/?",
-                    "sighted": null,
-                    "dissent": ""
-                  },
-                  {
-                    "mode": "validator",
-                    "vote": "disagree",
-                    "execution": "ERROR",
-                    "model": "openrouter/openai/gpt-5.4",
-                    "sighted": null,
-                    "dissent": "the leader's assessment failed"
-                  },
-                  {
-                    "mode": "validator",
-                    "vote": "disagree",
-                    "execution": "ERROR",
-                    "model": "llm-router/policy:dev-deepseek",
-                    "sighted": null,
-                    "dissent": "the leader's assessment failed"
-                  }
-                ]
-              },
-              {
                 "round": "Accepted",
                 "nodes": [
                   {
                     "mode": "leader",
                     "vote": "",
                     "execution": "SUCCESS",
-                    "model": "openrouter/openai/gpt-5.4",
+                    "model": "openrouter/google/gemini-3-flash-preview",
                     "sighted": true,
                     "dissent": ""
                   },
                   {
                     "mode": "validator",
                     "vote": "agree",
-                    "execution": "SUCCESS",
-                    "model": "openrouter/openai/gpt-5.4",
-                    "sighted": true,
-                    "dissent": ""
-                  },
-                  {
-                    "mode": "validator",
-                    "vote": "agree",
-                    "execution": "SUCCESS",
-                    "model": "llm-router/policy:dev-gpt-5-4",
-                    "sighted": false,
-                    "dissent": ""
-                  },
-                  {
-                    "mode": "validator",
-                    "vote": "disagree",
                     "execution": "SUCCESS",
                     "model": "openrouter/google/gemini-3-flash-preview",
                     "sighted": true,
-                    "dissent": "C5: the leader's finding is CONFLICTING, this node's is SUPPORTED"
+                    "dissent": ""
                   },
                   {
                     "mode": "validator",
                     "vote": "agree",
                     "execution": "SUCCESS",
-                    "model": "llm-router/policy:dev-gpt-5-4",
-                    "sighted": false,
+                    "model": "openrouter/openai/gpt-5.4",
+                    "sighted": true,
                     "dissent": ""
                   },
                   {
                     "mode": "validator",
-                    "vote": "disagree",
+                    "vote": "idle",
+                    "execution": "ERROR",
+                    "model": "/?",
+                    "sighted": null,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "idle",
+                    "execution": "ERROR",
+                    "model": "/?",
+                    "sighted": null,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "agree",
                     "execution": "SUCCESS",
-                    "model": "llm-router/policy:dev-deepseek",
-                    "sighted": false,
-                    "dissent": "C5: the leader's finding is CONFLICTING, this node's is SUPPORTED"
+                    "model": "llm-router/policy:dev-grok",
+                    "sighted": true,
+                    "dissent": ""
                   }
                 ]
               }
@@ -816,9 +763,9 @@
           "model_finding": "SUPPORTED",
           "floors": [],
           "basis": [
-            "E-0004",
             "E-0003",
-            "E-0002"
+            "E-0004",
+            "E-0006"
           ],
           "contrary": [],
           "missing": []
@@ -832,12 +779,10 @@
             "E-0004"
           ],
           "contrary": [
-            "E-0006",
-            "E-0003"
+            "E-0003",
+            "E-0006"
           ],
-          "missing": [
-            "An independent completion record or inspection confirming the flashing was resealed on every face and the gutter was cleared."
-          ]
+          "missing": []
         },
         {
           "id": "C3",
@@ -848,11 +793,10 @@
             "E-0004"
           ],
           "contrary": [
+            "E-0003",
             "E-0006"
           ],
-          "missing": [
-            "An independent post-work inspection or detailed completion photos covering all faces of the chimney and the gutter."
-          ]
+          "missing": []
         },
         {
           "id": "C4",
@@ -865,7 +809,7 @@
           ],
           "contrary": [],
           "missing": [
-            "A reliable post-repair inspection showing dry readings over time or observed improvement after rainfall."
+            "Post-repair moisture readings showing a decrease in dampness"
           ]
         },
         {
@@ -874,15 +818,13 @@
           "model_finding": "CONFLICTING",
           "floors": [],
           "basis": [
+            "E-0003",
             "E-0004"
           ],
           "contrary": [
-            "E-0006",
-            "E-0003"
+            "E-0006"
           ],
-          "missing": [
-            "An independent contemporaneous completion record dated and timed before 17:00 on 26 September 2026, or an inspection confirming all required work was finished b"
-          ]
+          "missing": []
         }
       ],
       "evidence": [
@@ -915,12 +857,12 @@
           "new_in_challenge": false
         }
       ],
-      "manifest_digest": "1763d19bb7c4d871263ec2135c0e7ee5afe876398a1fd3e32cf01d1242c52970",
-      "decision_digest": "fe7e32a62e8f0e1731f13331e4f600116d6661fdb4422079d2524b52cebcea5b",
-      "challenge_window_ends": "2026-10-04T09:27:18Z"
+      "manifest_digest": "92166d4e4ac836a6041e1db1963dc96ba5e9830004c0c80ec77934359620e8a5",
+      "decision_digest": "1e9d63564128373ffe5a6727021dbab91b2293249c45a97556f55d8504d2ec28",
+      "challenge_window_ends": "2026-10-04T17:08:27Z"
     },
     "A.challenge-wrong-side": {
-      "hash": "0x1915272a7667847477c0d328c37406074196d6b6f0d76bb33d31528d172f7738",
+      "hash": "0xe924f7fef2cc051f9f895cb04025bbf89da2d0b7851ad2b75e6a16861c7cc426",
       "executed": true,
       "returned": {
         "refused": true,
@@ -1071,15 +1013,15 @@
       }
     },
     "A.finalize-too-early": {
-      "hash": "0x77115e896a23f2d376f012185fe8c59356fed9ce09efaf3525b946a9d8b1713d",
+      "hash": "0x71afe1044ea3a1c0c80281580ca39b337476a90fa61d7c50dc91bce0680aeaac",
       "by": "STRANGER",
       "method": "finalize",
       "status": "ACCEPTED",
       "executed": false,
-      "refusal": "the decision can still be challenged until 2026-10-04T09:27:18Z"
+      "refusal": "the decision can still be challenged until 2026-10-04T17:08:27Z"
     },
     "A.challenge": {
-      "hash": "0x59c783ae5c5433466f88cc3e2adc07760379ba711f4bb6066d377eae532137ad",
+      "hash": "0x5be92af2d48e359c62673647dbe0f917b2f328078c6673a86fcf6db8693e6977",
       "by": "CLAIMANT",
       "method": "challenge",
       "status": "ACCEPTED",
@@ -1087,12 +1029,12 @@
       "returned": {
         "case_id": "KW-0003",
         "state": "UNDER_CHALLENGE",
-        "evidence_ends": "2026-10-04T08:40:22Z",
-        "reply_ends": "2026-10-04T08:50:22Z"
+        "evidence_ends": "2026-10-04T16:20:36Z",
+        "reply_ends": "2026-10-04T16:30:36Z"
       }
     },
     "A.challenge-file.1": {
-      "hash": "0x03783f7e26a0b657431986c5458b4d135335a3928288f940cbd8ca9dd5928a46",
+      "hash": "0xcaa9b60374457272047eca4fe33171242bf03b3f0d0f9399f3526606a70221f3",
       "by": "CLAIMANT",
       "method": "submit_image",
       "returned": {
@@ -1101,7 +1043,7 @@
       }
     },
     "A.challenge-file.2": {
-      "hash": "0x9b6f8d02b920c258542e974c660e08f06f50977cd33417fa92592d4933dac4da",
+      "hash": "0x68ef48d37354c96ddeece1f321b19e7b9f367fbaddb06e68475937e3fbcef704",
       "by": "CLAIMANT",
       "method": "submit_text",
       "returned": {
@@ -1110,15 +1052,15 @@
       }
     },
     "A.readjudicate-too-early": {
-      "hash": "0x0aad8027abc8c8974b7080f972084e0cb8a09cd65cfbc4cfbdd72cfa3bd8a488",
+      "hash": "0x283457c124e1a5fbd1e8903244b56ced6cf779918573a66a26feea66620f65fb",
       "by": "STRANGER",
       "method": "readjudicate",
       "status": "ACCEPTED",
       "executed": false,
-      "refusal": "the challenger may file new evidence until 2026-10-04T08:40:22Z"
+      "refusal": "the challenger may file new evidence until 2026-10-04T16:20:36Z"
     },
-    "A.evidence_ends": "2026-10-04T08:40:22Z",
-    "A.reply_ends": "2026-10-04T08:50:22Z",
+    "A.evidence_ends": "2026-10-04T16:20:36Z",
+    "A.reply_ends": "2026-10-04T16:30:36Z",
     "ledger.with a challenge bond held": {
       "balance": "200000000000000000",
       "books": "200000000000000000",
@@ -1134,7 +1076,7 @@
       }
     },
     "D.open": {
-      "hash": "0x3505b8c6b3018447a41740e62e62bbf58446a15d485c5590c19ff095a1eeaedb",
+      "hash": "0xe1315b3753c843c10caca6de5823afc2778851829fcdfb68df40b011f6ea10af",
       "by": "CLAIMANT",
       "method": "open_case",
       "status": "ACCEPTED",
@@ -1142,11 +1084,11 @@
       "returned": {
         "case_id": "KW-0004",
         "version": 1,
-        "digest": "7cbf392f31d249f396e988ad2ee9382c24eec23288b544899c8cb5761e11dca7"
+        "digest": "4338be1f697bc590386452480f8948c5c3a368d184661897ea6d6cb8a22410f3"
       }
     },
     "D.accept": {
-      "hash": "0x662710ec7529c7520ab460faf828b8168a340894638972b8316ba5519400aaeb",
+      "hash": "0xb4f397ad21465ed4e47995ef2dc59b6012e71cc340ecde2a454ea3610c185006",
       "by": "RESPONDENT",
       "method": "accept_case",
       "status": "ACCEPTED",
@@ -1158,7 +1100,7 @@
       }
     },
     "D.file.claimant": {
-      "hash": "0xc958e35a82a3c78ec6d19c38e80a9b8ee4395c6878b85a90134e7c82d6f5ed8d",
+      "hash": "0x72c288e2b5e56d182128a93e82fe38eb82240496ae514b2cfd3991b07a55bdb5",
       "by": "CLAIMANT",
       "method": "submit_text",
       "returned": {
@@ -1167,7 +1109,7 @@
       }
     },
     "D.file.respondent": {
-      "hash": "0x40a11640d9e096bf794879765cd50f1ac1d4d8288cb941fce014e4a38cf816e1",
+      "hash": "0x683c895782f2a68389b584c8451833d6a2ea405d1d8f9d8f0822b313c191b9b9",
       "by": "RESPONDENT",
       "method": "submit_text",
       "returned": {
@@ -1176,7 +1118,7 @@
       }
     },
     "D.ready.CLAIMANT": {
-      "hash": "0xffc7136fbd607ecd71ae13b7598d779ac2c9c8f8f64e96fb21054ef2a1ee95d5",
+      "hash": "0x6b65d3e87b211c05a55d32e5128c29665c0472b1192fe4837f01ef8d9bec9557",
       "by": "CLAIMANT",
       "method": "mark_ready",
       "status": "ACCEPTED",
@@ -1191,7 +1133,7 @@
       }
     },
     "D.ready.RESPONDENT": {
-      "hash": "0xfa7d9f8d3b1921815ae0bac566e6f057658a95f6e6f52f721c275a72422a4086",
+      "hash": "0x62777c7009287e54999832cd39f6e88c182273b80e02fbc90909850b50b24c2c",
       "by": "RESPONDENT",
       "method": "mark_ready",
       "status": "ACCEPTED",
@@ -1216,10 +1158,10 @@
           "C1": "CONFLICTING"
         }
       },
-      "hash": "0xea09ea8556b219cbfc4de2826927d4482f764046499810bcbf3405fbe1637ab7",
+      "hash": "0x1ffc2381b9c0cb687e3ccbe0a413c41d225b5e9c5ee2e354ba900c504f37bf71",
       "attempts": [
         {
-          "hash": "0xea09ea8556b219cbfc4de2826927d4482f764046499810bcbf3405fbe1637ab7",
+          "hash": "0x1ffc2381b9c0cb687e3ccbe0a413c41d225b5e9c5ee2e354ba900c504f37bf71",
           "status": "ACCEPTED",
           "consensus": "MAJORITY_AGREE",
           "executed": true,
@@ -1237,47 +1179,47 @@
                     "mode": "leader",
                     "vote": "",
                     "execution": "SUCCESS",
+                    "model": "llm-router/policy:dev-mistral",
+                    "sighted": true,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "idle",
+                    "execution": "ERROR",
+                    "model": "/?",
+                    "sighted": null,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "idle",
+                    "execution": "ERROR",
+                    "model": "/?",
+                    "sighted": null,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "agree",
+                    "execution": "SUCCESS",
+                    "model": "openrouter/openai/gpt-5.4",
+                    "sighted": true,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "agree",
+                    "execution": "SUCCESS",
                     "model": "llm-router/policy:dev-sonnet",
                     "sighted": true,
                     "dissent": ""
                   },
                   {
                     "mode": "validator",
-                    "vote": "idle",
-                    "execution": "ERROR",
-                    "model": "/?",
-                    "sighted": null,
-                    "dissent": ""
-                  },
-                  {
-                    "mode": "validator",
                     "vote": "agree",
                     "execution": "SUCCESS",
-                    "model": "llm-router/policy:dev-gemini",
-                    "sighted": true,
-                    "dissent": ""
-                  },
-                  {
-                    "mode": "validator",
-                    "vote": "idle",
-                    "execution": "ERROR",
-                    "model": "/?",
-                    "sighted": null,
-                    "dissent": ""
-                  },
-                  {
-                    "mode": "validator",
-                    "vote": "agree",
-                    "execution": "SUCCESS",
-                    "model": "llm-router/policy:dev-gpt-oss",
-                    "sighted": true,
-                    "dissent": ""
-                  },
-                  {
-                    "mode": "validator",
-                    "vote": "agree",
-                    "execution": "SUCCESS",
-                    "model": "llm-router/policy:dev-deepseek",
+                    "model": "llm-router/policy:dev-gpt-5-4",
                     "sighted": true,
                     "dissent": ""
                   }
@@ -1313,7 +1255,9 @@
           "contrary": [
             "E-0011"
           ],
-          "missing": []
+          "missing": [
+            "Independent verification (e.g., third‑party inspection report or dated photographs) confirming that all three panels were replaced"
+          ]
         }
       ],
       "evidence": [
@@ -1326,12 +1270,12 @@
           "new_in_challenge": false
         }
       ],
-      "manifest_digest": "645123ba1a76019d5a2b597f1fbda856c7031e14f6dff8f7f5917c17ae9ee69b",
-      "decision_digest": "d1534100b83511a590950949238c876bbea86942006b0e7e3a83b3e5ad370e16",
-      "challenge_window_ends": "2026-10-04T09:31:52Z"
+      "manifest_digest": "768e8db509b460cf977163d71df1935e33dcbe0c5e4da49f2faf9eea80c028fc",
+      "decision_digest": "1620f4e32c41e3c3b927d9c820a6c06ac94003b15ba8d6d0832267dfeaa7c461",
+      "challenge_window_ends": "2026-10-04T17:11:57Z"
     },
     "D.challenge": {
-      "hash": "0x1cbd2d3cacf2979190e512d0dda6c01c96beff3d6d68a09d3f4677e9beda0d50",
+      "hash": "0xeceb3bcf169c0feda0a3e6e7a1f8a8c7bfe5dfb36458921dc24156108b8b548b",
       "by": "CLAIMANT",
       "method": "challenge",
       "status": "ACCEPTED",
@@ -1339,13 +1283,13 @@
       "returned": {
         "case_id": "KW-0004",
         "state": "UNDER_CHALLENGE",
-        "evidence_ends": "2026-10-04T08:42:50Z",
-        "reply_ends": "2026-10-04T08:52:50Z"
+        "evidence_ends": "2026-10-04T16:23:09Z",
+        "reply_ends": "2026-10-04T16:33:09Z"
       }
     },
-    "D.evidence_ends": "2026-10-04T08:42:50Z",
+    "D.evidence_ends": "2026-10-04T16:23:09Z",
     "B.open": {
-      "hash": "0xb8ef142543ea9bb5b371ffe86c82c6bc0f809a0c89461388983f507a6c0fc2eb",
+      "hash": "0x78db0456edd14a3c21402f82d9805feceab89b780fac8ea224844734a9a9c78d",
       "by": "CLAIMANT",
       "method": "open_case",
       "status": "ACCEPTED",
@@ -1353,11 +1297,11 @@
       "returned": {
         "case_id": "KW-0005",
         "version": 1,
-        "digest": "71d5d4530f5be1a4db63cb2c76fa19c46834b16e116bb9985b6745752ce0700b"
+        "digest": "defe58b6412b63804070ec79ed7d0b193ae866f9e9e8eb11b4f0a93217670e12"
       }
     },
     "B.accept": {
-      "hash": "0x2c23bddd5da4e4f2f4826f871ac0e4a79df9204d59ace5897398f67b1066647b",
+      "hash": "0x9cfc2a87fd8d4aa917d920f7b4adb50dbc1ff2c40b128076834a8f4d80c541f0",
       "by": "RESPONDENT",
       "method": "accept_case",
       "status": "ACCEPTED",
@@ -1369,7 +1313,7 @@
       }
     },
     "B.fund": {
-      "hash": "0x14cb0000f2a72b9d9f252d31c2d53a207628561502e2622d05fcd0b744f2d25a",
+      "hash": "0xe52f9257a9137247c76a771af241e9be305eb2853512e1bb4e84b4c1aad174a9",
       "by": "RESPONDENT",
       "method": "fund_case",
       "status": "ACCEPTED",
@@ -1381,7 +1325,7 @@
       }
     },
     "B.file.claimant": {
-      "hash": "0x2dedb53b4788deaff8d16980ac562d00533bedff152f86e001c67873faf841df",
+      "hash": "0xd7bcf731a66f8be90c916564fe52d73028f9582381d3b1db57a8883f934d04ff",
       "by": "CLAIMANT",
       "method": "submit_text",
       "returned": {
@@ -1390,7 +1334,7 @@
       }
     },
     "B.file.respondent": {
-      "hash": "0x13e5aeb86f8006f16cd7e38a28aca9699c71d9dbae490006d9ed741583fc01c6",
+      "hash": "0x1bdeafd9a2693b669b4f5488925478544b467c4e13461ef9d294155535bac841",
       "by": "RESPONDENT",
       "method": "submit_text",
       "returned": {
@@ -1399,7 +1343,7 @@
       }
     },
     "B.ready.CLAIMANT": {
-      "hash": "0x26715bf6bd360e3fd4637542f10efab2a490b5d0d169df888a0cb5f5bba75aa6",
+      "hash": "0xd34e5220222ed929056b3a8f22e034954a3b5126c1c142f996c756aa604ef5cd",
       "by": "CLAIMANT",
       "method": "mark_ready",
       "status": "ACCEPTED",
@@ -1414,7 +1358,7 @@
       }
     },
     "B.ready.RESPONDENT": {
-      "hash": "0x9162bbf21fd8c13fc7cbd36082b73da84b543e6687b3cf35d1f8d12aa2e30058",
+      "hash": "0x66297d779b3689a594412a58ff595513379bb38d406b87609f7665af1f77eb99",
       "by": "RESPONDENT",
       "method": "mark_ready",
       "status": "ACCEPTED",
@@ -1440,10 +1384,10 @@
           "C2": "SUPPORTED"
         }
       },
-      "hash": "0x0903ea7a970711388ae4409a3e6491ccf5a93a123e78103f1b9c352b0a35201f",
+      "hash": "0x386147ccdcc85b283516405a68ea110e54a1c4576adc0b514af4eaff3aebfd60",
       "attempts": [
         {
-          "hash": "0x0903ea7a970711388ae4409a3e6491ccf5a93a123e78103f1b9c352b0a35201f",
+          "hash": "0x386147ccdcc85b283516405a68ea110e54a1c4576adc0b514af4eaff3aebfd60",
           "status": "ACCEPTED",
           "consensus": "MAJORITY_AGREE",
           "executed": true,
@@ -1465,23 +1409,7 @@
                     "mode": "leader",
                     "vote": "",
                     "execution": "SUCCESS",
-                    "model": "llm-router/policy:dev-gpt-5-4",
-                    "sighted": true,
-                    "dissent": ""
-                  },
-                  {
-                    "mode": "validator",
-                    "vote": "agree",
-                    "execution": "SUCCESS",
-                    "model": "llm-router/policy:dev-gpt-5-4",
-                    "sighted": true,
-                    "dissent": ""
-                  },
-                  {
-                    "mode": "validator",
-                    "vote": "agree",
-                    "execution": "SUCCESS",
-                    "model": "llm-router/policy:dev-gemini",
+                    "model": "llm-router/policy:dev-gpt-oss",
                     "sighted": true,
                     "dissent": ""
                   },
@@ -1497,7 +1425,23 @@
                     "mode": "validator",
                     "vote": "agree",
                     "execution": "SUCCESS",
-                    "model": "llm-router/policy:dev-sonnet",
+                    "model": "openrouter/openai/gpt-5.4",
+                    "sighted": true,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "agree",
+                    "execution": "SUCCESS",
+                    "model": "openrouter/openai/gpt-5.4",
+                    "sighted": true,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "agree",
+                    "execution": "SUCCESS",
+                    "model": "llm-router/policy:dev-gpt-5-4",
                     "sighted": true,
                     "dissent": ""
                   },
@@ -1516,10 +1460,10 @@
                 "nodes": [
                   {
                     "mode": "validator",
-                    "vote": "agree",
-                    "execution": "SUCCESS",
-                    "model": "llm-router/policy:dev-gpt-oss",
-                    "sighted": true,
+                    "vote": "idle",
+                    "execution": "ERROR",
+                    "model": "/?",
+                    "sighted": null,
                     "dissent": ""
                   },
                   {
@@ -1534,24 +1478,8 @@
                     "mode": "validator",
                     "vote": "agree",
                     "execution": "SUCCESS",
-                    "model": "llm-router/policy:dev-grok",
+                    "model": "llm-router/policy:dev-mistral",
                     "sighted": true,
-                    "dissent": ""
-                  },
-                  {
-                    "mode": "validator",
-                    "vote": "idle",
-                    "execution": "ERROR",
-                    "model": "/?",
-                    "sighted": null,
-                    "dissent": ""
-                  },
-                  {
-                    "mode": "validator",
-                    "vote": "idle",
-                    "execution": "ERROR",
-                    "model": "/?",
-                    "sighted": null,
                     "dissent": ""
                   },
                   {
@@ -1566,8 +1494,24 @@
                     "mode": "validator",
                     "vote": "agree",
                     "execution": "SUCCESS",
-                    "model": "llm-router/policy:dev-gpt-5-4",
+                    "model": "llm-router/policy:dev-gemini",
                     "sighted": true,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "agree",
+                    "execution": "SUCCESS",
+                    "model": "llm-router/policy:dev-sonnet",
+                    "sighted": true,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "idle",
+                    "execution": "ERROR",
+                    "model": "/?",
+                    "sighted": null,
                     "dissent": ""
                   }
                 ]
@@ -1626,9 +1570,9 @@
           "new_in_challenge": false
         }
       ],
-      "manifest_digest": "79b6256ed7ad2b960f0f8da2a46891516224e3b52816aa018481431985fc6c8c",
-      "decision_digest": "25ee30f47eca1f40e43d00e437c40ec70ac3ffe1d7fa7d37490a39fbd3c7fdbe",
-      "challenge_window_ends": "2026-10-04T09:33:44Z"
+      "manifest_digest": "cbcbc2773c223c38bf4a5a240774a37322ef8f0dea16de5d55e1cc1e60b6e5d6",
+      "decision_digest": "98b63016c48d764bc127fa836b4ca8c929c4de025f16c6bc22c4360363adbee1",
+      "challenge_window_ends": "2026-10-04T17:14:15Z"
     },
     "B.receipt-early": {
       "schema": "keywitness.receipt-file/1",
@@ -1636,11 +1580,11 @@
       "network": {
         "name": "Studio Next",
         "chain_id": 61997,
-        "contract": "0xB903Dcfd1730818260CFFa05d12497E73CB124Ff",
+        "contract": "0x5dF552006b48Bef80e60dCc65572f3e917dFC12a",
         "explorer": "https://explorer-studio-dev.genlayer.com"
       },
       "case_id": "KW-0005",
-      "chain_digest": "544ba3f3ddac7de89f578750c69d6cfd2e1ad4a0c13b2c27821e08b3ded8cdd6",
+      "chain_digest": "42f8ccce0eb62622907b5e8f0cf3fe5b87ca20679e963e5f11d3f8798096a1a1",
       "core": {
         "case_id": "KW-0005",
         "case_state": "DETERMINED",
@@ -1663,7 +1607,7 @@
           },
           "calibrated": false,
           "case_id": "KW-0005",
-          "challenge_window_ends": "2026-10-04T09:33:44Z",
+          "challenge_window_ends": "2026-10-04T17:14:15Z",
           "criteria": [
             {
               "basis": [
@@ -1677,7 +1621,7 @@
               "missing": [],
               "model_finding": "SUPPORTED",
               "needs_independent": false,
-              "rationale": "E-0012 is a message sent via the agent's repairs portal on 19 Sep 2026 at 14:02 reporting a leaking boiler; E-0013 is the agent's repairs log noting receipt of that portal report on 19 Sep 2026 at 14:05. Both directly show the tenant reported the issue to the managing agent.",
+              "rationale": "E-0012 shows a message sent through the agent's repairs portal on 19 Sept 2026 reporting a leaking boiler to Canal Lettings repairs. E-0013 records that the portal report was received from the tenant on the same date. Both items directly demonstrate a report to the managing agent.",
               "text": "Evidence shows the leaking boiler was reported to the managing agent."
             },
             {
@@ -1692,18 +1636,18 @@
               "missing": [],
               "model_finding": "SUPPORTED",
               "needs_independent": false,
-              "rationale": "The timestamps in E-0012 (14:02) and E-0013 (14:05) on 19 Sep 2026 are before the deadline of 20 Sep 2026 18:00 Europe/London, satisfying the timing requirement.",
+              "rationale": "E-0012 timestamps the message at 19 Sept 2026 14:02 and E-0013 logs receipt at 19 Sept 2026 14:05, both well before the deadline of 20 Sept 2026 18:00 (Europe/London). The evidence therefore shows the report was made in time.",
               "text": "Evidence shows the report was made before 18:00 on 20 September 2026, Europe/London time."
             }
           ],
-          "decided_at": "2026-10-04T08:33:44Z",
-          "decision_digest": "25ee30f47eca1f40e43d00e437c40ec70ac3ffe1d7fa7d37490a39fbd3c7fdbe",
+          "decided_at": "2026-10-04T16:14:15Z",
+          "decision_digest": "98b63016c48d764bc127fa836b4ca8c929c4de025f16c6bc22c4360363adbee1",
           "decision_id": "D-0003",
           "evidence": [
             {
               "declared_capture": "19 September 2026, 14:02",
               "evidence_id": "E-0012",
-              "filed_at": "2026-10-04T08:33:16Z",
+              "filed_at": "2026-10-04T16:13:40Z",
               "first_filed_in": "",
               "kind": "TEXT_DOCUMENT",
               "new_in_challenge": false,
@@ -1714,7 +1658,7 @@
             {
               "declared_capture": "19 September 2026",
               "evidence_id": "E-0013",
-              "filed_at": "2026-10-04T08:33:25Z",
+              "filed_at": "2026-10-04T16:13:48Z",
               "first_filed_in": "",
               "kind": "TEXT_DOCUMENT",
               "new_in_challenge": false,
@@ -1726,9 +1670,9 @@
           "instructions_found": [],
           "kind": "ASSESSMENT",
           "limitations": [
-            "Cannot independently verify the authenticity of the timestamps or that the repairs portal is operated by the managing agent."
+            "The assessment cannot verify that the reported message was actually read or acted upon by the managing agent beyond the logged receipt."
           ],
-          "manifest_digest": "79b6256ed7ad2b960f0f8da2a46891516224e3b52816aa018481431985fc6c8c",
+          "manifest_digest": "cbcbc2773c223c38bf4a5a240774a37322ef8f0dea16de5d55e1cc1e60b6e5d6",
           "observations": [],
           "overall": "SUPPORTED",
           "requested_by": "0x993BA6CaE307FEb5400B02083062E874F5Fe6839",
@@ -1738,14 +1682,14 @@
           "status": "STANDING",
           "superseded_by": "",
           "supersedes": "",
-          "terms_digest": "71d5d4530f5be1a4db63cb2c76fa19c46834b16e116bb9985b6745752ce0700b",
+          "terms_digest": "defe58b6412b63804070ec79ed7d0b193ae866f9e9e8eb11b4f0a93217670e12",
           "terms_version": 1,
           "unseen_ids": []
         },
         "history": [
           {
-            "decided_at": "2026-10-04T08:33:44Z",
-            "decision_digest": "25ee30f47eca1f40e43d00e437c40ec70ac3ffe1d7fa7d37490a39fbd3c7fdbe",
+            "decided_at": "2026-10-04T16:14:15Z",
+            "decision_digest": "98b63016c48d764bc127fa836b4ca8c929c4de025f16c6bc22c4360363adbee1",
             "decision_id": "D-0003",
             "kind": "ASSESSMENT",
             "overall": "SUPPORTED",
@@ -1776,7 +1720,7 @@
             }
           ],
           "deadline": "2026-09-20T18:00",
-          "digest": "71d5d4530f5be1a4db63cb2c76fa19c46834b16e116bb9985b6745752ce0700b",
+          "digest": "defe58b6412b63804070ec79ed7d0b193ae866f9e9e8eb11b4f0a93217670e12",
           "event_kind": "MAINTENANCE_REPORTED",
           "limitations": [],
           "property_ref": "Canal street flat (synthetic)",
@@ -1786,10 +1730,10 @@
           "window_start": ""
         }
       },
-      "core_digest": "544ba3f3ddac7de89f578750c69d6cfd2e1ad4a0c13b2c27821e08b3ded8cdd6",
+      "core_digest": "42f8ccce0eb62622907b5e8f0cf3fe5b87ca20679e963e5f11d3f8798096a1a1",
       "transactions": [],
       "transactions_searched": "none",
-      "generated_at": "2026-10-04T08:34:52.340Z",
+      "generated_at": "2026-10-04T16:15:24.448Z",
       "notice": "This receipt shows what the KeyWitness contract recorded. A digest proves the record was not edited; it does not prove that a photograph is authentic, that a date is genuine, or that the event happened. A finding is an assessment of evidence against agreed criteria, not a legal determination."
     },
     "B.case-after-appeal": {
@@ -1801,7 +1745,7 @@
       "outcome": ""
     },
     "C.open": {
-      "hash": "0x1ebade7aad48366681428dd382d0ede00f828715852ca4beca1a96e1756c4ff1",
+      "hash": "0x45f6c8628563d054931bfde7c895e4fd298c2b7ad68c19053f4355a9b2782122",
       "by": "CLAIMANT",
       "method": "open_case",
       "status": "ACCEPTED",
@@ -1809,11 +1753,11 @@
       "returned": {
         "case_id": "KW-0006",
         "version": 1,
-        "digest": "ba7608e130b879fbe251b1b39c504acc8d33cd115b4146a8b931b51a7b81c27e"
+        "digest": "28356f1747a77dfb65661890279f37e9faf3e34e5bf358aa8acfc02fe13e2d3a"
       }
     },
     "C.accept": {
-      "hash": "0x239b17f56fad656c43ad46314611723e65cde0ef2b5381bebc67dc496eb80e74",
+      "hash": "0x0df0e53849c3fe3f77505d1d186db88989a3f72e14878414ce90de4c26b03ef2",
       "by": "RESPONDENT",
       "method": "accept_case",
       "status": "ACCEPTED",
@@ -1825,7 +1769,7 @@
       }
     },
     "C.file.claimant": {
-      "hash": "0xec1a5ddba7d7b1ecd7aeb084692c7449b571a07f5ff10b89b213686f73fbe4d2",
+      "hash": "0xd8155f7ec8af4131f0d5a41703a36530341be8c9e1f303dc1b9ee41109361e92",
       "by": "CLAIMANT",
       "method": "submit_text",
       "returned": {
@@ -1834,7 +1778,7 @@
       }
     },
     "C.file.respondent": {
-      "hash": "0xaae8cf657368dc76e466ff1f41a5c6ee77e4e81250bec7540f75735f6abba697",
+      "hash": "0x71c799649640ac46ae27da0ca8efff2bf4a43cf2f4e92aa8f492a5deebcb476d",
       "by": "RESPONDENT",
       "method": "submit_text",
       "returned": {
@@ -1843,7 +1787,7 @@
       }
     },
     "C.ready.CLAIMANT": {
-      "hash": "0xaf0052756963dfdf57f9e98706f2b6174e2d5507b394718e42c0449bca21a73c",
+      "hash": "0xb49944ce4fae100a6b78416ff6ecf1a16ebc6a8494d2a4ea08a8682bf2325b59",
       "by": "CLAIMANT",
       "method": "mark_ready",
       "status": "ACCEPTED",
@@ -1858,7 +1802,7 @@
       }
     },
     "C.ready.RESPONDENT": {
-      "hash": "0x5efbff4c367462e8dd1557c5a2bc8c082e89b1d7f09e580c8510dc7e26718058",
+      "hash": "0x811d37b11842c42d92206f13734e90c85fe8c3e93023379bd70ae9bc0689fd24",
       "by": "RESPONDENT",
       "method": "mark_ready",
       "status": "ACCEPTED",
@@ -1883,10 +1827,10 @@
           "C1": "INSUFFICIENT"
         }
       },
-      "hash": "0x9ee5ee03f7cab3441560d92e9551a54421060ff04b09fbd7dce8bbd3674cf8a6",
+      "hash": "0x53ca3419a0c26d979298eaffe6b9074b147569c40248ae826a8c46fb541a1f33",
       "attempts": [
         {
-          "hash": "0x9ee5ee03f7cab3441560d92e9551a54421060ff04b09fbd7dce8bbd3674cf8a6",
+          "hash": "0x53ca3419a0c26d979298eaffe6b9074b147569c40248ae826a8c46fb541a1f33",
           "status": "ACCEPTED",
           "consensus": "MAJORITY_AGREE",
           "executed": true,
@@ -1904,31 +1848,7 @@
                     "mode": "leader",
                     "vote": "",
                     "execution": "SUCCESS",
-                    "model": "llm-router/policy:dev-deepseek",
-                    "sighted": true,
-                    "dissent": ""
-                  },
-                  {
-                    "mode": "validator",
-                    "vote": "agree",
-                    "execution": "SUCCESS",
-                    "model": "llm-router/policy:dev-deepseek",
-                    "sighted": true,
-                    "dissent": ""
-                  },
-                  {
-                    "mode": "validator",
-                    "vote": "idle",
-                    "execution": "ERROR",
-                    "model": "/?",
-                    "sighted": null,
-                    "dissent": ""
-                  },
-                  {
-                    "mode": "validator",
-                    "vote": "agree",
-                    "execution": "SUCCESS",
-                    "model": "openrouter/google/gemini-3-flash-preview",
+                    "model": "llm-router/policy:dev-gpt-5-4",
                     "sighted": true,
                     "dissent": ""
                   },
@@ -1945,6 +1865,30 @@
                     "vote": "agree",
                     "execution": "SUCCESS",
                     "model": "llm-router/policy:dev-deepseek",
+                    "sighted": true,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "agree",
+                    "execution": "SUCCESS",
+                    "model": "llm-router/policy:dev-sonnet",
+                    "sighted": true,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "idle",
+                    "execution": "ERROR",
+                    "model": "/?",
+                    "sighted": null,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "agree",
+                    "execution": "SUCCESS",
+                    "model": "openrouter/anthropic/claude-sonnet-4.6",
                     "sighted": true,
                     "dissent": ""
                   }
@@ -1984,7 +1928,7 @@
             "E-0015"
           ],
           "missing": [
-            "Dated photographic evidence of the new unit installed and operating, or a detailed work receipt from the contractor specifying the model installed and completio"
+            "independent verification such as a photograph or functional test confirming a new working fan installed"
           ]
         }
       ],
@@ -1998,12 +1942,12 @@
           "new_in_challenge": false
         }
       ],
-      "manifest_digest": "89ddc7793ca2122d9005a0d55a17422f49cc017e549b612d0b315480a7fad6fa",
-      "decision_digest": "2009aee5aecb49189a3c029e8ef8946c5b7510a7b7e22fc1d6297fcda755aa31",
-      "challenge_window_ends": "2026-10-04T09:35:39Z"
+      "manifest_digest": "903947a4b5e56b3ced41e06f406f3ba223a3271e8b229d385b32ded40cd89f7c",
+      "decision_digest": "d13fb3af23fdb88ffb8301c1cc83a2c25ad27e8409042f9ad7770b1b35bd959d",
+      "challenge_window_ends": "2026-10-04T17:16:18Z"
     },
     "E.open": {
-      "hash": "0xce153331aec2733ec5fb30ac0ac3422aea6cc2455aa96c590982cb3ee78787e4",
+      "hash": "0xc6b77e34fe485e99a53016395db61cac5b0b90698ae96923ae98c6f8b4e55743",
       "by": "CLAIMANT",
       "method": "open_case",
       "status": "ACCEPTED",
@@ -2011,11 +1955,11 @@
       "returned": {
         "case_id": "KW-0007",
         "version": 1,
-        "digest": "3d82425e986b331b5187b5673feb6b0689d088450234b58cdba740aef9f8c2cd"
+        "digest": "afbb5323c928b438cc17d9df173c634b72a8321bafbba754d7d7eb0c5710d4c1"
       }
     },
     "E.accept": {
-      "hash": "0xe7083fb363f9d9b6a6a728a39269d7a91f3b414512c124610d1047f943c83b89",
+      "hash": "0xa69405df7e0899b9a1fd078928c6cb6e0f3c42739d75af9339269e37318d2237",
       "by": "RESPONDENT",
       "method": "accept_case",
       "status": "ACCEPTED",
@@ -2035,7 +1979,7 @@
       "outcome": ""
     },
     "E.inspector-wrong-digest": {
-      "hash": "0xc01484d8f7b1df9b6e13ac352f73be00fca9eefa0dba5aea2080d8b518a526a8",
+      "hash": "0x2d76808e061af29bf5cbf78e52b2b07c3b572ed1d45390a62f167fca5d44b9f9",
       "by": "INSPECTOR",
       "method": "accept_inspector",
       "status": "ACCEPTED",
@@ -2043,7 +1987,7 @@
       "refusal": "the digest does not match the current terms; read them again before accepting"
     },
     "E.inspector": {
-      "hash": "0x5f252997ef542b95b91c7d473a6c70e67f4f7d1e8360ef13126edd0d1ce67376",
+      "hash": "0x448d972dcb38bf73f5b44482d2dae813dc48038e23d9126c139c42806681d3ff",
       "by": "INSPECTOR",
       "method": "accept_inspector",
       "status": "ACCEPTED",
@@ -2054,7 +1998,7 @@
       }
     },
     "E.file.claimant": {
-      "hash": "0x178a182114284c98b712389f67e2c0ccd901cc929104c4fa29a96a2fe26bca24",
+      "hash": "0x537e8977e8a2142aba334dc6ccf1f19c9884cebe7b9fa95a5fc9bb3cd5395a2d",
       "by": "CLAIMANT",
       "method": "submit_image",
       "returned": {
@@ -2067,7 +2011,7 @@
       "first_filed_in": "KW-0003"
     },
     "E.file.inspector": {
-      "hash": "0xe190a447c5efa3575f84ab8ca62d380c38a39551ea102733189a7d56c38c495e",
+      "hash": "0xaa1654f163acde16c4d5b30835789ac17cd7f9a594e934a01d9faafc5bef69b0",
       "by": "INSPECTOR",
       "method": "submit_text",
       "returned": {
@@ -2076,7 +2020,7 @@
       }
     },
     "E.ready.CLAIMANT": {
-      "hash": "0xc0138f7e48dd3a558a5abdd78cd96f32d265d2562cccc0b972daf7011530948a",
+      "hash": "0xa8577399cc81fa39c2b6071df854dfd89e4cd7590b5c5e0b883681539a9da31d",
       "by": "CLAIMANT",
       "method": "mark_ready",
       "status": "ACCEPTED",
@@ -2091,7 +2035,7 @@
       }
     },
     "E.ready.RESPONDENT": {
-      "hash": "0x46aa9fc79c23f37add197c8d1616cf14ee225c013b1ae77b5211c47aaae5c405",
+      "hash": "0xad5ff6938c51d35975ca0e7e4011b6405d0d06fbd9404396ad931979cd0299dc",
       "by": "RESPONDENT",
       "method": "mark_ready",
       "status": "ACCEPTED",
@@ -2106,7 +2050,7 @@
       }
     },
     "E.ready.INSPECTOR": {
-      "hash": "0x0dcd8a86e126b335dc93e38c0b45887c27d46e804685ff45645ab7004dda8474",
+      "hash": "0x21324e902481eccb615393ac5ccc9f1e6497e2f2a7a9d089291f3f4c186216d3",
       "by": "INSPECTOR",
       "method": "mark_ready",
       "status": "ACCEPTED",
@@ -2121,7 +2065,7 @@
       }
     },
     "E.assess": {
-      "hash": "0xb7ec7d328968e88c6fec49067c9ec2107a41a30ea155797c32491514308f0d78",
+      "hash": "0xb7c86d5da0deceb6ef0026da369dda2c532e58aca9e1b8e5f42787ca111a8e6f",
       "by": "CLAIMANT",
       "method": "request_assessment",
       "status": "ACCEPTED",
@@ -2173,9 +2117,9 @@
           "new_in_challenge": false
         }
       ],
-      "manifest_digest": "eef53e3ed2d10bd947e45d02c2300c5220c1df2aba0510f7813c640bd9f0db25",
-      "decision_digest": "116ca5f0b1a86622d5eaffe4a642bfcc2f1c78abf0e20bf35ee276320fb7049d",
-      "challenge_window_ends": "2026-10-04T09:37:40Z"
+      "manifest_digest": "f0caac5d3d37671b502ec70d9dbd477071fb7b490760d1fd0971a7f23fa4fc59",
+      "decision_digest": "d1f33bb1b713d9c346d66ec05e6481ff8787733a9600d728dfafc132be2e657d",
+      "challenge_window_ends": "2026-10-04T17:18:33Z"
     },
     "E.votes": {
       "status": "ACCEPTED",
@@ -2189,31 +2133,7 @@
               "mode": "leader",
               "vote": "",
               "execution": "SUCCESS",
-              "model": "llm-router/policy:dev-deepseek",
-              "sighted": null,
-              "dissent": ""
-            },
-            {
-              "mode": "validator",
-              "vote": "agree",
-              "execution": "SUCCESS",
-              "model": "llm-router/policy:dev-deepseek",
-              "sighted": null,
-              "dissent": ""
-            },
-            {
-              "mode": "validator",
-              "vote": "idle",
-              "execution": "ERROR",
-              "model": "/?",
-              "sighted": null,
-              "dissent": ""
-            },
-            {
-              "mode": "validator",
-              "vote": "idle",
-              "execution": "ERROR",
-              "model": "/?",
+              "model": "llm-router/policy:dev-grok",
               "sighted": null,
               "dissent": ""
             },
@@ -2229,7 +2149,31 @@
               "mode": "validator",
               "vote": "agree",
               "execution": "SUCCESS",
-              "model": "openrouter/anthropic/claude-sonnet-4.6",
+              "model": "llm-router/policy:dev-sonnet",
+              "sighted": null,
+              "dissent": ""
+            },
+            {
+              "mode": "validator",
+              "vote": "agree",
+              "execution": "SUCCESS",
+              "model": "openrouter/openai/gpt-5.4",
+              "sighted": null,
+              "dissent": ""
+            },
+            {
+              "mode": "validator",
+              "vote": "idle",
+              "execution": "ERROR",
+              "model": "/?",
+              "sighted": null,
+              "dissent": ""
+            },
+            {
+              "mode": "validator",
+              "vote": "idle",
+              "execution": "ERROR",
+              "model": "/?",
               "sighted": null,
               "dissent": ""
             }
@@ -2238,7 +2182,7 @@
       ]
     },
     "N.open": {
-      "hash": "0x4f76b731eba2e6bc4f5c094ca030cae7b3f9ec37b6186792bc11c2f3384e0df3",
+      "hash": "0x089f79c09de1148ce9fd16b6c8dc8b1470296b2c328b12c2f66aba7fd3078fb3",
       "by": "SECOND",
       "method": "open_case",
       "status": "ACCEPTED",
@@ -2246,11 +2190,11 @@
       "returned": {
         "case_id": "KW-0008",
         "version": 1,
-        "digest": "169dafc4dbe64f5575cd741f3f1fa536966ae67c00f644654be7cd74c75a110f"
+        "digest": "5a0b004325183e54a512daa35f06a9c197e1a1d7ece54313546a18546638338a"
       }
     },
     "N.accept": {
-      "hash": "0xad467c96f690a79b8a2b3d54994af3db830ae2bc1e6fad3667872507e12f182b",
+      "hash": "0x5be7f6ebeefa36bcfaaa1db1b1c5a3b08179d967ac63cd82af8ee2cdb6e1d0b5",
       "by": "RESPONDENT",
       "method": "accept_case",
       "status": "ACCEPTED",
@@ -2262,7 +2206,7 @@
       }
     },
     "N.ready.SECOND": {
-      "hash": "0xfd3431e00d63e07259a72b8e648c390e3b4a642b0e2901fc956b9b226632036d",
+      "hash": "0xfadf93982452540743a0d67c41b073705d622ff3fe351b3cfe18cb68106a67b5",
       "by": "SECOND",
       "method": "mark_ready",
       "status": "ACCEPTED",
@@ -2277,7 +2221,7 @@
       }
     },
     "N.ready.RESPONDENT": {
-      "hash": "0x325bf5e7adf4396719a05a129ca79a43bff5d1be68e6e2f17bbf8d675adbd176",
+      "hash": "0xa0caaab2224148c7f19f46276da48cdaf4d3fb02b8695e4a897ac9e197261b48",
       "by": "RESPONDENT",
       "method": "mark_ready",
       "status": "ACCEPTED",
@@ -2292,7 +2236,7 @@
       }
     },
     "N.assess": {
-      "hash": "0xfca8cf7c13fac477e22d3fb18e3c64b5434ac97441e8e24869ee9a978f4f0337",
+      "hash": "0xe3b76fbd1bab76745ea881d26541d169c6b46590d3459f7026f93ea29e3a361f",
       "by": "RESPONDENT",
       "method": "request_assessment",
       "status": "ACCEPTED",
@@ -2336,11 +2280,11 @@
       ],
       "evidence": [],
       "manifest_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-      "decision_digest": "543c96dab6f37e283f936c6a780691cf4b63e5440c7ed4de0f7ce47783f689fb",
-      "challenge_window_ends": "2026-10-04T09:38:26Z"
+      "decision_digest": "0421cdbf191b855df309a1363c1de31e1c771ebfb053d7f0e5a14e8b72ef6a2a",
+      "challenge_window_ends": "2026-10-04T17:19:10Z"
     },
     "S.open": {
-      "hash": "0x530b97e19ad244c6360c7d864e1e5a5fcedfb4cd85317d991e18cb58c8db4aa0",
+      "hash": "0x1d65576cfc0c045df4d0b6d4b63669c2259ea5d739cb4684033f1c30bae611a3",
       "by": "SECOND",
       "method": "open_case",
       "status": "ACCEPTED",
@@ -2348,11 +2292,11 @@
       "returned": {
         "case_id": "KW-0009",
         "version": 1,
-        "digest": "2f7c1a2ee3db5c9ab30d8f438e2320f15650f0e5257d1645429f51353124b40b"
+        "digest": "eabac2530629bafcc786b48a42d83ac08b273a016575d3755be0e1d30bc4dfdc"
       }
     },
     "S.accept": {
-      "hash": "0x1cc636c3cdf3e22d0dab461fe9c504e61e8fed8b27959af3b898f4fae7488529",
+      "hash": "0x7a62790ee3ead9052041e620461af9abb13a44c0296b8cbf2f8d847dbd374e93",
       "by": "CLAIMANT",
       "method": "accept_case",
       "status": "ACCEPTED",
@@ -2364,7 +2308,7 @@
       }
     },
     "S.file.reused": {
-      "hash": "0x7f692c91d848fb5f3b2a53848a80301a0352b98ebc3ebf0b519df7ac775c2da0",
+      "hash": "0xbf569b6511d44094601965265ed81669105eeb88d517f56d0191b74619df64af",
       "by": "CLAIMANT",
       "method": "submit_image",
       "returned": {
@@ -2391,23 +2335,23 @@
       }
     },
     "A.challenger-files-late": {
-      "hash": "0xf98f3cfc98856801f769e2ecd3a1c4367e02f0a40b1566e73264717de0194b2a",
+      "hash": "0x93f1d7ac5c951d0a3bdd370215d082a21faa08190f0f233fb2a1c773efe9bcb9",
       "by": "CLAIMANT",
       "method": "submit_text",
       "status": "ACCEPTED",
       "executed": false,
-      "refusal": "the challenger's time to file new evidence has ended; the other side may answer until 2026-10-04T08:50:22Z"
+      "refusal": "the challenger's time to file new evidence has ended; the other side may answer until 2026-10-04T16:30:36Z"
     },
     "A.readjudicate-before-the-reply": {
-      "hash": "0x629a5da8c1cfb51b93d4c55dc0f5d7473f21b33117e429ba4f34e1f3d5cb1978",
+      "hash": "0x2e0c6368f4bff1d8345c5930619ede65c07d81fd675f6fdf9965a3cef09df0c3",
       "by": "STRANGER",
       "method": "readjudicate",
       "status": "ACCEPTED",
       "executed": false,
-      "refusal": "the other side may answer the new evidence until 2026-10-04T08:50:22Z"
+      "refusal": "the other side may answer the new evidence until 2026-10-04T16:30:36Z"
     },
     "A.reply": {
-      "hash": "0x78b29f55902a11aefd18ad1b8b48eb4518ff40f77fd8e8c698b5a1293471d5d8",
+      "hash": "0x4d6c0c259dc0694315d6d19b82c8b6ba873842cf7081e5c99d419ba7b9688796",
       "by": "RESPONDENT",
       "method": "submit_text",
       "returned": {
@@ -2425,10 +2369,10 @@
         "changed": false,
         "reversed": false
       },
-      "hash": "0x114e7fd936dabcd643176dcf0a032bc979fb7ec6e09985936ae7b2136b9fa7e5",
+      "hash": "0x20c81806ba7111126ff369fb7178660a4b7486cb41042308bed18b7aa19db9f6",
       "attempts": [
         {
-          "hash": "0x114e7fd936dabcd643176dcf0a032bc979fb7ec6e09985936ae7b2136b9fa7e5",
+          "hash": "0x20c81806ba7111126ff369fb7178660a4b7486cb41042308bed18b7aa19db9f6",
           "status": "ACCEPTED",
           "consensus": "MAJORITY_AGREE",
           "executed": true,
@@ -2439,59 +2383,6 @@
             "consensus": "MAJORITY_AGREE",
             "appealed": false,
             "rounds": [
-              {
-                "round": "Leader Rotation",
-                "nodes": [
-                  {
-                    "mode": "leader",
-                    "vote": "",
-                    "execution": "ERROR",
-                    "model": "llm-router/policy:dev-deepseek",
-                    "sighted": null,
-                    "dissent": ""
-                  },
-                  {
-                    "mode": "validator",
-                    "vote": "disagree",
-                    "execution": "ERROR",
-                    "model": "llm-router/policy:dev-deepseek",
-                    "sighted": null,
-                    "dissent": "the leader's assessment failed"
-                  },
-                  {
-                    "mode": "validator",
-                    "vote": "idle",
-                    "execution": "ERROR",
-                    "model": "/?",
-                    "sighted": null,
-                    "dissent": ""
-                  },
-                  {
-                    "mode": "validator",
-                    "vote": "disagree",
-                    "execution": "ERROR",
-                    "model": "llm-router/policy:dev-gemini",
-                    "sighted": null,
-                    "dissent": "the leader's assessment failed"
-                  },
-                  {
-                    "mode": "validator",
-                    "vote": "disagree",
-                    "execution": "ERROR",
-                    "model": "llm-router/policy:dev-mistral",
-                    "sighted": null,
-                    "dissent": "the leader's assessment failed"
-                  },
-                  {
-                    "mode": "validator",
-                    "vote": "idle",
-                    "execution": "ERROR",
-                    "model": "/?",
-                    "sighted": null,
-                    "dissent": ""
-                  }
-                ]
-              },
               {
                 "round": "Accepted",
                 "nodes": [
@@ -2505,34 +2396,10 @@
                   },
                   {
                     "mode": "validator",
-                    "vote": "idle",
-                    "execution": "ERROR",
-                    "model": "/?",
-                    "sighted": null,
-                    "dissent": ""
-                  },
-                  {
-                    "mode": "validator",
                     "vote": "agree",
                     "execution": "SUCCESS",
-                    "model": "llm-router/policy:dev-deepseek",
-                    "sighted": false,
-                    "dissent": ""
-                  },
-                  {
-                    "mode": "validator",
-                    "vote": "agree",
-                    "execution": "SUCCESS",
-                    "model": "llm-router/policy:dev-mistral",
-                    "sighted": false,
-                    "dissent": ""
-                  },
-                  {
-                    "mode": "validator",
-                    "vote": "idle",
-                    "execution": "ERROR",
-                    "model": "/?",
-                    "sighted": null,
+                    "model": "llm-router/policy:dev-grok",
+                    "sighted": true,
                     "dissent": ""
                   },
                   {
@@ -2541,6 +2408,30 @@
                     "execution": "SUCCESS",
                     "model": "llm-router/policy:dev-gemini",
                     "sighted": false,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "idle",
+                    "execution": "ERROR",
+                    "model": "/?",
+                    "sighted": null,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "agree",
+                    "execution": "SUCCESS",
+                    "model": "openrouter/google/gemini-3-flash-preview",
+                    "sighted": true,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "idle",
+                    "execution": "ERROR",
+                    "model": "/?",
+                    "sighted": null,
                     "dissent": ""
                   }
                 ]
@@ -2575,9 +2466,9 @@
           "model_finding": "SUPPORTED",
           "floors": [],
           "basis": [
-            "E-0004",
             "E-0003",
-            "E-0002"
+            "E-0004",
+            "E-0006"
           ],
           "contrary": [],
           "missing": []
@@ -2591,12 +2482,10 @@
             "E-0004"
           ],
           "contrary": [
-            "E-0006",
-            "E-0003"
+            "E-0003",
+            "E-0006"
           ],
-          "missing": [
-            "An independent completion record or inspection confirming the flashing was resealed on every face and the gutter was cleared."
-          ]
+          "missing": []
         },
         {
           "id": "C3",
@@ -2607,11 +2496,10 @@
             "E-0004"
           ],
           "contrary": [
+            "E-0003",
             "E-0006"
           ],
-          "missing": [
-            "An independent post-work inspection or detailed completion photos covering all faces of the chimney and the gutter."
-          ]
+          "missing": []
         },
         {
           "id": "C4",
@@ -2624,7 +2512,7 @@
           ],
           "contrary": [],
           "missing": [
-            "A reliable post-repair inspection showing dry readings over time or observed improvement after rainfall."
+            "Post-repair moisture readings showing a decrease in dampness"
           ]
         },
         {
@@ -2633,15 +2521,13 @@
           "model_finding": "CONFLICTING",
           "floors": [],
           "basis": [
+            "E-0003",
             "E-0004"
           ],
           "contrary": [
-            "E-0006",
-            "E-0003"
+            "E-0006"
           ],
-          "missing": [
-            "An independent contemporaneous completion record dated and timed before 17:00 on 26 September 2026, or an inspection confirming all required work was finished b"
-          ]
+          "missing": []
         }
       ],
       "evidence": [
@@ -2674,9 +2560,9 @@
           "new_in_challenge": false
         }
       ],
-      "manifest_digest": "1763d19bb7c4d871263ec2135c0e7ee5afe876398a1fd3e32cf01d1242c52970",
-      "decision_digest": "fe7e32a62e8f0e1731f13331e4f600116d6661fdb4422079d2524b52cebcea5b",
-      "challenge_window_ends": "2026-10-04T09:27:18Z"
+      "manifest_digest": "92166d4e4ac836a6041e1db1963dc96ba5e9830004c0c80ec77934359620e8a5",
+      "decision_digest": "1e9d63564128373ffe5a6727021dbab91b2293249c45a97556f55d8504d2ec28",
+      "challenge_window_ends": "2026-10-04T17:08:27Z"
     },
     "A.second-decision": {
       "decision_id": "D-0007",
@@ -2704,46 +2590,42 @@
           "model_finding": "SUPPORTED",
           "floors": [],
           "basis": [
-            "E-0003",
-            "E-0004"
+            "E-0004",
+            "E-0003"
           ],
           "contrary": [],
-          "missing": [
-            "Independent access log, sign-in sheet, or third-party confirmation of contractor attendance"
-          ]
+          "missing": []
         },
         {
           "id": "C2",
-          "finding": "CONFLICTING",
-          "model_finding": "CONFLICTING",
+          "finding": "NOT_ESTABLISHED",
+          "model_finding": "NOT_ESTABLISHED",
           "floors": [],
           "basis": [
-            "E-0003",
-            "E-0004",
+            "E-0006",
             "E-0008",
             "E-0009"
           ],
           "contrary": [
-            "E-0006"
+            "E-0004",
+            "E-0003"
           ],
-          "missing": [
-            "Independent verification that the north face flashing was resealed and when; a revised inspection report confirming all faces were sealed"
-          ]
+          "missing": []
         },
         {
           "id": "C3",
-          "finding": "CONFLICTING",
-          "model_finding": "CONFLICTING",
+          "finding": "NOT_ESTABLISHED",
+          "model_finding": "NOT_ESTABLISHED",
           "floors": [],
           "basis": [
-            "E-0009"
+            "E-0006",
+            "E-0009",
+            "E-0008"
           ],
           "contrary": [
-            "E-0006"
+            "E-0004"
           ],
-          "missing": [
-            "Independent post-second-visit inspection confirming all tasks in work order 14 were fully completed"
-          ]
+          "missing": []
         },
         {
           "id": "C4",
@@ -2751,12 +2633,11 @@
           "model_finding": "NOT_ESTABLISHED",
           "floors": [],
           "basis": [
-            "E-0006"
+            "E-0006",
+            "E-0007"
           ],
           "contrary": [],
-          "missing": [
-            "A later inspection or moisture reading showing the leak has stopped or the ceiling dried out"
-          ]
+          "missing": []
         },
         {
           "id": "C5",
@@ -2764,14 +2645,15 @@
           "model_finding": "NOT_ESTABLISHED",
           "floors": [],
           "basis": [
+            "E-0005",
             "E-0006",
             "E-0009",
             "E-0019"
           ],
-          "contrary": [],
-          "missing": [
-            "Evidence that all tasks including north face flashing were completed on or before 17:00 on 26 September 2026"
-          ]
+          "contrary": [
+            "E-0004"
+          ],
+          "missing": []
         }
       ],
       "evidence": [
@@ -2816,9 +2698,9 @@
           "new_in_challenge": true
         }
       ],
-      "manifest_digest": "4a08057db540e28b1cbb8bcd9323707c73e97fc608509efeb95df8cd492eaaca",
-      "decision_digest": "8c08e18a1a40875d52fa523b56bf27eff9f8b3e3295f8655792bdcea01323299",
-      "challenge_window_ends": "2026-10-04T08:50:36Z"
+      "manifest_digest": "ce632971db3e421dabba15776ff2a351306315d7bdc99a1a2886835b2f5abfb2",
+      "decision_digest": "c08a18b2d63b3c275b0f5c5a86010c8706bfb8216e29bbbe849c17b41d670540",
+      "challenge_window_ends": "2026-10-04T16:30:49Z"
     },
     "A.case-after-readjudication": {
       "state": "DETERMINED",
@@ -2829,7 +2711,7 @@
       "outcome": "left the decision favouring the same side"
     },
     "A.finalize": {
-      "hash": "0x58f76cf6c1a19e1dbc5e26b197ef67f172e05887bccaf6c3c808ea1080e7efd3",
+      "hash": "0xcf77677116600e474a8066e4955e9734f11a7dd9408eb6dbd6ce9ca59d1adbb8",
       "by": "STRANGER",
       "method": "finalize",
       "status": "ACCEPTED",
@@ -2843,12 +2725,12 @@
           "to_role": "RESPONDENT",
           "to": "0x993BA6CaE307FEb5400B02083062E874F5Fe6839",
           "why": "the final finding is NOT_ESTABLISHED, so the claim was not established",
-          "at": "2026-10-04T08:53:17Z"
+          "at": "2026-10-04T16:32:43Z"
         }
       }
     },
     "D.readjudicate-nothing-new": {
-      "hash": "0x186203ffd9e225f907aa659fcbd5b835b6bdef1bac5109f57c7977288d711a9a",
+      "hash": "0xc0ac93737bff45f66ed2c30c766a20a50c391f93e941e1c88f2268c0aba5988e",
       "by": "STRANGER",
       "method": "readjudicate",
       "status": "ACCEPTED",
@@ -2856,7 +2738,7 @@
       "refusal": "the challenger filed no new evidence, so there is nothing to judge again; the challenge can be closed and the decision stands"
     },
     "D.close": {
-      "hash": "0x9c23da9826207958d678b12a2305ecd613a7d3bffa144c1d4e1445e6e2d124c9",
+      "hash": "0xde0d986326b19163fb02c215aa35de8cc3302e84856a66bdceb2503d3b536292",
       "by": "STRANGER",
       "method": "close_challenge",
       "status": "ACCEPTED",
@@ -2868,7 +2750,7 @@
       }
     },
     "D.finalize": {
-      "hash": "0x50498d8d2f79b742d820d2e207f3a588d21b076c7198c3145d5cb61fcaa96f9f",
+      "hash": "0x9262542100e9e2bf308e7ddf4f2836e06f71d2cb544c7aab70aa1c674d49f67c",
       "by": "STRANGER",
       "method": "finalize",
       "status": "ACCEPTED",
@@ -2880,9 +2762,9 @@
         "settlement": null
       }
     },
-    "B.claimant-balance-before": "29974696475999946040",
+    "B.claimant-balance-before": "30011947675749917823",
     "B.finalize": {
-      "hash": "0x6644e022ec66688648d8942ee0b28f6174e35b8a143e6c7a6cf96f3de988e1a4",
+      "hash": "0x420332c290dbc989df17cf71d2fb7bd5f14e8df810d00d4017f9d2f76e08e71c",
       "by": "STRANGER",
       "method": "finalize",
       "status": "ACCEPTED",
@@ -2896,12 +2778,12 @@
           "to_role": "CLAIMANT",
           "to": "0x3F2536fD5c1AD0f1e8ea5591f36D731A6D51d911",
           "why": "the final finding is SUPPORTED",
-          "at": "2026-10-04T09:34:00Z"
+          "at": "2026-10-04T17:14:28Z"
         }
       }
     },
     "C.finalize": {
-      "hash": "0x9210b93427ccf336b0d272bc615b87c9b794cf985741dec03d1ba79b191fed88",
+      "hash": "0x338c1f16aaf17c6e273fc9a6aecd11d1912805eefb742780f6f5da6d8666c725",
       "by": "STRANGER",
       "method": "finalize",
       "status": "ACCEPTED",
@@ -2914,7 +2796,7 @@
       }
     },
     "E.finalize": {
-      "hash": "0x2e6f0cb7776b318e8b2c2155b66b9843860d71b8edd20941e553812e72b507eb",
+      "hash": "0xa2fdfb2d18be3404088e0a7fd4b4eda0f0ffdf65159745a95a466c72d35e910a",
       "by": "STRANGER",
       "method": "finalize",
       "status": "ACCEPTED",
@@ -2927,7 +2809,7 @@
       }
     },
     "N.finalize": {
-      "hash": "0xaf15bff2ed120a6e746853b3a38b7ec083fc4674176cbfb0cb1bee9f0fc9ddea",
+      "hash": "0x42352b7ceee9e56cfc0c40a967fb19a3015ccaa0837d9b1275eb2ea19757a7bd",
       "by": "STRANGER",
       "method": "finalize",
       "status": "ACCEPTED",
@@ -2941,7 +2823,7 @@
     },
     "withdraw.claimant-owed": "100000000000000000",
     "withdraw.claimant": {
-      "hash": "0x3a13addca510cd357c6534ad4781a5ab6165a9031dd18a3d3121b984856ce0f2",
+      "hash": "0xea704372ad8572045f6712b2fa35c6703ec29458bedc9033fc6e50b6efb9a3e3",
       "by": "CLAIMANT",
       "method": "withdraw",
       "status": "ACCEPTED",
@@ -2951,10 +2833,9 @@
         "wei": "100000000000000000"
       }
     },
-    "B.claimant-balance-after": "30074570170249945217",
     "withdraw.respondent-owed": "210000000000000000",
     "withdraw.respondent": {
-      "hash": "0x5a4a5d93432dc3b4abf01c956952aa451c2997dfb58c7fd5c3c0990c4a9ea249",
+      "hash": "0xce2a964f3573102b3ab4e67d5eb3ce8b7ba2f0cdf3cb53a5f3978d1eeb676871",
       "by": "RESPONDENT",
       "method": "withdraw",
       "status": "ACCEPTED",
@@ -2965,7 +2846,7 @@
       }
     },
     "withdraw.twice": {
-      "hash": "0x36381e373c26783e22ca70bc39665261ea7d69d474f2c190bc454c20ac5acebb",
+      "hash": "0x85aea4e8d8a048b1370976441e572f035b6ede6861c547969672e5618df05b43",
       "by": "RESPONDENT",
       "method": "withdraw",
       "status": "ACCEPTED",
@@ -2987,7 +2868,7 @@
       }
     },
     "I.open": {
-      "hash": "0x47aabdf12435d96decda9764a8409351179191f09721dbf01278cf56bb0b6208",
+      "hash": "0x12192c01bb6efe7a9fd06061792da0fd3e579b46ca1c510352830696f5a47771",
       "by": "CLAIMANT",
       "method": "open_case",
       "status": "ACCEPTED",
@@ -2995,11 +2876,11 @@
       "returned": {
         "case_id": "KW-0010",
         "version": 1,
-        "digest": "cfccac97d60ddedca3ac247b966171adc8edf5ff519efbfd19bf490d417c82e9"
+        "digest": "ac7c89874dcc2c5fa2c8403363ecdccf8aa8b5b2bed50e4e1ba6cbbabe972827"
       }
     },
     "I.accept": {
-      "hash": "0x66d4346a93aa3df1e84be38bf64b911f01d2dee3a8033795575e849763db228a",
+      "hash": "0x71999a1cf38c5f5f09e93aa0eb59ef359c9f2b63a4ebc3a815434bbea5b5e2ce",
       "by": "RESPONDENT",
       "method": "accept_case",
       "status": "ACCEPTED",
@@ -3019,7 +2900,7 @@
       "outcome": ""
     },
     "I.file.refiled": {
-      "hash": "0xd767918ddb97d6046249a27ff9fde50509fc2f3ab3c4ba8342e291f99e64c74f",
+      "hash": "0x8ff84a93ba66194b57fb43b4158251580c84d0280914abaa2050c928d0abcfc6",
       "by": "CLAIMANT",
       "method": "submit_image",
       "returned": {
@@ -3032,13 +2913,14 @@
       "first_filed_in": "KW-0003"
     },
     "I.follow-unsettled": {
-      "hash": "0xdb790ed9480ba84994505e10c137bc7c45238ffc5e9b405f2ae1f6bdd90849e3",
+      "hash": "0xee40ae80192232a5571b950e73ad89738fda18a397cd12b5a1ed2fb2bbc788b9",
       "by": "CLAIMANT",
       "method": "open_case",
       "status": "ACCEPTED",
       "executed": false,
       "refusal": "a follow-up cites a case that is closed"
-    }
+    },
+    "B.claimant-balance-after": "30111584914249914531"
   },
   "checks": [
     {
@@ -3129,7 +3011,7 @@
     {
       "name": "A.assess-too-early: the contract refuses it",
       "ok": true,
-      "detail": "the evidence period runs until 2026-10-04T08:35:03Z, unless every party marks their evidence complete first"
+      "detail": "the evidence period runs until 2026-10-04T16:16:24Z, unless every party marks their evidence complete first"
     },
     {
       "name": "A.stranger-files: the contract refuses it",
@@ -3189,7 +3071,7 @@
     {
       "name": "A.finalize-too-early: the contract refuses it",
       "ok": true,
-      "detail": "the decision can still be challenged until 2026-10-04T09:27:18Z"
+      "detail": "the decision can still be challenged until 2026-10-04T17:08:27Z"
     },
     {
       "name": "A: the challenge opens and the bond is held",
@@ -3199,7 +3081,7 @@
     {
       "name": "A.readjudicate-too-early: the contract refuses it",
       "ok": true,
-      "detail": "the challenger may file new evidence until 2026-10-04T08:40:22Z"
+      "detail": "the challenger may file new evidence until 2026-10-04T16:20:36Z"
     },
     {
       "name": "ledger with a challenge bond held: balance on chain equals held plus bonds plus owed",
@@ -3304,12 +3186,12 @@
     {
       "name": "A.challenger-files-late: the contract refuses it",
       "ok": true,
-      "detail": "the challenger's time to file new evidence has ended; the other side may answer until 2026-10-04T08:50:22Z"
+      "detail": "the challenger's time to file new evidence has ended; the other side may answer until 2026-10-04T16:30:36Z"
     },
     {
       "name": "A.readjudicate-before-the-reply: the contract refuses it",
       "ok": true,
-      "detail": "the other side may answer the new evidence until 2026-10-04T08:50:22Z"
+      "detail": "the other side may answer the new evidence until 2026-10-04T16:30:36Z"
     },
     {
       "name": "A: the readjudication is a second decision and the first is kept, marked superseded",
@@ -3349,7 +3231,7 @@
     {
       "name": "B: the claimant's wallet balance rises by what was withdrawn, less fees",
       "ok": true,
-      "detail": "99873694249999177 of 100000000000000000"
+      "detail": "99637238499996708 of 100000000000000000"
     },
     {
       "name": "the respondent withdraws the sample's held sum, both bonds and its refused bond",
@@ -3404,7 +3286,7 @@
     {
       "name": "receipt: one made before its case settled is found true and out of date afterwards",
       "ok": true,
-      "detail": "The decision in this receipt is on the chain, unchanged. The case has moved on since the receipt was made: it was decided and open to challenge then and is final now. Make a new receipt to see the current record."
+      "detail": "The decision in this receipt is on the chain, unchanged. The case has moved on since the receipt was made: it is final now. Only the decision, the terms and the parties in this file are confirmed; what it says about the state of the case, a challenge or the settlement is not. Make a new receipt to see the current record."
     },
     {
       "name": "receipt: a file with every digest rewritten around a changed decision is refused, not called out of date",
@@ -3435,503 +3317,507 @@
   "log": [
     {
       "key": "ledger.at the start",
-      "at": "2026-10-04T08:22:51.691Z"
+      "at": "2026-10-04T16:04:09.178Z"
     },
     {
       "key": "F.open",
-      "at": "2026-10-04T08:23:00.756Z"
+      "at": "2026-10-04T16:04:23.453Z"
     },
     {
       "key": "F.decline",
-      "at": "2026-10-04T08:23:08.520Z"
+      "at": "2026-10-04T16:04:33.687Z"
     },
     {
       "key": "G.open",
-      "at": "2026-10-04T08:23:16.323Z"
+      "at": "2026-10-04T16:04:41.416Z"
     },
     {
       "key": "G.withdraw",
-      "at": "2026-10-04T08:23:21.326Z"
+      "at": "2026-10-04T16:04:49.417Z"
     },
     {
       "key": "T.deadline-with-offset",
-      "at": "2026-10-04T08:23:28.990Z"
+      "at": "2026-10-04T16:04:57.230Z"
     },
     {
       "key": "T.zone-abbreviation",
-      "at": "2026-10-04T08:23:36.762Z"
+      "at": "2026-10-04T16:05:02.318Z"
     },
     {
       "key": "T.claim-too-long",
-      "at": "2026-10-04T08:23:44.603Z"
+      "at": "2026-10-04T16:05:09.961Z"
     },
     {
       "key": "T.challenge-window-too-short",
-      "at": "2026-10-04T08:23:52.353Z"
+      "at": "2026-10-04T16:05:17.608Z"
     },
     {
       "key": "T.title-not-text",
-      "at": "2026-10-04T08:24:12.484Z"
+      "at": "2026-10-04T16:05:25.994Z"
     },
     {
       "key": "A.open",
-      "at": "2026-10-04T08:24:20.540Z"
+      "at": "2026-10-04T16:05:33.655Z"
     },
     {
       "key": "A.acts.draft",
-      "at": "2026-10-04T08:24:27.813Z"
+      "at": "2026-10-04T16:05:40.667Z"
     },
     {
       "key": "A.accept-wrong-digest",
-      "at": "2026-10-04T08:24:33.136Z"
+      "at": "2026-10-04T16:05:51.929Z"
     },
     {
       "key": "A.accept",
-      "at": "2026-10-04T08:24:41.200Z"
+      "at": "2026-10-04T16:05:59.696Z"
     },
     {
       "key": "A.stranger-deposit",
-      "at": "2026-10-04T08:24:49.719Z"
+      "at": "2026-10-04T16:06:07.567Z"
     },
     {
       "key": "A.stranger-withdraw",
-      "at": "2026-10-04T08:24:56.482Z"
+      "at": "2026-10-04T16:06:16.953Z"
     },
     {
       "key": "A.acts.accepted",
-      "at": "2026-10-04T08:25:00.260Z"
+      "at": "2026-10-04T16:06:20.779Z"
     },
     {
       "key": "A.fund",
-      "at": "2026-10-04T08:25:11.378Z"
+      "at": "2026-10-04T16:06:29.098Z"
     },
     {
       "key": "A.file.1",
-      "at": "2026-10-04T08:25:20.098Z"
+      "at": "2026-10-04T16:06:37.583Z"
     },
     {
       "key": "A.file.2",
-      "at": "2026-10-04T08:25:29.388Z"
+      "at": "2026-10-04T16:06:45.922Z"
     },
     {
       "key": "A.file.3",
-      "at": "2026-10-04T08:25:40.891Z"
+      "at": "2026-10-04T16:06:52.227Z"
     },
     {
       "key": "A.file.4",
-      "at": "2026-10-04T08:25:49.322Z"
+      "at": "2026-10-04T16:07:00.096Z"
     },
     {
       "key": "A.file.5",
-      "at": "2026-10-04T08:26:07.134Z"
+      "at": "2026-10-04T16:07:07.993Z"
     },
     {
       "key": "A.file.6",
-      "at": "2026-10-04T08:26:16.069Z"
+      "at": "2026-10-04T16:07:15.862Z"
     },
     {
       "key": "A.file.7",
-      "at": "2026-10-04T08:26:24.720Z"
+      "at": "2026-10-04T16:07:31.008Z"
     },
     {
       "key": "A.photo-with-camera-data",
-      "at": "2026-10-04T08:26:34.303Z"
+      "at": "2026-10-04T16:07:43.732Z"
     },
     {
       "key": "A.acts.filed",
-      "at": "2026-10-04T08:26:38.370Z"
+      "at": "2026-10-04T16:07:47.813Z"
     },
     {
       "key": "A.assess-too-early",
-      "at": "2026-10-04T08:26:49.567Z"
+      "at": "2026-10-04T16:07:56.207Z"
     },
     {
       "key": "A.stranger-files",
-      "at": "2026-10-04T08:26:57.369Z"
+      "at": "2026-10-04T16:08:04.192Z"
     },
     {
       "key": "A.ready.CLAIMANT",
-      "at": "2026-10-04T08:27:05.191Z"
+      "at": "2026-10-04T16:08:09.158Z"
     },
     {
       "key": "A.ready.RESPONDENT",
-      "at": "2026-10-04T08:27:10.023Z"
+      "at": "2026-10-04T16:08:17.197Z"
     },
     {
       "key": "A.acts.ready",
-      "at": "2026-10-04T08:27:13.969Z"
+      "at": "2026-10-04T16:08:21.300Z"
     },
     {
       "key": "ledger.after the sample is filed",
-      "at": "2026-10-04T08:27:15.153Z"
+      "at": "2026-10-04T16:08:23.623Z"
     },
     {
       "key": "A.assess",
-      "at": "2026-10-04T08:29:52.744Z"
+      "at": "2026-10-04T16:10:07.698Z"
     },
     {
       "key": "A.decision",
-      "at": "2026-10-04T08:29:53.876Z"
+      "at": "2026-10-04T16:10:08.576Z"
     },
     {
       "key": "A.challenge-wrong-side",
-      "at": "2026-10-04T08:30:01.867Z"
+      "at": "2026-10-04T16:10:13.432Z"
     },
     {
       "key": "A.acts.decided",
-      "at": "2026-10-04T08:30:11.346Z"
+      "at": "2026-10-04T16:10:24.688Z"
     },
     {
       "key": "A.finalize-too-early",
-      "at": "2026-10-04T08:30:19.187Z"
+      "at": "2026-10-04T16:10:32.573Z"
     },
     {
       "key": "A.challenge",
-      "at": "2026-10-04T08:30:28.418Z"
+      "at": "2026-10-04T16:10:40.314Z"
     },
     {
       "key": "A.challenge-file.1",
-      "at": "2026-10-04T08:30:44.176Z"
+      "at": "2026-10-04T16:10:49.618Z"
     },
     {
       "key": "A.challenge-file.2",
-      "at": "2026-10-04T08:30:52.241Z"
+      "at": "2026-10-04T16:10:57.968Z"
     },
     {
       "key": "A.readjudicate-too-early",
-      "at": "2026-10-04T08:30:57.740Z"
+      "at": "2026-10-04T16:11:06.101Z"
     },
     {
       "key": "ledger.with a challenge bond held",
-      "at": "2026-10-04T08:30:59.238Z"
+      "at": "2026-10-04T16:11:07.792Z"
     },
     {
       "key": "D.open",
-      "at": "2026-10-04T08:31:07.295Z"
+      "at": "2026-10-04T16:11:15.803Z"
     },
     {
       "key": "D.accept",
-      "at": "2026-10-04T08:31:15.509Z"
+      "at": "2026-10-04T16:11:26.964Z"
     },
     {
       "key": "D.file.claimant",
-      "at": "2026-10-04T08:31:23.465Z"
+      "at": "2026-10-04T16:11:34.788Z"
     },
     {
       "key": "D.file.respondent",
-      "at": "2026-10-04T08:31:33.136Z"
+      "at": "2026-10-04T16:11:40.371Z"
     },
     {
       "key": "D.ready.CLAIMANT",
-      "at": "2026-10-04T08:31:41.092Z"
+      "at": "2026-10-04T16:11:47.905Z"
     },
     {
       "key": "D.ready.RESPONDENT",
-      "at": "2026-10-04T08:31:49.267Z"
+      "at": "2026-10-04T16:11:53.053Z"
     },
     {
       "key": "D.assess",
-      "at": "2026-10-04T08:32:46.725Z"
+      "at": "2026-10-04T16:13:03.914Z"
     },
     {
       "key": "D.decision",
-      "at": "2026-10-04T08:32:47.661Z"
+      "at": "2026-10-04T16:13:04.946Z"
     },
     {
       "key": "D.challenge",
-      "at": "2026-10-04T08:32:52.731Z"
+      "at": "2026-10-04T16:13:13.362Z"
     },
     {
       "key": "B.open",
-      "at": "2026-10-04T08:33:01.864Z"
+      "at": "2026-10-04T16:13:21.016Z"
     },
     {
       "key": "B.accept",
-      "at": "2026-10-04T08:33:07.215Z"
+      "at": "2026-10-04T16:13:28.768Z"
     },
     {
       "key": "B.fund",
-      "at": "2026-10-04T08:33:13.555Z"
+      "at": "2026-10-04T16:13:37.238Z"
     },
     {
       "key": "B.file.claimant",
-      "at": "2026-10-04T08:33:21.854Z"
+      "at": "2026-10-04T16:13:45.035Z"
     },
     {
       "key": "B.file.respondent",
-      "at": "2026-10-04T08:33:30.738Z"
+      "at": "2026-10-04T16:13:52.736Z"
     },
     {
       "key": "B.ready.CLAIMANT",
-      "at": "2026-10-04T08:33:36.153Z"
+      "at": "2026-10-04T16:14:03.214Z"
     },
     {
       "key": "B.ready.RESPONDENT",
-      "at": "2026-10-04T08:33:41.426Z"
+      "at": "2026-10-04T16:14:11.309Z"
     },
     {
       "key": "B.assess",
-      "at": "2026-10-04T08:34:50.613Z"
+      "at": "2026-10-04T16:15:22.404Z"
     },
     {
       "key": "B.decision",
-      "at": "2026-10-04T08:34:51.474Z"
+      "at": "2026-10-04T16:15:23.502Z"
     },
     {
       "key": "B.receipt-early",
-      "at": "2026-10-04T08:34:52.356Z"
+      "at": "2026-10-04T16:15:24.465Z"
     },
     {
       "key": "B.case-after-appeal",
-      "at": "2026-10-04T08:34:53.225Z"
+      "at": "2026-10-04T16:15:25.505Z"
     },
     {
       "key": "C.open",
-      "at": "2026-10-04T08:35:01.655Z"
+      "at": "2026-10-04T16:15:36.100Z"
     },
     {
       "key": "C.accept",
-      "at": "2026-10-04T08:35:06.574Z"
+      "at": "2026-10-04T16:15:44.384Z"
     },
     {
       "key": "C.file.claimant",
-      "at": "2026-10-04T08:35:14.576Z"
+      "at": "2026-10-04T16:15:52.063Z"
     },
     {
       "key": "C.file.respondent",
-      "at": "2026-10-04T08:35:22.658Z"
+      "at": "2026-10-04T16:15:59.504Z"
     },
     {
       "key": "C.ready.CLAIMANT",
-      "at": "2026-10-04T08:35:31.144Z"
+      "at": "2026-10-04T16:16:07.100Z"
     },
     {
       "key": "C.ready.RESPONDENT",
-      "at": "2026-10-04T08:35:36.060Z"
+      "at": "2026-10-04T16:16:14.752Z"
     },
     {
       "key": "C.assess",
-      "at": "2026-10-04T08:36:26.400Z"
+      "at": "2026-10-04T16:17:13.021Z"
     },
     {
       "key": "C.decision",
-      "at": "2026-10-04T08:36:27.339Z"
+      "at": "2026-10-04T16:17:13.913Z"
     },
     {
       "key": "E.open",
-      "at": "2026-10-04T08:36:35.261Z"
+      "at": "2026-10-04T16:17:22.028Z"
     },
     {
       "key": "E.accept",
-      "at": "2026-10-04T08:36:43.675Z"
+      "at": "2026-10-04T16:17:29.617Z"
     },
     {
       "key": "E.case-before-inspector",
-      "at": "2026-10-04T08:36:44.535Z"
+      "at": "2026-10-04T16:17:30.443Z"
     },
     {
       "key": "E.inspector-wrong-digest",
-      "at": "2026-10-04T08:36:49.465Z"
+      "at": "2026-10-04T16:17:35.084Z"
     },
     {
       "key": "E.inspector",
-      "at": "2026-10-04T08:36:54.425Z"
+      "at": "2026-10-04T16:17:45.855Z"
     },
     {
       "key": "E.file.claimant",
-      "at": "2026-10-04T08:37:02.423Z"
+      "at": "2026-10-04T16:17:55.310Z"
     },
     {
       "key": "E.reused-item",
-      "at": "2026-10-04T08:37:03.716Z"
+      "at": "2026-10-04T16:17:56.215Z"
     },
     {
       "key": "E.file.inspector",
-      "at": "2026-10-04T08:37:11.543Z"
+      "at": "2026-10-04T16:18:03.886Z"
     },
     {
       "key": "E.ready.CLAIMANT",
-      "at": "2026-10-04T08:37:20.375Z"
+      "at": "2026-10-04T16:18:14.392Z"
     },
     {
       "key": "E.ready.RESPONDENT",
-      "at": "2026-10-04T08:37:28.874Z"
+      "at": "2026-10-04T16:18:22.457Z"
     },
     {
       "key": "E.ready.INSPECTOR",
-      "at": "2026-10-04T08:37:37.466Z"
+      "at": "2026-10-04T16:18:30.137Z"
     },
     {
       "key": "E.assess",
-      "at": "2026-10-04T08:37:46.840Z"
+      "at": "2026-10-04T16:18:40.578Z"
     },
     {
       "key": "E.decision",
-      "at": "2026-10-04T08:37:47.785Z"
+      "at": "2026-10-04T16:18:41.410Z"
     },
     {
       "key": "E.votes",
-      "at": "2026-10-04T08:37:48.587Z"
+      "at": "2026-10-04T16:18:41.762Z"
     },
     {
       "key": "N.open",
-      "at": "2026-10-04T08:37:57.339Z"
+      "at": "2026-10-04T16:18:49.313Z"
     },
     {
       "key": "N.accept",
-      "at": "2026-10-04T08:38:05.997Z"
+      "at": "2026-10-04T16:18:54.240Z"
     },
     {
       "key": "N.ready.SECOND",
-      "at": "2026-10-04T08:38:14.468Z"
+      "at": "2026-10-04T16:19:01.817Z"
     },
     {
       "key": "N.ready.RESPONDENT",
-      "at": "2026-10-04T08:38:23.123Z"
+      "at": "2026-10-04T16:19:07.150Z"
     },
     {
       "key": "N.assess",
-      "at": "2026-10-04T08:38:32.402Z"
+      "at": "2026-10-04T16:19:17.498Z"
     },
     {
       "key": "N.decision",
-      "at": "2026-10-04T08:38:33.643Z"
+      "at": "2026-10-04T16:19:18.525Z"
     },
     {
       "key": "S.open",
-      "at": "2026-10-04T08:38:42.394Z"
+      "at": "2026-10-04T16:19:26.120Z"
     },
     {
       "key": "S.accept",
-      "at": "2026-10-04T08:38:51.077Z"
+      "at": "2026-10-04T16:19:34.375Z"
     },
     {
       "key": "S.file.reused",
-      "at": "2026-10-04T08:39:06.599Z"
+      "at": "2026-10-04T16:19:44.948Z"
     },
     {
       "key": "S.reused-item",
-      "at": "2026-10-04T08:39:07.466Z"
+      "at": "2026-10-04T16:19:45.770Z"
     },
     {
       "key": "ledger.with six cases decided or under challenge",
-      "at": "2026-10-04T08:39:08.808Z"
+      "at": "2026-10-04T16:19:46.951Z"
     },
     {
       "key": "A.challenger-files-late",
-      "at": "2026-10-04T08:40:36.819Z"
+      "at": "2026-10-04T16:20:52.930Z"
     },
     {
       "key": "A.readjudicate-before-the-reply",
-      "at": "2026-10-04T08:40:44.578Z"
+      "at": "2026-10-04T16:21:00.488Z"
     },
     {
       "key": "A.reply",
-      "at": "2026-10-04T08:40:55.861Z"
+      "at": "2026-10-04T16:21:08.387Z"
     },
     {
       "key": "A.readjudicate",
-      "at": "2026-10-04T08:53:10.961Z"
+      "at": "2026-10-04T16:32:37.488Z"
     },
     {
       "key": "A.decision-after-readjudication",
-      "at": "2026-10-04T08:53:11.812Z"
+      "at": "2026-10-04T16:32:38.512Z"
     },
     {
       "key": "A.second-decision",
-      "at": "2026-10-04T08:53:13.096Z"
+      "at": "2026-10-04T16:32:39.342Z"
     },
     {
       "key": "A.case-after-readjudication",
-      "at": "2026-10-04T08:53:14.124Z"
+      "at": "2026-10-04T16:32:40.208Z"
     },
     {
       "key": "A.finalize",
-      "at": "2026-10-04T08:53:22.033Z"
+      "at": "2026-10-04T16:32:47.689Z"
     },
     {
       "key": "D.readjudicate-nothing-new",
-      "at": "2026-10-04T08:53:31.019Z"
+      "at": "2026-10-04T16:32:55.348Z"
     },
     {
       "key": "D.close",
-      "at": "2026-10-04T08:53:39.608Z"
+      "at": "2026-10-04T16:33:03.083Z"
     },
     {
       "key": "D.finalize",
-      "at": "2026-10-04T08:53:47.536Z"
+      "at": "2026-10-04T16:33:10.769Z"
     },
     {
       "key": "B.claimant-balance-before",
-      "at": "2026-10-04T09:33:56.942Z"
+      "at": "2026-10-04T17:14:24.243Z"
     },
     {
       "key": "B.finalize",
-      "at": "2026-10-04T09:34:03.391Z"
+      "at": "2026-10-04T17:14:32.455Z"
     },
     {
       "key": "C.finalize",
-      "at": "2026-10-04T09:35:56.870Z"
+      "at": "2026-10-04T17:16:35.159Z"
     },
     {
       "key": "E.finalize",
-      "at": "2026-10-04T09:37:56.729Z"
+      "at": "2026-10-04T17:18:49.582Z"
     },
     {
       "key": "N.finalize",
-      "at": "2026-10-04T09:38:40.065Z"
+      "at": "2026-10-04T17:19:29.516Z"
     },
     {
       "key": "withdraw.claimant-owed",
-      "at": "2026-10-04T09:38:40.937Z"
+      "at": "2026-10-04T17:19:30.432Z"
     },
     {
       "key": "withdraw.claimant",
-      "at": "2026-10-04T09:38:48.256Z"
+      "at": "2026-10-04T17:19:43.966Z"
     },
     {
       "key": "B.claimant-balance-after",
-      "at": "2026-10-04T09:39:18.934Z"
+      "at": "2026-10-04T17:20:11.687Z"
     },
     {
       "key": "withdraw.respondent-owed",
-      "at": "2026-10-04T09:39:19.853Z"
+      "at": "2026-10-04T17:20:12.713Z"
     },
     {
       "key": "withdraw.respondent",
-      "at": "2026-10-04T09:39:26.825Z"
+      "at": "2026-10-04T17:20:22.969Z"
     },
     {
       "key": "withdraw.twice",
-      "at": "2026-10-04T09:40:06.469Z"
+      "at": "2026-10-04T17:21:02.122Z"
     },
     {
       "key": "ledger.at the end",
-      "at": "2026-10-04T09:40:07.938Z"
+      "at": "2026-10-04T17:21:03.337Z"
     },
     {
       "key": "I.open",
-      "at": "2026-10-04T09:40:22.021Z"
+      "at": "2026-10-04T17:21:17.019Z"
     },
     {
       "key": "I.accept",
-      "at": "2026-10-04T09:40:30.111Z"
+      "at": "2026-10-04T17:21:24.651Z"
     },
     {
       "key": "I.case",
-      "at": "2026-10-04T09:40:31.131Z"
+      "at": "2026-10-04T17:21:26.392Z"
     },
     {
       "key": "I.file.refiled",
-      "at": "2026-10-04T09:40:37.029Z"
+      "at": "2026-10-04T17:21:35.462Z"
     },
     {
       "key": "I.refiled-item",
-      "at": "2026-10-04T09:40:38.141Z"
+      "at": "2026-10-04T17:21:36.631Z"
     },
     {
       "key": "I.follow-unsettled",
-      "at": "2026-10-04T09:55:05.527Z"
+      "at": "2026-10-04T17:21:41.428Z"
+    },
+    {
+      "key": "B.claimant-balance-after",
+      "at": "2026-10-04T17:24:46.237Z"
     }
   ],
   "wallets": {
@@ -3942,10 +3828,16 @@
     "STRANGER": "0x4d25429512BDC4e2A1C3ec899705b369BfBdC29c",
     "SECOND": "0x9c965E50E5F25f2660e9A8a1fd7E89a06655A3Dd"
   },
-  "finished": "2026-10-04T09:55:05.533Z",
+  "finished": "2026-10-04T17:24:53.148Z",
   "summary": {
     "checks": 78,
     "passed": 78,
     "failed": []
-  }
+  },
+  "resumed": [
+    {
+      "at": "2026-10-04",
+      "why": "the claimant's wallet balance was read before the withdrawal's transfer had landed; the step now waits for the balance to move and was read again"
+    }
+  ]
 }

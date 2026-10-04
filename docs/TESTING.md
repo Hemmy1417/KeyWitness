@@ -5,10 +5,10 @@ first four on every push.
 
 | Layer | Question it answers | Count | Needs the network |
 |---|---|---|---|
-| Direct contract tests | Does each rule of the contract hold? | 395 tests | No |
-| Mutation sweep | Would the tests notice if a rule were removed? | 286 mutants, all killed | No |
+| Direct contract tests | Does each rule of the contract hold? | 420 tests | No |
+| Mutation sweep | Would the tests notice if a rule were removed? | 297 mutants, all killed | No |
 | App and contract parity | Does the app offer exactly what the contract accepts? | 96 situations, 23 test images | No |
-| Web unit tests | Do the app's own rules, wording and verification hold? | 215 tests | No |
+| Web unit tests | Do the app's own rules, wording and verification hold? | 216 tests | No |
 | Live proofs | Does all of it happen on Studio Next, with real wallets and real validators? | 78 checks | Yes |
 
 ## Run everything
@@ -115,14 +115,17 @@ Real cases on the deployment of record, each role signing with its own wallet, e
 | The ledger | After each phase the balance on chain equals what the contract's books say it holds; at the end nothing is left |
 
 The app's own rules (`web/lib/acts.ts`) are loaded by the proofs and must agree with what the deployed contract
-accepts at each stage. The run is resumable, and the recorded one was resumed once: the network's RPC answered its
-last transaction with an error page, and the rerun completed the one check that was left. `docs/proofs/live.md` lists
+accepts at each stage. The run is resumable, and the recorded one was resumed once. Its first pass read the
+claimant's wallet balance before the withdrawal's transfer had landed and so failed that one check; the withdrawal
+itself had finalized and returned the full amount. The step now waits for the balance to move, and the resumed run read
+it again and passed. `live.json` records the resume under `resumed`. `docs/proofs/live.md` lists
 every check, every transaction and every consensus round with each node's model and vote.
 
 ## Adversarial reviews
 
-Four separate adversarial reviews went through the contract. Each reviewer came to it cold and was asked to break
-it, and the last three reviews came after the design was complete. Every finding was fixed with a regression test
+Eight separate adversarial reviews went through the contract. Each reviewer came to it cold and was asked to break
+it, and the last seven reviews came after the design was complete. The contract was redeployed after the fifth to
+eighth, which followed the first deployment of record. Every finding was fixed with a regression test
 and, where a guard was added, a mutant. What changed as a result:
 
 | Area | Change |
@@ -137,6 +140,9 @@ and, where a guard was added, a mutant. What changed as a result:
 | Copies | The same bytes may be filed by each role. A cited copy brings in the other roles' copies, but a copy filed by the favoured party brings in nothing, and a flag stays on the copy it was found on. Before the last review a party could strip the other side's document of its weight by filing a copy with an instruction in its description |
 | Reuse | Bytes brought from another dispute are recorded and told to the panel. Only the claimant's own reuse is floored: a floor on anyone else's could be set off by the claimant's choice of wallet |
 | Challenges | The other side gets a reply window after the challenger's time ends. A round that lost sight of images the first decision saw is no result. The bond goes back for it only if that round opened every new image the challenger filed |
+| Opposing evidence | The floor against one-sided evidence used to count only items the other side or the inspector filed. That made it turn on who filed a copy: a respondent could copy a claimant's photograph the model had weighed against the claim and so make it opposing, and a claimant could file the respondent's report first. Whatever the panel weighs against a finding now opposes it, whoever filed it, and an item named both ways counts only against |
+| Copies and sight | A copy whose twin was seen counted in the findings but was still listed as unexamined, and that list decides the right to ask again and whether a readjudication round counts. A leader that left one copy out could hand a failed challenger the bond back, or defeat a sound challenge. The list now names an image only when no copy of its bytes was seen, and the model is told a copy that did not open shows what its twin shows |
+| What travels | The leader's answer is checked as the model gave it and again as it is cut to travel. An id or a finding is never cut into another word, and lists of ids are stripped and de-duplicated before their cap |
 | Retry | A decision that did not see an image can be asked for again by the side it went against, once for each side, so neither can spend the other's turn |
 | Form | A conclusive finding whose adequacy is not true or false, or whose lists are not lists, fails the node. A number is an integer or plain digits; a list is a list; an id is text |
 | Money | Every path of the held sum and the bond is named, a final `NOT_ASSESSED` included. Payable methods never raise with value attached, even on a storage fault |

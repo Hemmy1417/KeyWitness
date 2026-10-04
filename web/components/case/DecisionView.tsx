@@ -10,7 +10,7 @@
 import { FindingChip, Fold, Icon, Machine, Note } from "@/components/bits";
 import {
   criterionName, CUT_NOTE, cutShort, decisionName, EVIDENCE_LABEL, exhibitName, FINDING, floorText, listLabels, local,
-  OVERALL_MEANING, prose, ROLE_LABEL, settleText, utc,
+  OVERALL_MEANING, prose, ROLE_LABEL, seenThrough, settleText, utc,
 } from "@/lib/present";
 import type { Decision, Evidence, Finding } from "@/lib/types";
 
@@ -160,7 +160,10 @@ export function DecisionView({ d, evidence, zone }: { d: Decision; evidence: Evi
           <ul className="flex flex-col gap-3">
             {d.observations.map((o) => (
               <li key={o.evidence_id} className="t-small flex flex-col gap-0.5">
-                <span className="font-semibold">{exhibitName(o.evidence_id)}{seen.has(o.evidence_id) ? "" : ": not seen"}</span>
+                <span className="font-semibold">{exhibitName(o.evidence_id)}{seen.has(o.evidence_id) ? ""
+                  : seenThrough(d, o.evidence_id)
+                    ? `: this copy did not open; it is the same file as ${exhibitName(seenThrough(d, o.evidence_id))}, which was examined`
+                    : ": not seen"}</span>
                 {o.shows ? <span>{o.shows}</span> : null}
                 {o.text?.length ? <span className="t-micro text-[var(--color-ink-2)]">Text read off the image: {o.text.join(" / ")}</span> : null}
                 {o.text_cut ? <span className="t-micro text-[var(--color-ink-3)]">The transcript was longer than the record holds; this is part of it.</span> : null}

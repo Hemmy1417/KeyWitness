@@ -10,7 +10,7 @@ database to migrate and no secret to set.
 | Network | GenLayer Studio Next, chain 61997 |
 | RPC | `https://studio-dev.genlayer.com/api` (canonical; `studio-next.genlayer.com` is an alias of the same environment) |
 | Explorer | `https://explorer-studio-dev.genlayer.com` |
-| Contract | `0xB903Dcfd1730818260CFFa05d12497E73CB124Ff` |
+| Contract | `0x5dF552006b48Bef80e60dCc65572f3e917dFC12a` |
 | Source | `contracts/keywitness.py`, one file, deployed as is |
 | Record | `deployments/record.json` (address, deploy transaction, deployer, sha256 of the source and of the stored code) |
 | Live proofs | `docs/proofs/live.md`, generated from `docs/proofs/live.json` |
@@ -146,7 +146,7 @@ All optional, all public. See `.env.example`.
 Without this repository's scripts:
 
 ```bash
-curl -s https://studio-dev.genlayer.com/api -H "content-type: application/json" -H "user-agent: Mozilla/5.0" -d '{"jsonrpc":"2.0","id":1,"method":"gen_getContractCode","params":["0xB903Dcfd1730818260CFFa05d12497E73CB124Ff"]}'
+curl -s https://studio-dev.genlayer.com/api -H "content-type: application/json" -H "user-agent: Mozilla/5.0" -d '{"jsonrpc":"2.0","id":1,"method":"gen_getContractCode","params":["0x5dF552006b48Bef80e60dCc65572f3e917dFC12a"]}'
 ```
 
 The result is the stored source. Its sha256 must equal `source_sha256` in `deployments/record.json` and the sha256 of
