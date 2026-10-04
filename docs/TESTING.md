@@ -76,8 +76,8 @@ the contract enforces, and a mirror can drift. So the contract generates the exp
 - `scripts/web_fixtures.py` drives the contract through 96 situations and records, for every role and every act,
   whether the contract accepts it and why not. `web/tests/acts.test.ts` requires the app to agree on every row.
 - The same script writes 23 image files (valid, truncated, with camera data, with stray chunks, too small, too large,
-  another format) with the contract's verdict on each. `web/tests/forms.test.ts` requires the browser's check to give the same
-  verdict.
+  another format) with the contract's verdict on each. `web/tests/forms.test.ts` requires the browser's check to give
+  the same verdict.
 - It also writes canonical JSON and a receipt, so the browser's digest code is checked against the contract's.
 
 CI regenerates these fixtures and fails if they differ from what is committed.
@@ -93,7 +93,7 @@ CI regenerates these fixtures and fails if they differ from what is committed.
 | `txstatus.test.ts` | The protocol statuses, the appeal window, when a write counts as recorded |
 | `explorer.test.ts` | Finding a case's transactions; refused, undecided and unknown outcomes; a partial search |
 | `present.test.ts` | Wording: no raw constants, dates spelled out, fence tags stripped from prose |
-| `contrast.test.ts` | Every text and surface colour pair in the stylesheet meets WCAG AA |
+| `contrast.test.ts` | Every text and surface colour pair in the stylesheet meets WCAG AA; a light surface inside a dark one keeps dark controls |
 
 ## 5. Live proofs (`scripts/proofs.mjs`, record in `docs/proofs/`)
 
@@ -116,8 +116,8 @@ Real cases on the deployment of record, each role signing with its own wallet, e
 
 The app's own rules (`web/lib/acts.ts`) are loaded by the proofs and must agree with what the deployed contract
 accepts at each stage. The run is resumable, and the recorded one was resumed once: the network's RPC answered its
-last transaction with an error page, and the rerun completed the one check that was left. `docs/proofs/live.md` lists every check, every transaction and every consensus round with
-each node's model and vote.
+last transaction with an error page, and the rerun completed the one check that was left. `docs/proofs/live.md` lists
+every check, every transaction and every consensus round with each node's model and vote.
 
 ## Adversarial reviews
 
