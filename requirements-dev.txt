@@ -3,6 +3,8 @@
 # needed to run them; the linter's `check` fetches the runner bundle once.
 pytest==9.1.1
 eth-utils==5.1.0
+# eth-utils checksums addresses with keccak and ships no backend of its own.
+pycryptodome==3.20.0
 ruff==0.16.7
 pillow==12.2.0
 # Pinned to a commit: the PyPI release does not read the current runner bundle.
