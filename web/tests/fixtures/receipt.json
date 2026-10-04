@@ -1,0 +1,169 @@
+{
+ "core": {
+  "case_id": "KW-0001",
+  "case_state": "FINAL",
+  "challenge": null,
+  "decision": {
+   "bound": {
+    "findings": "a majority of validators, each running the assessment itself, reproduced for each criterion whether it is supported, and so whether the claim is",
+    "leader_recorded": [
+     "the finer label of a criterion that is not supported, and so of the overall finding",
+     "floors",
+     "rationale",
+     "basis",
+     "contrary",
+     "missing",
+     "limitations",
+     "observations",
+     "instructions_found",
+     "seen_ids"
+    ]
+   },
+   "calibrated": true,
+   "case_id": "KW-0001",
+   "challenge_window_ends": "2026-10-01T10:00:00Z",
+   "criteria": [
+    {
+     "basis": [
+      "E-0001",
+      "E-0002"
+     ],
+     "contrary": [],
+     "finding": "SUPPORTED",
+     "floors": [],
+     "id": "C1",
+     "missing": [],
+     "model_finding": "SUPPORTED",
+     "needs_independent": false,
+     "rationale": "reasons",
+     "text": "Photographs show the repaired roof area after the work."
+    },
+    {
+     "basis": [
+      "E-0001",
+      "E-0002"
+     ],
+     "contrary": [],
+     "finding": "SUPPORTED",
+     "floors": [],
+     "id": "C2",
+     "missing": [],
+     "model_finding": "SUPPORTED",
+     "needs_independent": false,
+     "rationale": "reasons",
+     "text": "The listed repair tasks were all performed."
+    }
+   ],
+   "decided_at": "2026-10-01T09:00:00Z",
+   "decision_digest": "f2fb41b556fbc37d614bdc3c514484a63c4977fa943851a9ed393ded50af48fe",
+   "decision_id": "D-0001",
+   "evidence": [
+    {
+     "declared_capture": "25 September 2026, 15:42",
+     "evidence_id": "E-0001",
+     "filed_at": "2026-10-01T09:00:00Z",
+     "first_filed_in": "",
+     "kind": "PHOTO",
+     "new_in_challenge": false,
+     "reuse": "",
+     "role": "CLAIMANT",
+     "sha256": "c3b541f54b961562e8cc1e9adf9d6d2d396b05b95ee0b4ca87931d1247c64043"
+    },
+    {
+     "declared_capture": "",
+     "evidence_id": "E-0002",
+     "filed_at": "2026-10-01T09:00:00Z",
+     "first_filed_in": "",
+     "kind": "TEXT_DOCUMENT",
+     "new_in_challenge": false,
+     "reuse": "",
+     "role": "RESPONDENT",
+     "sha256": "8d9d271394b10b6bb2b8807700f2b6462bad77c32135559d4d9e3a1cc70e795e"
+    }
+   ],
+   "instructions_found": [],
+   "kind": "ASSESSMENT",
+   "limitations": [
+    "capture times are not independently verified"
+   ],
+   "manifest_digest": "2c53326ed4f29fa24e7dd7aa95099207dfda09972117f38af5961fc868aca5f5",
+   "observations": [
+    {
+     "dates": [],
+     "evidence_id": "E-0001",
+     "quality": "GOOD",
+     "seen": true,
+     "shows": "a ceiling with a dry repaired patch",
+     "subject_doubts": "",
+     "text": [],
+     "text_cut": false
+    }
+   ],
+   "overall": "SUPPORTED",
+   "requested_by": "0x3F2536fD5c1AD0f1e8ea5591f36D731A6D51d911",
+   "round": 1,
+   "scope": "Whether the filed evidence establishes each criterion the parties accepted before the evidence was filed. Not a legal finding, not a finding about who is telling the truth, and not proof of when a photograph was taken or that a file is authentic.",
+   "seen_ids": [
+    "E-0001"
+   ],
+   "status": "FINAL",
+   "superseded_by": "",
+   "supersedes": "",
+   "terms_digest": "c461e99eeed6cb59a48fe54fc5b4db92b9e0cd309d7873cd94434a40a51edc10",
+   "terms_version": 1,
+   "unseen_ids": []
+  },
+  "history": [
+   {
+    "decided_at": "2026-10-01T09:00:00Z",
+    "decision_digest": "f2fb41b556fbc37d614bdc3c514484a63c4977fa943851a9ed393ded50af48fe",
+    "decision_id": "D-0001",
+    "kind": "ASSESSMENT",
+    "overall": "SUPPORTED",
+    "round": 1,
+    "status": "FINAL"
+   }
+  ],
+  "parties": {
+   "claimant": "0x3F2536fD5c1AD0f1e8ea5591f36D731A6D51d911",
+   "inspector": "0x54782Bd558865f9c9b6dAfc2660F5eA877220ed2",
+   "respondent": "0x993BA6CaE307FEb5400B02083062E874F5Fe6839"
+  },
+  "rules": "keywitness-rules-1",
+  "schema": "keywitness.receipt/1",
+  "settlement": {
+   "at": "2026-10-01T10:00:00Z",
+   "held_sum_wei": "2000000000000000000",
+   "to": "0x3F2536fD5c1AD0f1e8ea5591f36D731A6D51d911",
+   "to_role": "CLAIMANT",
+   "why": "the final finding is SUPPORTED"
+  },
+  "terms": {
+   "claim": "The listed roof leak repairs were completed before the maintenance deadline.",
+   "criteria": [
+    {
+     "id": "C1",
+     "needs_independent": false,
+     "text": "Photographs show the repaired roof area after the work."
+    },
+    {
+     "id": "C2",
+     "needs_independent": false,
+     "text": "The listed repair tasks were all performed."
+    }
+   ],
+   "deadline": "2026-10-03T17:00",
+   "digest": "c461e99eeed6cb59a48fe54fc5b4db92b9e0cd309d7873cd94434a40a51edc10",
+   "event_kind": "REPAIR_COMPLETED",
+   "limitations": [
+    "The assessment does not test the roof under rain."
+   ],
+   "property_ref": "Riverside flat (synthetic)",
+   "time_zone": "Europe/London",
+   "title": "Roof leak repair before the deadline",
+   "version": 1,
+   "window_start": ""
+  }
+ },
+ "digest": "0052fce52f170338fa7f2e8d159dfe7a5d05ebf9daabf655f5c15bdd90fd15a2"
+}

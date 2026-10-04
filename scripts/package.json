@@ -1,0 +1,9 @@
+{
+  "name": "keywitness-scripts",
+  "private": true,
+  "type": "module",
+  "description": "Deploy, verify, probe and drive KeyWitness on GenLayer Studio Next from the command line.",
+  "dependencies": {
+    "genlayer-js": "2.0.0-rc.1"
+  }
+}

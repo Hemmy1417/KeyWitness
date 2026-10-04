@@ -1,0 +1,19 @@
+[project]
+name = "keywitness"
+version = "1.0.0"
+description = "Property evidence assessment and dispute resolution on GenLayer Studio Next"
+requires-python = ">=3.12"
+
+[tool.pytest.ini_options]
+testpaths = ["tests/direct"]
+# The direct suite stubs genlayer itself; the gltest plugins are for the
+# separate live suite and only add noise here.
+addopts = "-p no:gltest -p no:gltest_direct"
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B"]
+ignore = ["E731"]

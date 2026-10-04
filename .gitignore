@@ -1,0 +1,32 @@
+# dependencies and builds
+node_modules/
+.next/
+out/
+build/
+dist/
+coverage/
+*.tsbuildinfo
+# written by Next on every dev start and build; it points into .next
+next-env.d.ts
+.vercel/
+
+# python
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.venv/
+
+# local state: test wallets, deployment logs, probe receipts, bench pages
+.data/
+
+# environment: only the example is committed
+.env
+.env.*
+!.env.example
+
+# editors and OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

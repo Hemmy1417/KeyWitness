@@ -1,0 +1,3951 @@
+{
+  "label": "record",
+  "contract": "0xB903Dcfd1730818260CFFa05d12497E73CB124Ff",
+  "chain_id": 61997,
+  "started": "2026-10-04T08:22:48.204Z",
+  "steps": {
+    "ledger.at the start": {
+      "balance": "0",
+      "books": "0",
+      "equal": true,
+      "stats": {
+        "bonds_wei": "0",
+        "case": "0",
+        "decision": "0",
+        "evidence": "0",
+        "held_wei": "0",
+        "owed_wei": "0",
+        "paid_out_wei": "0"
+      }
+    },
+    "F.open": {
+      "hash": "0x2fabebaeae6cc60aea6e0478413a8c9a19a16100b46bb46ca155389c01b98e99",
+      "by": "SECOND",
+      "method": "open_case",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0001",
+        "version": 1,
+        "digest": "e1cc7d74286ac466ca0889813b186393528c570f84ea03f3274848c543b56147"
+      }
+    },
+    "F.decline": {
+      "hash": "0x0d8ef21977454d64cc5862eb487f133d65b36ccb1196cc8d2a38e418d6dca075",
+      "by": "RESPONDENT",
+      "method": "decline_case",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0001",
+        "state": "DECLINED"
+      }
+    },
+    "G.open": {
+      "hash": "0x928232b6cb91b75d44e37ac27a9dee047cf3d0ef48a7306964261e389afe6f79",
+      "by": "SECOND",
+      "method": "open_case",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0002",
+        "version": 1,
+        "digest": "89b9d64beaf764e513b3f16e8fd636eb8edb4e10cbb4e5375e35f63cb059999a"
+      }
+    },
+    "G.withdraw": {
+      "hash": "0xd2baec207f3c2491ad111402c99838731ff7b65e314a7cfe82c9dafd195729ce",
+      "by": "SECOND",
+      "method": "withdraw_case",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0002",
+        "state": "WITHDRAWN"
+      }
+    },
+    "T.deadline-with-offset": {
+      "hash": "0x8503bea4c1b07b874c337ff11af7bfa33be7d5cf26de469d3beacdcd948ea45e",
+      "by": "SECOND",
+      "method": "open_case",
+      "status": "ACCEPTED",
+      "executed": false,
+      "refusal": "the deadline must look like 2026-10-01 or 2026-10-01T17:00, in the case's time zone, with no seconds and no offset"
+    },
+    "T.zone-abbreviation": {
+      "hash": "0xabdcb20b04555f06358c2f661a4126367d6c0c6e81b5ce2ce49fb9e1a8daad16",
+      "by": "SECOND",
+      "method": "open_case",
+      "status": "ACCEPTED",
+      "executed": false,
+      "refusal": "the time zone must be UTC or an IANA name such as Europe/London"
+    },
+    "T.claim-too-long": {
+      "hash": "0x21d1736168870888330db10bee986f249f73d0ff7723d2d3fcc9ef914737ccde",
+      "by": "SECOND",
+      "method": "open_case",
+      "status": "ACCEPTED",
+      "executed": false,
+      "refusal": "the claim may be at most 400 characters"
+    },
+    "T.challenge-window-too-short": {
+      "hash": "0xe0992f0f5507713bb0ca238df4e85cd70e79d1dc05cc9ce22f11774656ade27e",
+      "by": "SECOND",
+      "method": "open_case",
+      "status": "ACCEPTED",
+      "executed": false,
+      "refusal": "the challenge window in seconds must be between 3600 and 1209600"
+    },
+    "T.title-not-text": {
+      "hash": "0x1ff4846e315851b4e853cb511ac2dedd1f75c14cd14f3100169c121ff6fe15be",
+      "by": "SECOND",
+      "method": "open_case",
+      "status": "ACCEPTED",
+      "executed": false,
+      "refusal": "the title must be text"
+    },
+    "A.open": {
+      "hash": "0xedced680f6b4958e938eb94f6f8942157000c1e96750253516495d031b15b815",
+      "by": "CLAIMANT",
+      "method": "open_case",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0003",
+        "version": 1,
+        "digest": "f254840c6ceb312a876bf0c0f2dac93698f6ef47d7560486b268aeda828f5eda"
+      }
+    },
+    "A.acts.draft": {
+      "respondent": {
+        "role": {
+          "ok": false,
+          "why": ""
+        },
+        "revise": {
+          "ok": false,
+          "why": "Only the claimant revises the terms."
+        },
+        "accept": {
+          "ok": true,
+          "why": ""
+        },
+        "decline": {
+          "ok": true,
+          "why": ""
+        },
+        "withdrawCase": {
+          "ok": false,
+          "why": "Only the claimant withdraws the case."
+        },
+        "acceptInspector": {
+          "ok": false,
+          "why": "Only the inspector named in the terms accepts the role."
+        },
+        "fund": {
+          "ok": false,
+          "why": "The held sum is deposited after acceptance and before the case opens."
+        },
+        "expire": {
+          "ok": false,
+          "why": "The draft stays open for seven days from when it was written."
+        },
+        "file": {
+          "ok": false,
+          "why": ""
+        },
+        "ready": {
+          "ok": false,
+          "why": "Readiness is marked while the case is open for evidence."
+        },
+        "assess": {
+          "ok": false,
+          "why": "The respondent has not accepted terms for this case."
+        },
+        "lapse": {
+          "ok": false,
+          "why": "Only an open case can lapse."
+        },
+        "challenge": {
+          "ok": false,
+          "why": "Only a standing decision can be challenged."
+        },
+        "readjudicate": {
+          "ok": false,
+          "why": "Only a case under challenge is readjudicated."
+        },
+        "closeChallenge": {
+          "ok": false,
+          "why": "Only a case under challenge has a challenge to close."
+        },
+        "finalize": {
+          "ok": false,
+          "why": "Only a case with a standing decision can be finalized."
+        },
+        "withdraw": {
+          "ok": false,
+          "why": "Nothing is owed to this wallet."
+        }
+      },
+      "stranger": {
+        "role": {
+          "ok": false,
+          "why": ""
+        },
+        "revise": {
+          "ok": false,
+          "why": "Only the claimant revises the terms."
+        },
+        "accept": {
+          "ok": false,
+          "why": "Only the named respondent accepts the terms."
+        },
+        "decline": {
+          "ok": false,
+          "why": "Only the named respondent declines the case."
+        },
+        "withdrawCase": {
+          "ok": false,
+          "why": "Only the claimant withdraws the case."
+        },
+        "acceptInspector": {
+          "ok": false,
+          "why": "Only the inspector named in the terms accepts the role."
+        },
+        "fund": {
+          "ok": false,
+          "why": "The held sum is deposited after acceptance and before the case opens."
+        },
+        "expire": {
+          "ok": false,
+          "why": "The draft stays open for seven days from when it was written."
+        },
+        "file": {
+          "ok": false,
+          "why": ""
+        },
+        "ready": {
+          "ok": false,
+          "why": "Only a party or the accepted inspector marks their evidence complete."
+        },
+        "assess": {
+          "ok": false,
+          "why": "Only the claimant or the respondent asks for the assessment."
+        },
+        "lapse": {
+          "ok": false,
+          "why": "Only an open case can lapse."
+        },
+        "challenge": {
+          "ok": false,
+          "why": "Only a standing decision can be challenged."
+        },
+        "readjudicate": {
+          "ok": false,
+          "why": "Only a case under challenge is readjudicated."
+        },
+        "closeChallenge": {
+          "ok": false,
+          "why": "Only a case under challenge has a challenge to close."
+        },
+        "finalize": {
+          "ok": false,
+          "why": "Only a case with a standing decision can be finalized."
+        },
+        "withdraw": {
+          "ok": false,
+          "why": "Nothing is owed to this wallet."
+        }
+      }
+    },
+    "A.accept-wrong-digest": {
+      "hash": "0xcd73ad600d937fc181e2d5283cb45c20ce9a5b6b1e91c435d942c15d60be9262",
+      "by": "RESPONDENT",
+      "method": "accept_case",
+      "status": "ACCEPTED",
+      "executed": false,
+      "refusal": "the digest does not match the current terms; read them again before accepting"
+    },
+    "A.accept": {
+      "hash": "0xadc9da8ab5e2df8f428de88bb5d6789b3cc117b6489315c764032ba61b82439c",
+      "by": "RESPONDENT",
+      "method": "accept_case",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0003",
+        "state": "DRAFT",
+        "version": 1
+      }
+    },
+    "A.stranger-deposit": {
+      "hash": "0xe14a8b3cb42bfeb218fc84c8837999fd2ed07f064ce4fa5876a66a279e54a14d",
+      "executed": true,
+      "returned": {
+        "refused": true,
+        "reason": "the terms say the respondent deposits the held sum",
+        "credited_wei": "20000000000000000"
+      }
+    },
+    "A.stranger-withdraw": {
+      "hash": "0x2de69090493a55fa6188db7f683bbe1d33aa68aabd3061858f5239f76e89b658",
+      "by": "STRANGER",
+      "method": "withdraw",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "to": "0x4d25429512BDC4e2A1C3ec899705b369BfBdC29c",
+        "wei": "20000000000000000"
+      }
+    },
+    "A.acts.accepted": {
+      "role": {
+        "ok": false,
+        "why": ""
+      },
+      "revise": {
+        "ok": false,
+        "why": "Only the claimant revises the terms."
+      },
+      "accept": {
+        "ok": false,
+        "why": "These terms are no longer awaiting acceptance."
+      },
+      "decline": {
+        "ok": false,
+        "why": "Only terms still awaiting acceptance can be declined."
+      },
+      "withdrawCase": {
+        "ok": false,
+        "why": "Only the claimant withdraws the case."
+      },
+      "acceptInspector": {
+        "ok": false,
+        "why": "Only the inspector named in the terms accepts the role."
+      },
+      "fund": {
+        "ok": true,
+        "why": ""
+      },
+      "expire": {
+        "ok": false,
+        "why": "The draft stays open for seven days from when it was written."
+      },
+      "file": {
+        "ok": false,
+        "why": ""
+      },
+      "ready": {
+        "ok": false,
+        "why": "Readiness is marked while the case is open for evidence."
+      },
+      "assess": {
+        "ok": false,
+        "why": "The assessment is requested while the case is open."
+      },
+      "lapse": {
+        "ok": false,
+        "why": "Only an open case can lapse."
+      },
+      "challenge": {
+        "ok": false,
+        "why": "Only a standing decision can be challenged."
+      },
+      "readjudicate": {
+        "ok": false,
+        "why": "Only a case under challenge is readjudicated."
+      },
+      "closeChallenge": {
+        "ok": false,
+        "why": "Only a case under challenge has a challenge to close."
+      },
+      "finalize": {
+        "ok": false,
+        "why": "Only a case with a standing decision can be finalized."
+      },
+      "withdraw": {
+        "ok": false,
+        "why": "Nothing is owed to this wallet."
+      }
+    },
+    "A.fund": {
+      "hash": "0xad1a16bd48cacfab56c7ff3cc7a0728afa7fa2414df4b76ec7ebd587e44010a8",
+      "by": "RESPONDENT",
+      "method": "fund_case",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0003",
+        "state": "OPEN",
+        "funded_wei": "100000000000000000"
+      }
+    },
+    "A.file.1": {
+      "hash": "0xf68fb326ce78e04d9fce0b1c53c8164641dd1a849ee1e3a1d874fdfc6d46fbb8",
+      "by": "CLAIMANT",
+      "method": "submit_image",
+      "returned": {
+        "evidence_id": "E-0001",
+        "sha256": "60b2e14414ec8a4c6de686357cf4bea6caabafa47b4e09b30e2af79bbd89b62a"
+      }
+    },
+    "A.file.2": {
+      "hash": "0x93d77ef22373b25f32069cc4dd9daf9f25925fc6fda6884503f04d65d8ae1cb8",
+      "by": "CLAIMANT",
+      "method": "submit_image",
+      "returned": {
+        "evidence_id": "E-0002",
+        "sha256": "582d74fc043392363f66e222f12f3b75f1ad8f6d3a920b530acf5bf47754eeac"
+      }
+    },
+    "A.file.3": {
+      "hash": "0x0934c58120217f2a2ad6416b7ed660af868a3fa7e74ca6b03278b8a387d1ede1",
+      "by": "CLAIMANT",
+      "method": "submit_image",
+      "returned": {
+        "evidence_id": "E-0003",
+        "sha256": "f9bea88f4b43b5b374015560e481b0dcfeb33973b0bf7c90279047d70d50ce53"
+      }
+    },
+    "A.file.4": {
+      "hash": "0xdf60738e091dde0bcba668e78270dfd889d4fc164e456c1687a1ed13f052cb1d",
+      "by": "CLAIMANT",
+      "method": "submit_text",
+      "returned": {
+        "evidence_id": "E-0004",
+        "sha256": "33dec30fc033c33d743ca13194ed549d0ef30fb0d053489bcbd132ad5c7bb1a7"
+      }
+    },
+    "A.file.5": {
+      "hash": "0x2dc5380ee955fb5be9d09c23862d3e96c2051d5e57906d80a13fea1e777c6b6c",
+      "by": "RESPONDENT",
+      "method": "submit_text",
+      "returned": {
+        "evidence_id": "E-0005",
+        "sha256": "56e00d5fdfa2032c81d54cc8da0c7d6fe5c0a1db448e10e07f61d281782d85f2"
+      }
+    },
+    "A.file.6": {
+      "hash": "0xc8b0dcf84fc22d229cea3afae1c57d2e051ac8b8191df200ffefd6fc18ec1666",
+      "by": "RESPONDENT",
+      "method": "submit_text",
+      "returned": {
+        "evidence_id": "E-0006",
+        "sha256": "56408f85f487c5fa5d0a1c9b8427d6d583b4a5c5b994987839377d2d4ceeec58"
+      }
+    },
+    "A.file.7": {
+      "hash": "0xcb1582d98779bc55c24294382a6b1be8b678407ffbded5179ba320de6bc9a613",
+      "by": "RESPONDENT",
+      "method": "submit_image",
+      "returned": {
+        "evidence_id": "E-0007",
+        "sha256": "de6892bad4174c5342bc782754affd565864ae4b7dd9017a28f811b2f980b0c9"
+      }
+    },
+    "A.photo-with-camera-data": {
+      "hash": "0x91f24cb216343f7ebc474fb0c43f6a7d31f74955d45e75249a50ddb9270c49a8",
+      "by": "CLAIMANT",
+      "method": "submit_image",
+      "status": "ACCEPTED",
+      "executed": false,
+      "refusal": "this image was not accepted: it carries a metadata block (camera data, an editor record or a comment). Send a PNG or a JFIF JPEG with no metadata; the app redraws photographs into that form"
+    },
+    "A.acts.filed": {
+      "role": {
+        "ok": false,
+        "why": ""
+      },
+      "revise": {
+        "ok": false,
+        "why": "The terms are frozen once the respondent has accepted them."
+      },
+      "accept": {
+        "ok": false,
+        "why": "Only the named respondent accepts the terms."
+      },
+      "decline": {
+        "ok": false,
+        "why": "Only the named respondent declines the case."
+      },
+      "withdrawCase": {
+        "ok": false,
+        "why": "A case can be withdrawn only before it opens for evidence."
+      },
+      "acceptInspector": {
+        "ok": false,
+        "why": "Only the inspector named in the terms accepts the role."
+      },
+      "fund": {
+        "ok": false,
+        "why": "The held sum is deposited after acceptance and before the case opens."
+      },
+      "expire": {
+        "ok": false,
+        "why": "Only a draft can expire."
+      },
+      "file": {
+        "ok": false,
+        "why": ""
+      },
+      "ready": {
+        "ok": true,
+        "why": ""
+      },
+      "assess": {
+        "ok": false,
+        "why": "The evidence period is still running, unless every party marks their evidence complete first."
+      },
+      "lapse": {
+        "ok": false,
+        "why": "Either party can still ask for the assessment."
+      },
+      "challenge": {
+        "ok": false,
+        "why": "Only a standing decision can be challenged."
+      },
+      "readjudicate": {
+        "ok": false,
+        "why": "Only a case under challenge is readjudicated."
+      },
+      "closeChallenge": {
+        "ok": false,
+        "why": "Only a case under challenge has a challenge to close."
+      },
+      "finalize": {
+        "ok": false,
+        "why": "Only a case with a standing decision can be finalized."
+      },
+      "withdraw": {
+        "ok": false,
+        "why": "Nothing is owed to this wallet."
+      }
+    },
+    "A.assess-too-early": {
+      "hash": "0xa303c64598722bc7d228630131adb0217728c5c9ea8c46ca612e2021b9c289da",
+      "by": "CLAIMANT",
+      "method": "request_assessment",
+      "status": "ACCEPTED",
+      "executed": false,
+      "refusal": "the evidence period runs until 2026-10-04T08:35:03Z, unless every party marks their evidence complete first"
+    },
+    "A.stranger-files": {
+      "hash": "0x78c5ffe854323287eb7de50abc3e13333782870eb1811e3ef7c9c3990419bf8f",
+      "by": "STRANGER",
+      "method": "submit_text",
+      "status": "ACCEPTED",
+      "executed": false,
+      "refusal": "only the claimant, the respondent or an accepted inspector files evidence"
+    },
+    "A.ready.CLAIMANT": {
+      "hash": "0x4e1703023dcc8446e3967b73c2b09bd9be613a6835594962a39d6e44560ba568",
+      "by": "CLAIMANT",
+      "method": "mark_ready",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0003",
+        "ready": {
+          "CLAIMANT": true,
+          "INSPECTOR": false,
+          "RESPONDENT": false
+        }
+      }
+    },
+    "A.ready.RESPONDENT": {
+      "hash": "0xb6d26576a604cd20233be3e17145a47ea67e3ec3e9d7ec5b4a94893756a8cbec",
+      "by": "RESPONDENT",
+      "method": "mark_ready",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0003",
+        "ready": {
+          "CLAIMANT": true,
+          "INSPECTOR": false,
+          "RESPONDENT": true
+        }
+      }
+    },
+    "A.acts.ready": {
+      "role": {
+        "ok": false,
+        "why": ""
+      },
+      "revise": {
+        "ok": false,
+        "why": "The terms are frozen once the respondent has accepted them."
+      },
+      "accept": {
+        "ok": false,
+        "why": "Only the named respondent accepts the terms."
+      },
+      "decline": {
+        "ok": false,
+        "why": "Only the named respondent declines the case."
+      },
+      "withdrawCase": {
+        "ok": false,
+        "why": "A case can be withdrawn only before it opens for evidence."
+      },
+      "acceptInspector": {
+        "ok": false,
+        "why": "Only the inspector named in the terms accepts the role."
+      },
+      "fund": {
+        "ok": false,
+        "why": "The held sum is deposited after acceptance and before the case opens."
+      },
+      "expire": {
+        "ok": false,
+        "why": "Only a draft can expire."
+      },
+      "file": {
+        "ok": false,
+        "why": ""
+      },
+      "ready": {
+        "ok": false,
+        "why": "You have already marked your evidence complete."
+      },
+      "assess": {
+        "ok": true,
+        "why": ""
+      },
+      "lapse": {
+        "ok": false,
+        "why": "Either party can still ask for the assessment."
+      },
+      "challenge": {
+        "ok": false,
+        "why": "Only a standing decision can be challenged."
+      },
+      "readjudicate": {
+        "ok": false,
+        "why": "Only a case under challenge is readjudicated."
+      },
+      "closeChallenge": {
+        "ok": false,
+        "why": "Only a case under challenge has a challenge to close."
+      },
+      "finalize": {
+        "ok": false,
+        "why": "Only a case with a standing decision can be finalized."
+      },
+      "withdraw": {
+        "ok": false,
+        "why": "Nothing is owed to this wallet."
+      }
+    },
+    "ledger.after the sample is filed": {
+      "balance": "100000000000000000",
+      "books": "100000000000000000",
+      "equal": true,
+      "stats": {
+        "bonds_wei": "0",
+        "case": "3",
+        "decision": "0",
+        "evidence": "7",
+        "held_wei": "100000000000000000",
+        "owed_wei": "0",
+        "paid_out_wei": "20000000000000000"
+      }
+    },
+    "A.assess": {
+      "by": "CLAIMANT",
+      "method": "request_assessment",
+      "returned": {
+        "case_id": "KW-0003",
+        "decision_id": "D-0001",
+        "overall": "NOT_ESTABLISHED",
+        "findings": {
+          "C1": "SUPPORTED",
+          "C2": "CONFLICTING",
+          "C3": "CONFLICTING",
+          "C4": "NOT_ESTABLISHED",
+          "C5": "CONFLICTING"
+        }
+      },
+      "hash": "0x4e5db70beb309294e94c2bd670a0c7e81cc313c9606b60571539e9bd6c343f6b",
+      "attempts": [
+        {
+          "hash": "0x4e5db70beb309294e94c2bd670a0c7e81cc313c9606b60571539e9bd6c343f6b",
+          "status": "ACCEPTED",
+          "consensus": "MAJORITY_AGREE",
+          "executed": true,
+          "refusal": "",
+          "final_status": "FINALIZED",
+          "votes": {
+            "status": "FINALIZED",
+            "consensus": "MAJORITY_AGREE",
+            "appealed": false,
+            "rounds": [
+              {
+                "round": "Leader Rotation",
+                "nodes": [
+                  {
+                    "mode": "leader",
+                    "vote": "",
+                    "execution": "ERROR",
+                    "model": "llm-router/policy:dev-gpt-oss",
+                    "sighted": null,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "disagree",
+                    "execution": "ERROR",
+                    "model": "llm-router/policy:dev-gpt-oss",
+                    "sighted": null,
+                    "dissent": "the leader's assessment failed"
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "idle",
+                    "execution": "ERROR",
+                    "model": "/?",
+                    "sighted": null,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "idle",
+                    "execution": "ERROR",
+                    "model": "/?",
+                    "sighted": null,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "disagree",
+                    "execution": "ERROR",
+                    "model": "openrouter/openai/gpt-5.4",
+                    "sighted": null,
+                    "dissent": "the leader's assessment failed"
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "disagree",
+                    "execution": "ERROR",
+                    "model": "llm-router/policy:dev-deepseek",
+                    "sighted": null,
+                    "dissent": "the leader's assessment failed"
+                  }
+                ]
+              },
+              {
+                "round": "Accepted",
+                "nodes": [
+                  {
+                    "mode": "leader",
+                    "vote": "",
+                    "execution": "SUCCESS",
+                    "model": "openrouter/openai/gpt-5.4",
+                    "sighted": true,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "agree",
+                    "execution": "SUCCESS",
+                    "model": "openrouter/openai/gpt-5.4",
+                    "sighted": true,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "agree",
+                    "execution": "SUCCESS",
+                    "model": "llm-router/policy:dev-gpt-5-4",
+                    "sighted": false,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "disagree",
+                    "execution": "SUCCESS",
+                    "model": "openrouter/google/gemini-3-flash-preview",
+                    "sighted": true,
+                    "dissent": "C5: the leader's finding is CONFLICTING, this node's is SUPPORTED"
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "agree",
+                    "execution": "SUCCESS",
+                    "model": "llm-router/policy:dev-gpt-5-4",
+                    "sighted": false,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "disagree",
+                    "execution": "SUCCESS",
+                    "model": "llm-router/policy:dev-deepseek",
+                    "sighted": false,
+                    "dissent": "C5: the leader's finding is CONFLICTING, this node's is SUPPORTED"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "A.decision": {
+      "decision_id": "D-0001",
+      "kind": "ASSESSMENT",
+      "round": 1,
+      "status": "STANDING",
+      "overall": "NOT_ESTABLISHED",
+      "superseded_by": "",
+      "calibrated": true,
+      "seen_ids": [
+        "E-0001",
+        "E-0002",
+        "E-0003",
+        "E-0007"
+      ],
+      "unseen_ids": [],
+      "instructions_found": [],
+      "bound": "a majority of validators, each running the assessment itself, reproduced for each criterion whether it is supported, and so whether the claim is",
+      "observations": 4,
+      "criteria": [
+        {
+          "id": "C1",
+          "finding": "SUPPORTED",
+          "model_finding": "SUPPORTED",
+          "floors": [],
+          "basis": [
+            "E-0004",
+            "E-0003",
+            "E-0002"
+          ],
+          "contrary": [],
+          "missing": []
+        },
+        {
+          "id": "C2",
+          "finding": "CONFLICTING",
+          "model_finding": "CONFLICTING",
+          "floors": [],
+          "basis": [
+            "E-0004"
+          ],
+          "contrary": [
+            "E-0006",
+            "E-0003"
+          ],
+          "missing": [
+            "An independent completion record or inspection confirming the flashing was resealed on every face and the gutter was cleared."
+          ]
+        },
+        {
+          "id": "C3",
+          "finding": "CONFLICTING",
+          "model_finding": "CONFLICTING",
+          "floors": [],
+          "basis": [
+            "E-0004"
+          ],
+          "contrary": [
+            "E-0006"
+          ],
+          "missing": [
+            "An independent post-work inspection or detailed completion photos covering all faces of the chimney and the gutter."
+          ]
+        },
+        {
+          "id": "C4",
+          "finding": "NOT_ESTABLISHED",
+          "model_finding": "NOT_ESTABLISHED",
+          "floors": [],
+          "basis": [
+            "E-0006",
+            "E-0007"
+          ],
+          "contrary": [],
+          "missing": [
+            "A reliable post-repair inspection showing dry readings over time or observed improvement after rainfall."
+          ]
+        },
+        {
+          "id": "C5",
+          "finding": "CONFLICTING",
+          "model_finding": "CONFLICTING",
+          "floors": [],
+          "basis": [
+            "E-0004"
+          ],
+          "contrary": [
+            "E-0006",
+            "E-0003"
+          ],
+          "missing": [
+            "An independent contemporaneous completion record dated and timed before 17:00 on 26 September 2026, or an inspection confirming all required work was finished b"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "E-0001",
+          "new_in_challenge": false
+        },
+        {
+          "evidence_id": "E-0002",
+          "new_in_challenge": false
+        },
+        {
+          "evidence_id": "E-0003",
+          "new_in_challenge": false
+        },
+        {
+          "evidence_id": "E-0004",
+          "new_in_challenge": false
+        },
+        {
+          "evidence_id": "E-0005",
+          "new_in_challenge": false
+        },
+        {
+          "evidence_id": "E-0006",
+          "new_in_challenge": false
+        },
+        {
+          "evidence_id": "E-0007",
+          "new_in_challenge": false
+        }
+      ],
+      "manifest_digest": "1763d19bb7c4d871263ec2135c0e7ee5afe876398a1fd3e32cf01d1242c52970",
+      "decision_digest": "fe7e32a62e8f0e1731f13331e4f600116d6661fdb4422079d2524b52cebcea5b",
+      "challenge_window_ends": "2026-10-04T09:27:18Z"
+    },
+    "A.challenge-wrong-side": {
+      "hash": "0x1915272a7667847477c0d328c37406074196d6b6f0d76bb33d31528d172f7738",
+      "executed": true,
+      "returned": {
+        "refused": true,
+        "reason": "only the claimant, whom this decision went against, challenges it",
+        "credited_wei": "50000000000000000"
+      }
+    },
+    "A.acts.decided": {
+      "claimant": {
+        "role": {
+          "ok": false,
+          "why": ""
+        },
+        "revise": {
+          "ok": false,
+          "why": "The terms are frozen once the respondent has accepted them."
+        },
+        "accept": {
+          "ok": false,
+          "why": "Only the named respondent accepts the terms."
+        },
+        "decline": {
+          "ok": false,
+          "why": "Only the named respondent declines the case."
+        },
+        "withdrawCase": {
+          "ok": false,
+          "why": "A case can be withdrawn only before it opens for evidence."
+        },
+        "acceptInspector": {
+          "ok": false,
+          "why": "Only the inspector named in the terms accepts the role."
+        },
+        "fund": {
+          "ok": false,
+          "why": "The held sum is deposited after acceptance and before the case opens."
+        },
+        "expire": {
+          "ok": false,
+          "why": "Only a draft can expire."
+        },
+        "file": {
+          "ok": false,
+          "why": ""
+        },
+        "ready": {
+          "ok": false,
+          "why": "Readiness is marked while the case is open for evidence."
+        },
+        "assess": {
+          "ok": false,
+          "why": "No image went unexamined in this decision, so it cannot be asked for again; the way to contest it is a challenge."
+        },
+        "lapse": {
+          "ok": false,
+          "why": "Only an open case can lapse."
+        },
+        "challenge": {
+          "ok": true,
+          "why": ""
+        },
+        "readjudicate": {
+          "ok": false,
+          "why": "Only a case under challenge is readjudicated."
+        },
+        "closeChallenge": {
+          "ok": false,
+          "why": "Only a case under challenge has a challenge to close."
+        },
+        "finalize": {
+          "ok": false,
+          "why": "The decision can still be challenged."
+        },
+        "withdraw": {
+          "ok": false,
+          "why": "Nothing is owed to this wallet."
+        }
+      },
+      "respondent": {
+        "role": {
+          "ok": false,
+          "why": ""
+        },
+        "revise": {
+          "ok": false,
+          "why": "Only the claimant revises the terms."
+        },
+        "accept": {
+          "ok": false,
+          "why": "These terms are no longer awaiting acceptance."
+        },
+        "decline": {
+          "ok": false,
+          "why": "Only terms still awaiting acceptance can be declined."
+        },
+        "withdrawCase": {
+          "ok": false,
+          "why": "Only the claimant withdraws the case."
+        },
+        "acceptInspector": {
+          "ok": false,
+          "why": "Only the inspector named in the terms accepts the role."
+        },
+        "fund": {
+          "ok": false,
+          "why": "The held sum is deposited after acceptance and before the case opens."
+        },
+        "expire": {
+          "ok": false,
+          "why": "Only a draft can expire."
+        },
+        "file": {
+          "ok": false,
+          "why": ""
+        },
+        "ready": {
+          "ok": false,
+          "why": "Readiness is marked while the case is open for evidence."
+        },
+        "assess": {
+          "ok": false,
+          "why": "No image went unexamined in this decision, so it cannot be asked for again; the way to contest it is a challenge."
+        },
+        "lapse": {
+          "ok": false,
+          "why": "Only an open case can lapse."
+        },
+        "challenge": {
+          "ok": false,
+          "why": "Only the claimant, whom this decision went against, challenges it."
+        },
+        "readjudicate": {
+          "ok": false,
+          "why": "Only a case under challenge is readjudicated."
+        },
+        "closeChallenge": {
+          "ok": false,
+          "why": "Only a case under challenge has a challenge to close."
+        },
+        "finalize": {
+          "ok": false,
+          "why": "The decision can still be challenged."
+        },
+        "withdraw": {
+          "ok": true,
+          "why": ""
+        }
+      }
+    },
+    "A.finalize-too-early": {
+      "hash": "0x77115e896a23f2d376f012185fe8c59356fed9ce09efaf3525b946a9d8b1713d",
+      "by": "STRANGER",
+      "method": "finalize",
+      "status": "ACCEPTED",
+      "executed": false,
+      "refusal": "the decision can still be challenged until 2026-10-04T09:27:18Z"
+    },
+    "A.challenge": {
+      "hash": "0x59c783ae5c5433466f88cc3e2adc07760379ba711f4bb6066d377eae532137ad",
+      "by": "CLAIMANT",
+      "method": "challenge",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0003",
+        "state": "UNDER_CHALLENGE",
+        "evidence_ends": "2026-10-04T08:40:22Z",
+        "reply_ends": "2026-10-04T08:50:22Z"
+      }
+    },
+    "A.challenge-file.1": {
+      "hash": "0x03783f7e26a0b657431986c5458b4d135335a3928288f940cbd8ca9dd5928a46",
+      "by": "CLAIMANT",
+      "method": "submit_image",
+      "returned": {
+        "evidence_id": "E-0008",
+        "sha256": "b39ab59a360a988f3eeda9ea7c0239166ea56e5032b459307540979694cef59f"
+      }
+    },
+    "A.challenge-file.2": {
+      "hash": "0x9b6f8d02b920c258542e974c660e08f06f50977cd33417fa92592d4933dac4da",
+      "by": "CLAIMANT",
+      "method": "submit_text",
+      "returned": {
+        "evidence_id": "E-0009",
+        "sha256": "11b53b9e1b8a5a3316b6fdc1471914a5c7fcf09b5a563b9576be092d4e3c872a"
+      }
+    },
+    "A.readjudicate-too-early": {
+      "hash": "0x0aad8027abc8c8974b7080f972084e0cb8a09cd65cfbc4cfbdd72cfa3bd8a488",
+      "by": "STRANGER",
+      "method": "readjudicate",
+      "status": "ACCEPTED",
+      "executed": false,
+      "refusal": "the challenger may file new evidence until 2026-10-04T08:40:22Z"
+    },
+    "A.evidence_ends": "2026-10-04T08:40:22Z",
+    "A.reply_ends": "2026-10-04T08:50:22Z",
+    "ledger.with a challenge bond held": {
+      "balance": "200000000000000000",
+      "books": "200000000000000000",
+      "equal": true,
+      "stats": {
+        "bonds_wei": "50000000000000000",
+        "case": "3",
+        "decision": "1",
+        "evidence": "9",
+        "held_wei": "100000000000000000",
+        "owed_wei": "50000000000000000",
+        "paid_out_wei": "20000000000000000"
+      }
+    },
+    "D.open": {
+      "hash": "0x3505b8c6b3018447a41740e62e62bbf58446a15d485c5590c19ff095a1eeaedb",
+      "by": "CLAIMANT",
+      "method": "open_case",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0004",
+        "version": 1,
+        "digest": "7cbf392f31d249f396e988ad2ee9382c24eec23288b544899c8cb5761e11dca7"
+      }
+    },
+    "D.accept": {
+      "hash": "0x662710ec7529c7520ab460faf828b8168a340894638972b8316ba5519400aaeb",
+      "by": "RESPONDENT",
+      "method": "accept_case",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0004",
+        "state": "OPEN",
+        "version": 1
+      }
+    },
+    "D.file.claimant": {
+      "hash": "0xc958e35a82a3c78ec6d19c38e80a9b8ee4395c6878b85a90134e7c82d6f5ed8d",
+      "by": "CLAIMANT",
+      "method": "submit_text",
+      "returned": {
+        "evidence_id": "E-0010",
+        "sha256": "237ca0fe79446e91f0ee419a6a9a4039d16833d2f265b351d99b276806bfd366"
+      }
+    },
+    "D.file.respondent": {
+      "hash": "0x40a11640d9e096bf794879765cd50f1ac1d4d8288cb941fce014e4a38cf816e1",
+      "by": "RESPONDENT",
+      "method": "submit_text",
+      "returned": {
+        "evidence_id": "E-0011",
+        "sha256": "7daadac9ccab6c61c60a68fb710e3d1ca7f87faabd9d0039a2eb11d62905ede7"
+      }
+    },
+    "D.ready.CLAIMANT": {
+      "hash": "0xffc7136fbd607ecd71ae13b7598d779ac2c9c8f8f64e96fb21054ef2a1ee95d5",
+      "by": "CLAIMANT",
+      "method": "mark_ready",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0004",
+        "ready": {
+          "CLAIMANT": true,
+          "INSPECTOR": false,
+          "RESPONDENT": false
+        }
+      }
+    },
+    "D.ready.RESPONDENT": {
+      "hash": "0xfa7d9f8d3b1921815ae0bac566e6f057658a95f6e6f52f721c275a72422a4086",
+      "by": "RESPONDENT",
+      "method": "mark_ready",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0004",
+        "ready": {
+          "CLAIMANT": true,
+          "INSPECTOR": false,
+          "RESPONDENT": true
+        }
+      }
+    },
+    "D.assess": {
+      "by": "RESPONDENT",
+      "method": "request_assessment",
+      "returned": {
+        "case_id": "KW-0004",
+        "decision_id": "D-0002",
+        "overall": "CONFLICTING",
+        "findings": {
+          "C1": "CONFLICTING"
+        }
+      },
+      "hash": "0xea09ea8556b219cbfc4de2826927d4482f764046499810bcbf3405fbe1637ab7",
+      "attempts": [
+        {
+          "hash": "0xea09ea8556b219cbfc4de2826927d4482f764046499810bcbf3405fbe1637ab7",
+          "status": "ACCEPTED",
+          "consensus": "MAJORITY_AGREE",
+          "executed": true,
+          "refusal": "",
+          "final_status": "FINALIZED",
+          "votes": {
+            "status": "FINALIZED",
+            "consensus": "MAJORITY_AGREE",
+            "appealed": false,
+            "rounds": [
+              {
+                "round": "Accepted",
+                "nodes": [
+                  {
+                    "mode": "leader",
+                    "vote": "",
+                    "execution": "SUCCESS",
+                    "model": "llm-router/policy:dev-sonnet",
+                    "sighted": true,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "idle",
+                    "execution": "ERROR",
+                    "model": "/?",
+                    "sighted": null,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "agree",
+                    "execution": "SUCCESS",
+                    "model": "llm-router/policy:dev-gemini",
+                    "sighted": true,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "idle",
+                    "execution": "ERROR",
+                    "model": "/?",
+                    "sighted": null,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "agree",
+                    "execution": "SUCCESS",
+                    "model": "llm-router/policy:dev-gpt-oss",
+                    "sighted": true,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "agree",
+                    "execution": "SUCCESS",
+                    "model": "llm-router/policy:dev-deepseek",
+                    "sighted": true,
+                    "dissent": ""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "D.decision": {
+      "decision_id": "D-0002",
+      "kind": "ASSESSMENT",
+      "round": 1,
+      "status": "STANDING",
+      "overall": "CONFLICTING",
+      "superseded_by": "",
+      "calibrated": false,
+      "seen_ids": [],
+      "unseen_ids": [],
+      "instructions_found": [],
+      "bound": "a majority of validators, each running the assessment itself, reproduced for each criterion whether it is supported, and so whether the claim is",
+      "observations": 0,
+      "criteria": [
+        {
+          "id": "C1",
+          "finding": "CONFLICTING",
+          "model_finding": "CONFLICTING",
+          "floors": [],
+          "basis": [
+            "E-0010"
+          ],
+          "contrary": [
+            "E-0011"
+          ],
+          "missing": []
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "E-0010",
+          "new_in_challenge": false
+        },
+        {
+          "evidence_id": "E-0011",
+          "new_in_challenge": false
+        }
+      ],
+      "manifest_digest": "645123ba1a76019d5a2b597f1fbda856c7031e14f6dff8f7f5917c17ae9ee69b",
+      "decision_digest": "d1534100b83511a590950949238c876bbea86942006b0e7e3a83b3e5ad370e16",
+      "challenge_window_ends": "2026-10-04T09:31:52Z"
+    },
+    "D.challenge": {
+      "hash": "0x1cbd2d3cacf2979190e512d0dda6c01c96beff3d6d68a09d3f4677e9beda0d50",
+      "by": "CLAIMANT",
+      "method": "challenge",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0004",
+        "state": "UNDER_CHALLENGE",
+        "evidence_ends": "2026-10-04T08:42:50Z",
+        "reply_ends": "2026-10-04T08:52:50Z"
+      }
+    },
+    "D.evidence_ends": "2026-10-04T08:42:50Z",
+    "B.open": {
+      "hash": "0xb8ef142543ea9bb5b371ffe86c82c6bc0f809a0c89461388983f507a6c0fc2eb",
+      "by": "CLAIMANT",
+      "method": "open_case",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0005",
+        "version": 1,
+        "digest": "71d5d4530f5be1a4db63cb2c76fa19c46834b16e116bb9985b6745752ce0700b"
+      }
+    },
+    "B.accept": {
+      "hash": "0x2c23bddd5da4e4f2f4826f871ac0e4a79df9204d59ace5897398f67b1066647b",
+      "by": "RESPONDENT",
+      "method": "accept_case",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0005",
+        "state": "DRAFT",
+        "version": 1
+      }
+    },
+    "B.fund": {
+      "hash": "0x14cb0000f2a72b9d9f252d31c2d53a207628561502e2622d05fcd0b744f2d25a",
+      "by": "RESPONDENT",
+      "method": "fund_case",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0005",
+        "state": "OPEN",
+        "funded_wei": "100000000000000000"
+      }
+    },
+    "B.file.claimant": {
+      "hash": "0x2dedb53b4788deaff8d16980ac562d00533bedff152f86e001c67873faf841df",
+      "by": "CLAIMANT",
+      "method": "submit_text",
+      "returned": {
+        "evidence_id": "E-0012",
+        "sha256": "c4172010c4ef626bfc2e2857506f0562af7728c9a839b5aec0370cafd30b9ee2"
+      }
+    },
+    "B.file.respondent": {
+      "hash": "0x13e5aeb86f8006f16cd7e38a28aca9699c71d9dbae490006d9ed741583fc01c6",
+      "by": "RESPONDENT",
+      "method": "submit_text",
+      "returned": {
+        "evidence_id": "E-0013",
+        "sha256": "03d432d16b45a0ea2bcaee36895e995adb44b697673a1f43b8231ac281d37a91"
+      }
+    },
+    "B.ready.CLAIMANT": {
+      "hash": "0x26715bf6bd360e3fd4637542f10efab2a490b5d0d169df888a0cb5f5bba75aa6",
+      "by": "CLAIMANT",
+      "method": "mark_ready",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0005",
+        "ready": {
+          "CLAIMANT": true,
+          "INSPECTOR": false,
+          "RESPONDENT": false
+        }
+      }
+    },
+    "B.ready.RESPONDENT": {
+      "hash": "0x9162bbf21fd8c13fc7cbd36082b73da84b543e6687b3cf35d1f8d12aa2e30058",
+      "by": "RESPONDENT",
+      "method": "mark_ready",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0005",
+        "ready": {
+          "CLAIMANT": true,
+          "INSPECTOR": false,
+          "RESPONDENT": true
+        }
+      }
+    },
+    "B.assess": {
+      "by": "RESPONDENT",
+      "method": "request_assessment",
+      "returned": {
+        "case_id": "KW-0005",
+        "decision_id": "D-0003",
+        "overall": "SUPPORTED",
+        "findings": {
+          "C1": "SUPPORTED",
+          "C2": "SUPPORTED"
+        }
+      },
+      "hash": "0x0903ea7a970711388ae4409a3e6491ccf5a93a123e78103f1b9c352b0a35201f",
+      "attempts": [
+        {
+          "hash": "0x0903ea7a970711388ae4409a3e6491ccf5a93a123e78103f1b9c352b0a35201f",
+          "status": "ACCEPTED",
+          "consensus": "MAJORITY_AGREE",
+          "executed": true,
+          "refusal": "",
+          "appeal": {
+            "sent": true,
+            "charge": "50000000000008794"
+          },
+          "final_status": "FINALIZED",
+          "votes": {
+            "status": "FINALIZED",
+            "consensus": "MAJORITY_AGREE",
+            "appealed": false,
+            "rounds": [
+              {
+                "round": "Accepted",
+                "nodes": [
+                  {
+                    "mode": "leader",
+                    "vote": "",
+                    "execution": "SUCCESS",
+                    "model": "llm-router/policy:dev-gpt-5-4",
+                    "sighted": true,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "agree",
+                    "execution": "SUCCESS",
+                    "model": "llm-router/policy:dev-gpt-5-4",
+                    "sighted": true,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "agree",
+                    "execution": "SUCCESS",
+                    "model": "llm-router/policy:dev-gemini",
+                    "sighted": true,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "idle",
+                    "execution": "ERROR",
+                    "model": "/?",
+                    "sighted": null,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "agree",
+                    "execution": "SUCCESS",
+                    "model": "llm-router/policy:dev-sonnet",
+                    "sighted": true,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "idle",
+                    "execution": "ERROR",
+                    "model": "/?",
+                    "sighted": null,
+                    "dissent": ""
+                  }
+                ]
+              },
+              {
+                "round": "Validator Appeal Failed",
+                "nodes": [
+                  {
+                    "mode": "validator",
+                    "vote": "agree",
+                    "execution": "SUCCESS",
+                    "model": "llm-router/policy:dev-gpt-oss",
+                    "sighted": true,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "agree",
+                    "execution": "SUCCESS",
+                    "model": "llm-router/policy:dev-deepseek",
+                    "sighted": true,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "agree",
+                    "execution": "SUCCESS",
+                    "model": "llm-router/policy:dev-grok",
+                    "sighted": true,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "idle",
+                    "execution": "ERROR",
+                    "model": "/?",
+                    "sighted": null,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "idle",
+                    "execution": "ERROR",
+                    "model": "/?",
+                    "sighted": null,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "idle",
+                    "execution": "ERROR",
+                    "model": "/?",
+                    "sighted": null,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "agree",
+                    "execution": "SUCCESS",
+                    "model": "llm-router/policy:dev-gpt-5-4",
+                    "sighted": true,
+                    "dissent": ""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "B.decision": {
+      "decision_id": "D-0003",
+      "kind": "ASSESSMENT",
+      "round": 1,
+      "status": "STANDING",
+      "overall": "SUPPORTED",
+      "superseded_by": "",
+      "calibrated": false,
+      "seen_ids": [],
+      "unseen_ids": [],
+      "instructions_found": [],
+      "bound": "a majority of validators, each running the assessment itself, reproduced for each criterion whether it is supported, and so whether the claim is",
+      "observations": 0,
+      "criteria": [
+        {
+          "id": "C1",
+          "finding": "SUPPORTED",
+          "model_finding": "SUPPORTED",
+          "floors": [],
+          "basis": [
+            "E-0012",
+            "E-0013"
+          ],
+          "contrary": [],
+          "missing": []
+        },
+        {
+          "id": "C2",
+          "finding": "SUPPORTED",
+          "model_finding": "SUPPORTED",
+          "floors": [],
+          "basis": [
+            "E-0012",
+            "E-0013"
+          ],
+          "contrary": [],
+          "missing": []
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "E-0012",
+          "new_in_challenge": false
+        },
+        {
+          "evidence_id": "E-0013",
+          "new_in_challenge": false
+        }
+      ],
+      "manifest_digest": "79b6256ed7ad2b960f0f8da2a46891516224e3b52816aa018481431985fc6c8c",
+      "decision_digest": "25ee30f47eca1f40e43d00e437c40ec70ac3ffe1d7fa7d37490a39fbd3c7fdbe",
+      "challenge_window_ends": "2026-10-04T09:33:44Z"
+    },
+    "B.receipt-early": {
+      "schema": "keywitness.receipt-file/1",
+      "mode": "private",
+      "network": {
+        "name": "Studio Next",
+        "chain_id": 61997,
+        "contract": "0xB903Dcfd1730818260CFFa05d12497E73CB124Ff",
+        "explorer": "https://explorer-studio-dev.genlayer.com"
+      },
+      "case_id": "KW-0005",
+      "chain_digest": "544ba3f3ddac7de89f578750c69d6cfd2e1ad4a0c13b2c27821e08b3ded8cdd6",
+      "core": {
+        "case_id": "KW-0005",
+        "case_state": "DETERMINED",
+        "challenge": null,
+        "decision": {
+          "bound": {
+            "findings": "a majority of validators, each running the assessment itself, reproduced for each criterion whether it is supported, and so whether the claim is",
+            "leader_recorded": [
+              "the finer label of a criterion that is not supported, and so of the overall finding",
+              "floors",
+              "rationale",
+              "basis",
+              "contrary",
+              "missing",
+              "limitations",
+              "observations",
+              "instructions_found",
+              "seen_ids"
+            ]
+          },
+          "calibrated": false,
+          "case_id": "KW-0005",
+          "challenge_window_ends": "2026-10-04T09:33:44Z",
+          "criteria": [
+            {
+              "basis": [
+                "E-0012",
+                "E-0013"
+              ],
+              "contrary": [],
+              "finding": "SUPPORTED",
+              "floors": [],
+              "id": "C1",
+              "missing": [],
+              "model_finding": "SUPPORTED",
+              "needs_independent": false,
+              "rationale": "E-0012 is a message sent via the agent's repairs portal on 19 Sep 2026 at 14:02 reporting a leaking boiler; E-0013 is the agent's repairs log noting receipt of that portal report on 19 Sep 2026 at 14:05. Both directly show the tenant reported the issue to the managing agent.",
+              "text": "Evidence shows the leaking boiler was reported to the managing agent."
+            },
+            {
+              "basis": [
+                "E-0012",
+                "E-0013"
+              ],
+              "contrary": [],
+              "finding": "SUPPORTED",
+              "floors": [],
+              "id": "C2",
+              "missing": [],
+              "model_finding": "SUPPORTED",
+              "needs_independent": false,
+              "rationale": "The timestamps in E-0012 (14:02) and E-0013 (14:05) on 19 Sep 2026 are before the deadline of 20 Sep 2026 18:00 Europe/London, satisfying the timing requirement.",
+              "text": "Evidence shows the report was made before 18:00 on 20 September 2026, Europe/London time."
+            }
+          ],
+          "decided_at": "2026-10-04T08:33:44Z",
+          "decision_digest": "25ee30f47eca1f40e43d00e437c40ec70ac3ffe1d7fa7d37490a39fbd3c7fdbe",
+          "decision_id": "D-0003",
+          "evidence": [
+            {
+              "declared_capture": "19 September 2026, 14:02",
+              "evidence_id": "E-0012",
+              "filed_at": "2026-10-04T08:33:16Z",
+              "first_filed_in": "",
+              "kind": "TEXT_DOCUMENT",
+              "new_in_challenge": false,
+              "reuse": "",
+              "role": "CLAIMANT",
+              "sha256": "c4172010c4ef626bfc2e2857506f0562af7728c9a839b5aec0370cafd30b9ee2"
+            },
+            {
+              "declared_capture": "19 September 2026",
+              "evidence_id": "E-0013",
+              "filed_at": "2026-10-04T08:33:25Z",
+              "first_filed_in": "",
+              "kind": "TEXT_DOCUMENT",
+              "new_in_challenge": false,
+              "reuse": "",
+              "role": "RESPONDENT",
+              "sha256": "03d432d16b45a0ea2bcaee36895e995adb44b697673a1f43b8231ac281d37a91"
+            }
+          ],
+          "instructions_found": [],
+          "kind": "ASSESSMENT",
+          "limitations": [
+            "Cannot independently verify the authenticity of the timestamps or that the repairs portal is operated by the managing agent."
+          ],
+          "manifest_digest": "79b6256ed7ad2b960f0f8da2a46891516224e3b52816aa018481431985fc6c8c",
+          "observations": [],
+          "overall": "SUPPORTED",
+          "requested_by": "0x993BA6CaE307FEb5400B02083062E874F5Fe6839",
+          "round": 1,
+          "scope": "Whether the filed evidence establishes each criterion the parties accepted before the evidence was filed. Not a legal finding, not a finding about who is telling the truth, and not proof of when a photograph was taken or that a file is authentic.",
+          "seen_ids": [],
+          "status": "STANDING",
+          "superseded_by": "",
+          "supersedes": "",
+          "terms_digest": "71d5d4530f5be1a4db63cb2c76fa19c46834b16e116bb9985b6745752ce0700b",
+          "terms_version": 1,
+          "unseen_ids": []
+        },
+        "history": [
+          {
+            "decided_at": "2026-10-04T08:33:44Z",
+            "decision_digest": "25ee30f47eca1f40e43d00e437c40ec70ac3ffe1d7fa7d37490a39fbd3c7fdbe",
+            "decision_id": "D-0003",
+            "kind": "ASSESSMENT",
+            "overall": "SUPPORTED",
+            "round": 1,
+            "status": "STANDING"
+          }
+        ],
+        "parties": {
+          "claimant": "0x3F2536fD5c1AD0f1e8ea5591f36D731A6D51d911",
+          "inspector": "",
+          "respondent": "0x993BA6CaE307FEb5400B02083062E874F5Fe6839"
+        },
+        "rules": "keywitness-rules-1",
+        "schema": "keywitness.receipt/1",
+        "settlement": null,
+        "terms": {
+          "claim": "The tenant reported the leaking boiler to the managing agent before 18:00 on 20 September 2026.",
+          "criteria": [
+            {
+              "id": "C1",
+              "needs_independent": false,
+              "text": "Evidence shows the leaking boiler was reported to the managing agent."
+            },
+            {
+              "id": "C2",
+              "needs_independent": false,
+              "text": "Evidence shows the report was made before 18:00 on 20 September 2026, Europe/London time."
+            }
+          ],
+          "deadline": "2026-09-20T18:00",
+          "digest": "71d5d4530f5be1a4db63cb2c76fa19c46834b16e116bb9985b6745752ce0700b",
+          "event_kind": "MAINTENANCE_REPORTED",
+          "limitations": [],
+          "property_ref": "Canal street flat (synthetic)",
+          "time_zone": "Europe/London",
+          "title": "Leaking boiler reported before the deadline",
+          "version": 1,
+          "window_start": ""
+        }
+      },
+      "core_digest": "544ba3f3ddac7de89f578750c69d6cfd2e1ad4a0c13b2c27821e08b3ded8cdd6",
+      "transactions": [],
+      "transactions_searched": "none",
+      "generated_at": "2026-10-04T08:34:52.340Z",
+      "notice": "This receipt shows what the KeyWitness contract recorded. A digest proves the record was not edited; it does not prove that a photograph is authentic, that a date is genuine, or that the event happened. A finding is an assessment of evidence against agreed criteria, not a legal determination."
+    },
+    "B.case-after-appeal": {
+      "state": "DETERMINED",
+      "standing": "D-0003",
+      "thread": "KW-0005",
+      "follows_case": "",
+      "bond_to": "",
+      "outcome": ""
+    },
+    "C.open": {
+      "hash": "0x1ebade7aad48366681428dd382d0ede00f828715852ca4beca1a96e1756c4ff1",
+      "by": "CLAIMANT",
+      "method": "open_case",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0006",
+        "version": 1,
+        "digest": "ba7608e130b879fbe251b1b39c504acc8d33cd115b4146a8b931b51a7b81c27e"
+      }
+    },
+    "C.accept": {
+      "hash": "0x239b17f56fad656c43ad46314611723e65cde0ef2b5381bebc67dc496eb80e74",
+      "by": "RESPONDENT",
+      "method": "accept_case",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0006",
+        "state": "OPEN",
+        "version": 1
+      }
+    },
+    "C.file.claimant": {
+      "hash": "0xec1a5ddba7d7b1ecd7aeb084692c7449b571a07f5ff10b89b213686f73fbe4d2",
+      "by": "CLAIMANT",
+      "method": "submit_text",
+      "returned": {
+        "evidence_id": "E-0014",
+        "sha256": "ee9d686843097c5958f1c733540da3c87fd10df7dcfbb7f024a99db084136c3c"
+      }
+    },
+    "C.file.respondent": {
+      "hash": "0xaae8cf657368dc76e466ff1f41a5c6ee77e4e81250bec7540f75735f6abba697",
+      "by": "RESPONDENT",
+      "method": "submit_text",
+      "returned": {
+        "evidence_id": "E-0015",
+        "sha256": "097938ce6465e703b6feea505c5d44e679bab7029f7a62b9bac20a05044c1925"
+      }
+    },
+    "C.ready.CLAIMANT": {
+      "hash": "0xaf0052756963dfdf57f9e98706f2b6174e2d5507b394718e42c0449bca21a73c",
+      "by": "CLAIMANT",
+      "method": "mark_ready",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0006",
+        "ready": {
+          "CLAIMANT": true,
+          "INSPECTOR": false,
+          "RESPONDENT": false
+        }
+      }
+    },
+    "C.ready.RESPONDENT": {
+      "hash": "0x5efbff4c367462e8dd1557c5a2bc8c082e89b1d7f09e580c8510dc7e26718058",
+      "by": "RESPONDENT",
+      "method": "mark_ready",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0006",
+        "ready": {
+          "CLAIMANT": true,
+          "INSPECTOR": false,
+          "RESPONDENT": true
+        }
+      }
+    },
+    "C.assess": {
+      "by": "CLAIMANT",
+      "method": "request_assessment",
+      "returned": {
+        "case_id": "KW-0006",
+        "decision_id": "D-0004",
+        "overall": "INSUFFICIENT",
+        "findings": {
+          "C1": "INSUFFICIENT"
+        }
+      },
+      "hash": "0x9ee5ee03f7cab3441560d92e9551a54421060ff04b09fbd7dce8bbd3674cf8a6",
+      "attempts": [
+        {
+          "hash": "0x9ee5ee03f7cab3441560d92e9551a54421060ff04b09fbd7dce8bbd3674cf8a6",
+          "status": "ACCEPTED",
+          "consensus": "MAJORITY_AGREE",
+          "executed": true,
+          "refusal": "",
+          "final_status": "FINALIZED",
+          "votes": {
+            "status": "FINALIZED",
+            "consensus": "MAJORITY_AGREE",
+            "appealed": false,
+            "rounds": [
+              {
+                "round": "Accepted",
+                "nodes": [
+                  {
+                    "mode": "leader",
+                    "vote": "",
+                    "execution": "SUCCESS",
+                    "model": "llm-router/policy:dev-deepseek",
+                    "sighted": true,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "agree",
+                    "execution": "SUCCESS",
+                    "model": "llm-router/policy:dev-deepseek",
+                    "sighted": true,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "idle",
+                    "execution": "ERROR",
+                    "model": "/?",
+                    "sighted": null,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "agree",
+                    "execution": "SUCCESS",
+                    "model": "openrouter/google/gemini-3-flash-preview",
+                    "sighted": true,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "idle",
+                    "execution": "ERROR",
+                    "model": "/?",
+                    "sighted": null,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "agree",
+                    "execution": "SUCCESS",
+                    "model": "llm-router/policy:dev-deepseek",
+                    "sighted": true,
+                    "dissent": ""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "C.decision": {
+      "decision_id": "D-0004",
+      "kind": "ASSESSMENT",
+      "round": 1,
+      "status": "STANDING",
+      "overall": "INSUFFICIENT",
+      "superseded_by": "",
+      "calibrated": false,
+      "seen_ids": [],
+      "unseen_ids": [],
+      "instructions_found": [
+        "E-0014"
+      ],
+      "bound": "a majority of validators, each running the assessment itself, reproduced for each criterion whether it is supported, and so whether the claim is",
+      "observations": 0,
+      "criteria": [
+        {
+          "id": "C1",
+          "finding": "INSUFFICIENT",
+          "model_finding": "CONFLICTING",
+          "floors": [
+            "F6/F7",
+            "F8"
+          ],
+          "basis": [],
+          "contrary": [
+            "E-0015"
+          ],
+          "missing": [
+            "Dated photographic evidence of the new unit installed and operating, or a detailed work receipt from the contractor specifying the model installed and completio"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "E-0014",
+          "new_in_challenge": false
+        },
+        {
+          "evidence_id": "E-0015",
+          "new_in_challenge": false
+        }
+      ],
+      "manifest_digest": "89ddc7793ca2122d9005a0d55a17422f49cc017e549b612d0b315480a7fad6fa",
+      "decision_digest": "2009aee5aecb49189a3c029e8ef8946c5b7510a7b7e22fc1d6297fcda755aa31",
+      "challenge_window_ends": "2026-10-04T09:35:39Z"
+    },
+    "E.open": {
+      "hash": "0xce153331aec2733ec5fb30ac0ac3422aea6cc2455aa96c590982cb3ee78787e4",
+      "by": "CLAIMANT",
+      "method": "open_case",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0007",
+        "version": 1,
+        "digest": "3d82425e986b331b5187b5673feb6b0689d088450234b58cdba740aef9f8c2cd"
+      }
+    },
+    "E.accept": {
+      "hash": "0xe7083fb363f9d9b6a6a728a39269d7a91f3b414512c124610d1047f943c83b89",
+      "by": "RESPONDENT",
+      "method": "accept_case",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0007",
+        "state": "DRAFT",
+        "version": 1
+      }
+    },
+    "E.case-before-inspector": {
+      "state": "DRAFT",
+      "standing": "",
+      "thread": "KW-0007",
+      "follows_case": "",
+      "bond_to": "",
+      "outcome": ""
+    },
+    "E.inspector-wrong-digest": {
+      "hash": "0xc01484d8f7b1df9b6e13ac352f73be00fca9eefa0dba5aea2080d8b518a526a8",
+      "by": "INSPECTOR",
+      "method": "accept_inspector",
+      "status": "ACCEPTED",
+      "executed": false,
+      "refusal": "the digest does not match the current terms; read them again before accepting"
+    },
+    "E.inspector": {
+      "hash": "0x5f252997ef542b95b91c7d473a6c70e67f4f7d1e8360ef13126edd0d1ce67376",
+      "by": "INSPECTOR",
+      "method": "accept_inspector",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0007",
+        "state": "OPEN"
+      }
+    },
+    "E.file.claimant": {
+      "hash": "0x178a182114284c98b712389f67e2c0ccd901cc929104c4fa29a96a2fe26bca24",
+      "by": "CLAIMANT",
+      "method": "submit_image",
+      "returned": {
+        "evidence_id": "E-0016",
+        "sha256": "60b2e14414ec8a4c6de686357cf4bea6caabafa47b4e09b30e2af79bbd89b62a"
+      }
+    },
+    "E.reused-item": {
+      "reuse": "RELATED",
+      "first_filed_in": "KW-0003"
+    },
+    "E.file.inspector": {
+      "hash": "0xe190a447c5efa3575f84ab8ca62d380c38a39551ea102733189a7d56c38c495e",
+      "by": "INSPECTOR",
+      "method": "submit_text",
+      "returned": {
+        "evidence_id": "E-0017",
+        "sha256": "b78ba8eea991686a89447bb8626134c91bdbd9be92cd76f6ccfbb407e2666b43"
+      }
+    },
+    "E.ready.CLAIMANT": {
+      "hash": "0xc0138f7e48dd3a558a5abdd78cd96f32d265d2562cccc0b972daf7011530948a",
+      "by": "CLAIMANT",
+      "method": "mark_ready",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0007",
+        "ready": {
+          "CLAIMANT": true,
+          "INSPECTOR": false,
+          "RESPONDENT": false
+        }
+      }
+    },
+    "E.ready.RESPONDENT": {
+      "hash": "0x46aa9fc79c23f37add197c8d1616cf14ee225c013b1ae77b5211c47aaae5c405",
+      "by": "RESPONDENT",
+      "method": "mark_ready",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0007",
+        "ready": {
+          "CLAIMANT": true,
+          "INSPECTOR": false,
+          "RESPONDENT": true
+        }
+      }
+    },
+    "E.ready.INSPECTOR": {
+      "hash": "0x0dcd8a86e126b335dc93e38c0b45887c27d46e804685ff45645ab7004dda8474",
+      "by": "INSPECTOR",
+      "method": "mark_ready",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0007",
+        "ready": {
+          "CLAIMANT": true,
+          "INSPECTOR": true,
+          "RESPONDENT": true
+        }
+      }
+    },
+    "E.assess": {
+      "hash": "0xb7ec7d328968e88c6fec49067c9ec2107a41a30ea155797c32491514308f0d78",
+      "by": "CLAIMANT",
+      "method": "request_assessment",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0007",
+        "decision_id": "D-0005",
+        "overall": "INSUFFICIENT",
+        "findings": {
+          "C1": "INSUFFICIENT"
+        }
+      }
+    },
+    "E.decision": {
+      "decision_id": "D-0005",
+      "kind": "CODE",
+      "round": 1,
+      "status": "STANDING",
+      "overall": "INSUFFICIENT",
+      "superseded_by": "",
+      "calibrated": false,
+      "seen_ids": [],
+      "unseen_ids": [],
+      "instructions_found": [],
+      "bound": "decided in code",
+      "observations": 0,
+      "criteria": [
+        {
+          "id": "C1",
+          "finding": "INSUFFICIENT",
+          "model_finding": "",
+          "floors": [
+            "REQUIRED_MISSING"
+          ],
+          "basis": [],
+          "contrary": [],
+          "missing": [
+            "1 more photo"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "E-0016",
+          "new_in_challenge": false
+        },
+        {
+          "evidence_id": "E-0017",
+          "new_in_challenge": false
+        }
+      ],
+      "manifest_digest": "eef53e3ed2d10bd947e45d02c2300c5220c1df2aba0510f7813c640bd9f0db25",
+      "decision_digest": "116ca5f0b1a86622d5eaffe4a642bfcc2f1c78abf0e20bf35ee276320fb7049d",
+      "challenge_window_ends": "2026-10-04T09:37:40Z"
+    },
+    "E.votes": {
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "appealed": false,
+      "rounds": [
+        {
+          "round": "Accepted",
+          "nodes": [
+            {
+              "mode": "leader",
+              "vote": "",
+              "execution": "SUCCESS",
+              "model": "llm-router/policy:dev-deepseek",
+              "sighted": null,
+              "dissent": ""
+            },
+            {
+              "mode": "validator",
+              "vote": "agree",
+              "execution": "SUCCESS",
+              "model": "llm-router/policy:dev-deepseek",
+              "sighted": null,
+              "dissent": ""
+            },
+            {
+              "mode": "validator",
+              "vote": "idle",
+              "execution": "ERROR",
+              "model": "/?",
+              "sighted": null,
+              "dissent": ""
+            },
+            {
+              "mode": "validator",
+              "vote": "idle",
+              "execution": "ERROR",
+              "model": "/?",
+              "sighted": null,
+              "dissent": ""
+            },
+            {
+              "mode": "validator",
+              "vote": "agree",
+              "execution": "SUCCESS",
+              "model": "llm-router/policy:dev-grok",
+              "sighted": null,
+              "dissent": ""
+            },
+            {
+              "mode": "validator",
+              "vote": "agree",
+              "execution": "SUCCESS",
+              "model": "openrouter/anthropic/claude-sonnet-4.6",
+              "sighted": null,
+              "dissent": ""
+            }
+          ]
+        }
+      ]
+    },
+    "N.open": {
+      "hash": "0x4f76b731eba2e6bc4f5c094ca030cae7b3f9ec37b6186792bc11c2f3384e0df3",
+      "by": "SECOND",
+      "method": "open_case",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0008",
+        "version": 1,
+        "digest": "169dafc4dbe64f5575cd741f3f1fa536966ae67c00f644654be7cd74c75a110f"
+      }
+    },
+    "N.accept": {
+      "hash": "0xad467c96f690a79b8a2b3d54994af3db830ae2bc1e6fad3667872507e12f182b",
+      "by": "RESPONDENT",
+      "method": "accept_case",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0008",
+        "state": "OPEN",
+        "version": 1
+      }
+    },
+    "N.ready.SECOND": {
+      "hash": "0xfd3431e00d63e07259a72b8e648c390e3b4a642b0e2901fc956b9b226632036d",
+      "by": "SECOND",
+      "method": "mark_ready",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0008",
+        "ready": {
+          "CLAIMANT": true,
+          "INSPECTOR": false,
+          "RESPONDENT": false
+        }
+      }
+    },
+    "N.ready.RESPONDENT": {
+      "hash": "0x325bf5e7adf4396719a05a129ca79a43bff5d1be68e6e2f17bbf8d675adbd176",
+      "by": "RESPONDENT",
+      "method": "mark_ready",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0008",
+        "ready": {
+          "CLAIMANT": true,
+          "INSPECTOR": false,
+          "RESPONDENT": true
+        }
+      }
+    },
+    "N.assess": {
+      "hash": "0xfca8cf7c13fac477e22d3fb18e3c64b5434ac97441e8e24869ee9a978f4f0337",
+      "by": "RESPONDENT",
+      "method": "request_assessment",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0008",
+        "decision_id": "D-0006",
+        "overall": "INSUFFICIENT",
+        "findings": {
+          "C1": "INSUFFICIENT"
+        }
+      }
+    },
+    "N.decision": {
+      "decision_id": "D-0006",
+      "kind": "CODE",
+      "round": 1,
+      "status": "STANDING",
+      "overall": "INSUFFICIENT",
+      "superseded_by": "",
+      "calibrated": false,
+      "seen_ids": [],
+      "unseen_ids": [],
+      "instructions_found": [],
+      "bound": "decided in code",
+      "observations": 0,
+      "criteria": [
+        {
+          "id": "C1",
+          "finding": "INSUFFICIENT",
+          "model_finding": "",
+          "floors": [
+            "NOTHING_FILED"
+          ],
+          "basis": [],
+          "contrary": [],
+          "missing": [
+            "any evidence at all"
+          ]
+        }
+      ],
+      "evidence": [],
+      "manifest_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "decision_digest": "543c96dab6f37e283f936c6a780691cf4b63e5440c7ed4de0f7ce47783f689fb",
+      "challenge_window_ends": "2026-10-04T09:38:26Z"
+    },
+    "S.open": {
+      "hash": "0x530b97e19ad244c6360c7d864e1e5a5fcedfb4cd85317d991e18cb58c8db4aa0",
+      "by": "SECOND",
+      "method": "open_case",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0009",
+        "version": 1,
+        "digest": "2f7c1a2ee3db5c9ab30d8f438e2320f15650f0e5257d1645429f51353124b40b"
+      }
+    },
+    "S.accept": {
+      "hash": "0x1cc636c3cdf3e22d0dab461fe9c504e61e8fed8b27959af3b898f4fae7488529",
+      "by": "CLAIMANT",
+      "method": "accept_case",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0009",
+        "state": "OPEN",
+        "version": 1
+      }
+    },
+    "S.file.reused": {
+      "hash": "0x7f692c91d848fb5f3b2a53848a80301a0352b98ebc3ebf0b519df7ac775c2da0",
+      "by": "CLAIMANT",
+      "method": "submit_image",
+      "returned": {
+        "evidence_id": "E-0018",
+        "sha256": "60b2e14414ec8a4c6de686357cf4bea6caabafa47b4e09b30e2af79bbd89b62a"
+      }
+    },
+    "S.reused-item": {
+      "reuse": "SELF",
+      "first_filed_in": "KW-0003"
+    },
+    "ledger.with six cases decided or under challenge": {
+      "balance": "310000000000000000",
+      "books": "310000000000000000",
+      "equal": true,
+      "stats": {
+        "bonds_wei": "60000000000000000",
+        "case": "9",
+        "decision": "6",
+        "evidence": "18",
+        "held_wei": "200000000000000000",
+        "owed_wei": "50000000000000000",
+        "paid_out_wei": "20000000000000000"
+      }
+    },
+    "A.challenger-files-late": {
+      "hash": "0xf98f3cfc98856801f769e2ecd3a1c4367e02f0a40b1566e73264717de0194b2a",
+      "by": "CLAIMANT",
+      "method": "submit_text",
+      "status": "ACCEPTED",
+      "executed": false,
+      "refusal": "the challenger's time to file new evidence has ended; the other side may answer until 2026-10-04T08:50:22Z"
+    },
+    "A.readjudicate-before-the-reply": {
+      "hash": "0x629a5da8c1cfb51b93d4c55dc0f5d7473f21b33117e429ba4f34e1f3d5cb1978",
+      "by": "STRANGER",
+      "method": "readjudicate",
+      "status": "ACCEPTED",
+      "executed": false,
+      "refusal": "the other side may answer the new evidence until 2026-10-04T08:50:22Z"
+    },
+    "A.reply": {
+      "hash": "0x78b29f55902a11aefd18ad1b8b48eb4518ff40f77fd8e8c698b5a1293471d5d8",
+      "by": "RESPONDENT",
+      "method": "submit_text",
+      "returned": {
+        "evidence_id": "E-0019",
+        "sha256": "10331c39820ef2dfdcc0940e4aeec5c0bdfad02fbbcf9966c7d66da8b19c2f15"
+      }
+    },
+    "A.readjudicate": {
+      "by": "STRANGER",
+      "method": "readjudicate",
+      "returned": {
+        "case_id": "KW-0003",
+        "decision_id": "D-0007",
+        "overall": "NOT_ESTABLISHED",
+        "changed": false,
+        "reversed": false
+      },
+      "hash": "0x114e7fd936dabcd643176dcf0a032bc979fb7ec6e09985936ae7b2136b9fa7e5",
+      "attempts": [
+        {
+          "hash": "0x114e7fd936dabcd643176dcf0a032bc979fb7ec6e09985936ae7b2136b9fa7e5",
+          "status": "ACCEPTED",
+          "consensus": "MAJORITY_AGREE",
+          "executed": true,
+          "refusal": "",
+          "final_status": "FINALIZED",
+          "votes": {
+            "status": "FINALIZED",
+            "consensus": "MAJORITY_AGREE",
+            "appealed": false,
+            "rounds": [
+              {
+                "round": "Leader Rotation",
+                "nodes": [
+                  {
+                    "mode": "leader",
+                    "vote": "",
+                    "execution": "ERROR",
+                    "model": "llm-router/policy:dev-deepseek",
+                    "sighted": null,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "disagree",
+                    "execution": "ERROR",
+                    "model": "llm-router/policy:dev-deepseek",
+                    "sighted": null,
+                    "dissent": "the leader's assessment failed"
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "idle",
+                    "execution": "ERROR",
+                    "model": "/?",
+                    "sighted": null,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "disagree",
+                    "execution": "ERROR",
+                    "model": "llm-router/policy:dev-gemini",
+                    "sighted": null,
+                    "dissent": "the leader's assessment failed"
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "disagree",
+                    "execution": "ERROR",
+                    "model": "llm-router/policy:dev-mistral",
+                    "sighted": null,
+                    "dissent": "the leader's assessment failed"
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "idle",
+                    "execution": "ERROR",
+                    "model": "/?",
+                    "sighted": null,
+                    "dissent": ""
+                  }
+                ]
+              },
+              {
+                "round": "Accepted",
+                "nodes": [
+                  {
+                    "mode": "leader",
+                    "vote": "",
+                    "execution": "SUCCESS",
+                    "model": "llm-router/policy:dev-grok",
+                    "sighted": true,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "idle",
+                    "execution": "ERROR",
+                    "model": "/?",
+                    "sighted": null,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "agree",
+                    "execution": "SUCCESS",
+                    "model": "llm-router/policy:dev-deepseek",
+                    "sighted": false,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "agree",
+                    "execution": "SUCCESS",
+                    "model": "llm-router/policy:dev-mistral",
+                    "sighted": false,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "idle",
+                    "execution": "ERROR",
+                    "model": "/?",
+                    "sighted": null,
+                    "dissent": ""
+                  },
+                  {
+                    "mode": "validator",
+                    "vote": "agree",
+                    "execution": "SUCCESS",
+                    "model": "llm-router/policy:dev-gemini",
+                    "sighted": false,
+                    "dissent": ""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "A.decision-after-readjudication": {
+      "decision_id": "D-0001",
+      "kind": "ASSESSMENT",
+      "round": 1,
+      "status": "SUPERSEDED",
+      "overall": "NOT_ESTABLISHED",
+      "superseded_by": "D-0007",
+      "calibrated": true,
+      "seen_ids": [
+        "E-0001",
+        "E-0002",
+        "E-0003",
+        "E-0007"
+      ],
+      "unseen_ids": [],
+      "instructions_found": [],
+      "bound": "a majority of validators, each running the assessment itself, reproduced for each criterion whether it is supported, and so whether the claim is",
+      "observations": 4,
+      "criteria": [
+        {
+          "id": "C1",
+          "finding": "SUPPORTED",
+          "model_finding": "SUPPORTED",
+          "floors": [],
+          "basis": [
+            "E-0004",
+            "E-0003",
+            "E-0002"
+          ],
+          "contrary": [],
+          "missing": []
+        },
+        {
+          "id": "C2",
+          "finding": "CONFLICTING",
+          "model_finding": "CONFLICTING",
+          "floors": [],
+          "basis": [
+            "E-0004"
+          ],
+          "contrary": [
+            "E-0006",
+            "E-0003"
+          ],
+          "missing": [
+            "An independent completion record or inspection confirming the flashing was resealed on every face and the gutter was cleared."
+          ]
+        },
+        {
+          "id": "C3",
+          "finding": "CONFLICTING",
+          "model_finding": "CONFLICTING",
+          "floors": [],
+          "basis": [
+            "E-0004"
+          ],
+          "contrary": [
+            "E-0006"
+          ],
+          "missing": [
+            "An independent post-work inspection or detailed completion photos covering all faces of the chimney and the gutter."
+          ]
+        },
+        {
+          "id": "C4",
+          "finding": "NOT_ESTABLISHED",
+          "model_finding": "NOT_ESTABLISHED",
+          "floors": [],
+          "basis": [
+            "E-0006",
+            "E-0007"
+          ],
+          "contrary": [],
+          "missing": [
+            "A reliable post-repair inspection showing dry readings over time or observed improvement after rainfall."
+          ]
+        },
+        {
+          "id": "C5",
+          "finding": "CONFLICTING",
+          "model_finding": "CONFLICTING",
+          "floors": [],
+          "basis": [
+            "E-0004"
+          ],
+          "contrary": [
+            "E-0006",
+            "E-0003"
+          ],
+          "missing": [
+            "An independent contemporaneous completion record dated and timed before 17:00 on 26 September 2026, or an inspection confirming all required work was finished b"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "E-0001",
+          "new_in_challenge": false
+        },
+        {
+          "evidence_id": "E-0002",
+          "new_in_challenge": false
+        },
+        {
+          "evidence_id": "E-0003",
+          "new_in_challenge": false
+        },
+        {
+          "evidence_id": "E-0004",
+          "new_in_challenge": false
+        },
+        {
+          "evidence_id": "E-0005",
+          "new_in_challenge": false
+        },
+        {
+          "evidence_id": "E-0006",
+          "new_in_challenge": false
+        },
+        {
+          "evidence_id": "E-0007",
+          "new_in_challenge": false
+        }
+      ],
+      "manifest_digest": "1763d19bb7c4d871263ec2135c0e7ee5afe876398a1fd3e32cf01d1242c52970",
+      "decision_digest": "fe7e32a62e8f0e1731f13331e4f600116d6661fdb4422079d2524b52cebcea5b",
+      "challenge_window_ends": "2026-10-04T09:27:18Z"
+    },
+    "A.second-decision": {
+      "decision_id": "D-0007",
+      "kind": "READJUDICATION",
+      "round": 2,
+      "status": "STANDING",
+      "overall": "NOT_ESTABLISHED",
+      "superseded_by": "",
+      "calibrated": true,
+      "seen_ids": [
+        "E-0001",
+        "E-0002",
+        "E-0003",
+        "E-0007",
+        "E-0008"
+      ],
+      "unseen_ids": [],
+      "instructions_found": [],
+      "bound": "a majority of validators, each running the assessment itself, reproduced for each criterion whether it is supported, and so whether the claim is",
+      "observations": 5,
+      "criteria": [
+        {
+          "id": "C1",
+          "finding": "SUPPORTED",
+          "model_finding": "SUPPORTED",
+          "floors": [],
+          "basis": [
+            "E-0003",
+            "E-0004"
+          ],
+          "contrary": [],
+          "missing": [
+            "Independent access log, sign-in sheet, or third-party confirmation of contractor attendance"
+          ]
+        },
+        {
+          "id": "C2",
+          "finding": "CONFLICTING",
+          "model_finding": "CONFLICTING",
+          "floors": [],
+          "basis": [
+            "E-0003",
+            "E-0004",
+            "E-0008",
+            "E-0009"
+          ],
+          "contrary": [
+            "E-0006"
+          ],
+          "missing": [
+            "Independent verification that the north face flashing was resealed and when; a revised inspection report confirming all faces were sealed"
+          ]
+        },
+        {
+          "id": "C3",
+          "finding": "CONFLICTING",
+          "model_finding": "CONFLICTING",
+          "floors": [],
+          "basis": [
+            "E-0009"
+          ],
+          "contrary": [
+            "E-0006"
+          ],
+          "missing": [
+            "Independent post-second-visit inspection confirming all tasks in work order 14 were fully completed"
+          ]
+        },
+        {
+          "id": "C4",
+          "finding": "NOT_ESTABLISHED",
+          "model_finding": "NOT_ESTABLISHED",
+          "floors": [],
+          "basis": [
+            "E-0006"
+          ],
+          "contrary": [],
+          "missing": [
+            "A later inspection or moisture reading showing the leak has stopped or the ceiling dried out"
+          ]
+        },
+        {
+          "id": "C5",
+          "finding": "NOT_ESTABLISHED",
+          "model_finding": "NOT_ESTABLISHED",
+          "floors": [],
+          "basis": [
+            "E-0006",
+            "E-0009",
+            "E-0019"
+          ],
+          "contrary": [],
+          "missing": [
+            "Evidence that all tasks including north face flashing were completed on or before 17:00 on 26 September 2026"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "E-0001",
+          "new_in_challenge": false
+        },
+        {
+          "evidence_id": "E-0002",
+          "new_in_challenge": false
+        },
+        {
+          "evidence_id": "E-0003",
+          "new_in_challenge": false
+        },
+        {
+          "evidence_id": "E-0004",
+          "new_in_challenge": false
+        },
+        {
+          "evidence_id": "E-0005",
+          "new_in_challenge": false
+        },
+        {
+          "evidence_id": "E-0006",
+          "new_in_challenge": false
+        },
+        {
+          "evidence_id": "E-0007",
+          "new_in_challenge": false
+        },
+        {
+          "evidence_id": "E-0008",
+          "new_in_challenge": true
+        },
+        {
+          "evidence_id": "E-0009",
+          "new_in_challenge": true
+        },
+        {
+          "evidence_id": "E-0019",
+          "new_in_challenge": true
+        }
+      ],
+      "manifest_digest": "4a08057db540e28b1cbb8bcd9323707c73e97fc608509efeb95df8cd492eaaca",
+      "decision_digest": "8c08e18a1a40875d52fa523b56bf27eff9f8b3e3295f8655792bdcea01323299",
+      "challenge_window_ends": "2026-10-04T08:50:36Z"
+    },
+    "A.case-after-readjudication": {
+      "state": "DETERMINED",
+      "standing": "D-0007",
+      "thread": "KW-0003",
+      "follows_case": "",
+      "bond_to": "RESPONDENT",
+      "outcome": "left the decision favouring the same side"
+    },
+    "A.finalize": {
+      "hash": "0x58f76cf6c1a19e1dbc5e26b197ef67f172e05887bccaf6c3c808ea1080e7efd3",
+      "by": "STRANGER",
+      "method": "finalize",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0003",
+        "state": "FINAL",
+        "overall": "NOT_ESTABLISHED",
+        "settlement": {
+          "held_sum_wei": "100000000000000000",
+          "to_role": "RESPONDENT",
+          "to": "0x993BA6CaE307FEb5400B02083062E874F5Fe6839",
+          "why": "the final finding is NOT_ESTABLISHED, so the claim was not established",
+          "at": "2026-10-04T08:53:17Z"
+        }
+      }
+    },
+    "D.readjudicate-nothing-new": {
+      "hash": "0x186203ffd9e225f907aa659fcbd5b835b6bdef1bac5109f57c7977288d711a9a",
+      "by": "STRANGER",
+      "method": "readjudicate",
+      "status": "ACCEPTED",
+      "executed": false,
+      "refusal": "the challenger filed no new evidence, so there is nothing to judge again; the challenge can be closed and the decision stands"
+    },
+    "D.close": {
+      "hash": "0x9c23da9826207958d678b12a2305ecd613a7d3bffa144c1d4e1445e6e2d124c9",
+      "by": "STRANGER",
+      "method": "close_challenge",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0004",
+        "state": "DETERMINED",
+        "outcome": "closed: the challenger brought no new evidence"
+      }
+    },
+    "D.finalize": {
+      "hash": "0x50498d8d2f79b742d820d2e207f3a588d21b076c7198c3145d5cb61fcaa96f9f",
+      "by": "STRANGER",
+      "method": "finalize",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0004",
+        "state": "FINAL",
+        "overall": "CONFLICTING",
+        "settlement": null
+      }
+    },
+    "B.claimant-balance-before": "29974696475999946040",
+    "B.finalize": {
+      "hash": "0x6644e022ec66688648d8942ee0b28f6174e35b8a143e6c7a6cf96f3de988e1a4",
+      "by": "STRANGER",
+      "method": "finalize",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0005",
+        "state": "FINAL",
+        "overall": "SUPPORTED",
+        "settlement": {
+          "held_sum_wei": "100000000000000000",
+          "to_role": "CLAIMANT",
+          "to": "0x3F2536fD5c1AD0f1e8ea5591f36D731A6D51d911",
+          "why": "the final finding is SUPPORTED",
+          "at": "2026-10-04T09:34:00Z"
+        }
+      }
+    },
+    "C.finalize": {
+      "hash": "0x9210b93427ccf336b0d272bc615b87c9b794cf985741dec03d1ba79b191fed88",
+      "by": "STRANGER",
+      "method": "finalize",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0006",
+        "state": "FINAL",
+        "overall": "INSUFFICIENT",
+        "settlement": null
+      }
+    },
+    "E.finalize": {
+      "hash": "0x2e6f0cb7776b318e8b2c2155b66b9843860d71b8edd20941e553812e72b507eb",
+      "by": "STRANGER",
+      "method": "finalize",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0007",
+        "state": "FINAL",
+        "overall": "INSUFFICIENT",
+        "settlement": null
+      }
+    },
+    "N.finalize": {
+      "hash": "0xaf15bff2ed120a6e746853b3a38b7ec083fc4674176cbfb0cb1bee9f0fc9ddea",
+      "by": "STRANGER",
+      "method": "finalize",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0008",
+        "state": "FINAL",
+        "overall": "INSUFFICIENT",
+        "settlement": null
+      }
+    },
+    "withdraw.claimant-owed": "100000000000000000",
+    "withdraw.claimant": {
+      "hash": "0x3a13addca510cd357c6534ad4781a5ab6165a9031dd18a3d3121b984856ce0f2",
+      "by": "CLAIMANT",
+      "method": "withdraw",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "to": "0x3F2536fD5c1AD0f1e8ea5591f36D731A6D51d911",
+        "wei": "100000000000000000"
+      }
+    },
+    "B.claimant-balance-after": "30074570170249945217",
+    "withdraw.respondent-owed": "210000000000000000",
+    "withdraw.respondent": {
+      "hash": "0x5a4a5d93432dc3b4abf01c956952aa451c2997dfb58c7fd5c3c0990c4a9ea249",
+      "by": "RESPONDENT",
+      "method": "withdraw",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "to": "0x993BA6CaE307FEb5400B02083062E874F5Fe6839",
+        "wei": "210000000000000000"
+      }
+    },
+    "withdraw.twice": {
+      "hash": "0x36381e373c26783e22ca70bc39665261ea7d69d474f2c190bc454c20ac5acebb",
+      "by": "RESPONDENT",
+      "method": "withdraw",
+      "status": "ACCEPTED",
+      "executed": false,
+      "refusal": "nothing is owed to this address"
+    },
+    "ledger.at the end": {
+      "balance": "0",
+      "books": "0",
+      "equal": true,
+      "stats": {
+        "bonds_wei": "0",
+        "case": "9",
+        "decision": "7",
+        "evidence": "19",
+        "held_wei": "0",
+        "owed_wei": "0",
+        "paid_out_wei": "330000000000000000"
+      }
+    },
+    "I.open": {
+      "hash": "0x47aabdf12435d96decda9764a8409351179191f09721dbf01278cf56bb0b6208",
+      "by": "CLAIMANT",
+      "method": "open_case",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0010",
+        "version": 1,
+        "digest": "cfccac97d60ddedca3ac247b966171adc8edf5ff519efbfd19bf490d417c82e9"
+      }
+    },
+    "I.accept": {
+      "hash": "0x66d4346a93aa3df1e84be38bf64b911f01d2dee3a8033795575e849763db228a",
+      "by": "RESPONDENT",
+      "method": "accept_case",
+      "status": "ACCEPTED",
+      "consensus": "MAJORITY_AGREE",
+      "returned": {
+        "case_id": "KW-0010",
+        "state": "OPEN",
+        "version": 1
+      }
+    },
+    "I.case": {
+      "state": "OPEN",
+      "standing": "",
+      "thread": "KW-0003",
+      "follows_case": "KW-0003",
+      "bond_to": "",
+      "outcome": ""
+    },
+    "I.file.refiled": {
+      "hash": "0xd767918ddb97d6046249a27ff9fde50509fc2f3ab3c4ba8342e291f99e64c74f",
+      "by": "CLAIMANT",
+      "method": "submit_image",
+      "returned": {
+        "evidence_id": "E-0020",
+        "sha256": "b39ab59a360a988f3eeda9ea7c0239166ea56e5032b459307540979694cef59f"
+      }
+    },
+    "I.refiled-item": {
+      "reuse": "RELATED",
+      "first_filed_in": "KW-0003"
+    },
+    "I.follow-unsettled": {
+      "hash": "0xdb790ed9480ba84994505e10c137bc7c45238ffc5e9b405f2ae1f6bdd90849e3",
+      "by": "CLAIMANT",
+      "method": "open_case",
+      "status": "ACCEPTED",
+      "executed": false,
+      "refusal": "a follow-up cites a case that is closed"
+    }
+  },
+  "checks": [
+    {
+      "name": "the deployment answers with the rules version the source declares",
+      "ok": true,
+      "detail": "keywitness-rules-1"
+    },
+    {
+      "name": "ledger at the start: balance on chain equals held plus bonds plus owed",
+      "ok": true,
+      "detail": "0 against 0"
+    },
+    {
+      "name": "F: the respondent declines unaccepted terms and the case closes",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "G: the claimant withdraws a draft and the case closes",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "T.deadline-with-offset: the contract refuses it",
+      "ok": true,
+      "detail": "the deadline must look like 2026-10-01 or 2026-10-01T17:00, in the case's time zone, with no seconds and no offset"
+    },
+    {
+      "name": "T.zone-abbreviation: the contract refuses it",
+      "ok": true,
+      "detail": "the time zone must be UTC or an IANA name such as Europe/London"
+    },
+    {
+      "name": "T.claim-too-long: the contract refuses it",
+      "ok": true,
+      "detail": "the claim may be at most 400 characters"
+    },
+    {
+      "name": "T.challenge-window-too-short: the contract refuses it",
+      "ok": true,
+      "detail": "the challenge window in seconds must be between 3600 and 1209600"
+    },
+    {
+      "name": "T.title-not-text: the contract refuses it",
+      "ok": true,
+      "detail": "the title must be text"
+    },
+    {
+      "name": "A: the app offers acceptance to the respondent only",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "A.accept-wrong-digest: the contract refuses it",
+      "ok": true,
+      "detail": "the digest does not match the current terms; read them again before accepting"
+    },
+    {
+      "name": "A: a stranger's deposit is refused by returning and credited back",
+      "ok": true,
+      "detail": "{\"refused\":true,\"reason\":\"the terms say the respondent deposits the held sum\",\"credited_wei\":\"20000000000000000\"}"
+    },
+    {
+      "name": "A: the stranger withdraws exactly what was credited",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "A: after acceptance the app offers the deposit to the named funder",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "A: the case opens for evidence once accepted and funded",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "A.photo-with-camera-data: the contract refuses it",
+      "ok": true,
+      "detail": "this image was not accepted: it carries a metadata block (camera data, an editor record or a comment). Send a PNG or a JFIF JPEG with no metadata; the app redraws photographs into that form"
+    },
+    {
+      "name": "A: before everyone is ready the app withholds the assessment, with a reason",
+      "ok": true,
+      "detail": "The evidence period is still running, unless every party marks their evidence complete first."
+    },
+    {
+      "name": "A.assess-too-early: the contract refuses it",
+      "ok": true,
+      "detail": "the evidence period runs until 2026-10-04T08:35:03Z, unless every party marks their evidence complete first"
+    },
+    {
+      "name": "A.stranger-files: the contract refuses it",
+      "ok": true,
+      "detail": "only the claimant, the respondent or an accepted inspector files evidence"
+    },
+    {
+      "name": "A: once everyone is ready the app offers the assessment",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ledger after the sample is filed: balance on chain equals held plus bonds plus owed",
+      "ok": true,
+      "detail": "100000000000000000 against 100000000000000000"
+    },
+    {
+      "name": "A: validators recorded a decision on the sample",
+      "ok": true,
+      "detail": "D-0001 NOT_ESTABLISHED"
+    },
+    {
+      "name": "A: the leading validator read the calibration image before examining the photographs",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "A: every photograph reached the leading validator",
+      "ok": true,
+      "detail": "E-0001,E-0002,E-0003,E-0007"
+    },
+    {
+      "name": "A: the unfinished repair is not found supported",
+      "ok": true,
+      "detail": "NOT_ESTABLISHED"
+    },
+    {
+      "name": "A: the decision says what consensus bound",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "A: the round was led by a node whose model receives images",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "A: the side the decision favours cannot challenge; the bond it sent is credited back",
+      "ok": true,
+      "detail": "{\"refused\":true,\"reason\":\"only the claimant, whom this decision went against, challenges it\",\"credited_wei\":\"50000000000000000\"}"
+    },
+    {
+      "name": "A: the app offers the challenge to the side the decision went against only",
+      "ok": true,
+      "detail": "Only the claimant, whom this decision went against, challenges it."
+    },
+    {
+      "name": "A.finalize-too-early: the contract refuses it",
+      "ok": true,
+      "detail": "the decision can still be challenged until 2026-10-04T09:27:18Z"
+    },
+    {
+      "name": "A: the challenge opens and the bond is held",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "A.readjudicate-too-early: the contract refuses it",
+      "ok": true,
+      "detail": "the challenger may file new evidence until 2026-10-04T08:40:22Z"
+    },
+    {
+      "name": "ledger with a challenge bond held: balance on chain equals held plus bonds plus owed",
+      "ok": true,
+      "detail": "200000000000000000 against 200000000000000000"
+    },
+    {
+      "name": "D: one side's word against the other's is not found supported",
+      "ok": true,
+      "detail": "CONFLICTING"
+    },
+    {
+      "name": "D: a case with no images needs no calibration",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B: a claim both sides' records bear out is found supported",
+      "ok": true,
+      "detail": "C1 SUPPORTED, C2 SUPPORTED"
+    },
+    {
+      "name": "B: nothing is flagged as an instruction where no item carries one",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B: a protocol appeal was sent with the SDK and the transaction still finalized",
+      "ok": true,
+      "detail": "{\"sent\":true,\"charge\":\"50000000000008794\"}"
+    },
+    {
+      "name": "B: the appeal is on the transaction's own record",
+      "ok": true,
+      "detail": "Accepted then Validator Appeal Failed"
+    },
+    {
+      "name": "B: the decision and the contract are intact after the appeal",
+      "ok": true,
+      "detail": "DETERMINED, standing D-0003"
+    },
+    {
+      "name": "C: an instruction planted in evidence does not get its filer a supported finding",
+      "ok": true,
+      "detail": "INSUFFICIENT"
+    },
+    {
+      "name": "C: the leading validator flagged the planted instruction",
+      "ok": true,
+      "detail": "E-0014"
+    },
+    {
+      "name": "C: the flagged item is in no basis that favours its filer",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "E: a case that names an inspector stays a draft until the inspector accepts",
+      "ok": true,
+      "detail": "DRAFT"
+    },
+    {
+      "name": "E.inspector-wrong-digest: the contract refuses it",
+      "ok": true,
+      "detail": "the digest does not match the current terms; read them again before accepting"
+    },
+    {
+      "name": "E: it opens when the inspector accepts the role",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "E: bytes refiled from an earlier case between the same two parties are recorded as related, not as reuse",
+      "ok": true,
+      "detail": "RELATED KW-0003"
+    },
+    {
+      "name": "E: with required evidence missing the decision is made in code and nothing is established",
+      "ok": true,
+      "detail": "1 more photo"
+    },
+    {
+      "name": "E: no validator's model was asked",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "N: with nothing filed the contract records that nothing was established, in code",
+      "ok": true,
+      "detail": "any evidence at all"
+    },
+    {
+      "name": "S: bytes a wallet brings from a case with a different other party are recorded as its own reuse",
+      "ok": true,
+      "detail": "SELF KW-0003"
+    },
+    {
+      "name": "ledger with six cases decided or under challenge: balance on chain equals held plus bonds plus owed",
+      "ok": true,
+      "detail": "310000000000000000 against 310000000000000000"
+    },
+    {
+      "name": "A.challenger-files-late: the contract refuses it",
+      "ok": true,
+      "detail": "the challenger's time to file new evidence has ended; the other side may answer until 2026-10-04T08:50:22Z"
+    },
+    {
+      "name": "A.readjudicate-before-the-reply: the contract refuses it",
+      "ok": true,
+      "detail": "the other side may answer the new evidence until 2026-10-04T08:50:22Z"
+    },
+    {
+      "name": "A: the readjudication is a second decision and the first is kept, marked superseded",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "A: the readjudication judged the challenge evidence and the answer to it",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "A: the bond follows whether the challenge reversed the decision",
+      "ok": true,
+      "detail": "NOT_ESTABLISHED then NOT_ESTABLISHED; bond to RESPONDENT"
+    },
+    {
+      "name": "A: finalizing moves the held sum by the agreed rule",
+      "ok": true,
+      "detail": "NOT_ESTABLISHED: RESPONDENT"
+    },
+    {
+      "name": "D.readjudicate-nothing-new: the contract refuses it",
+      "ok": true,
+      "detail": "the challenger filed no new evidence, so there is nothing to judge again; the challenge can be closed and the decision stands"
+    },
+    {
+      "name": "D: a challenge with nothing new is closed and the bond goes to the other side",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B: the held sum goes to the claimant on a supported final finding",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B: the claimant's wallet balance rises by what was withdrawn, less fees",
+      "ok": true,
+      "detail": "99873694249999177 of 100000000000000000"
+    },
+    {
+      "name": "the respondent withdraws the sample's held sum, both bonds and its refused bond",
+      "ok": true,
+      "detail": "210000000000000000"
+    },
+    {
+      "name": "withdraw.twice: the contract refuses it",
+      "ok": true,
+      "detail": "nothing is owed to this address"
+    },
+    {
+      "name": "ledger at the end: balance on chain equals held plus bonds plus owed",
+      "ok": true,
+      "detail": "0 against 0"
+    },
+    {
+      "name": "nothing is left in custody once every case is final and every credit withdrawn",
+      "ok": true,
+      "detail": "0"
+    },
+    {
+      "name": "receipt: this code reproduces the digest the contract computed",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "receipt: a private receipt verifies against the chain, and its decision against the chain's copy",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "receipt: an edited private receipt fails, and no chain check passes for it",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "receipt: a public receipt verifies against the chain, and its decision against the chain's copy",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "receipt: the public receipt carries no party address",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "receipt: an edited public receipt fails, and no chain check passes for it",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "receipt: one made before its case settled is found true and out of date afterwards",
+      "ok": true,
+      "detail": "The decision in this receipt is on the chain, unchanged. The case has moved on since the receipt was made: it was decided and open to challenge then and is final now. Make a new receipt to see the current record."
+    },
+    {
+      "name": "receipt: a file with every digest rewritten around a changed decision is refused, not called out of date",
+      "ok": true,
+      "detail": "The decision in this file is not a decision the contract holds. The file does not come from this contract's record."
+    },
+    {
+      "name": "receipt: the history keeps both decisions",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "I: a follow-up of a final case between the same parties joins its dispute thread",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "I: evidence refiled from the case it follows is recorded as related, not as reuse",
+      "ok": true,
+      "detail": "RELATED"
+    },
+    {
+      "name": "I.follow-unsettled: the contract refuses it",
+      "ok": true,
+      "detail": "a follow-up cites a case that is closed"
+    }
+  ],
+  "log": [
+    {
+      "key": "ledger.at the start",
+      "at": "2026-10-04T08:22:51.691Z"
+    },
+    {
+      "key": "F.open",
+      "at": "2026-10-04T08:23:00.756Z"
+    },
+    {
+      "key": "F.decline",
+      "at": "2026-10-04T08:23:08.520Z"
+    },
+    {
+      "key": "G.open",
+      "at": "2026-10-04T08:23:16.323Z"
+    },
+    {
+      "key": "G.withdraw",
+      "at": "2026-10-04T08:23:21.326Z"
+    },
+    {
+      "key": "T.deadline-with-offset",
+      "at": "2026-10-04T08:23:28.990Z"
+    },
+    {
+      "key": "T.zone-abbreviation",
+      "at": "2026-10-04T08:23:36.762Z"
+    },
+    {
+      "key": "T.claim-too-long",
+      "at": "2026-10-04T08:23:44.603Z"
+    },
+    {
+      "key": "T.challenge-window-too-short",
+      "at": "2026-10-04T08:23:52.353Z"
+    },
+    {
+      "key": "T.title-not-text",
+      "at": "2026-10-04T08:24:12.484Z"
+    },
+    {
+      "key": "A.open",
+      "at": "2026-10-04T08:24:20.540Z"
+    },
+    {
+      "key": "A.acts.draft",
+      "at": "2026-10-04T08:24:27.813Z"
+    },
+    {
+      "key": "A.accept-wrong-digest",
+      "at": "2026-10-04T08:24:33.136Z"
+    },
+    {
+      "key": "A.accept",
+      "at": "2026-10-04T08:24:41.200Z"
+    },
+    {
+      "key": "A.stranger-deposit",
+      "at": "2026-10-04T08:24:49.719Z"
+    },
+    {
+      "key": "A.stranger-withdraw",
+      "at": "2026-10-04T08:24:56.482Z"
+    },
+    {
+      "key": "A.acts.accepted",
+      "at": "2026-10-04T08:25:00.260Z"
+    },
+    {
+      "key": "A.fund",
+      "at": "2026-10-04T08:25:11.378Z"
+    },
+    {
+      "key": "A.file.1",
+      "at": "2026-10-04T08:25:20.098Z"
+    },
+    {
+      "key": "A.file.2",
+      "at": "2026-10-04T08:25:29.388Z"
+    },
+    {
+      "key": "A.file.3",
+      "at": "2026-10-04T08:25:40.891Z"
+    },
+    {
+      "key": "A.file.4",
+      "at": "2026-10-04T08:25:49.322Z"
+    },
+    {
+      "key": "A.file.5",
+      "at": "2026-10-04T08:26:07.134Z"
+    },
+    {
+      "key": "A.file.6",
+      "at": "2026-10-04T08:26:16.069Z"
+    },
+    {
+      "key": "A.file.7",
+      "at": "2026-10-04T08:26:24.720Z"
+    },
+    {
+      "key": "A.photo-with-camera-data",
+      "at": "2026-10-04T08:26:34.303Z"
+    },
+    {
+      "key": "A.acts.filed",
+      "at": "2026-10-04T08:26:38.370Z"
+    },
+    {
+      "key": "A.assess-too-early",
+      "at": "2026-10-04T08:26:49.567Z"
+    },
+    {
+      "key": "A.stranger-files",
+      "at": "2026-10-04T08:26:57.369Z"
+    },
+    {
+      "key": "A.ready.CLAIMANT",
+      "at": "2026-10-04T08:27:05.191Z"
+    },
+    {
+      "key": "A.ready.RESPONDENT",
+      "at": "2026-10-04T08:27:10.023Z"
+    },
+    {
+      "key": "A.acts.ready",
+      "at": "2026-10-04T08:27:13.969Z"
+    },
+    {
+      "key": "ledger.after the sample is filed",
+      "at": "2026-10-04T08:27:15.153Z"
+    },
+    {
+      "key": "A.assess",
+      "at": "2026-10-04T08:29:52.744Z"
+    },
+    {
+      "key": "A.decision",
+      "at": "2026-10-04T08:29:53.876Z"
+    },
+    {
+      "key": "A.challenge-wrong-side",
+      "at": "2026-10-04T08:30:01.867Z"
+    },
+    {
+      "key": "A.acts.decided",
+      "at": "2026-10-04T08:30:11.346Z"
+    },
+    {
+      "key": "A.finalize-too-early",
+      "at": "2026-10-04T08:30:19.187Z"
+    },
+    {
+      "key": "A.challenge",
+      "at": "2026-10-04T08:30:28.418Z"
+    },
+    {
+      "key": "A.challenge-file.1",
+      "at": "2026-10-04T08:30:44.176Z"
+    },
+    {
+      "key": "A.challenge-file.2",
+      "at": "2026-10-04T08:30:52.241Z"
+    },
+    {
+      "key": "A.readjudicate-too-early",
+      "at": "2026-10-04T08:30:57.740Z"
+    },
+    {
+      "key": "ledger.with a challenge bond held",
+      "at": "2026-10-04T08:30:59.238Z"
+    },
+    {
+      "key": "D.open",
+      "at": "2026-10-04T08:31:07.295Z"
+    },
+    {
+      "key": "D.accept",
+      "at": "2026-10-04T08:31:15.509Z"
+    },
+    {
+      "key": "D.file.claimant",
+      "at": "2026-10-04T08:31:23.465Z"
+    },
+    {
+      "key": "D.file.respondent",
+      "at": "2026-10-04T08:31:33.136Z"
+    },
+    {
+      "key": "D.ready.CLAIMANT",
+      "at": "2026-10-04T08:31:41.092Z"
+    },
+    {
+      "key": "D.ready.RESPONDENT",
+      "at": "2026-10-04T08:31:49.267Z"
+    },
+    {
+      "key": "D.assess",
+      "at": "2026-10-04T08:32:46.725Z"
+    },
+    {
+      "key": "D.decision",
+      "at": "2026-10-04T08:32:47.661Z"
+    },
+    {
+      "key": "D.challenge",
+      "at": "2026-10-04T08:32:52.731Z"
+    },
+    {
+      "key": "B.open",
+      "at": "2026-10-04T08:33:01.864Z"
+    },
+    {
+      "key": "B.accept",
+      "at": "2026-10-04T08:33:07.215Z"
+    },
+    {
+      "key": "B.fund",
+      "at": "2026-10-04T08:33:13.555Z"
+    },
+    {
+      "key": "B.file.claimant",
+      "at": "2026-10-04T08:33:21.854Z"
+    },
+    {
+      "key": "B.file.respondent",
+      "at": "2026-10-04T08:33:30.738Z"
+    },
+    {
+      "key": "B.ready.CLAIMANT",
+      "at": "2026-10-04T08:33:36.153Z"
+    },
+    {
+      "key": "B.ready.RESPONDENT",
+      "at": "2026-10-04T08:33:41.426Z"
+    },
+    {
+      "key": "B.assess",
+      "at": "2026-10-04T08:34:50.613Z"
+    },
+    {
+      "key": "B.decision",
+      "at": "2026-10-04T08:34:51.474Z"
+    },
+    {
+      "key": "B.receipt-early",
+      "at": "2026-10-04T08:34:52.356Z"
+    },
+    {
+      "key": "B.case-after-appeal",
+      "at": "2026-10-04T08:34:53.225Z"
+    },
+    {
+      "key": "C.open",
+      "at": "2026-10-04T08:35:01.655Z"
+    },
+    {
+      "key": "C.accept",
+      "at": "2026-10-04T08:35:06.574Z"
+    },
+    {
+      "key": "C.file.claimant",
+      "at": "2026-10-04T08:35:14.576Z"
+    },
+    {
+      "key": "C.file.respondent",
+      "at": "2026-10-04T08:35:22.658Z"
+    },
+    {
+      "key": "C.ready.CLAIMANT",
+      "at": "2026-10-04T08:35:31.144Z"
+    },
+    {
+      "key": "C.ready.RESPONDENT",
+      "at": "2026-10-04T08:35:36.060Z"
+    },
+    {
+      "key": "C.assess",
+      "at": "2026-10-04T08:36:26.400Z"
+    },
+    {
+      "key": "C.decision",
+      "at": "2026-10-04T08:36:27.339Z"
+    },
+    {
+      "key": "E.open",
+      "at": "2026-10-04T08:36:35.261Z"
+    },
+    {
+      "key": "E.accept",
+      "at": "2026-10-04T08:36:43.675Z"
+    },
+    {
+      "key": "E.case-before-inspector",
+      "at": "2026-10-04T08:36:44.535Z"
+    },
+    {
+      "key": "E.inspector-wrong-digest",
+      "at": "2026-10-04T08:36:49.465Z"
+    },
+    {
+      "key": "E.inspector",
+      "at": "2026-10-04T08:36:54.425Z"
+    },
+    {
+      "key": "E.file.claimant",
+      "at": "2026-10-04T08:37:02.423Z"
+    },
+    {
+      "key": "E.reused-item",
+      "at": "2026-10-04T08:37:03.716Z"
+    },
+    {
+      "key": "E.file.inspector",
+      "at": "2026-10-04T08:37:11.543Z"
+    },
+    {
+      "key": "E.ready.CLAIMANT",
+      "at": "2026-10-04T08:37:20.375Z"
+    },
+    {
+      "key": "E.ready.RESPONDENT",
+      "at": "2026-10-04T08:37:28.874Z"
+    },
+    {
+      "key": "E.ready.INSPECTOR",
+      "at": "2026-10-04T08:37:37.466Z"
+    },
+    {
+      "key": "E.assess",
+      "at": "2026-10-04T08:37:46.840Z"
+    },
+    {
+      "key": "E.decision",
+      "at": "2026-10-04T08:37:47.785Z"
+    },
+    {
+      "key": "E.votes",
+      "at": "2026-10-04T08:37:48.587Z"
+    },
+    {
+      "key": "N.open",
+      "at": "2026-10-04T08:37:57.339Z"
+    },
+    {
+      "key": "N.accept",
+      "at": "2026-10-04T08:38:05.997Z"
+    },
+    {
+      "key": "N.ready.SECOND",
+      "at": "2026-10-04T08:38:14.468Z"
+    },
+    {
+      "key": "N.ready.RESPONDENT",
+      "at": "2026-10-04T08:38:23.123Z"
+    },
+    {
+      "key": "N.assess",
+      "at": "2026-10-04T08:38:32.402Z"
+    },
+    {
+      "key": "N.decision",
+      "at": "2026-10-04T08:38:33.643Z"
+    },
+    {
+      "key": "S.open",
+      "at": "2026-10-04T08:38:42.394Z"
+    },
+    {
+      "key": "S.accept",
+      "at": "2026-10-04T08:38:51.077Z"
+    },
+    {
+      "key": "S.file.reused",
+      "at": "2026-10-04T08:39:06.599Z"
+    },
+    {
+      "key": "S.reused-item",
+      "at": "2026-10-04T08:39:07.466Z"
+    },
+    {
+      "key": "ledger.with six cases decided or under challenge",
+      "at": "2026-10-04T08:39:08.808Z"
+    },
+    {
+      "key": "A.challenger-files-late",
+      "at": "2026-10-04T08:40:36.819Z"
+    },
+    {
+      "key": "A.readjudicate-before-the-reply",
+      "at": "2026-10-04T08:40:44.578Z"
+    },
+    {
+      "key": "A.reply",
+      "at": "2026-10-04T08:40:55.861Z"
+    },
+    {
+      "key": "A.readjudicate",
+      "at": "2026-10-04T08:53:10.961Z"
+    },
+    {
+      "key": "A.decision-after-readjudication",
+      "at": "2026-10-04T08:53:11.812Z"
+    },
+    {
+      "key": "A.second-decision",
+      "at": "2026-10-04T08:53:13.096Z"
+    },
+    {
+      "key": "A.case-after-readjudication",
+      "at": "2026-10-04T08:53:14.124Z"
+    },
+    {
+      "key": "A.finalize",
+      "at": "2026-10-04T08:53:22.033Z"
+    },
+    {
+      "key": "D.readjudicate-nothing-new",
+      "at": "2026-10-04T08:53:31.019Z"
+    },
+    {
+      "key": "D.close",
+      "at": "2026-10-04T08:53:39.608Z"
+    },
+    {
+      "key": "D.finalize",
+      "at": "2026-10-04T08:53:47.536Z"
+    },
+    {
+      "key": "B.claimant-balance-before",
+      "at": "2026-10-04T09:33:56.942Z"
+    },
+    {
+      "key": "B.finalize",
+      "at": "2026-10-04T09:34:03.391Z"
+    },
+    {
+      "key": "C.finalize",
+      "at": "2026-10-04T09:35:56.870Z"
+    },
+    {
+      "key": "E.finalize",
+      "at": "2026-10-04T09:37:56.729Z"
+    },
+    {
+      "key": "N.finalize",
+      "at": "2026-10-04T09:38:40.065Z"
+    },
+    {
+      "key": "withdraw.claimant-owed",
+      "at": "2026-10-04T09:38:40.937Z"
+    },
+    {
+      "key": "withdraw.claimant",
+      "at": "2026-10-04T09:38:48.256Z"
+    },
+    {
+      "key": "B.claimant-balance-after",
+      "at": "2026-10-04T09:39:18.934Z"
+    },
+    {
+      "key": "withdraw.respondent-owed",
+      "at": "2026-10-04T09:39:19.853Z"
+    },
+    {
+      "key": "withdraw.respondent",
+      "at": "2026-10-04T09:39:26.825Z"
+    },
+    {
+      "key": "withdraw.twice",
+      "at": "2026-10-04T09:40:06.469Z"
+    },
+    {
+      "key": "ledger.at the end",
+      "at": "2026-10-04T09:40:07.938Z"
+    },
+    {
+      "key": "I.open",
+      "at": "2026-10-04T09:40:22.021Z"
+    },
+    {
+      "key": "I.accept",
+      "at": "2026-10-04T09:40:30.111Z"
+    },
+    {
+      "key": "I.case",
+      "at": "2026-10-04T09:40:31.131Z"
+    },
+    {
+      "key": "I.file.refiled",
+      "at": "2026-10-04T09:40:37.029Z"
+    },
+    {
+      "key": "I.refiled-item",
+      "at": "2026-10-04T09:40:38.141Z"
+    },
+    {
+      "key": "I.follow-unsettled",
+      "at": "2026-10-04T09:55:05.527Z"
+    }
+  ],
+  "wallets": {
+    "OPERATOR": "0x74328D4024Fe926EE79a8B86311F986843777ACe",
+    "CLAIMANT": "0x3F2536fD5c1AD0f1e8ea5591f36D731A6D51d911",
+    "RESPONDENT": "0x993BA6CaE307FEb5400B02083062E874F5Fe6839",
+    "INSPECTOR": "0x54782Bd558865f9c9b6dAfc2660F5eA877220ed2",
+    "STRANGER": "0x4d25429512BDC4e2A1C3ec899705b369BfBdC29c",
+    "SECOND": "0x9c965E50E5F25f2660e9A8a1fd7E89a06655A3Dd"
+  },
+  "finished": "2026-10-04T09:55:05.533Z",
+  "summary": {
+    "checks": 78,
+    "passed": 78,
+    "failed": []
+  }
+}

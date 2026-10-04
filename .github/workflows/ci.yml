@@ -1,0 +1,96 @@
+# Four required jobs on every push and pull request.
+#
+#   contract  lint, the GenVM linter and validator, the direct suite, and a
+#             check that the web fixtures still match the contract
+#   sweep     the mutation sweep: every guard broken once must fail the suite
+#   web       lint, types, unit tests and a production build
+#   one-address  the app, the proofs and the documents name one deployment
+#
+# The live proofs are not here. They sign real transactions on Studio Next and
+# wait out real windows (about an hour), so they are run by hand and their
+# record is committed in docs/proofs/:
+#
+#   cd scripts && node --experimental-strip-types --import ./ts-loader.mjs proofs.mjs --record
+name: ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    name: contract - lint, GenVM check, direct tests, fixtures
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/genvm-linter
+          key: genvm-${{ hashFiles('requirements-dev.txt') }}
+          restore-keys: genvm-
+      - run: python -m pip install --upgrade pip
+      - run: pip install -r requirements-dev.txt
+      - run: ruff check contracts tests scripts
+      - run: genvm-lint check contracts/keywitness.py --json
+      - run: python -m pytest tests/direct -q
+      # The web tests check the app against fixtures generated from the
+      # contract. Regenerating them must change nothing.
+      - run: python scripts/web_fixtures.py
+      - run: git diff --exit-code -- web/tests/fixtures
+
+  sweep:
+    name: contract - mutation sweep
+    runs-on: ubuntu-latest
+    # Every mutant runs the direct suite until a test fails: about two hours of machine time.
+    timeout-minutes: 300
+    env:
+      KW_SWEEP_WORKERS: "4"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --upgrade pip
+      - run: pip install pytest==9.1.1 eth-utils==5.1.0
+      # A green suite proves the tests run; this proves they would notice. A
+      # mutant whose pattern no longer matches the source fails the job too.
+      - run: python tests/mutation/mutate.py
+
+  web:
+    name: web - lint, types, tests, build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          package_json_file: web/package.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: pnpm
+          cache-dependency-path: web/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test
+      - run: pnpm build
+      - run: pnpm audit --prod --audit-level high
+
+  one-address:
+    name: one deployment across the app, the proofs and the documents
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - run: node scripts/check-address.mjs

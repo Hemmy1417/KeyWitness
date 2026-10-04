@@ -1,0 +1,165 @@
+{
+ "views": {
+  "cases_of": [
+   "addr",
+   "skip",
+   "limit"
+  ],
+  "get_case": [
+   "cid"
+  ],
+  "get_case_evidence": [
+   "cid"
+  ],
+  "get_config": [],
+  "get_credit": [
+   "addr"
+  ],
+  "get_decision": [
+   "did"
+  ],
+  "get_events": [
+   "cid",
+   "skip",
+   "limit"
+  ],
+  "get_evidence": [
+   "eid"
+  ],
+  "get_evidence_image": [
+   "eid"
+  ],
+  "get_evidence_text": [
+   "eid"
+  ],
+  "get_receipt": [
+   "cid"
+  ],
+  "get_stats": [],
+  "get_terms": [
+   "cid",
+   "version"
+  ],
+  "list_cases": [
+   "skip",
+   "limit"
+  ]
+ },
+ "writes": {
+  "accept_case": {
+   "params": [
+    "cid",
+    "terms_digest"
+   ],
+   "payable": false
+  },
+  "accept_inspector": {
+   "params": [
+    "cid",
+    "terms_digest"
+   ],
+   "payable": false
+  },
+  "challenge": {
+   "params": [
+    "cid",
+    "reason"
+   ],
+   "payable": true
+  },
+  "close_challenge": {
+   "params": [
+    "cid"
+   ],
+   "payable": false
+  },
+  "decline_case": {
+   "params": [
+    "cid",
+    "reason"
+   ],
+   "payable": false
+  },
+  "expire_case": {
+   "params": [
+    "cid"
+   ],
+   "payable": false
+  },
+  "finalize": {
+   "params": [
+    "cid"
+   ],
+   "payable": false
+  },
+  "fund_case": {
+   "params": [
+    "cid"
+   ],
+   "payable": true
+  },
+  "lapse_case": {
+   "params": [
+    "cid"
+   ],
+   "payable": false
+  },
+  "mark_ready": {
+   "params": [
+    "cid"
+   ],
+   "payable": false
+  },
+  "open_case": {
+   "params": [
+    "terms_json"
+   ],
+   "payable": false
+  },
+  "readjudicate": {
+   "params": [
+    "cid"
+   ],
+   "payable": false
+  },
+  "request_assessment": {
+   "params": [
+    "cid"
+   ],
+   "payable": false
+  },
+  "revise_terms": {
+   "params": [
+    "cid",
+    "terms_json"
+   ],
+   "payable": false
+  },
+  "submit_image": {
+   "params": [
+    "cid",
+    "meta_json",
+    "data"
+   ],
+   "payable": false
+  },
+  "submit_text": {
+   "params": [
+    "cid",
+    "meta_json",
+    "text"
+   ],
+   "payable": false
+  },
+  "withdraw": {
+   "params": [],
+   "payable": false
+  },
+  "withdraw_case": {
+   "params": [
+    "cid"
+   ],
+   "payable": false
+  }
+ }
+}

@@ -1,0 +1,9 @@
+# Everything the contract's checks need. The direct tests run the contract
+# under a stub runtime (tests/direct/conftest.py), so no GenVM download is
+# needed to run them; the linter's `check` fetches the runner bundle once.
+pytest==9.1.1
+eth-utils==5.1.0
+ruff==0.16.7
+pillow==12.2.0
+# Pinned to a commit: the PyPI release does not read the current runner bundle.
+genvm-linter @ git+https://github.com/genlayerlabs/genvm-linter@28450e665666300fc648dbe495110dfd0cb6a7b4

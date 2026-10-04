@@ -1,0 +1,75 @@
+[
+ {
+  "value": {
+   "b": 1,
+   "a": [
+    3,
+    2,
+    1
+   ],
+   "c": {
+    "z": null,
+    "y": true,
+    "x": false
+   }
+  },
+  "canonical": "{\"a\":[3,2,1],\"b\":1,\"c\":{\"x\":false,\"y\":true,\"z\":null}}",
+  "sha256": "81475b462aaad67ce1a9c832e9672bf44e439e459a3e811b5d736627e696b040"
+ },
+ {
+  "value": {
+   "text": "plain ascii, punctuation: <>&'\" and a back\\slash"
+  },
+  "canonical": "{\"text\":\"plain ascii, punctuation: <>&'\\\" and a back\\\\slash\"}",
+  "sha256": "87eee549e56a05bafc30dfd454b096d4574467802f4e9a47a6afd5d5b47a74de"
+ },
+ {
+  "value": {
+   "del": "a\u007fb",
+   "c1": "x\u0085y",
+   "tab": "a\tb\nc\rd\b\f"
+  },
+  "canonical": "{\"c1\":\"x\\u0085y\",\"del\":\"a\\u007fb\",\"tab\":\"a\\tb\\nc\\rd\\b\\f\"}",
+  "sha256": "51ca567e366b767d0fdb41d16d283999e8d832d4fe72a04854cebfa6dfc60eb0"
+ },
+ {
+  "value": {
+   "accents": "caf\u00e9 na\u00efve",
+   "cjk": "\u4e2d\u6587",
+   "emoji": "\ud83c\udfe0",
+   "sep": "\u2028\u2029"
+  },
+  "canonical": "{\"accents\":\"caf\\u00e9 na\\u00efve\",\"cjk\":\"\\u4e2d\\u6587\",\"emoji\":\"\\ud83c\\udfe0\",\"sep\":\"\\u2028\\u2029\"}",
+  "sha256": "1b259632a83653b0e4ba10281602c9b02e538d979c5bbb17c126c50ef7a29e7d"
+ },
+ {
+  "value": {
+   "\u00e9": 1,
+   "z": 2,
+   "A": 3,
+   "a": 4,
+   "_": 5,
+   "0": 6
+  },
+  "canonical": "{\"0\":6,\"A\":3,\"_\":5,\"a\":4,\"z\":2,\"\\u00e9\":1}",
+  "sha256": "5336dfe7829c3427a32b9124464f4a423c8699f2de81dca48688e93076ab3b7f"
+ },
+ {
+  "value": [
+   {
+    "n": 0
+   },
+   {
+    "n": -12
+   },
+   {
+    "n": 1099511627776
+   },
+   "",
+   [],
+   {}
+  ],
+  "canonical": "[{\"n\":0},{\"n\":-12},{\"n\":1099511627776},\"\",[],{}]",
+  "sha256": "119e6c40a58ec2dc8a759d530d1721f8c56fa5d49b0d04511500a6f2185ac8ef"
+ }
+]

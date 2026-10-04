@@ -1,0 +1,10 @@
+# The deployed contract is identified by the sha256 of its bytes, and the web
+# fixtures are compared byte for byte in CI, so every text file is LF on every
+# checkout, whatever the platform.
+* text=auto eol=lf
+
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.ico binary
+*.woff2 binary
