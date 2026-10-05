@@ -12,6 +12,8 @@ what would establish it. The respondent accepts that exact version. Both sides f
 validators examine it and judge each criterion, and code turns those judgments into a finding. The side a decision
 goes against can challenge it once with new evidence. What is left is a record anyone can check.
 
+Live app: https://key-witness.vercel.app
+
 It is an evidence assessment and recordkeeping tool. It is not a court, a lawyer or a title registry. A finding is
 never a legal determination, never assigns liability, and never proves that an event happened.
 
